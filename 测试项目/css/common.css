@@ -1,0 +1,28 @@
+
+/*---- print-----*/
+#bannerwrapper, #leftcol, #breadcrumb, #backtoTop, #footerwrapper,#toplinks,#topnavigation,.second-level-nav,.pulled-item-link,.retweet-link,.replay-link,.footer-social-icons-container,.footer-pulled-content-box .redirection-link,.copyright-section,.bx-controls-direction,.read-more-link,.slide-redirection-link,.banner-link,.locations .filter-wrapper,.mobi-top-nav {display:none!important}
+
+.snapdown-content{display:block !important;}
+.snapdown-title p:after{display:none;}
+#ip3-Homepage #skrollr-body{position:relative;}
+.hover-effect-box .box-content-container > .box-title::after{background:none;}
+.more-link-container .more-link::after{content:"";}
+
+/*#ip3-ingredients #headerwrapper, #ip3-ingredients #MainHeader,#ip3-ingredients #FooterWrapper,
+.ip3-ingredients #headerwrapper,.ip3-ingredients #MainHeader,.ip3-ingredients #FooterWrapper{display:none;}*/
+#productdetails .closebutton, #productdetails .print a{display:none !important;}
+#ip3-ingredients #resultslist{display:none;}
+
+.ip3-ingredients-search #FooterWrapper{display:none;}
+
+/*body..ip3-ingredients-test2*/.ip3-ingredients-search div{page-break-inside:avoid;/*page-break-after:always;page-break-before:always;*/}
+
+/*body.ip3-ingredients-test2{margin:20px 0 !important;}*/
+
+body.ip3-ingredients-search .container-fluid{width:100%;max-width:none;}
+.the-compendium .compendium-snapdown .compendium-snapdown-item .compendium-snapdown-title a:after,.the-compendium .top-links ,#ip3-ingredients-search #FooterWrapper,.ip3-ingredients-search #FooterWrapper,.ip3-ingredients-search #loadmore,#ip3-ingredients-search #loadmore{display:none !important;}
+#ip3-fragrance-ingredients #FooterWrapper{display:none;}
+/*.ip3-ingredients-search #headerwrapper,.ip3-ingredients-search .mobi-headerwrapper,#ip3-ingredients-search #headerwrapper,#ip3-ingredients-search .mobi-headerwrapper{background-color:#ccc;position:relative;z-index:999;}*/
+#ip3-ingredients-search .ingredientfilterwrapper{display:none;}
+
+

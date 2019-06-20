@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加预约交车单</title>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="添加交车单">
+    <link href="../image/ioc/favicon.ico" rel="icon" type="image/x-ico">
+
+
+    <link rel="stylesheet" type="text/css" href="../js/layuiadmin/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" href="../js/layuiadmin/style/login.css" media="all">
+
+</head>
+<body>
+
+<div style="display:none;" id="tool">
+    <button type="button" class="layui-btn  layui-btn-normal " lay-event="choose_car">
+        <i class="layui-icon">&#xe654;</i> 确认
+    </button>
+    <button id="clear" type="button" class="layui-btn  layui-btn-normal " lay-event="clear_all">
+        <i class="layui-icon">&#xe654;</i> 清空
+    </button>
+</div>
+
+
+<div style="padding: 15px;">
+    <form class="layui-form layui-form-pane">
+
+        <div class="layui-form-item ">
+            <label class="layui-form-label">客户单位</label>
+            <div class="layui-input-block">
+                <select id="kh" name="customer_id" required lay-verify="required" lay-filter="kh" lay-search>
+                    <option value="">请选择客户单位</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <!--客户名下的是车辆数据-->
+            <table id="customer_unit_library" lay-filter="customer_unit_library" class="layui-table"></table>
+        </div>
+
+        <div class="layui-form-item">
+            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                <legend>选择的车辆</legend>
+            </fieldset>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">车辆数</label>
+            <div class="layui-input-inline">
+                <input type="text" id="car_number" name="" autocomplete="off" class="layui-input" value="0" readonly>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <table id="lay_table" class="layui-table" lay-skin="line">
+                <thead>
+                <tr>
+                    <th width="33%">车架号</th>
+                    <th width="33%">车辆类型</th>
+                    <th width="33%">品牌型号</th>
+                </tr>
+                </thead>
+                <tbody id="box">
+                <tr>
+                    <td></td>
+                    <td>无数据</td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">出库时间</label>
+                <div class="layui-input-inline">
+                    <input id="time" type="text" name="outtime" required lay-verify="required" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">运输方式</label>
+            <div class="layui-input-block">
+                <select name="transport_plantype" lay-filter="ys" required>
+                    <option value=""></option>
+                    <option value="0">场地安排</option>
+                    <option value="1">自行安排</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="cd_select" class="layui-form-item hide">
+            <label class="layui-form-label">运输单位</label>
+            <div class="layui-input-block">
+                <select id="ys" name="transport_id">
+                    <option value=""></option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">目的地</label>
+            <div class="layui-input-block">
+                <input type="text" name="target_address" required lay-verify="required" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-block">
+                <textarea name="remark" placeholder="请输入" class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">指定驾驶员</label>
+            <div class="layui-input-block">
+                <select name="driver_unionid" required>
+                    <option value=""></option>
+                    <option value="0">驾驶员1</option>
+                    <option value="1">驾驶员2</option>
+                    <option value="3">驾驶员3</option>
+                    <option value="4">驾驶员4</option>
+                    <option value="5">驾驶员5</option>
+                    <option value="6">驾驶员6</option>
+                    <option value="7">驾驶员7</option>
+                    <option value="8">驾驶员8</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="demo1">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+<div class="layui-trans layadmin-user-login-footer">
+    <p style="color: white;">Copyright © 2019 by 中国联合网络通信有限公司宁波市分公司 All rights reserved.</p>
+</div>
+</body>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script src="../js/layuiadmin/layui/layui.js"></script>
+<script type="text/javascript" src="../layer_mobile/layer.js"></script>
+<script type="text/javascript" src="../js/jquery.md5.js"></script>
+<script type="text/javascript" src="../js/jquery-geturlcode.js"></script>
+<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+<script src="../js/common/api.js"></script>
+<script src="../js/common/localjs.js"></script>
+<script type="text/javascript" src="../js/mui.min.js"></script>
+<script>
+    var form;
+
+
+    var carList = [];
+    var carinfo = [];
+
+
+    //添加运输单位下拉框
+    function yunshu() {
+        ajaxSubmit(null, Api.FWDT_Transport_Dw.Select_Transport, "GET", function (res) {
+            $.each(res.data.list, function (idx, obj) {
+                $("#ys").append(' <option value="' + obj.id + '">' + obj.full_name + '</option>');
+            });
+            console.log(1);
+            form.render();
+            // getinfo(id);
+        });
+    }
+
+    //添加运输单位下拉框
+    function kehu() {
+        ajaxSubmit(null, Api.FWDT_Customer_Dw.Drop_Down_Customer_Info, "GET", function (res) {
+            $.each(res.data, function (idx, obj) {
+                $("#kh").append(' <option value="' + obj.id + '">' + obj.full_name + '</option>');
+            });
+
+            console.log(1);
+            form.render();
+            // getinfo(id);
+        });
+    }
+
+
+    //Demo
+    layui.use(['jquery', 'form', 'layer', 'laydate', 'table'], function () {
+
+        form = layui.form;
+        var $ = layui.$,
+            layer = layui.layer,
+            laydate = layui.laydate,
+            table = layui.table;
+
+
+        //渲染数据表格
+        table.render({
+            elem: '#customer_unit_library',
+            id: 'customer_unit_library',
+            url: Api.FWDT_jiaoche.Select_Can_jiaoche,
+            where: {
+                customer_name: "请选择客户单位"
+            },
+            parseData: function (res) {
+                console.log(res);
+                return {
+                    "code": res.code, //解析接口状态
+                    "msg": res.msg, //解析提示文本
+                    "count": res.data.total, //解析数据长度
+                    "data": res.data.list //解析数据列表
+                };
+            },
+            request: {
+                pageName: 'page' //页码的参数名称，默认：page
+                , limitName: 'count' //每页数据量的参数名，默认：limit
+            },
+            cols: [[
+                {
+                    type: 'checkbox',
+                    //fixed : 'left'
+                }
+                , {
+                    type: "numbers"
+                    , title: '编号'
+                    //style : 'height:60px;width:60px;line-height:60px!important;',
+                    //fixed : 'left',
+                    // sort: true
+                }
+                , {
+                    field: 'car_vinno'
+                    , title: '车架号'
+                    //style : 'height:60px;width:60px;line-height:60px!important;',
+                    // templet: '<div><img src="${pageContext.request.contextPath}{{d.image}}"></div>'
+                }
+                , {
+                    field: 'car_type'
+                    , title: '车辆类型'
+                    //style : 'height:60px;width:60px;line-height:60px!important;',
+                    // templet: '<div><img src="${pageContext.request.contextPath}{{d.image}}"></div>'
+                }
+                , {
+                    field: 'car_brandmodel'
+                    , title: '车辆品牌'
+
+                }
+                , {
+                    field: 'customer_name'
+                    , title: '客户单位'
+
+                }
+                , {
+                    field: 'entry_datetime'
+                    , title: '入场时间'
+
+                }
+            ]],
+            page: true,
+            limit: 20,
+            limits: [1, 2, 3, 4, 10],
+            toolbar: '#tool',
+            defaultToolbar: []
+
+        });
+
+
+        //表格复选框事件
+        table.on('checkbox(customer_unit_library)', function (obj) {
+            console.log(obj.checked); //当前是否选中状态
+            console.log(obj.data); //选中行的相关数据
+            console.log(obj.type); //如果触发的是全选，则为：all，如果触发的是单选，则为：one
+        });
+
+
+        table.on('toolbar(customer_unit_library)', function (obj) {
+            //获取复选框选中
+            var checkStatus = table.checkStatus(obj.config.id);
+            var res = checkStatus.data;
+            console.log("点击后得到的数据", res);
+            // var all = JSON.stringify(res);//获取选中的对象的json数组
+            // console.log("将数据变为json格式的字符串", all);
+            switch (obj.event) {
+                case 'choose_car':
+                    if (res.length > 0) {//如果有选中了
+                        $.each(res, function (idx, obj) {
+                            var aa = {};
+
+                            console.log("car_brandmodel", obj.car_brandmodel);
+                            console.log("car_type", obj.car_type);
+                            console.log("car_vinno", obj.car_vinno);
+                            console.log("storagenumber", obj.storagenumber);
+                            var panduan = obj.storagenumber;
+
+                            aa["car_brandmodel"] = obj.car_brandmodel;
+                            aa["car_type"] = obj.car_type;
+                            aa["car_vinno"] = obj.car_vinno;
+                            aa["storagenumber"] = obj.storagenumber;
+
+                            console.log("车辆信息的aa-----", aa);
+                            if (carinfo.length > 0) {//判断是否重复
+                                var cc = 0;
+                                $.each(carinfo, function (idx, obj) {
+                                    if (obj.storagenumber == panduan) {
+                                        cc = 1;
+                                        return false
+                                    }
+                                });
+                                if (cc == 0) {
+                                    carinfo.push(aa);
+                                    $("#box").append(' <tr>' +
+                                        '                    <td>' + aa.car_vinno + '</td>' +
+                                        '                    <td>' + aa.car_type + '</td>' +
+                                        '                    <td>' + aa.car_brandmodel + '</td>' +
+                                        '                </tr>');
+                                }
+                            } else {
+                                $("#box").html("");
+                                $("#lay_table").attr("lay-skin", "");
+                                carinfo.push(aa);
+                                $("#box").append(' <tr>' +
+                                    '                    <td>' + aa.car_vinno + '</td>' +
+                                    '                    <td>' + aa.car_type + '</td>' +
+                                    '                    <td>' + aa.car_brandmodel + '</td>' +
+                                    '                </tr>');
+                            }
+                            carList.push_unique(obj.storagenumber);
+                        });
+                        console.log("车辆信息的list", carList);
+                        console.log("车辆信息的infolist", carinfo);
+                        $("#car_number").val(carList.length);
+
+                    } else {
+                        layer.msg("请选择车辆");
+                    }
+                    break;
+                case 'clear_all'://指定驾驶员添加PDi检测单
+                    clear_all_car();
+
+                    break;
+                case 'look_library':
+                    var as = layer.open({
+                        id: "look_library",
+                        type: 2,
+                        title: 'PDI检测记录',
+                        maxmin: true,
+                        shadeClose: false,
+                        shade: 0.8,
+                        // area: ['400px', '300px'],
+                        //content : path+'/voteback/add.html',
+                        content: 'PDI_detection_add.html', //iframe的url
+                        success: function (layero, index) {
+                            //传入参数，并赋值给iframe的元素
+                        }
+                    });
+                    layer.full(as);
+                    break;
+                case 'all_library':
+                    var as = layer.open({
+                        id: "all_library",
+                        type: 2,
+                        title: '总PDI检测记录',
+                        maxmin: true,
+                        shadeClose: false,
+                        shade: 0.8,
+                        //area: ['400px', '300px'],
+                        //content : path+'/voteback/add.html',
+                        content: 'PDI_detection_record_list.html', //iframe的url
+                        success: function (layero, index) {
+                            //传入参数，并赋值给iframe的元素
+                        }
+                    });
+                    layer.full(as);
+                    break;
+                case 'del_library':
+                    var checkStatus = table.checkStatus(obj.config.id);
+                    var data = checkStatus.data;
+                    var allNews = JSON.stringify(data);
+                    layer.confirm('真的要删除吗', function (index) {
+                        $.ajax({
+                            type: "POST",
+                            url: '<%=request.getContextPath()%>/voteback/pro/delAllPro',
+                            data: {
+                                "allNews": allNews
+                            },
+                            dataType: "json",
+                            success: function (data) {
+                                if (data.res == "yes") {
+                                    layer.alert("删除成功!");
+                                    $("#shuaxing").click();
+                                } else if (data.res == "no") {
+                                    layer.alert("删除失败!");
+                                } else {
+                                    layer.alert("请勾选要删除的数据");
+                                }
+                            },
+                            error: function () {
+                                alert("删除操作失败");
+                            }
+                        });
+                    });
+
+                    break;
+
+            }
+
+
+        });
+
+
+        kehu();
+        yunshu();
+
+        //日期时间选择
+        laydate.render({
+            elem: '#time',
+            type: 'datetime',
+            min: 0 //7天前
+        });
+
+
+        //选择客户单位后跳出他名下的可交车车辆
+        form.on('select(kh)', function (data) {
+            console.log("得到select原始DOM对象", data.elem); //得到select原始DOM对象
+            console.log("得到被选中的值", data.value); //得到被选中的值
+            console.log("得到美化后的DOM对象", data.othis); //得到美化后的DOM对象
+
+            clear_all_car();
+
+
+
+            var aa = $("#kh").find("option:selected").text();
+            console.log("得到被选中的文本", aa); //
+            table.reload('customer_unit_library', {
+                page: {
+                    curr: 1 //重新从第 1 页开始
+                },
+                where: {
+                    customer_name: aa
+                }
+            });
+        });
+
+
+        form.on('select(ys)', function (data) {
+            console.log(data.elem); //得到select原始DOM对象
+            console.log(data.value); //得到被选中的值
+            console.log(data.othis); //得到美化后的DOM对象
+            $("#ys").html(' <option value=""></option>');
+            var res = data.value;
+            if (res == 0) {
+                ajaxSubmit(null, Api.FWDT_Transport_Dw.Select_Transport, "GET", function (res) {
+                    $.each(res.data.list, function (idx, obj) {
+                        $("#ys").append(' <option value="' + obj.id + '">' + obj.full_name + '</option>');
+                    });
+                    console.log(1);
+                    form.render();
+                    // getinfo(id);
+                    $("#cd_select").show();
+                });
+            } else {
+                $("#cd_select").hide();
+                $("#ys").html(' <option value=""></option>');
+            }
+
+        });
+
+
+        $("#pz").on("click", function () {
+            layer.open({
+                type: 2,
+                title: "拍照",
+                area: ['900px', '500px'],
+                //  offset: '50px',
+                anim: 6,
+                shadeClose: "true",
+                skin: "layui-layer-molv",
+                content: "photo.html"
+            });
+        })
+        //监听提交
+        form.on('submit(demo1)', function (data) {
+            //layer.msg(JSON.stringify(data.field));
+            console.log(data.field);
+            var res = data.field;
+            res.carList = carList;
+            console.log(res);
+
+            ajaxSubmit(res, Api.FWDT_jiaoche.Add_jiaoche, "POST", function (res) {
+
+                console.log(res);
+
+                if (res.msg == "success") {
+
+                    var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                    parent.layui.table.reload("customer_unit_library", {page: {curr: 1}});
+                    parent.layer.msg('添加成功');
+                    parent.layer.close(index);
+                }
+
+
+            }, "json", true);
+
+
+            return false;
+        });
+    });
+    function clear_all_car() {
+        carList = [];
+        carinfo = [];
+        $("#car_number").val(0);
+        $("#box").html("");
+        $("#lay_table").attr("lay-skin", "line");
+
+        $("#box").append(' <tr>' +
+            '                    <td></td>' +
+            '                    <td>无数据</td>' +
+            '                    <td></td>' +
+            '              </tr>');
+    }
+</script>
+</html>

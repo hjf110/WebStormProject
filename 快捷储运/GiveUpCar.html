@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>交车</title>
+</head>
+<link rel="stylesheet" href="css/css.css">
+<link rel="stylesheet" href="././js/layer_mobile/need/layer.css">
+<link rel="stylesheet" href="../js/layuiadmin/style/login.css" media="all">
+
+<body>
+<a href="index.html">
+    <div class="back">
+        <img class="back-img" src="image/back.png"><span
+            class="back-text">返回</span>
+    </div>
+</a>
+<div class="head">
+    <div class="head-img">
+        <img class="head-img-1" src="image/learning.png"/>
+    </div>
+    <div class="head-text">
+        <h2>宁波快捷汽车储运有限公司</h2>
+    </div>
+</div>
+<form>
+    <!--填写时间区域-->
+    <div class="per-time" align="center">
+        <div>身份证号:</div>
+        <div>
+            <input type="text" class="gc-in"/>
+            <button type="button" id="check" class="button-quit">查询</button>
+        </div>
+    </div>
+
+    <!--提车用户信息表单-->
+    <div align="center" id="info" class="gc-info">
+
+    </div>
+
+    <button id="next" type="button" class="gc-button">下一步</button>
+</form>
+</div>
+</body>
+<script type="text/javascript" src="./js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="./js/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="./js/jquery.md5.js"></script>
+<script type="text/javascript" src="./js/jquery-geturlcode.js"></script>
+<script type="text/javascript" src="./js/jquery.cookie.js"></script>
+<script type="text/javascript" src="./js/common/localjs.js"></script>
+<script type="text/javascript" src="./js/jquery-getFormData.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#check").on("click", function () {
+//            $("#info").html(
+//                '<div>提车客户信息表单</div>' +
+//                '<div>(调取服务大厅数据)</div>'
+//            );
+            if (isId_Card()) {
+                KeJiaoChe();
+            }
+
+        });
+
+        $("#next").on("click", function () {
+
+            if (isId_Card()) {
+                window.location.href = "GiveUpCarCamera.html";
+            }
+        })
+
+    })
+
+   /*验证身份证号是否符合规范*/
+    function isId_Card() {
+        var id_card = $(".gc-in").val();
+        if (id_card == "" || id_card == null) {
+            layer.open({
+                content: '身份证号不能为空',
+                style: 'font-size:20px;color:red;background-color:#d5dee7;width:400px;letter-spacing:4px;',
+                time: 2
+            });
+            return false;
+        } else {
+            if (testId(id_card) == true) {
+                return true;
+            } else if (testId(id_card) == false) {
+                layer.open({
+                    content: '身份证号格式错误,请检查',
+                    style: 'font-size:20px;color:red;background-color:#d5dee7;width:400px;letter-spacing:4px;',
+                    time: 2
+                });
+                return false;
+            }
+        }
+    }
+
+    /*调用查询可交车信息接口*/
+    function KeJiaoChe() {
+
+        var id_card = $(".gc-in").val();
+
+        var timestamp = (new Date()).valueOf();// 时间戳----
+
+        var MD5String;
+        //生成sign
+        MD5String = "id_card=" + id_card + "&timestamp=" + timestamp  + pass;
+
+        var MD5 = $.md5(MD5String);
+        MD5 = MD5.toUpperCase();//字母转为大写
+        var sign = pass + MD5;// 加密参数----
+        var token =sessionStorage.getItem('token');
+
+        console.log("拼接的加密参数----" + MD5String);
+        console.log("MD5----" + MD5);
+        console.log("需要的参数------------");
+        // console.log("接车记录码--storage_number--" + storage_number);
+        console.log("时间戳-- timestamp--" + timestamp);
+        console.log("sign----" + sign);
+
+        $.ajax({
+            type: "GET",
+            url: path + "/deliverycar/query",
+            data: {
+                "id_card":id_card,
+                "timestamp":timestamp,
+                "sign":sign
+            },
+            dataType: 'json',
+            beforeSend: function (request) {
+                request.setRequestHeader("KJCY-TOKEN", token);
+               // request.setRequestHeader("FORM-TOKEN", fd);
+            },
+            success: function (res) {
+                console.log("msg信息------" + res.msg);
+
+                if (res.msg == "success") {
+                     $.each(res.data,function (idx,obj) {
+                         if(idx==0){
+                             $.cookie("vinno",obj.vinno,{path:'/'});//在cookie中存入车架号
+                             $.cookie("storage_number",obj.storage_number,{path:'/'});//在cookie中存入接车记录码
+                             $.cookie("id_card",id_card,{path:'/'});//在cookie中存入身份证号
+                         }
+                     });
+                     window.location.href="GiveUpCarCamera.html";
+
+                }
+            },
+            error: function (XMLHttpResponse, textStatus, errorThrown) {
+                console.log("1 异步调用返回失败,XMLHttpResponse.readyState:" + XMLHttpResponse.readyState);
+                console.log("2 异步调用返回失败,XMLHttpResponse.status:" + XMLHttpResponse.status);
+                console.log("3 异步调用返回失败,textStatus:" + textStatus);
+                console.log("4 异步调用返回失败,errorThrown:" + errorThrown);
+
+            }
+        })
+    }
+
+
+
+</script>
+</html>

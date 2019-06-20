@@ -1,0 +1,199 @@
+/*product*/
+.pro_list {
+	width: 25%;
+	/*height: 430px;*/
+	position: relative;
+	top: 50px;
+	opacity: 0;
+	overflow: hidden;
+	-webkit-transition: -webkit-transform 0.5s linear;
+	-moz-transition: -moz-transform 0.5s linear;
+	-ms-transition: -ms-transform 0.5s linear;
+	-o-transition: -o-transform 0.5s linear;
+	transition: transform 0.5s linear;
+	cursor: pointer;
+	display: inline-block;
+}
+
+.pro_list_hidden {
+	-webkit-transform: scaleX(0);
+	-moz-transform: scaleX(0);
+	-ms-transform: scaleX(0);
+	-o-transform: scaleX(0);
+	transform: scaleX(0);
+	-webkit-transition: 0.5s linear;
+	-moz-transition: 0.5s linear;
+	-ms-transition: 0.5s linear;
+	-o-transition: 0.5s linear;
+	transition: 0.5s linear;
+}
+.pro_list>img {
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-ms-transform: scale(1);
+	-o-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: -webkit-transform 0.5s linear;
+	-moz-transition: -moz-transform 0.5s linear;
+	-ms-transition: -ms-transform 0.5s linear;
+	-o-transition: -o-transform 0.5s linear;
+	transition: transform 0.5s linear;
+}
+.pro_list_zi {
+	width: 100%;
+	position: absolute;
+	bottom: 0%;
+	left: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	padding-left: 12%;
+	padding-bottom: 20px;
+	padding-top: 10px;
+	background: rgba(0,0,0,0.3);
+}
+.pro_list_zi>h5 {
+	/*font-size: 30px;*/
+	font-size: 24px;
+	font-weight: 500;
+	text-transform: uppercase;
+	color: #FFF;
+	font-family:"微软雅黑","Microsoft YaHei";
+}
+.pro_list_zi>h4>a {
+	font-size: 30px;
+	text-transform: uppercase;
+	color: #FFF;
+	font-family:"微软雅黑","Microsoft YaHei";
+}
+.pro_list_zi>h4>a:hover {
+	font-size: 30px;
+	text-transform: uppercase;
+	color: #FFF;
+	font-family:"微软雅黑","Microsoft YaHei";
+}
+.pro_list_zi>span {
+	width: 20px;
+	height: 2px;
+	display: block;
+	background: #c98c3a;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+.pro_list_zi>p {
+	text-transform: uppercase;
+	color: #FFF;
+	font-size: 13px;
+	font-family:"微软雅黑","Microsoft YaHei";
+}
+.pro_list_zi>a {
+	margin-top: 20px;
+	display: block;
+	text-align: center;
+	width: 130px;
+	line-height: 30px;
+	text-decoration: none !important;
+	text-transform: uppercase;
+	color: #FFF;
+	border: 1px solid #fff;
+	-webkit-transition: 0.5s linear;
+	-moz-transition: 0.5s linear;
+	-ms-transition: 0.5s linear;
+	-o-transition: 0.5s linear;
+	transition: 0.5s linear;
+}
+.pro_list_zi>a:hover {
+	border: 1px solid #c98c3a;
+	color: #c98c3a;
+}
+.pro_list:hover a {
+	border: 1px solid #c98c3a;
+	color: #c98c3a;
+}
+.pro_list_bg {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0.3;
+	background: #000;
+}
+.bt_en1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin-top: 10px;
+    color: #fff;
+}
+h5 span {
+	display: block;
+}
+
+/*news*/
+.news {
+    width: 100%;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    background: url(../images/news_bg.jpg) center fixed no-repeat;
+    background-size: cover;
+}
+.news>h5 {
+    font-size: 50px;
+    margin: 0;
+    color: #151515;
+    padding-bottom: 15px;
+    font-weight: 500;
+    line-height: 1.1;
+    text-align: center;
+}
+.news_zi>h5 {
+    color: #FFF;
+    line-height: 40px;
+    font-size: 13px;
+    text-transform: uppercase;
+    margin: 0;
+    font-family: "微软雅黑","Microsoft YaHei";
+}
+.pro_title_zi1 {
+    width: 651px;
+    padding-top: 10px;
+    padding-bottom: 50px;
+    margin: 0 auto;
+    font-size: 12px;
+    text-align: center;
+    color: #333333;
+}
+.news_zi {
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.8) !important;
+}
+.news_list_con {
+    margin: 15px 0;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/*learnmore*/
+.clickmore a {
+    display: block;
+    width: 180px;
+    text-align: center;
+    line-height: 35px;
+    background: #000;
+    color: #FFF !important;
+    text-decoration: none !important;
+    -webkit-transition: 0.5s linear;
+    -moz-transition: 0.5s linear;
+    -ms-transition: 0.5s linear;
+    -o-transition: 0.5s linear;
+    transition: 0.5s linear;
+    position: relative;
+    z-index: 10;
+    margin: 0 auto;
+}

@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>js和CSS3炫酷图片画廊插件</title>
+
+<link rel="stylesheet" href="css/demo.min.css"/>
+<link rel="stylesheet" href="css/lgallery.min.css" />
+</head>
+<body>
+<div class="QuickStart" id="quickstart">
+  <div class="Wrapper">
+    <h1> LGallery <span>pure JavaScript gallery</span> </h1>
+  </div>
+</div>
+
+<div class="Lgallery" id="lgallery">
+  <div class="Wrapper Wrapper_flex_center">
+    <h3>Demo:</h3>
+    <div class="TemplateLgallery" data-lgallery="img/2.jpg" data-lghover="300">
+      <div class="TemplateLgallery-Item"> <img src="img/2.jpg" alt="Witcher" /> </div>
+    </div>
+    <div class="TemplateLgallery" data-lghover="300"
+      data-lgallery="img/1.jpg,img/2.jpg,img/3.jpg,img/4.jpg,img/5.jpg"
+      data-lglabel="A photo made by accident,Another awesome picture,Picture without description," data-lgdescription="Here is a very long long description of awesome picture made by accident by unknown author for us,... and another description,,This picture has no caption">
+      <div class="TemplateLgallery-Item"> <img src="img/6.jpg" alt="Witcher" /> </div>
+    </div>
+    <div class="TemplateLgallery" data-lgallery="img/4.jpg,img/1.jpg,img/2.jpg,img/3.jpg,img/5.jpg,img/6.jpg" data-lghover="300">
+      <div class="TemplateLgallery-Item"> <img src="img/4.jpg" alt="Witcher" /> </div>
+    </div>
+    <h3>Usage:</h3>
+    <p class="Descr"> Add to any existing tag in your HTML <span>data-lgallery</span> and put in this data attribute some pictures separated by comma (,). <br />
+      <br />
+      Example: <br />
+      <br />
+      <code> &lt;div class=example data-lgallery="img/1.jpg,img/2.jpg, img/3.jpg"&gt;&lt;/div&gt; </code> <br />
+      <br />
+      That’s all. Now after click on this div (example) you’ll open a gallery with these 3 pictures. Look at demo above or try it yourself :) </p>
+    <h3>Description:</h3>
+    <p class="Descr"> Not classic gallery. It is more like hidden gallery, when clicking on 1 small element you can open a huge hidden gallery. <br />
+      <br />
+      To customize you can use data-attributes just in your HTML or function setLG(type, options), where type is ‘lgallery’, options is an object with your options. <br />
+      <br />
+      (All data-attributes are more powerful then their equivalents in options object. It means that if you specified some options within object and also add some data-attributes, script will apply data-attribute value) <br />
+      <br />
+      It’s also should be mentioned that all data attributes you used to customize each gallery will be deleted after initializing gallery so your HTML will not be contaminated </p>
+    <h3>Options:</h3>
+    <table class="Options">
+      <thead>
+        <tr>
+          <th>Option</th>
+          <th>Data-attribute (Ex.: data-lgwidth)</th>
+          <th>Type of value</th>
+          <th>Default</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>width</td>
+          <td>lgwidth</td>
+          <td>value in px (500px)</td>
+          <td>auto</td>
+          <td>Customize image width. Alternatively you can use CSS for class LGallerySlider-Slide</td>
+        </tr>
+        <tr>
+          <td>height</td>
+          <td>lgheight</td>
+          <td>value in px (500px)</td>
+          <td>auto</td>
+          <td>Customize image height. Alternatively you can use CSS for class LGallerySlider-Slide</td>
+        </tr>
+        <tr>
+          <td>noscale</td>
+          <td>lgnoscale</td>
+          <td>true/false</td>
+          <td>false</td>
+          <td>For data attribute: true - remove scale effect while changing slides, if no value - will apply scale effect</td>
+        </tr>
+        <tr>
+          <td>render</td>
+          <td>lgrender</td>
+          <td>true/false</td>
+          <td>false</td>
+          <td>By default gallery will be rendered just after first opening of it (not initializing, but opening not to waste traffic). This option will enable rendering gallery after each click on parent element. For data-attribute usage is the same as fo lgnoscale</td>
+        </tr>
+        <tr>
+          <td>openbtn</td>
+          <td>lgopenbtn</td>
+          <td>true</td>
+          <td>true/false</td>
+          <td>Same usage as lgnoscale. To open gallery only by clicking the open button. By default gallery is opened by clicking parent element</td>
+        </tr>
+        <tr>
+          <td>noopenbtn</td>
+          <td>lgnoopenbtn</td>
+          <td>true/false</td>
+          <td>false</td>
+          <td>Same usage as lgnoscale. To hide/show the open button. By default is to show</td>
+        </tr>
+        <tr>
+          <td>-</td>
+          <td>lghover</td>
+          <td>value in ms (500</td>
+          <td>300</td>
+          <td>This option should be used, if you have any transform effect on hovering your parent element, to prevent a conflict with lgallery.min.js. Value is time of cancelling you animation hover effect</td>
+        </tr>
+        <tr>
+          <td>nobtns</td>
+          <td>lgnobtns</td>
+          <td>true/false</td>
+          <td>false</td>
+          <td>Same usage as lgnoscale. Use it to disable animation of scaling while clicking on next/prev slide buttons</td>
+        </tr>
+        <tr>
+          <td>atime</td>
+          <td>lgatime</td>
+          <td>value is seconds (1s)</td>
+          <td>1s</td>
+          <td>Specifies animation time for changing slides. The modifier for scale is 1, for opacity is 0.7. Example: your option is 3s will apply transition: opacity 2.1s transform 3s</td>
+        </tr>
+        <tr>
+          <td>autoplay</td>
+          <td>lgautoplay</td>
+          <td>value in ms (5000)</td>
+          <td>3000</td>
+          <td>Specifies time in milliseconds for autochanging slides</td>
+        </tr>
+        <tr>
+          <td>alt</td>
+          <td>lgalt</td>
+          <td>string of data (alt1, alt2, alt3, …)</td>
+          <td>-</td>
+          <td>Specifies alt attributes for your pictures. Data separated by comma (,), just as for main pictures</td>
+        </tr>
+        <tr>
+          <td>title</td>
+          <td>lgtitle</td>
+          <td>string</td>
+          <td>-</td>
+          <td>Same as alt options, just for Specifiesing title attribute</td>
+        </tr>
+        <tr>
+          <td>mobilesrc</td>
+          <td>lgmobilesrc</td>
+          <td>string (768px, img/1.jpg, img/2.jpg, …) </td>
+          <td>-</td>
+          <td>Specifies pictures for mobile devices. First item in string must specify the max-width of device, for example 768px. Others should be your images</td>
+        </tr>
+        <tr>
+          <td>tabletsrc</td>
+          <td>lgtabletsrc</td>
+          <td>string</td>
+          <td>-</td>
+          <td>Same usage as mobilesrc options. Here you can specify another max-width value (1024px for example). This value should be larger than first argument in mobilesrc</td>
+        </tr>
+        <tr>
+          <td>label</td>
+          <td>lglabel</td>
+          <td>string</td>
+          <td>-</td>
+          <td>Specifies label/captions for pictures in your gallery. Words or phrases separated by comma (,). If you want to skip label for some picture just put nothing among commas (Example: label 1,label 2,,label 4</td>
+        </tr>
+        <tr>
+          <td>description</td>
+          <td>lgdescription</td>
+          <td>string</td>
+          <td>-</td>
+          <td>Specify descriptions for pictures in your gallery. Description will be under label (if it is). Same usage as for label. You can use description without specifying label for picture or vice versa</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="Descr"> <br />
+      <br />
+      Also you can customize all CSS using your own styles, if you need more flexibility :) </p>
+    <h3>Feature of responsiveness:</h3>
+    <p class="Descr"> By default the maximum size if slider for <span>lgallery & lgparent</span> is 95%. <br />
+      <br />
+      If device width will be < 769px - this size will be 100% (Fullscreen). <br />
+      <br />
+      You can change it with CSS. </p>
+  </div>
+</div>
+<div class="Lgparent" id="lgparent">
+  <div class="Wrapper Wrapper_flex_center">
+    <h2>Data-lgparent</h2>
+    <h3>Demo:</h3>
+    <div class="TemplateParent" data-lgparent data-lgtitle="1,2,3,4,5"
+      data-lglabel="Picture 1,Picture 2,Picture 3,Picture 4,Picture 5"
+      data-lgdescription="Description 1, Description 2,Description 3,Description 4,Description 5">
+      <div class="TemplateParent-Item"> <img src="img/1.jpg"/> <span>Cool</span> </div>
+      <div class="TemplateParent-Item"> <img src="img/2.jpg"/> <span>Awesome</span> </div>
+      <div class="TemplateParent-Item"> <img src="img/3.jpg"/> <span>Wonderful</span> </div>
+      <div class="TemplateParent-Item"> <img src="img/5.jpg"/> <span>Amazing</span> </div>
+      <div class="TemplateParent-Item"> <img src="img/4.jpg"/> <span>Simple</span> </div>
+    </div>
+    <h3>Usage:</h3>
+    <p class="Descr"> Add to any existing tag in your HTML <span>data-lgparent</span> without any info. Just data-lgparent. <br />
+      <br />
+      You can have any HTML structure in this element. Script will find all images and make gallery using them. Then you can open gallery by clicking on each of them (images). <br />
+      <br />
+      Example (just as in the demo above): <br />
+      <br />
+    </p>
+    <pre>
+&lt;div class=example data-lgparent"&gt;
+  &lt;div&gt;
+    &lt;img src="img/13.jpg" /&gt;
+    &lt;span&gt;Cool&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;img src="img/3.jpg" /&gt;
+    &lt;span&gt;Awesome&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;img src="img/11.jpg" /&gt;
+    &lt;span&gt;Wonderful&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;img src="img/5.jpg" /&gt;
+    &lt;span&gt;Amazing&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;img src="img/10.jpg" /&gt;
+    &lt;span&gt;Simple&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </pre>
+    <h3>Description:</h3>
+    <p class="Descr"> A classic gallery. <br />
+      <br />
+      You can also specify alt and title attributes just here in IMG tags, they will be used is gallery in such case. </p>
+    <h3>Options:</h3>
+    <p class="Descr"> Everything just as for lgallery excluding openbtn (lgopenbtn), noopenbtn (lgnoopenbtn) and lghover options. <br />
+      <br />
+      Also you can customize all CSS using your own styles. </p>
+  </div>
+</div>
+<div class="Lgslider" id="lgslider">
+  <div class="Wrapper Wrapper_flex_center">
+    <h2>Data-lgslider</h2>
+    <h3>Demo:</h3>
+    <div class="TemplateSlider" data-lgslider="img/6.jpg,img/5.jpg,img/6.jpg"
+      data-lgautoplay="30000"
+      data-lglabel="The sunset,Strange forest,Apple"
+      data-lgdescription="Wonderful view,Beautiful and romantic,... just apple"></div>
+    <h3>Usage:</h3>
+    <p class="Descr"> Add to any existing tag in your HTML <span>data-lgslider</span> and put in this data attribute some pictures separated by comma (,). <br />
+      <br />
+      Example: <br />
+      <br />
+      <code> &lt;div class=example data-lgslider="img/1.jpg,img/2.jpg, img/3.jpg"&gt;&lt;/div&gt; </code> </p>
+    <h3>Description:</h3>
+    <p class="Descr"> Classic slider <br />
+      <br />
+      The difference from previous types is that you shouldn’t initialize (first initialization happens after opening gallery for the first time) it. <br />
+      <br />
+      Just add data-attribute and reload your page, there will be a new slider. <br />
+      <br />
+      To customize width/height/positioning options just apply them for parent element using CSS. </p>
+    <h3>Options:</h3>
+    <table class="Options">
+      <thead>
+        <tr>
+          <th>Option</th>
+          <th>Data-attribute (Ex.: data-lgwidth)</th>
+          <th>Type of value</th>
+          <th>Default</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>nobtns</td>
+          <td>lgnobtns</td>
+          <td>true/false</td>
+          <td>false</td>
+          <td>Same usage as lgnoscale. Use it to disable animation of scaling while clicking on next/prev slide buttons</td>
+        </tr>
+        <tr>
+          <td>atime</td>
+          <td>lgatime</td>
+          <td>value is seconds (1s)</td>
+          <td>1s</td>
+          <td>Specifies animation time for changing slides. The modifier for scale is 1, for opacity is 0.7. Example: your option is 3s will apply transition: opacity 2.1s transform 3s</td>
+        </tr>
+        <tr>
+          <td>autoplay</td>
+          <td>lgautoplay</td>
+          <td>value in ms (5000)</td>
+          <td>3000</td>
+          <td>Specifies time in milliseconds for autochanging slides</td>
+        </tr>
+        <tr>
+          <td>alt</td>
+          <td>lgalt</td>
+          <td>string of data (alt1, alt2, alt3, …)</td>
+          <td>-</td>
+          <td>Specifies alt attributes for your pictures. Data separated by comma (,), just as for main pictures</td>
+        </tr>
+        <tr>
+          <td>title</td>
+          <td>lgtitle</td>
+          <td>string</td>
+          <td>-</td>
+          <td>Same as alt options, just for Specifiesing title attribute</td>
+        </tr>
+        <tr>
+          <td>mobilesrc</td>
+          <td>lgmobilesrc</td>
+          <td>string (768px, img/1.jpg, img/2.jpg, …) </td>
+          <td>-</td>
+          <td>Specifies pictures for mobile devices. First item in string must specify the max-width of device, for example 768px. Others should be your images</td>
+        </tr>
+        <tr>
+          <td>tabletsrc</td>
+          <td>lgtabletsrc</td>
+          <td>string</td>
+          <td>-</td>
+          <td>Same usage as mobilesrc options. Here you can specify another max-width value (1024px for example). This value should be larger than first argument in mobilesrc</td>
+        </tr>
+        <tr>
+          <td>label</td>
+          <td>lglabel</td>
+          <td>string</td>
+          <td>-</td>
+          <td>Specifies label/captions for pictures in your gallery. Words or phrases separated by comma (,). If you want to skip label for some picture just put nothing among commas (Example: label 1,label 2,,label 4</td>
+        </tr>
+        <tr>
+          <td>description</td>
+          <td>lgdescription</td>
+          <td>string</td>
+          <td>-</td>
+          <td>Specify descriptions for pictures in your gallery. Description will be under label (if it is). Same usage as for label. You can use description without specifying label for picture or vice versa</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="Lgpreview" id="lgpreview">
+  <div class="Wrapper Wrapper_flex_center">
+    <h2>Data-lgpreview</h2>
+    <h3>Demo:</h3>
+    <div class="TemplatePreview" data-lgpreview="img/1.jpg, img/2.jpg, img/3.jpg, img/4.jpg, img/5.jpg, img/6.jpg" data-lgthumbwidth="200px" data-lgthumbcontainer="100%" data-lglabel="Awesome picture,Another awesome picture,And one more picture" data-lgdescription="Small description,Quite long description of this awesome picture,Imagine that here is a wonderful description of picture above"></div>
+    <h3>Usage:</h3>
+    <p class="Descr"> Add to any existing tag in your HTML <span>data-lgpreview</span> and put in this data attribute some pictures separated by comma (,). <br />
+      <br />
+      Example: <br />
+      <br />
+      <code> &lt;div class=example data-lgpreview="img/1.jpg,img/2.jpg, img/3.jpg"&gt;&lt;/div&gt; </code> </p>
+    <h3>Description:</h3>
+    <p class="Descr"> Slider with thumbs for preview (non-loop). <br />
+      <br />
+      Differences from first 2 types just as in data-lgslider, but with some new features. <br />
+      <br />
+      To customize width/height/positioning options just apply them for parent element using CSS. </p>
+    <h3>Options:</h3>
+    <p class="Descr"> Same as lg-slider but without autoplay (data-lgautoplay) options. lg-preview is non-loop,  so there is no need in autoplaying slides. <br />
+      <br />
+      And some new options: <br />
+      <br />
+    </p>
+    <table class="Options">
+      <thead>
+        <tr>
+          <th>Option</th>
+          <th>Data-attribute (Ex.: data-lgwidth)</th>
+          <th>Type of value</th>
+          <th>Default</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>thumbcontainer</td>
+          <td>lgthumbcontainer</td>
+          <td>value in px (200px) or % (100%)</td>
+          <td>450px</td>
+          <td>Specifies width of thumbs block</td>
+        </tr>
+        <tr>
+          <td>thumbwidth</td>
+          <td>lgthumbwidth</td>
+          <td>value in px (200px)</td>
+          <td>50px</td>
+          <td>Specifies width of each thumb</td>
+        </tr>
+        <tr>
+          <td>thumbheight</td>
+          <td>lgthumbheight</td>
+          <td>value in px (200px)</td>
+          <td>50px</td>
+          <td>Specifies height thumbs block, and thus of each thumb</td>
+        </tr>
+        <tr>
+          <td>thumbsoffset</td>
+          <td>lgthumbsoffset</td>
+          <td>value in px (5px)</td>
+          <td>0px</td>
+          <td>Specifies offset of thumbs block out of slider block</td>
+        </tr>
+        <tr>
+          <td>thumbmargin</td>
+          <td>lgthumbmargin</td>
+          <td>value in px (5px)</td>
+          <td>0px</td>
+          <td>Specifies margin between thumbs</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="Descr"> <br />
+      <br />
+      For this options you should better not use your own css styles. </p>
+    <h3>Feature of responsiveness:</h3>
+    <p class="Descr"> For responsiveness the script will automatically change some options on tablets and mobiles, specifically: <br />
+      <br />
+      device viewport width < 769px: <br />
+      <br />
+      - maximum thumbheight will be 100px or less <br />
+      - if your thumbWidth > 150px, script will change it to 1/4 of parent’s block width <br />
+      <br />
+      device viewport width < 415px: <br />
+      <br />
+      - maximum thumbheight will be 80px or less <br />
+      - if your thumbWidth > 150px, script will change it to 1/3 of parent’s block width </p>
+  </div>
+</div>
+<div class="Lgcarusel" id="lgcarusel">
+  <div class="Wrapper Wrapper_flex_center">
+    <h2>Data-lgcarusel</h2>
+    <h3>Demo 1:</h3>
+  </div>
+  <div class="TemplateCarusel"
+      data-lgcarusel="img/3.jpg, img/2.jpg, img/5.jpg, img/4.jpg, img/1.jpg, img/6.jpg"
+      data-lgwidth="10000px"
+      data-lgshowslides="3"
+      data-lgautoplay="3000" ></div>
+  <div class="Wrapper Wrapper_flex_center">
+    <h3 style="margin-top: 30px">Demo 2:</h3>
+    <div class="TemplateCarusel CardOfGoofs"
+      data-lgcarusel
+      data-lgmargin="30px"
+      data-lgwidth="250px"
+      data-lgshowslides="3"
+      data-lgslidesperclick="1">
+      <div class="newGood"> <img src="img/3.jpg" />
+        <h3>New good</h3>
+        <p> Some tetx about this new awesome good specially for you </p>
+        <button>Click to buy</button>
+      </div>
+      <div class="newGood"> <img src="img/4.jpg" />
+        <h3>New good</h3>
+        <p> Some tetx about this new awesome good specially for you </p>
+        <button>Click to buy</button>
+      </div>
+      <div class="newGood"> <img src="img/6.jpg" />
+        <h3>New good</h3>
+        <p> Some tetx about this new awesome good specially for you </p>
+        <button>Click to buy</button>
+      </div>
+    </div>
+    <h3>Usage:</h3>
+    <p class="Descr"> <span>First (Standard) modification.</span> Primarily designed to use for galleries/sliders. <br />
+      <br />
+      Add to any existing tag in your HTML <span>data-lgcarusel</span> and put in this data attribute some pictures separated by comma (,). <br />
+      <br />
+      Example: <br />
+      <br />
+      <code> &lt;div class=example data-lgcarusel="img/1.jpg,img/2.jpg, img/3.jpg"&gt;&lt;/div&gt; </code> <br />
+      <span>Second modification.</span> Primarily designed to use for bunches of info - products/services for example. <br />
+      <br />
+      Add to any existing tag in your HTML <span>data-lgcarusel</span> without any info. Make every HTML in this block, you need. <br />
+      <br />
+      Example (just as in the demo 2 above): <br />
+    <pre>
+&lt;div data-carusel&gt;
+  &lt;div class="good"&gt;
+    &lt;img src="img/1.jpg" /&gt;
+    &lt;h3&gt;New good 1&lt;/h3&gt;
+    &lt;p&gt;
+      Some text about this new awesome good
+    &lt;/p&gt;
+    &lt;button&gt;Click to buy&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="good"&gt;
+    &lt;img src="img/2.jpg" /&gt;
+    &lt;h3&gt;New good 2&lt;/h3&gt;
+    &lt;p&gt;
+      Some text about this new awesome good
+    &lt;/p&gt;
+    &lt;button&gt;Click to buy&lt;/button&gt;
+  &lt;/div>
+  &lt;div class="good"&gt;
+    &lt;img src="img/3.jpg" /&gt;
+    &lt;h3&gt;New good 3&lt;/h3&gt;
+    &lt;p&gt;
+      Some text about this new awesome good
+    &lt;/p&gt;
+    &lt;button&gt;Click to buy&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+        </pre>
+    </p>
+    <h3>Description:</h3>
+    <p class="Descr"> The difference from first 2 types is that you shouldn’t initialize it. Just add data-attribute and reload your page, there will be a new carusel slider. <br />
+      <br />
+      To customize width/height/positioning options just apply them for parent element using CSS. </p>
+    <h3>Options:</h3>
+    <p class="Descr"> Same as lg-slider but without atime (data-atime) options.You can specify animation time and timing function through css using class LGCarusel-SliderInner. <br />
+      <br />
+      Here if autoplay is enabled and your mouse is over carusel it wiil stop. If your mouse is out of carusel - it will go on. <br />
+      <br />
+      And some new options: <br />
+      <br />
+    </p>
+    <table class="Options">
+      <thead>
+        <tr>
+          <th>Option</th>
+          <th>Data-attribute (Ex.: data-lgwidth)</th>
+          <th>Type of value</th>
+          <th>Default</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>showslides</td>
+          <td>lgshowslides</td>
+          <td>number (2)</td>
+          <td>2</td>
+          <td>Specifies amount of pictures to show in 1 viewport (slide)</td>
+        </tr>
+        <tr>
+          <td>slidesperclick</td>
+          <td>lgslidesperclick</td>
+          <td>number (2)</td>
+          <td>1</td>
+          <td>Specifies amount of pictures to be changed on 1 click.</td>
+        </tr>
+        <tr>
+          <td>width</td>
+          <td>lgwidth</td>
+          <td>value in px (500px)</td>
+          <td>500px</td>
+          <td>Specifies width of each picture in slider</td>
+        </tr>
+        <tr>
+          <td>margin</td>
+          <td>lgmargin</td>
+          <td>value in px (5px)</td>
+          <td>0px</td>
+          <td>Specifies margin between pictures</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="Descr"> <br />
+      <br />
+      For example: <br />
+      <br />
+      You can specify 10 slides to show in 1 visible area and slide 1 per click, 2 per click, 5 per click or 10 per click. <br />
+      If you make a mistake script would find a nearest correct value) The amount of maximum slides should be a multiple of this value. <br />
+      (For example, if you have 10 slides, the slidesperclick value can be 1,2,5 or 10) <br />
+      <br />
+      For this options you should better not use your own css styles. </p>
+    <h3>Feature of responsiveness:</h3>
+    <p class="Descr"> For responsiveness the script will automatically change some options on tablets and mobiles, specifically: <br />
+      <br />
+      768 < device viewport width < 1171: <br />
+      <br />
+      - if your showslides more than 4 it would be 4 <br />
+      - slidesperclick = showslides or unless <br />
+      - margin between pictures will be your margin / 1.68 <br />
+      <br />
+      450 < device viewport width < 769: <br />
+      <br />
+      - showslides = 2 or less <br />
+      - slideperclick = 2 or less <br />
+      - margin between pictures will be your margin / 3 <br />
+      <br />
+      device viewport width < 450 <br />
+      <br />
+      - showslides & slideperclick = 1 <br />
+      - margin between pictures will be your margin / 4 </p>
+  </div>
+</div>
+<div class="Methods" id="methods">
+  <div class="Wrapper Wrapper_flex_center">
+    <h2>Methods of LGallery</h2>
+    <table class="Options">
+      <thead>
+        <tr>
+          <th>Method</th>
+          <th>Arguments</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>initLG()</td>
+          <td>-</td>
+          <td>Standard method. Use it to identify all LGalleries on your page and initialize them</td>
+        </tr>
+        <tr>
+          <td>setLG (type, options)</td>
+          <td> - <b>type</b> (one of ‘lgallery’, ‘lgparent’, ‘lgslider’, ‘lgpreview’, ‘lgcarusel’); <br />
+            <br />
+            - <b>options</b> (your object with options) </td>
+          <td>An opportunity to apply an option object for your galleries. Use it before initLG()</td>
+        </tr>
+        <tr>
+          <td>createLG (element, options)</td>
+          <td> - specific element <b>(required argument)</b>; <br />
+            <br />
+            - and set to it a specific object with options <b>(non-required argument)</b></td>
+          <td>Another variant of creating a gallery. Please, do not use it with initLG() on one page. This method gives you an opportunity to create LGallery  to</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="Thanks" id="thanks">
+  <div class="Wrapper Wrapper_flex_center"> 
+    <!-- <h2>Thanks</h2> -->
+    
+    <p class="Descr"> That’s all for now. Hope you’ll find this library useful. <br />
+      <br />
+      Thanks for attention. <br />
+      <br />
+      If you’ll find some bugs, please send me a report so i could look through it and fix. <br />
+      <br />
+      Also if you have some useful ideas & propositions of how to expand the functionality - you are welcome too :) </p>
+    <p class="Descr"> <span>© 2018 LGallery</span> </p>
+  </div>
+</div>
+
+<!-- SCRIPTS --> 
+<script src="js/lgallery.min.js"></script> 
+<script>
+  // Slow scrolling
+  function slowScrolling() {
+    let anchors = document.querySelectorAll('a[href*="#"]')
+
+    for (let anchor of anchors) {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault()
+
+        let blockID = anchor.getAttribute('href')
+
+        document.querySelector('' + blockID).scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      });
+    };
+  };
+  slowScrolling()
+
+  // Init LGallery
+  let x = initLG();
+
+
+
+  </script>
+</body>
+</html>

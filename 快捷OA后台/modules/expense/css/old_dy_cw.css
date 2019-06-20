@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+table {
+    font-size: 18px;
+    width: 120%;
+    margin: 0 auto;
+    text-align: left;
+    /*border-right: 1px solid #000000;*/
+    /*border-bottom: 1px solid #000000*/
+}
+table td span {
+    position: relative;
+    left: 10px;
+}
+table td {
+    position: relative;
+
+}
+/*//使用相对定位将水印图片层级往下，显示成背景效果*/
+.image {
+    position: relative;
+    top: 0px;
+    z-index: -100;
+    width: 200px;
+    display: inline;
+}
+
+/*//使用绝对定位将需要打印的内容的层级往上显示，并设置显示的位置*/
+.text {
+    position: absolute;
+    top: 10%;
+    z-index: 100;
+    width: 98%;
+}
+.bz {
+    height: 100px;
+}
+.bz1{
+    display: inline-block;
+    width:500px;
+}
+
+/*// 没有打印时水印图片不显示*/
+.image {
+    display: none;
+}
+.zt {
+    font-size: 12px;
+}
+.ztd {
+    font-size: 16px;
+}
+.ztd2 {
+    font-size: 18px;
+}
+.ztd3 {
+    font-size: 15px;
+}
+
+#qz{
+    position: relative;
+    top: 10px;
+    right:15%;
+    text-align: center;
+    width: 100%;
+}
+.s1{
+    display: inline-block;
+    margin-left:13%;
+    letter-spacing: 3px;
+}
+.jc{
+    font-weight: bolder;
+}
+.dt{
+    font-size: 20px;
+}
+.tb{
+    margin-top: 1%;
+}

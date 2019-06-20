@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>接车成功</title>
+
+</head>
+<link rel="stylesheet" href="css/css.css">
+<link rel="stylesheet" href="../js/layuiadmin/style/login.css" media="all">
+<body>
+<a href="Frame.html">
+    <div class="back">
+        <img class="back-img" src="image/back.png"><span class="back-text">返回</span>
+    </div>
+</a>
+<div class="head">
+    <div class="head-img">
+        <img class="head-img-1" src="image/learning.png"/>
+    </div>
+    <div class="head-text">
+        <h2>宁波快捷汽车储运有限公司</h2>
+    </div>
+</div>
+
+<div class="s-message" align="center">
+    <div class="s-text">
+        <span style="font-weight: bolder;">检测区:</span><span id="cd">123213213213</span>
+    </div>
+    <div class="s-text">
+        <span style="font-weight: bolder;">车架号:</span><span id="cj">AAAAAAAAAAAAAAAAA</span>
+    </div>
+</div>
+<form id="cg">
+    <input class="ocr-submit-1" type="button" value="接车完成">
+</form>
+</body>
+<script type="text/javascript" src="./js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="./js/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="./js/jquery.md5.js"></script>
+<script type="text/javascript" src="./js/jquery-geturlcode.js"></script>
+<script type="text/javascript" src="./js/jquery.cookie.js"></script>
+<script type="text/javascript" src="./js/common/localjs.js"></script>
+<script type="text/javascript" src="./js/jquery-getFormData.js"></script>
+<script type="text/javascript">
+    var fd;
+    var cd;
+    $(function () {
+        cd = $.cookie("cd"); //获取车道号
+        fd = getFormCode();//获取表单提交授权码
+        console.log("车道信息------" + cd);
+        $("#cd").html(cd); //显示车道
+        console.log("form提交码------" + fd);
+        jieCheJiLu();//获得接车数据
+
+        //点击接车完成按钮
+        $(".ocr-submit-1").on("click",function () {
+            SuccessJieChe();
+        })
+
+
+
+    })
+
+
+
+
+
+    /*读取提交接车记录接口*/
+    function jieCheJiLu() {
+
+        var storage_number = $.cookie("storage_number");
+        var timestamp = (new Date()).valueOf();// 时间戳----
+
+        var MD5String;
+        //生成sign
+        MD5String = "storage_number=" + storage_number + "&timestamp=" + timestamp + pass;
+
+        var MD5 = $.md5(MD5String);
+        MD5 = MD5.toUpperCase();//字母转为大写
+        var sign = pass + MD5;// 加密参数----
+        var token = sessionStorage.getItem('token');
+        console.log("token----" + token);
+        console.log("拼接的加密参数----" + MD5String);
+        console.log("MD5----" + MD5);
+        console.log("需要的参数------------");
+        console.log("接车记录码--storage_number--" + storage_number);
+        console.log("时间戳-- timestamp--" + timestamp);
+        console.log("sign----" + sign);
+
+        $.ajax({
+            type: "GET",
+            url: path + "/receivecar/read",
+            data: {
+                "storage_number": storage_number,
+                "timestamp": timestamp,
+                "sign": sign
+            },
+            dataType: 'json',
+            beforeSend: function (request) {
+                request.setRequestHeader("KJCY-TOKEN", token);
+                //request.setRequestHeader("FORM-TOKEN", fd);
+            },
+            success: function (data) {
+                console.log("msg信息------" + data.msg);
+                console.log("msg信息------" + data.data);
+                if (data.msg == "success") {
+                    $.cookie("storage_number", data.storage_number, {path: '/'});//往cookie中存入提交接车时返回的接车记录码
+                    $("#cj").html(data.data.vin_no);//车架号
+                    var src = data.data.vin_no_p //车架号照片的src
+                }
+            },
+            error: function (XMLHttpResponse, textStatus, errorThrown) {
+                console.log("1 异步调用返回失败,XMLHttpResponse.readyState:" + XMLHttpResponse.readyState);
+                console.log("2 异步调用返回失败,XMLHttpResponse.status:" + XMLHttpResponse.status);
+                console.log("3 异步调用返回失败,textStatus:" + textStatus);
+                console.log("4 异步调用返回失败,errorThrown:" + errorThrown);
+
+            }
+        })
+    }
+
+    /*完成接车接口*/
+    function SuccessJieChe() {
+        var storage_number = $.cookie("storage_number");
+        var timestamp = (new Date()).valueOf();// 时间戳----
+
+        var MD5String;
+        //生成sign
+        MD5String = "storage_number=" + storage_number + "&timestamp=" + timestamp + pass;
+
+        var MD5 = $.md5(MD5String);
+        MD5 = MD5.toUpperCase();//字母转为大写
+        var sign = pass + MD5;// 加密参数----
+        var token = $.cookie("token");
+
+        console.log("拼接的加密参数----" + MD5String);
+        console.log("MD5----" + MD5);
+        console.log("需要的参数------------");
+        console.log("接车记录码--storage_number--" + storage_number);
+        console.log("时间戳-- timestamp--" + timestamp);
+        console.log("sign----" + sign);
+
+        $.ajax({
+            type: "GET",
+            url: path + "/receivecar/complete",
+            data: {
+                "storage_number": storage_number,
+                "timestamp": timestamp,
+                "sign": sign
+            },
+            dataType: 'json',
+            beforeSend: function (request) {
+                request.setRequestHeader("KJCY-TOKEN", token);
+                request.setRequestHeader("FORM-TOKEN", fd);
+            },
+            success: function (data) {
+                console.log("msg信息------" + data.msg);
+
+                if (data.msg = "success") {
+                    $.cookie("storage_number", null, {path: '/'});//清除接车码缓存
+
+
+                    if (data.msg == "success") {
+                        layer.open({
+                            type: 2
+                            , content: '已成功,请等待返回首页'
+                        });
+                        setTimeout(function () {
+                            window.location.href = "index.html";
+                        }, 2000);
+                    }
+
+                    // window.location.href="index.html";
+                }
+            },
+            error: function (XMLHttpResponse, textStatus, errorThrown) {
+                console.log("1 异步调用返回失败,XMLHttpResponse.readyState:" + XMLHttpResponse.readyState);
+                console.log("2 异步调用返回失败,XMLHttpResponse.status:" + XMLHttpResponse.status);
+                console.log("3 异步调用返回失败,textStatus:" + textStatus);
+                console.log("4 异步调用返回失败,errorThrown:" + errorThrown);
+
+            }
+        })
+    }
+
+</script>
+</html>

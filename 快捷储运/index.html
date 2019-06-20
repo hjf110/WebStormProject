@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工作选择</title>
+
+
+</head>
+<link rel="stylesheet" href="css/css.css">
+<link rel="stylesheet" href="././js/layer_mobile/need/layer.css">
+<link rel="stylesheet" href="../js/layuiadmin/style/login.css" media="all">
+
+<body>
+<div class="head">
+    <div class="head-img">
+        <img class="head-img-1" src="image/learning.png"/>
+    </div>
+    <div class="head-text">
+        <h2>宁波快捷汽车储运有限公司</h2>
+    </div>
+</div>
+<div align="center" class="head-message">
+    请选择你的工作
+</div>
+<div class="pm" align="center">
+    <a id="a1">
+        <div class="pm-navigation pm-navigation-1">
+            <div id="b1" class="pm-y pm-gc-nopd pm-button">
+                <img class="pm-img" src="image/car.png">
+            </div>
+            <p class="pm-text">接车</p>
+        </div>
+    </a>
+    <a id="a2">
+        <div class="pm-navigation pm-navigation-1">
+            <div id="b2" class="pm-y pm-gc-nopd pm-button">
+                <img class="pm-img" src="image/jianche.png">
+            </div>
+            <p class="pm-text">检车</p>
+        </div>
+    </a>
+    <a id="a3" >
+        <div class="pm-navigation pm-navigation-1">
+            <div id="b3" class="pm-y pm-gc-nopd pm-button">
+                <img class="pm-img" src="image/power.png">
+            </div>
+            <p class="pm-text">能耗</p>
+        </div>
+    </a>
+<!--    <a id="a4" >-->
+<!--        <div class="pm-navigation pm-navigation-1">-->
+<!--            <div id="b4" class="pm-y pm-sj-nopd pm-button">-->
+<!--                <img class="pm-img" src="image/jiao2.png">-->
+<!--            </div>-->
+<!--            <p class="pm-text">交车</p>-->
+<!--        </div>-->
+<!--    </a>-->
+</div>
+</body>
+<script type="text/javascript" src="./js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="./js/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="./js/jquery.md5.js"></script>
+<script type="text/javascript" src="./js/jquery-geturlcode.js"></script>
+<script type="text/javascript" src="./js/jquery.cookie.js"></script>
+<script type="text/javascript" src="./js/common/localjs.js"></script>
+<script type="text/javascript">
+    $(function () {
+        // $.cookie("token","eyJhbGciOiJIUzI1NiJ9.YXB6eFg2d0ZZTFQzMmlQUjBrS3FWRlFpRWlF.p7C5AB9Z1INYqRyKTL-uEb52-cBd2mhomg_xIy7r8cw", {path: '/'});//在cookie中存入vinno    操作完成后需要删除释放缓存
+        console.log(sessionStorage.getItem('token'));
+
+        /*判断权限*/
+        PanDuanQuanXian();
+        // $("#a1").on("click",function () {
+        //    // if(m1=="yes"){
+        //          window.location.href="getCar.html";
+        //    // }
+        // });
+        // $("#a2").on("click",function () {
+        //    // if(m2=="yes"){
+        //         window.location.href="checkCar.html";
+        //    // }
+        // });
+        // $("#a3").on("click",function () {
+        //     //if(m3=="yes"){
+        //         window.location.href="Power.html";
+        //   //  }
+        // });
+        // $("#a4").on("click",function () {
+        //    // if(m4=="yes"){
+        //         window.location.href="GiveUpCar.html";
+        //   //  }
+        // });
+    })
+
+    function PanDuanQuanXian() {
+
+        var authorityList = sessionStorage.getItem('authorityList');
+
+        console.log("权限为", authorityList);
+        var jsonlist = JSON.parse(authorityList);
+        console.log("转为", jsonlist);
+        $.each(jsonlist, function (idx, obj) {
+            if (obj.id == 1) {
+                $("#b1").removeClass("pm-gc-nopd");
+                $("#b1").addClass("pm-sj-1");
+                $("#a1").on("click",function () {
+                    window.location.href="getCar.html";
+                });
+            }
+            if (obj.id == 2) {
+                $("#b2").removeClass("pm-gc-nopd");
+                $("#b2").addClass("pm-sj-2");
+                $("#a2").on("click",function () {
+                    window.location.href="checkCar.html";
+                });
+            }
+            if (obj.id == 3) {
+                $("#b3").removeClass("pm-gc-nopd");
+                $("#b3").addClass("pm-sj-3");
+                $("#a3").on("click",function () {
+                    window.location.href="Power.html";
+                });
+            }
+        });
+
+
+
+
+        // if (jd == "no" || jd == "") {
+        //     //alert("联系管理员开通权限");
+        //     $("#b1").removeClass("pm-gc-nopd");
+        //     $("#b1").addClass("pm-sj-1");
+        //
+        //     $("#b2").removeClass("pm-sj-2");
+        //     $("#b2").addClass("pm-gc-nopd");
+        //
+        //     $("#b3").removeClass("pm-sj-3");
+        //     $("#b3").addClass("pm-gc-nopd");
+        //
+        //     $("#b4").removeClass("pm-sj-nopd");
+        //     $("#b4").addClass("pm-gc-nopd");
+        //
+        //     layer.open({
+        //         title: [
+        //             '提示',
+        //             'background-color: #FF4351; color:#fff;'
+        //         ]
+        //         , content: '联系管理员开通权限'
+        //     });
+        // } else if (m1 == "no" || m1 == "") {
+        //     $("#b1").removeClass("pm-sj-1");
+        //     $("#b1").addClass("pm-gc-nopd");
+        // } else if (m2 == "no" || m2 == "") {
+        //     $("#b2").removeClass("pm-sj-2");
+        //     $("#b2").addClass("pm-gc-nopd");
+        // } else if (m3 == "no" || m3 == "") {
+        //     $("#b3").removeClass("pm-sj-3");
+        //     $("#b3").addClass("pm-gc-nopd");
+        // } else if (m4 == "no" || m4 == "") {
+        //     $("#b4").removeClass("pm-sj-nopd");
+        //     $("#b4").addClass("pm-gc-nopd");
+        // }
+    }
+
+
+
+</script>
+</html>

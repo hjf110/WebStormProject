@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>识别车架号</title>
+
+
+</head>
+<link rel="stylesheet" href="../js/layuiadmin/style/login.css" media="all">
+
+<link rel="stylesheet" href="css/css.css">
+<script src="./js/jquery-1.12.4.js"></script>
+<body>
+<a href="getCar.html">
+    <div class="back">
+        <img class="back-img" src="image/back.png"><span class="back-text">返回</span>
+    </div>
+</a>
+<div class="head">
+    <div class="head-img">
+        <img class="head-img-1" src="image/learning.png"/>
+    </div>
+    <div class="head-text">
+        <h2>宁波快捷汽车储运有限公司</h2>
+    </div>
+</div>
+<div class="head-message-2" align="center"></div>
+<div align="center" class="head-message">
+    请拍照识别车架号
+</div>
+<div class="pm-ocr" align="center">
+    <div class="pm-navigation ">
+        <div id="ocr" class="pm-y pm-ocr-nopd pm-button-ocr">
+            <img class="pm-img" src="image/ocr.png">
+            <!--扫描未完成等待画面-->
+            <div id="ocr-image" class="dn">
+                <img class="ocr-img" src="image/timg.gif">
+                <!--                <div class="ocr-img-text">正在扫描图片请稍后...</div>-->
+            </div>
+            <img class="dn" id="pic">
+        </div>
+        <!--调用摄像头拍照-->
+        <form id="myForm" method="post" enctype="multipart/form-data">
+            <input style="display: none" id="camera" type="file" name="vinnop" multiple="multiple" accept="image/*"
+                   capture="camera">
+            <input id="vinno" class="ocr-text" align="center" name="vinno" type="text">
+            <div id="tj" class="dn">
+                <input id="tijiao" align="center" class="ocr-submit" type="button" value="提交">
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript" src="./js/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="./js/jquery.md5.js"></script>
+<script type="text/javascript" src="./js/jquery-geturlcode.js"></script>
+<script type="text/javascript" src="./js/jquery.cookie.js"></script>
+<script type="text/javascript" src="./js/common/localjs.js"></script>
+<script type="text/javascript" src="./js/jquery-getFormData.js"></script>
+<script>
+    var imgObj;
+    var b64;
+    var fd;
+    var cd;
+    $(function () {
+        cd = GetQueryString("cd"); //获取车道号
+        if (cd == null || cd == "") {
+            cd = $.cookie("cd");
+        }
+        fd = getFormCode();//获取表单提交授权码
+        console.log("车道信息------" + cd);
+        if (cd != null && cd != "") {
+            $.cookie("cd", cd, {path: '/'});
+        }
+        $(".head-message-2").html(cd);
+        console.log("form提交码------" + fd);
+    })
+
+    /*提交表单*/
+    $("#tijiao").on("click", function () {
+
+        var vinno = $("#vinno").val();
+        if (vinno == "" || vinno == null) {
+            layer.open({
+                content: '车架号不能为空',
+                style: 'font-size:20px;color:red;background-color:#d5dee7;width:400px;letter-spacing:4px;',
+                time: 2
+            });
+        } else {
+            tijiao();
+        }
+
+    })
+
+
+    $("#ocr").on("click", function () {
+        //alert(123);
+        // $("#camera").click();
+        $("#camera").click();
+    });
+
+    $(".pm-navigation").on("change", "input[type=file]", function () {
+        //显示进度条
+        $(".pm-img").hide();
+        $("#pic").hide();
+        $(".ocr-text").val("");
+        $("#ocr-image").show();
+
+
+//        $(this).prev().css("opacity", "1");
+        var filePath = $(this).val(); //读取图片路径
+        // alert(filePath);
+        var fr = new FileReader(); //创建new FileReader()对象
+        imgObj = this.files[0]; //获取图片
+        //alert(imgObj);
+        fr.readAsDataURL(imgObj); //将图片读取为DataURL
+        //var obj = $("#pic"); //
+
+        if (filePath.indexOf("jpg") != -1 || filePath.indexOf("JPG") != -1 || filePath.indexOf("PNG") != -1 || filePath.indexOf("png") != -1) {
+            var arr = filePath.split('\\');
+            var fileName = arr[arr.length - 1];
+
+            // $(this).parent().next().show();
+
+            fr.onload = function () {
+                //alert(obj);
+                b64 = this.result;
+                //this.result  //图片base64 编码字符
+                $("#pic").attr('src', this.result);
+                //为演示效果,这里使用延迟函数
+                var text = "sadsadsdasdsd12323213213" //演示车架号
+                compress(b64, success);
+
+                setTimeout(function () {
+
+                }, 3000);
+            };
+        } else {
+            // $(this).parent().next().show();
+            //$(this).parent().next().children("i").html("您未上传文件，或者您上传文件类型有误！").css("color", "red");
+            //$(this).parent().next().html("您未上传文件，或者您上传文件类型有误！").css("color","red");
+            return false
+        }
+    });
+
+    /*扫描成功后执行的函数*/
+    function success(date) {
+        var timestamp = (new Date()).valueOf();// 时间戳----
+        //生成sign
+        var MD5String = "timestamp=" + timestamp + pass;
+        var MD5 = $.md5(MD5String);
+        MD5 = MD5.toUpperCase();//字母转为大写
+        var sign = pass + MD5;// 加密参数----
+        var token = sessionStorage.getItem('token');
+        console.log("token-----" + token);
+
+//        $("#timestamp").val(timestamp);
+//        $("#sign").val(sign);
+        shibie(timestamp, sign, token, date);
+
+    }
+
+
+    /*识别车架号*/
+    function shibie(timestamp, sign, token, date) {
+        //方法示例
+        // 获取页面已有的一个form表单
+        var form = document.getElementById("myForm");
+        // 用表单来初始化
+        var formData = new FormData();
+        //formData.append("vinnop",convertBase64UrlToBlob(b64));
+        formData.append("vinnop", date);
+        formData.append("timestamp", timestamp);
+        formData.append("sign", sign);
+        $.ajax({
+            type: "POST",
+            url: path + "/receivecar/vinno",
+            data: formData,
+            cache: false,    //上传文件不需缓存
+            processData: false, //需设置为false。因为data值是FormData对象，不需要对数据做处理
+            contentType: false, //需设置为false。因为是FormData对象，且已经声明了属性enctype="multipart/form-data"
+            dataType: 'json',
+            beforeSend: function (request) {
+                request.setRequestHeader("KJCY-TOKEN", token);
+            },
+            success: function (data) {
+                //alert(1);
+                // alert(data.msg);
+                if (data.msg == "success") {
+                    $("#ocr-image").hide();//隐藏进度条
+                    $("#pic").show(); //显示拍摄的图片
+                    $(".ocr-text").val(data.data);//车架号输入框赋值
+                    $("#tj").show();
+                }
+            },
+            error: function (XMLHttpResponse, textStatus, errorThrown) {
+                console.log("1 异步调用返回失败,XMLHttpResponse.readyState:" + XMLHttpResponse.readyState);
+                console.log("2 异步调用返回失败,XMLHttpResponse.status:" + XMLHttpResponse.status);
+                console.log("3 异步调用返回失败,textStatus:" + textStatus);
+                console.log("4 异步调用返回失败,errorThrown:" + errorThrown);
+
+            }
+        })
+    }
+
+
+    /*提交接车接口*/
+    function tijiao() {
+        var lineno = GetQueryString("no");//车道号----
+        var rc_number = $.cookie("rc_number");
+        var timestamp = (new Date()).valueOf();// 时间戳----
+        var vinno = $("#vinno").val();//车架号----
+
+        var MD5String;
+        //生成sign
+        if (rc_number == "" || rc_number == null) {
+            MD5String = "lineno=" + lineno + "&timestamp=" + timestamp + "&vinno=" + vinno + pass;
+        } else {
+            MD5String = "lineno=" + lineno + "&rc_number=" + rc_number + "&timestamp=" + timestamp + "&vinno=" + vinno + pass;
+        }
+        var MD5 = $.md5(MD5String);
+        MD5 = MD5.toUpperCase();//字母转为大写
+        var sign = pass + MD5;// 加密参数----
+        var token = sessionStorage.getItem('token');
+
+
+        //方法示例
+        // 获取页面已有的一个form表单
+        var form = document.getElementById("myForm");
+        // 用表单来初始化
+        var formData = new FormData(form);
+        formData.append("lineno", lineno);
+        formData.append("timestamp", timestamp);
+        formData.append("sign", sign);
+        if (rc_number != "" && rc_number != null) {
+            formData.append("rc_number", rc_number);
+        }
+        $.ajax({
+            type: "POST",
+            url: path + "/receivecar/submit",
+            data: formData,
+            cache: false,    //上传文件不需缓存
+            processData: false, //需设置为false。因为data值是FormData对象，不需要对数据做处理
+            contentType: false, //需设置为false。因为是FormData对象，且已经声明了属性enctype="multipart/form-data"
+            dataType: 'json',
+            beforeSend: function (request) {
+                request.setRequestHeader("KJCY-TOKEN", token);
+                request.setRequestHeader("FORM-TOKEN", fd);
+            },
+            success: function (data) {
+                if (data.msg = "success") {
+                    console.log(data);
+                    $.cookie("storage_number", data.data, {path: '/'});//往cookie中存入全局变量token
+                    window.location.href = "getCarSuccess.html";
+                }
+            },
+            error: function (XMLHttpResponse, textStatus, errorThrown) {
+                console.log("1 异步调用返回失败,XMLHttpResponse.readyState:" + XMLHttpResponse.readyState);
+                console.log("2 异步调用返回失败,XMLHttpResponse.status:" + XMLHttpResponse.status);
+                console.log("3 异步调用返回失败,textStatus:" + textStatus);
+                console.log("4 异步调用返回失败,errorThrown:" + errorThrown);
+
+            }
+        })
+    }
+
+
+    function convertBase64UrlToBlob(urlData) {
+
+        var bytes = window.atob(urlData.split(',')[1]);        //去掉url的头，并转换为byte
+
+        //处理异常,将ascii码小于0的转换为大于0
+        var ab = new ArrayBuffer(bytes.length);
+        var ia = new Uint8Array(ab);
+        for (var i = 0; i < bytes.length; i++) {
+            ia[i] = bytes.charCodeAt(i);
+        }
+
+        return new Blob([ab], {type: 'image/png'});
+    }
+
+</script>
+</html>

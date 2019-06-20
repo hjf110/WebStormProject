@@ -1,0 +1,288 @@
+@import "public";
+
+
+
+
+textarea{
+  resize: none;
+}
+
+.accidentdeclare {
+  color: #606060;
+  background-color: #F4F4F4;
+  font-size: @fontSize-normal;
+  .reimbursementBox {
+    color: @white;
+    text-align: center;
+    padding: 40px 0;
+    background-color: @mainBlue;
+    .reimbursementType {
+      font-size: @fontSize-bigger;
+    }
+    .reimbursementState {
+      font-size: @fontSize-normal;
+      margin: 20px 0;
+    }
+    .reimbursementTip {
+      font-size: @fontSize-small;
+    }
+  }
+  .mainContent {
+    padding: 0 10px 10px;
+    .applyBox {
+      background-color: @white;
+      margin-top: 10px;
+      .titleBar {
+        height: 44px;
+        position: relative;
+        padding: 0 20px;
+        border-bottom: 1px #EEEEEE solid;
+        .title {
+          display: inline-block;
+          height: 44px;
+          line-height: 44px;
+          span {
+            color: @mainBlue;
+          }
+        }
+        .time {
+          position: absolute;
+          top: 13px;
+          right: 20px;
+          font-size: @fontSize-small;
+        }
+      }
+      .applyContent {
+        padding: 10px 20px;
+        font-size:15px;
+        .listBox {
+          padding: 12.5px 0;
+          border-bottom: 1px solid #eeeeee;
+          input{
+            border: none;
+          }
+          .titleSm {
+            width: 30%;
+            display: inline-block;
+          }
+        }
+        .company {
+          .titleSm {
+            width: 30%;
+            display: inline-block;
+          }
+        }
+        .declarer,
+        .orderNum,
+        .carNum,
+        .moneyNum,
+        .mode {
+          .company;
+        }
+        .moneyNum {
+            select {
+                color: #8E8E8E;
+                border: 0px #FFFFFF solid;
+                padding-bottom: 5px;
+                background-color: @white;
+            }
+            option {
+                color: #8E8E8E;
+                border: 0px #FFFFFF solid;
+            }
+        }
+//      .ccReason{
+//        position: relative;
+//        white-space: nowrap;
+//        #ccsy{
+//          width: 70%;
+//          font-size:@fontSize-small;
+//          line-height: 16px;
+//          height: 48px;
+//          border:1px solid #dddddd;
+//          margin: 0;
+//          -webkit-box-sizing: border-box;
+//          -moz-box-sizing: border-box;
+//          box-sizing: border-box;
+//        }
+//      }
+//      .mode {
+//        .modeA {
+//          display: inline-block;
+//          font-size: @fontSize-normal;
+//          margin-top: 15px;
+//        }
+//        .modeB {
+//          .modeA;
+//          margin-left: 5px;
+//        }
+//      }
+        .uploadPhoto {
+          text-align: left;
+          input {
+            width: 100%;
+            margin-bottom: 12.5px;
+            border: 1px solid #eeeeee;
+            padding: 10px 15px;
+            font-size: 14px;
+            box-sizing: border-box;
+          }
+          .uploadPhotoBtn {
+            margin-left: 10px;
+            color: @white;
+            text-align: center;
+            background-color: @mainOrange;
+            border-radius: 5px;
+            height: 35px;
+            line-height: 35px;
+            padding: 0 10px;
+            font-size: @fontSize-normal;
+          }
+          .photoBox {
+            margin: 10px 0;
+            >*{
+              vertical-align: top;
+              margin: 10px;
+            }
+            .photo1,
+            .photo2 {
+              height: 60px;
+              min-width: 60px;
+              max-width: 50%;
+              display: inline-block;
+              overflow: hidden;
+              margin: 10px;
+              text-align: center;
+              -webkit-box-sizing: border-box;
+              -moz-box-sizing: border-box;
+              box-sizing: border-box;
+              border:1px solid #eeeeee;
+            }
+            .add{
+              width: 60px;
+              height: 60px;
+              border: 1px solid #8a8a8a;
+              padding: 20px;
+              -webkit-box-sizing: border-box;
+              -moz-box-sizing: border-box;
+              box-sizing: border-box;
+              img{
+                width: 100%;
+                height: 100%;
+              }
+            }
+          }
+        }
+        .invoice {
+          padding: 12.5px 0;
+          border-bottom: 1px solid #eeeeee;
+          .uploadInvoiceBtn {
+            margin-left: 10px;
+            color: @white;
+            width: 80px;
+            text-align: center;
+            background-color: @mainBlue;
+            border-radius: 5px;
+            height: 25px;
+            line-height: 25px;
+            font-size: @fontSize-small;
+          }
+          .photoBox {
+            margin: 10px 0;
+            >*{
+              vertical-align: top;
+              margin: 10px;
+            }
+            .photo1,
+            .photo2 {
+              height: 60px;
+              min-width: 60px;
+              max-width: 50%;
+              display: inline-block;
+              overflow: hidden;
+              margin: 10px;
+              text-align: center;
+              -webkit-box-sizing: border-box;
+              -moz-box-sizing: border-box;
+              box-sizing: border-box;
+              border:1px solid #eeeeee;
+            }
+            .add{
+              width: 60px;
+              height: 60px;
+              border: 1px solid #8a8a8a;
+              padding: 20px;
+              -webkit-box-sizing: border-box;
+              -moz-box-sizing: border-box;
+              box-sizing: border-box;
+              img{
+                width: 100%;
+                height: 100%;
+              }
+            }
+          }
+        }
+        .invoice2 {
+            .invoice;
+        }
+        .btnGroup,.btnGroup2 {
+          text-align: center;
+          margin: 20px 0 10px;
+          .submitBtn {
+            width: 80%;
+            color: @white;
+            background-color: @mainBlue;
+            border-radius: 5px;
+            display: inline-block;
+            height:35px;
+            line-height: 35px;
+            font-size: @fontSize-big;
+          }
+          .confirm {
+                .submitBtn;
+          }
+        }
+
+      }
+    }
+    
+    .dealBox {
+      .applyBox;
+    }
+    
+  }
+
+}
+
+.bxbgcolor{
+  //background-color:#FFECEC ;
+  //input{
+  //    background-color: #FFECEC;
+  //}
+}
+
+.add,.uploadPhotoBtn{
+  display: inline-block;
+}
+
+.time,.uploadInvoiceBtn{
+  display: inline-block;
+}
+#btn_place{
+  width: 19.5px;
+  height: 26.25px;
+  border-radius: 5px;
+  float: right;
+}
+#btn_place img{
+  width: 100%;
+  height: 100%;
+}
+
+
+.type-3,.type-2,.type-1,.type0,.type1,.type2,.type3,.type4,.type5,.dis1,.dis2,.dis3,.dis4,.dis_btn{
+  display: none;
+}
+.clearfix{
+  clear: both;
+}

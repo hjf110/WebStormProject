@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>车位信息</title>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="车位信息">
+
+
+    <link href="../image/ioc/favicon.ico" rel="icon" type="image/x-ico">
+    <link rel="stylesheet" href="../js/layuiadmin/style/login.css" media="all">
+
+    <link rel="stylesheet" type="text/css" href="../js/layuiadmin/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/park.css">
+</head>
+<body>
+
+<!--主体区域-->
+<div class="park-box">
+
+
+    <div class="layui-tab" lay-filter="qu">
+        <ul class="layui-tab-title" style="font-weight: bolder;">
+            <li class="layui-this">A区车位状态</li>
+            <li>B区车位状态</li>
+            <li>C区车位状态</li>
+            <li>D区车位状态</li>
+            <li>E区车位状态</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <ul id="a_qu">
+                    <!--                    <li class="park-state">-->
+                    <!--                        <div class="park-text">A区001</div>-->
+                    <!--                    </li>-->
+                    <!--                    <li class="park-binding park-state">-->
+                    <!--                        <div>A区001</div>-->
+                    <!--                    </li>-->
+                </ul>
+            </div>
+            <div class="layui-tab-item">
+                <ul id="b_qu">
+                    <!--                    <li class="park-state">-->
+                    <!--                        <div class="park-text">A区001</div>-->
+                    <!--                    </li>-->
+                    <!--                    <li class=" park-binding park-state ">-->
+                    <!--                        <div>A区001</div>-->
+                    <!--                    </li>-->
+                </ul>
+            </div>
+            <div class="layui-tab-item">
+                <ul id="c_qu">
+                    <!--                    <li class="park-state">-->
+                    <!--                        <div class="park-text">A区001</div>-->
+                    <!--                    </li>-->
+                    <!--                    <li class=" park-binding park-state ">-->
+                    <!--                        <div>A区001</div>-->
+                    <!--                    </li>-->
+                </ul>
+            </div>
+            <div class="layui-tab-item">
+                <ul id="d_qu">
+                    <!--                    <li class="park-state">-->
+                    <!--                        <div class="park-text">A区001</div>-->
+                    <!--                    </li>-->
+                    <!--                    <li class="park-binding park-state">-->
+                    <!--                        <div>A区001</div>-->
+                    <!--                    </li>-->
+                </ul>
+            </div>
+            <div class="layui-tab-item">
+                <ul id="e_qu">
+                    <!--                    <li class="park-state">-->
+                    <!--                        <div class="park-text">A区001</div>-->
+                    <!--                    </li>-->
+                    <!--                    <li class=" park-binding park-state ">-->
+                    <!--                        <div>A区001</div>-->
+                    <!--                    </li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<!--显示选择的车位号-->
+<div class="park-choose">
+    <div style="position: relative;height: 100%;width: 100%;">
+        <div class="parking-lot">选择的车位</div>
+        <div class="parking-lot-text">无</div>
+        <input type="hidden" id="parkid" value=""/>
+        <button id="ok" type="button" class=" parking-lot-button layui-btn layui-btn-lg layui-btn-normal">确定</button>
+        <div class="parking-lot-cjh">车辆车架号</div>
+        <div class="parking-lot-cjh-text">无</div>
+    </div>
+</div>
+<!--显示状态说明-->
+<div class="park-zhushi">
+    <div class="park-zhushi-info">
+        <div class="park-fangkuai-red"></div>
+        <span>有车</span>
+    </div>
+    <div class="park-zhushi-info">
+        <div class="park-fangkuai-bai"></div>
+        <span>空余</span>
+    </div>
+</div>
+<!--显示总区占用车位数量和剩余车辆-->
+<div style="display: none;" id="app2" class="park-number-all-box">
+    <div class="park-number-all-title">全部车位(<span style="color:red;">{{num3}}</span>)</div>
+    <div class="park-number-all-info">
+        <span>剩余:</span><span>{{num2}}</span>
+    </div>
+    <div class="park-number-all-info">
+        <span>已用:</span><span>{{num1}}</span>
+    </div>
+</div>
+<!--显示单区占用车位数量和剩余车辆-->
+<div id="app" class="park-number-box">
+    <div class="park-number-title">{{title}}(<span style="color:red;">{{num3}}</span>)</div>
+    <div class="park-number-info">
+        <span>剩余:</span><span class="number1">{{num2}}</span>
+    </div>
+    <div class="park-number-info">
+        <span>已用:</span><span class="number2">{{num1}}</span>
+    </div>
+</div>
+<div class="layui-trans layadmin-user-login-footer">
+    <p style="color: white;">Copyright © 2019 by 中国联合网络通信有限公司宁波市分公司 All rights reserved.</p>
+</div>
+</body>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script src="../js/layuiadmin/layui/layui.js"></script>
+<script type="text/javascript" src="../layer_mobile/layer.js"></script>
+<script type="text/javascript" src="../js/jquery.md5.js"></script>
+<script type="text/javascript" src="../js/jquery-geturlcode.js"></script>
+<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+<script src="../js/common/api.js"></script>
+<script src="../js/common/localjs.js"></script>
+<script type="text/javascript" src="../js/mui.min.js"></script>
+<script>
+
+    var state_html = 0;
+
+
+    //--------------
+    var a1 = 0;//A区占用
+    var a2 = 0;//A区空余
+    //--------------
+    var b1 = 0;//B区占用
+    var b2 = 0;//B区空余
+    //--------------
+    var c1 = 0;//C区占用
+    var c2 = 0;//C区空余
+    //--------------
+    var d1 = 0;//D区占用
+    var d2 = 0;//D区空余
+    //--------------
+    var e1 = 0;//E区占用
+    var e2 = 0;//E区空余
+
+    var app;
+    var app2;
+    //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
+    layui.use(['element', 'layer'], function () {
+        var element = layui.element;
+        var layer = layui.layer;
+
+        state_html = 0;//GetQueryString("state");
+
+
+        if (state_html == 1) {
+            $("#ok").hide();
+        }else{
+            $(".parking-lot-cjh").hide();
+            $(".parking-lot-cjh-text").hide();
+        }
+
+
+        app = new Vue({
+            el: '#app',
+            data: {
+                num1: a1,
+                num2: a2,
+                title: "A区车位",
+                num3: a1 + a2
+            }
+        });
+
+        app2 = new Vue({
+            el: '#app2',
+            data: {
+                num1: 0,
+                num2: 0,
+                num3: 0
+            }
+        });
+
+        element.on('tab(qu)', function (data) {
+            console.log(this); //当前Tab标题所在的原始DOM元素
+            console.log(data.index); //得到当前Tab的所在下标
+            console.log(data.elem); //得到当前的Tab大容器
+            var res = data.index;
+            if (res == 0) {
+                app.num1 = a1;
+                app.num2 = a2;
+                app.title = "A区车位";
+                app.num3 = a1 + a2;
+            } else if (res == 1) {
+                app.num1 = b1;
+                app.num2 = b2;
+                app.title = "B区车位";
+                app.num3 = b1 + b2;
+            } else if (res == 2) {
+                app.num1 = c1;
+                app.num2 = c2;
+                app.title = "C区车位";
+                app.num3 = c1 + c2;
+            } else if (res == 3) {
+                app.num1 = d1;
+                app.num2 = d2;
+                app.title = "D区车位";
+                app.num3 = d1 + d2;
+            } else if (res == 4) {
+                app.num1 = e1;
+                app.num2 = e2;
+                app.title = "E区车位";
+                app.num3 = e1 + e2;
+            }
+        });
+
+
+        //获得车位信息
+        get_park_info("A", "#a_qu", a1, a2);
+        get_park_info("B", "#b_qu", b1, b2);
+        get_park_info("C", "#c_qu", c1, c2);
+        get_park_info("D", "#d_qu", d1, d2);
+        get_park_info("E", "#e_qu", e1, e2);
+
+        //点击车位变颜色
+
+        // Caozuo();
+        $("#ok").on("click", function () {
+            var id = $("#parkid").val();
+            console.log("id是------", id);
+            var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+            // parent.layui.table.reload(tableID, {page: {curr: 1}});
+            parent.$("#park_id").val(id);
+            parent.layer.msg('选择车位成功');
+            parent.layer.close(index);
+        })
+
+
+    });
+
+    function dianji(res) {
+        var parkstate = $(res).find(".park_state_info").val();//车位状态
+        var cjh = $(res).find(".park_vinno_info").val();//绑定的车架号信息
+
+        console.log("点击了", parkstate);
+        if (parkstate == 0) {
+            var cc = $(res).attr("class");
+            console.log("绑定的class-----", cc);
+
+            if (cc == "park-state") {
+                $("li").each(function () {
+                    var that = $(this);
+                    var a = $(this).find(".park_state_info").val();
+                    if (a == 0) {
+                        that.attr("class", "park-state");
+                    }
+                });
+                $(res).attr("class", "park-state-binding");
+                $(".parking-lot-text").html($(res).find(".park-text").html());
+                $(".parking-lot-cjh-text").html("无");
+                $("#parkid").val($(res).find(".park_id_info").val());
+                console.log("车位的id是-------", $("#parkid").val());
+            } else {
+                $(res).attr("class", "park-state");
+                $(".parking-lot-text").html("无");
+                $(".parking-lot-cjh-text").html("无");
+            }
+        } else {
+            if (state_html == 1) {
+
+                $(".parking-lot-text").html($(res).find(".park-text").html());
+                $(".parking-lot-cjh-text").html(cjh);
+
+                $("li").each(function () {
+                    var that = $(this);
+                    var a = $(this).find(".park_state_info").val();
+                    if (a == 0) {
+                        that.attr("class", "park-state");
+                    }
+                });
+                // $(".parking-lot-text").html("无");
+                // layer.msg("该车位已被绑定");
+                // $("li").each(function () {
+                //     var that = $(this);
+                //     var a = $(this).find(".park_state_info").val();
+                //     if (a == 0) {
+                //         that.attr("class", "park-state");
+                //     }
+                // });
+                // $("#parkid").val("");
+            } else {
+                $(".parking-lot-text").html("无");
+                layer.msg("该车位已被绑定");
+                $("li").each(function () {
+                    var that = $(this);
+                    var a = $(this).find(".park_state_info").val();
+                    if (a == 0) {
+                        that.attr("class", "park-state");
+                    }
+                });
+                $("#parkid").val("");
+            }
+        }
+
+    }
+
+    // function Caozuo() {
+    //     $("li").on("click",function () {
+    //         var parkstate= $(this).find(".park_state_info").val();
+    //         console.log("点击了",parkstate);
+    //         $("li").each(function () {
+    //             $(this).attr("class","park-state");
+    //         });
+    //         $(this).attr("class","park-state-binding");
+    //         // storage_number = $(this).find(".rn").val();
+    //         // console.log("接车码-----"+storage_number);
+    //     });
+    // }
+
+
+    function get_park_info(name, idname, res1, res2) {
+        //获取A区车位信息
+        ajaxSubmit({
+            area: name,
+            page: 1,
+            count: 9999999
+        }, Api.FWDT_Park_info.Select_All_Park_info, "GET", function (res) {
+            // console.log("A区车位-----",res);
+            var info = res.data.list;
+            console.log("A区车位-----", info);
+            $.each(info, function (idx, obj) {
+                console.log("车位名称", obj.park_desc);
+                var classname;
+                if (obj.park_state == 0) {
+                    classname = "park-state";
+                    if (name == "A") {
+                        a2++;
+                        app.num2 = a2;
+
+                    }
+                    if (name == "B") {
+                        b2++;
+                    }
+                    if (name == "C") {
+                        c2++;
+                    }
+                    if (name == "D") {
+                        d2++;
+                    }
+                    if (name == "E") {
+                        e2++;
+                    }
+
+
+                    console.log(name + "区剩余车位--", a2);
+                } else if (obj.park_state = 1) {
+                    classname = "park-state-binding";
+                    if (name == "A") {
+                        a1++;
+                        app.num1 = a1;
+                    }
+                    if (name == "B") {
+                        b1++;
+                    }
+                    if (name == "C") {
+                        c1++;
+                    }
+                    if (name == "D") {
+                        d1++;
+                    }
+                    if (name == "E") {
+                        e1++;
+                    }
+                    console.log(name + "区占用车位--", a1);
+                }
+
+                $(idname).append('' +
+                    '<li  onclick="dianji(this)"  class="' + classname + '">\n' +
+                    '<div class="park-text">' + obj.park_desc + '</div>' +
+                    '<input type="hidden" class="park_state_info"  value="' + obj.park_state + '" />' +
+                    '<input type="hidden" class="park_id_info"  value="' + obj.id + '" />' +
+                    '<input type="hidden" class="park_vinno_info"  value="' + obj.vinno + '" />' +
+                    '</li>');
+            });
+
+            app2.num1 = a1 + b1 + c1 + d1 + e1;
+            app2.num2 = a2 + b2 + c2 + d2 + e2;
+            app2.num3 = a2 + b2 + c2 + d2 + e2 + a1 + b1 + c1 + d1 + e1;
+            app.num3 = a1 + a2;
+        });
+    }
+
+
+</script>
+
+</html>

@@ -1,0 +1,73 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+.hide{
+    display: none;
+}
+#input {
+    width: 400px;
+    margin: 0 10px 0 0;
+}
+#output {
+    width: 500px;
+    height: 200px;
+    margin: 0 10px 0 0;
+}
+#bigPriDev{
+    width: 648px;
+    height: 486px;
+}
+#bigSubDev{
+    width: 648px;
+    height: 486px;
+}
+#devPhoto{
+    width: 360px;
+    height: 270px;
+}
+#devPhoto2{
+    width: 360px;
+    height: 270px;
+}
+.pic-box{
+    display: inline-block;
+    margin-left: 10px;
+    width: 648px;
+    height: 486px;
+    position: relative;
+
+}
+.pic-box-2{
+    display: inline-block;
+    margin-left: 10px;
+    width: 360px;
+    height: 270px;
+    position: relative;
+}
+.left-px{
+    margin-left: 298px;
+}
+.pic-static{
+    position: absolute;
+    top:2px;
+    right: 2px;
+}
+.right-box{
+    width: 150px;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+
+.button-width{
+    width: 115px;
+}
+.margin-box{
+    margin-top: 20px;
+}
+.check-box{
+    position: relative;
+    left: 4px;
+
+}

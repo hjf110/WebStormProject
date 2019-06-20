@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta name="renderer" content="ie-stand">
+    <meta charset="utf-8"/>
+    <title>快捷OA</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <!--<meta name="renderer" content="webkit"/>-->
+    <!--<meta name="description" content="armor"/>-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>-->
+    <!--[if !IE]> -->
+    <link rel="stylesheet" href="assets/css/pace.css"/>
+    <script data-pace-options='{ "ajax": true, "document": true, "eventLag": false, "elements": false }'
+            src="assets/js/pace.js"></script>
+    <!-- <![endif]-->
+    <link rel="stylesheet" href="assets/css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/ace-fonts.css"/>
+    <link rel="stylesheet" href="assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style"/>
+    <link rel="stylesheet" href="css/index.css"/>
+    <script src="assets/js/ace-extra.js"></script>
+    <script src="./js/common/api.js"></script>
+    <script src="./js/common/tool.js"></script>
+</head>
+
+<body class="no-skin" username>
+<div id="armorapp" v-cloak>
+    <div id="navbar" class="navbar navbar-default">
+        <script type="text/javascript">
+            try {
+                ace.settings.check('navbar', 'fixed')
+            } catch (e) {
+            }
+        </script>
+        <div class="navbar-container" id="navbar-container">
+            <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+                <span class="sr-only">Toggle sidebar</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <div class="navbar-header pull-left">
+                <a href="#" class="navbar-brand">
+                    <small>
+                        <i class="fa fa-leaf"></i>
+                        快捷OA
+                    </small>
+                </a>
+            </div>
+            <div class="navbar-buttons navbar-header pull-right" role="navigation">
+                <ul class="nav ace-nav">
+                    <li class="grey">
+                        <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+                        </ul>
+                    </li>
+                    <li class="light-blue">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                            <!--<img class="nav-user-photo" src="img/usermm.jpg" alt="Jason's Photo" />-->
+                            <span class="user-info">
+									<small>退出登录</small>
+									{{user.username}}
+								</span>
+
+                            <i class="ace-icon fa fa-caret-down"></i>
+                        </a>
+
+                        <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                            <li style="display: none">
+                                <a href="javascript:;" @click="updatePassword">
+                                    <i class="ace-icon fa fa-cog"></i> 修改密码
+                                </a>
+                            </li>
+
+                            <li style="display: none">
+                                <a href="javascript:;" @click="profile">
+                                    <i class="ace-icon fa fa-user"></i> 个人信息
+                                </a>
+                            </li>
+
+                            <li class="divider"></li>
+
+                            <li>
+                                <a href="javascript:;" @click="logout">
+                                    <i class="ace-icon fa fa-power-off"></i> 退出登录
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container" id="main-container" >
+        <script type="text/javascript">
+            try {
+                ace.settings.check('main-container', 'fixed')
+            } catch (e) {
+            }
+        </script>
+
+        <!-- #section:basics/sidebar -->
+        <div id="sidebar" class="sidebar responsive">
+            <script type="text/javascript">
+                try {
+                    ace.settings.check('sidebar', 'fixed')
+                } catch (e) {
+                }
+            </script>
+
+            <ul class="nav nav-list">
+                <li class="">
+                    <a href="#">
+                        <i class="menu-icon fa fa-tachometer"></i>
+                        <span class="menu-text"> 功能导航 </span>
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+                <!-- vue生成的菜单 -->
+                <menu-item :item="item" :index="index" v-for="(item, index) in menuList"></menu-item>
+
+            </ul>
+            <!-- /.nav-list -->
+
+            <!-- #section:basics/sidebar.layout.minimize -->
+            <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+                <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left"
+                   data-icon2="ace-icon fa fa-angle-double-right"></i>
+            </div>
+
+            <!-- /section:basics/sidebar.layout.minimize -->
+            <script type="text/javascript">
+                try {
+                    ace.settings.check('sidebar', 'collapsed')
+                } catch (e) {
+                }
+            </script>
+        </div>
+
+        <!-- /section:basics/sidebar -->
+        <div class="main-content">
+            <div class="main-content-inner">
+                <!-- #section:basics/content.breadcrumbs -->
+                <div class="breadcrumbs" id="breadcrumbs">
+                    <script type="text/javascript">
+                        try {
+                            ace.settings.check('breadcrumbs', 'fixed')
+                        } catch (e) {
+                        }
+                    </script>
+
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="index.html">首页</a>
+                        </li>
+                        <li class="active">{{navTitle}}</li>
+                    </ul>
+                    <!-- /.breadcrumb -->
+
+                </div>
+
+                <!-- /section:basics/content.breadcrumbs -->
+                <div class="page-content">
+                    <!-- /section:settings.box -->
+                    <div class="page-content-area" data-ajax-content="true">
+                        <!-- ajax content goes here -->
+
+                        <iframe :src="main" frameborder="0" scrolling="no" id="content"
+                                onload="this.height=100" width="100%" style="min-height: 800px"></iframe>
+
+                    </div>
+                    <!-- /.page-content-area -->
+                </div>
+                <!-- /.page-content -->
+            </div>
+        </div>
+        <!-- /.main-content -->
+
+        <div class="footer">
+            <div class="footer-inner">
+                <!-- #section:basics/footer -->
+                <div class="footer-content">
+							<!--<span class="bigger-120">-->
+							<!--<span class="blue bolder">armor</span> 快速开发平台 &copy; 2016-2017-->
+							<!--</span>-->
+
+                    &nbsp; &nbsp;
+                    <span class="action-buttons" style="display: none">
+							<a href="#">
+								<i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+							</a>
+
+							<a href="#">
+								<i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
+							</a>
+
+							<a href="#">
+								<i class="ace-icon fa fa-rss-square orange bigger-150"></i>
+							</a>
+						</span>
+                </div>
+            </div>
+        </div>
+
+        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+            <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+        </a>
+    </div>
+
+    <!-- 修改密码 -->
+    <div id="passwordLayer" style="display:none; overflow:hidden">
+        <form class="form-horizontal">
+            <br>
+            <div class="form-group">
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">账号</div>
+                    <div class="col-sm-4">
+                        <span class="label label-success" style="vertical-align: bottom;">{{user.username}}</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">原密码</div>
+                    <div class="col-sm-4">
+                        <input type="password" class="form-control" v-model="password" placeholder="原密码"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">新密码</div>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" v-model="newPassword" placeholder="新密码"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="libs/jquery.min.js"></script>
+
+<script type="text/javascript">
+    if ('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.js'>" + "<" + "/script>");
+</script>
+<script src="libs/bootstrap.min.js"></script>
+<script src="assets/js/ace/ace.js"></script>
+<script src="assets/js/ace/ace.sidebar.js"></script>
+<script src="assets/js/ace/ace.sidebar-scroll-1.js"></script>
+<script src="assets/js/ace/ace.submenu-hover.js"></script>
+<script src="assets/js/ace/ace.widget-on-reload.js"></script>
+
+<!-- 自定义和插件 js -->
+<script src="plugins/jqgrid/jquery.jqGrid.min.js"></script>
+<script src="libs/vue.min.js"></script>
+<script src="libs/router.js"></script>
+<script src="plugins/layer/layer.js"></script>
+<script src="js/common/api.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/index.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=10"/>-->
+    <meta name="renderer" content="ie-stand">
+    <title>照片</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../plugins/jqgrid/ui.jqgrid-bootstrap.css">
+    <link rel="stylesheet" href="../../plugins/ztree/css/metroStyle/metroStyle.css">
+    <link rel="stylesheet" href="../../css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../..//css/main.css">
+    <link rel="stylesheet" href="../../plugins/treegrid/jquery.treegrid.css">
+    <link rel="stylesheet" href="../../css/common.css">
+
+
+    <script src="../../libs/jquery-3.3.1.js"></script>
+    <script src="../../plugins/layer/layer.js"></script>
+    <script src="../../libs/bootstrap.min.js"></script>
+    <script src="../../libs/vue.min.js"></script>
+    <script src="../../libs/bootstrap-table.min.js"></script>
+    <script src="../../plugins/treegrid/jquery.treegrid.min.js"></script>
+    <script src="../../plugins/treegrid/jquery.treegrid.bootstrap3.js"></script>
+    <script src="../../plugins/treegrid/jquery.treegrid.extension.js"></script>
+    <script src="../../plugins/treegrid/tree.table.js"></script>
+    <script src="../../plugins/jqgrid/grid.locale-cn.js"></script>
+    <script src="../../plugins/jqgrid/jquery.jqGrid.min.js"></script>
+    <script src="../../plugins/ztree/jquery.ztree.all.min.js"></script>
+    <script src="../../plugins/treeview/bootstrap-treeview.js"></script>
+
+    <link rel="stylesheet" href="../../plugins/select/css/bootstrap-select.css">
+    <script src="../../plugins/select/bootstrap-select.js"></script>
+    <script src="../../plugins/select/defaults-zh_CN.js"></script>
+
+    <script src="../../js/common/api.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/tool.js"></script>
+    <script src="../../js/common/extend.js"></script>
+    <script src="../../js/common/tool.js"></script>
+    <script src="./js/dom-to-image.js"></script>
+    <script src="./js/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="./css/sheet.css">
+    <link rel="stylesheet" href="../../libs/datetimepicker/bootstrap-datetimepicker.min.css">
+    <script src="../../libs/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+    <script src="../../libs/datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+
+    <link rel="stylesheet" href="./libs/viewer/viewer.css">
+    <script src="./libs/viewer/viewer.js"></script>
+    <style>
+
+        html,
+        body {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="armorapp">
+    <div class="grid-btn">
+        <div class="btn-group" role="group">
+            <a class="btn btn-primary btn-sm" onclick="StartVideo()"><i class="fa fa-video-camera"></i>&nbsp;打开摄像头</a>
+            <a class="btn btn-danger btn-sm" onclick="CloseVideo()"><i class="fa fa-video-camera"></i>&nbsp;关闭摄像头</a>
+            <a class="btn btn-primary btn-sm capture" onclick="Capture()"><i class="fa fa-camera"></i>&nbsp;拍照</a>
+        </div>
+    </div>
+    <div style="float: left;width:350px; height:350px;">
+        <object id="axCam_Ocx" style=" width:350px; height:350px;"
+                classid="clsid:ce2d72f2-ad28-4013-a24b-c3f76c5a1944"
+                codebase="CamOcx.cab #version=1,0,0,1">
+        </object>
+    </div>
+    <div class="grid-btn" style="float:left;width: 400px;">
+        <div class="btn-group" role="group" id="financeMark">
+        </div>
+    </div>
+
+</div>
+</body>
+<script src="./js/photo.js"></script>
+</html>

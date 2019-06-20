@@ -1,0 +1,18 @@
+#printArea {
+    display: block;
+    position: relative;
+}
+
+.print-name {
+    font-size: 8px;
+    position: fixed;
+    top: 348px;
+    left: 10px;
+}
+
+.print-time {
+    font-size: 8px;
+    position: fixed;
+    top: 348px;
+    right: 10px;
+}

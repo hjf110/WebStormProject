@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加办理进场单</title>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="添加办理进场单">
+    <link href="../image/ioc/favicon.ico" rel="icon" type="image/x-ico">
+
+    <link rel="stylesheet" href="../js/layuiadmin/style/login.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../js/layuiadmin/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" href="./util/lgallery/css/lgallery.min.css">
+    <link rel="stylesheet" href="./util/lgallery/css/demo.min.css">
+
+
+</head>
+<body>
+<div style="padding: 15px;">
+    <form class="layui-form layui-form-pane">
+
+        <fieldset class="layui-elem-field">
+            <legend>客户信息</legend>
+            <div class="layui-field-box">
+                <div class="layui-form-item ">
+                    <label class="layui-form-label">客户名称</label>
+                    <div class="layui-input-block">
+                        <select id="kh" name="customer_id" lay-filter="kh" disabled="disabled" readonly="readonly">
+                            <option value="">直接选择或搜索选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item ">
+                    <label class="layui-form-label">客户类型</label>
+                    <div class="layui-input-block">
+                        <!--                        <input  id="customer_type" type="text" name="customer_type" required lay-verify="required" autocomplete="off" class="layui-input">-->
+                        <select id="customer_type" name="customer_type" disabled="disabled">
+                            <option value="">请选择一个类型</option>
+                            <option value="1">大板车</option>
+                            <option value="2">4s店</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">客户联系人</label>
+                        <div class="layui-input-inline">
+                            <input id="customer_contacts" type="text" name="customer_contacts" autocomplete="off"
+                                   class="layui-input" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label style="width: 130px;" class="layui-form-label">客户联系电话</label>
+                        <div class="layui-input-inline">
+                            <input id="customer_phone" type="text" name="customer_phone" autocomplete="off"
+                                   class="layui-input" disabled="disabled">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item ">
+                    <label class="layui-form-label">客户地址</label>
+                    <div class="layui-input-block">
+                        <input id="customer_address" type="text" name="customer_address" autocomplete="off"
+                               class="layui-input" disabled="disabled">
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+
+        <fieldset class="layui-elem-field">
+            <legend>车辆信息</legend>
+            <div class="layui-field-box">
+                <div class="layui-form-item ">
+                    <div class="layui-inline ">
+                        <label class="layui-form-label">车架号</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="vinno" name="vinno" autocomplete="off" class="layui-input"
+                                   disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="layui-inline ">
+                        <label class="layui-form-label">车辆类型</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="type" name="type" autocomplete="off" class="layui-input"
+                                   disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="layui-inline ">
+                        <label class="layui-form-label">品牌型号</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="brandmodel" name="brandmodel" autocomplete="off" class="layui-input"
+                                   disabled="disabled">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item ">
+                    <label class="layui-form-label">车架号照片</label>
+                    <div class="layui-input-block">
+                        <!--                        <input type="text" name="a" required lay-verify="required" autocomplete="off" class="layui-input">-->
+                        <!--                        这里显示  pad端 识别车架号功能 上传的照片(该字段只用于核对)-->
+                        <img id="image" src="">
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+
+        <fieldset class="layui-elem-field">
+            <legend>车辆检查照片</legend>
+            <div id="check_photo" class="layui-field-box">
+
+
+                <!--                <div class="layui-collapse">-->
+                <!--                    <div class="layui-colla-item">-->
+                <!--                        <h2 class="layui-colla-title">大类名称</h2>-->
+                <!--                        <div class="layui-colla-content layui-show">-->
+                <!--                            <fieldset class="layui-elem-field">-->
+                <!--                                <legend>小类名称</legend>-->
+                <!--                                <div class="layui-field-box">-->
+
+                <!--                                </div>-->
+                <!--                            </fieldset>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+
+
+            </div>
+        </fieldset>
+
+        <!--        <button type="button" id="csh">初始化相册插件</button>-->
+        <fieldset class="layui-elem-field">
+            <legend>资料填写</legend>
+            <div class="layui-field-box">
+                <div class="layui-form-item ">
+                    <label class="layui-form-label">运输单位</label>
+                    <div class="layui-input-block">
+                        <select id="ys" name="transport_id" lay-search="">
+                            <option value="">直接选择或搜索选择</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">人员姓名</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="member_name" name="member_name" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">身份证号</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="member_idcard" name="member_idcard" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item ">
+                    <label class="layui-form-label">证件照片</label>
+                    <div class="layui-input-block">
+                        <button photo-type="1" type="button" class="takePhoto layui-btn layui-btn-normal">拍照
+                        </button>
+                    </div>
+                </div>
+                <div id="photo1" class="layui-form-item hide">
+                    <fieldset class="layui-elem-field">
+                        <legend>证件照片</legend>
+                        <div class="layui-field-box">
+                            <div class="TemplateParent" data-lgparent data-lgtitle="1,2,3,4,5"
+                                 data-lglabel="Picture 1,Picture 2,Picture 3,Picture 4,Picture 5"
+                                 data-lgdescription="Description 1, Description 2,Description 3,Description 4,Description 5">
+
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class="layui-form-item ">
+                    <label class="layui-form-label">合格证</label>
+                    <div class="layui-input-block">
+                        <button photo-type="2" type="button" class="takePhoto layui-btn layui-btn-normal">拍照</button>
+                    </div>
+                </div>
+                <div id="photo2" class="layui-form-item hide">
+                    <fieldset class="layui-elem-field">
+                        <legend>合格证照片</legend>
+                        <div class="layui-field-box">
+                            <div class="TemplateParent" data-lgparent data-lgtitle="1,2,3,4,5"
+                                 data-lglabel="Picture 1,Picture 2,Picture 3,Picture 4,Picture 5"
+                                 data-lgdescription="Description 1, Description 2,Description 3,Description 4,Description 5">
+
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="layui-form-item ">
+                    <label class="layui-form-label">行驶证/发票</label>
+                    <div class="layui-input-block">
+                        <input type="radio" lay-filter="xf" name="a1" value="1" title="行驶证" checked>
+                        <input type="radio" lay-filter="xf" name="a1" value="2" title="发票">
+                    </div>
+                </div>
+
+                <div id="xsz" class="layui-form-item">
+                    <label class="layui-form-label">行驶证</label>
+                    <div class="layui-input-block">
+                        <button photo-type="3" type="button" class="takePhoto layui-btn layui-btn-normal">拍照</button>
+                    </div>
+                    <div id="photo3" class="layui-form-item hide">
+                        <fieldset class="layui-elem-field">
+                            <legend>行驶证照片</legend>
+                            <div class="layui-field-box">
+                                <div class="TemplateParent" data-lgparent data-lgtitle="1,2,3,4,5"
+                                     data-lglabel="Picture 1,Picture 2,Picture 3,Picture 4,Picture 5"
+                                     data-lgdescription="Description 1, Description 2,Description 3,Description 4,Description 5">
+
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+
+                <div id="fp" class="layui-form-item " style="display: none;">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">发票号</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="invoice" name="invoice" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">发票</label>
+                        <div class="layui-input-inline">
+                            <button photo-type="4" type="button" class=" takePhoto layui-btn layui-btn-normal">拍照
+                            </button>
+                        </div>
+                    </div>
+                    <br/>
+                    <div id="photo4" class="layui-form-item hide">
+                        <fieldset class="layui-elem-field">
+                            <legend>发票照片</legend>
+                            <div class="layui-field-box">
+                                <div class="TemplateParent" data-lgparent data-lgtitle="1,2,3,4,5"
+                                     data-lglabel="Picture 1,Picture 2,Picture 3,Picture 4,Picture 5"
+                                     data-lgdescription="Description 1, Description 2,Description 3,Description 4,Description 5">
+
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+
+                <div class="layui-form-item ">
+                    <label class="layui-form-label">说明书</label>
+                    <div class="layui-input-block">
+                        <button photo-type="5" type="button" class="takePhoto layui-btn layui-btn-normal">拍照</button>
+                    </div>
+                </div>
+                <div id="photo5" class="layui-form-item hide">
+                    <fieldset class="layui-elem-field">
+                        <legend>说明书照片</legend>
+                        <div class="layui-field-box">
+                            <div class="TemplateParent" data-lgparent data-lgtitle="1,2,3,4,5"
+                                 data-lglabel="Picture 1,Picture 2,Picture 3,Picture 4,Picture 5"
+                                 data-lgdescription="Description 1, Description 2,Description 3,Description 4,Description 5">
+
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="layui-form-item ">
+                    <label class="layui-form-label">保养手册</label>
+                    <div class="layui-input-block">
+                        <button photo-type="6" type="button" class="takePhoto layui-btn layui-btn-normal">拍照</button>
+                    </div>
+                </div>
+                <div id="photo6" class="layui-form-item hide">
+                    <fieldset class="layui-elem-field">
+                        <legend>保养手册照片</legend>
+                        <div class="layui-field-box">
+                            <div class="TemplateParent" data-lgparent data-lgtitle="1,2,3,4,5"
+                                 data-lglabel="Picture 1,Picture 2,Picture 3,Picture 4,Picture 5"
+                                 data-lgdescription="Description 1, Description 2,Description 3,Description 4,Description 5">
+
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="layui-form-item ">
+                    <label class="layui-form-label">扩展拍照</label>
+                    <div class="layui-input-block">
+                        <button photo-type="0" type="button" class="takePhoto layui-btn layui-btn-normal">拍照</button>
+                    </div>
+                </div>
+                <div id="photo0" class="layui-form-item hide">
+                    <fieldset class="layui-elem-field">
+                        <legend>扩展照片</legend>
+                        <div class="layui-field-box">
+                            <div class="TemplateParent" data-lgparent data-lgtitle="1,2,3,4,5"
+                                 data-lglabel="Picture 1,Picture 2,Picture 3,Picture 4,Picture 5"
+                                 data-lgdescription="Description 1, Description 2,Description 3,Description 4,Description 5">
+
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="layui-form-item hide">
+                    <label class="layui-form-label">停放点</label>
+                    <div class="layui-input-block">
+                        <input type="radio" lay-filter="" name="park_type" value="1" title="客户单位合作停放点" checked>
+                        <input type="radio" lay-filter="" name="park_type" value="0" title="运输单位合作停放点">
+                    </div>
+                </div>
+
+                <div class="layui-form-item ">
+                    <label class="layui-form-label">付费方式</label>
+                    <div class="layui-input-block">
+                        <input type="radio" lay-filter="" name="pay_type" value="1" title="现金" checked>
+                        <input type="radio" lay-filter="" name="pay_type" value="0" title="挂账">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label style="width: 130px;" class="layui-form-label">免费停车天数</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="free_days" name="freepark_days" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label style="width: 130px;" class="layui-form-label">停车费/天/台</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="park_fee" name="park_fee" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label style="width: 130px;" class="layui-form-label">洗车费</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="wash_fee" name="wash_fee" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label style="width: 130px;" class="layui-form-label">检验费</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="check_fee" name="check_fee" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label style="width: 130px;" class="layui-form-label">快修费</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="repair_fee" name="repair_fee" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--<div style="display: none;" class="layui-form-item  ">-->
+                <!--<label class="layui-form-label">发票号</label>-->
+                <!--<div class="layui-input-block">-->
+                <!--<input value="213213" type="text" id="invoice" name="invoice" autocomplete="off"-->
+                <!--class="layui-input">-->
+                <!--</div>-->
+                <!--</div>-->
+
+                <div style="display: none;" class="layui-form-item ">
+                    <label class="layui-form-label">是否含税</label>
+                    <div class="layui-input-block">
+                        <input type="radio" lay-filter="" name="include_tax" value="1" title="含税" checked>
+                        <input type="radio" lay-filter="" name="include_tax" value="0" title="不含税">
+                    </div>
+                </div>
+
+
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">备注</label>
+                    <div class="layui-input-block">
+                        <textarea id="remark" name="remark" placeholder="请输入" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+
+                <div id="choose_info" class="layui-form-item">
+                    <div class="layui-inline">
+                        <label style="width: 130px;" class="layui-form-label">指定停车位</label>
+                        <div class="layui-input-inline">
+                            <!--                            <button id="xzcw" type="button" class="layui-btn layui-btn-normal">点击选择车位</button>-->
+                            <select id="park_id" name="park_id" lay-search="">
+                                <option value="">直接选择或搜索选择</option>
+
+                            </select>
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">不选择则不指定</div>
+                    </div>
+                    <!--<div class="layui-inline">-->
+                    <!--<div class="layui-input-inline">-->
+                    <!--&lt;!&ndash;                            <button id="xzcw" type="button" class="layui-btn layui-btn-normal">点击选择车位</button>&ndash;&gt;-->
+                    <!--<button type="button" id="choose_park" class="layui-btn">点击选择停车位</button>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <div class="layui-inline">
+                        <label style="width: 130px;" class="layui-form-label">指定驾驶员</label>
+                        <div class="layui-input-inline">
+                            <select id="driver_unionid" name="driver_unionid" lay-search="">
+                                <option value="">直接选择或搜索选择</option>
+                                <option value="00000000003">驾驶员1</option>
+                                <option value="2">驾驶员2</option>
+                                <option value="3">驾驶员3</option>
+                                <option value="4">驾驶员4</option>
+                                <option value="5">驾驶员5</option>
+                                <option value="6">驾驶员6</option>
+                                <option value="7">驾驶员7</option>
+                            </select>
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">不选择则不指定</div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+
+        <!----------------------------------指派驾驶员弹窗--------------------------------------------->
+        <!--        <div id="jsy" class="layui-form-item" style="display: none;margin-top:70px;margin-left: 30px;" >-->
+        <!--            <div class="layui-inline">-->
+        <!--                <label style="width: 130px;" class="layui-form-label">指定驾驶员</label>-->
+        <!--                <div class="layui-input-inline">-->
+        <!--                    <select name="modules"  lay-search="">-->
+        <!--                        <option value="">直接选择或搜索选择</option>-->
+        <!--                        <option value="1">驾驶员1</option>-->
+        <!--                        <option value="2">驾驶员2</option>-->
+        <!--                        <option value="3">驾驶员3</option>-->
+        <!--                        <option value="4">驾驶员4</option>-->
+        <!--                        <option value="5">驾驶员5</option>-->
+        <!--                        <option value="6">驾驶员6</option>-->
+        <!--                        <option value="7">驾驶员7</option>-->
+        <!--                    </select>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            <div class="layui-inline">-->
+        <!--                <button type="button" class="layui-btn"  lay-submit lay-filter="demo1" >派单</button>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!-------------------------------------------------------------------------------------------->
+
+
+        <!----------------------------------------点击办理进场弹窗-------------------------------------------------->
+        <!--        <div id="pd" class="layui-form-item" style="display: none;margin-top:55px;margin-left: 100px;">-->
+        <!--                <button type="button" class="layui-btn"  lay-submit lay-filter="demo1" >派单</button>-->
+        <!--                <button type="button" id="zhiding" class="layui-btn layui-btn-primary" style="margin-left: 70px;">手动派单</button>-->
+        <!--        </div>-->
+        <!---------------------------------------------------------------------------------------------------------->
+
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="button" id="in" class="layui-btn" lay-submit lay-filter="demo1">办理进场</button>
+                <button type="button" id="refuse" class="layui-btn" lay-submit lay-filter="refuse">拒绝</button>
+                <button type="button" class="layui-btn" lay-submit lay-filter="save">保存并关闭</button>
+                <button type="button" class="layui-btn layui-btn-primary">打印封条</button>
+                <button type="button" class="layui-btn layui-btn-primary">存放资料</button>
+                <button type="button" class="layui-btn layui-btn-primary">补充资料</button>
+            </div>
+        </div>
+        <input type="hidden" id="receive_id" name="receive_id">
+        <input type="hidden" id="unionid" name="unionid">
+    </form>
+</div>
+<div class="layui-trans layadmin-user-login-footer">
+    <p style="color: white;">Copyright © 2019 by 中国联合网络通信有限公司宁波市分公司 All rights reserved.</p>
+</div>
+</body>
+
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script src="../js/layuiadmin/layui/layui.js"></script>
+<script type="text/javascript" src="../layer_mobile/layer.js"></script>
+<script type="text/javascript" src="../js/jquery.md5.js"></script>
+<script type="text/javascript" src="../js/jquery-geturlcode.js"></script>
+<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+<script src="../js/common/api.js"></script>
+<script src="../js/common/localjs.js"></script>
+<script src="./util/lgallery/js/lgallery.min.js"></script>
+<script type="text/javascript" src="../js/mui.min.js"></script>
+<script>
+
+
+    var photoList = [];//高拍仪拍照返回的图片数组;
+
+
+    var aname1 = "新车外观检查";
+    var aname2 = "新车室内检查";
+    var aname3 = "随车工具检查";
+
+
+    var id;
+
+    var form;
+    var element;
+    var layer;
+
+
+    function style_null(res) {
+        $('#' + res + '').focus();
+        // $('#'+res+'').attr("style","border: solid red 1px;");
+    }
+
+    //添加客户单位下拉框
+    function kehu(form) {
+        ajaxSubmit(null, Api.FWDT_Customer_Dw.Drop_Down_Customer_Info, "GET", function (res) {
+            $.each(res.data, function (idx, obj) {
+                $("#kh").append(' <option value="' + obj.id + '">' + obj.full_name + '</option>');
+            });
+
+            console.log(1);
+            form.render();
+            // getinfo(id);
+        }, null, null, false);
+    }
+
+
+    //添加运输单位下拉框
+    function yunshu(form) {
+        ajaxSubmit(null, Api.FWDT_Transport_Dw.Select_Transport, "GET", function (res) {
+            $.each(res.data.list, function (idx, obj) {
+                $("#ys").append(' <option value="' + obj.id + '">' + obj.full_name + '</option>');
+            });
+
+            console.log(1);
+            form.render();
+            // getinfo(id);
+        }, null, null, false);
+    }
+
+    //添加车位下拉框
+    function parkinfo(form) {
+        ajaxSubmit(null, Api.FWDT_Park_info.Select_Park_info, "GET", function (res) {
+
+            $.each(res.data, function (idx, obj) {
+                if (obj.park_state == 0) {
+                    $("#park_id").append(' <option value="' + obj.id + '">' + obj.park_desc + '</option>');
+                }
+            });
+            console.log("车位信息-------------------", res);
+            console.log(1);
+            form.render();
+            // getinfo(id);
+        }, null, null, false);
+    }
+
+
+    //获得办理进场的车辆信息
+    function getinfo(id) {
+        ajaxSubmit({receive_id: id}, Api.FWDT_YuYue_bljc.Select_bljc, "GET", function (res) {
+
+            var info = res.data;
+            console.log("------------------------------------");
+            console.log("返回的消息:", info);
+            console.log("------------------------------------");
+            //id
+            $("#receive_id").val(info.receive_id);
+            $("#unionid").val(info.unionid);
+
+            //客户
+            $("#kh").val(info.customer.id);
+            $("#customer_type").val(info.customer.type);
+            $("#customer_contacts").val(info.customer.contacts);
+            $("#customer_phone").val(info.customer.phone);
+            $("#customer_address").val(info.customer.address);
+            //费用
+            $("#free_days").val(info.detail.free_days);
+            $("#park_fee").val(info.detail.park_fee);
+            $("#wash_fee").val(info.detail.wash_fee);
+            $("#check_fee").val(info.detail.check_fee);
+            //车架号信息
+            $("#vinno").val(info.car.vinno);
+            $("#type").val(info.car.type);
+            $("#brandmodel").val(info.car.brandmodel);
+            $("#image").attr("src", info.car.image);
+            $("#image").attr("style", "width:500px;");
+            //运输单位
+            $("#ys").val(info.detail.transport_id);
+            //人员和身份证
+            $("#member_name").val(info.detail.member_name);
+            $("#member_idcard").val(info.detail.member_idcard);
+            //停放点
+            $(":radio[name='park_type'][value='" + info.detail.park_type + "']").prop("checked", "checked");
+
+            //付费方式
+            $(":radio[name='pay_type'][value='" + info.detail.pay_type + "']").prop("checked", "checked");
+
+            //快修费
+            $("#repair_fee").val(info.detail.repair_fee);
+
+            //发票号
+            $("#invoice").val(info.detail.invoice);
+            //是否含税
+            $(":radio[name='include_tax'][value='" + info.detail.include_tax + "']").prop("checked", "checked");
+
+            //备注
+            $("#remark").val(info.detail.remark);
+
+
+            //指定停车位
+            $("#park_id").val(info.detail.park_id);
+
+            //指定驾驶员
+            $("#driver_unionid").val(info.detail.driver);
+
+
+            console.log("获取办理进场信息结束---------------------------------------------------------");
+            var imgsjson = info.checkImages;
+            var i = 0;
+
+            //检测项目图片
+            $.each(imgsjson, function (idx, obj) {
+
+                // var projuct_Num=0;//
+                var aname1_Num = 0;//新车外观检查检查项目数量
+                var ok1_Num = 0;//新车外观检查检查项目合格数量
+                var no_ok1_Num = 0;//新车外观检查检查项目不合格数量
+                var aname2_Num = 0;//新车室内检查检查项目数量
+                var ok2_Num = 0;//新车室内检查检查项目合格数量
+                var no_ok2_Num = 0;//新车室内检查检查项目不合格数量
+                var aname3_Num = 0;//随车工具检查检查项目数量
+                var ok3_Num = 0;//随车工具检查检查项目合格数量
+                var no_ok3_Num = 0;//随车工具检查检查项目不合格数量
+
+
+                // var aname1 = "新车外观检查";
+                // var aname2 = "新车室内检查";
+                // var aname3 = "随车工具检查";
+
+
+                $.each(imgsjson, function (a, c) {
+                    if (c.areaName == aname1) {
+                        aname1_Num++;
+                        if (c.pass == 1) {
+                            ok1_Num++;
+                        } else {
+                            no_ok1_Num++;
+                        }
+                        ;
+                    } else if (c.areaName == aname2) {
+                        aname2_Num++;
+                        if (c.pass == 1) {
+                            ok2_Num++;
+                        } else {
+                            no_ok2_Num++;
+                        }
+                        ;
+                    } else if (c.areaName == aname3) {
+                        aname3_Num++;
+                        if (c.pass == 1) {
+                            ok3_Num++;
+                        } else {
+                            no_ok3_Num++;
+                        }
+                        ;
+                    }
+                });
+
+
+                i++;
+                var idname;
+                var dlname;
+                var imname;
+
+                var projuct_Num;
+                var o1;
+                var o2;
+                if (obj.areaName == aname1) {
+                    idname = "a1";
+                    dlname = "aa1";
+                    imname = "aaa" + i + "";
+                    projuct_Num = aname1_Num;
+                    o1 = ok1_Num;
+                    o2 = no_ok1_Num;
+                } else if (obj.areaName == aname2) {
+                    idname = "a2";
+                    dlname = "aa2";
+                    imname = "aaa" + i + "";
+                    projuct_Num = aname2_Num;
+                    o1 = ok2_Num;
+                    o2 = no_ok2_Num;
+                } else if (obj.areaName == aname3) {
+                    idname = "a3";
+                    dlname = "aa3";
+                    imname = "aaa" + i + "";
+                    projuct_Num = aname3_Num;
+                    o1 = ok3_Num;
+                    o2 = no_ok3_Num;
+                }
+
+
+                if ($("#" + dlname).html() == null || $("#" + dlname).html() == "") {
+                    $("#check_photo").append(' <div id="' + dlname + '"  class="layui-collapse">\n' +
+                        '                    <div class="layui-colla-item">\n' +
+                        '                        <h3 class="layui-colla-title">' + obj.areaName + "--" + "共检验了" + projuct_Num + "个项目" + "-合格" + o1 + "个-不合格" + o2 + "个" + '</h3>\n' +
+                        '                        <div id="' + idname + '" class="layui-colla-content">\n' +
+                        '                        </div>\n' +
+                        '                    </div>\n' +
+                        '                </div>');
+
+                }
+                var zhuangtai;
+                var st;
+                if (obj.pass == 1) {
+                    zhuangtai = "合格";
+                    st = "color:green;"
+                } else if (obj.pass == 0) {
+                    zhuangtai = "不合格";
+                    st = "color:red;"
+                }
+                $("#" + idname).append('<fieldset class="layui-elem-field">\n' +
+                    '                                <legend>' + obj.tagName + '<span style="' + st + '" >(' + zhuangtai + ')</span>' + '</legend>\n' +
+                    '                                <div class="layui-field-box">\n' +
+                    '<div id="' + imname + '" class="layer-photos-demo">' +
+                    '<img  layer-src="' + obj.image + '" src="' + obj.image + '" alt="' + obj.tagName + '">' +
+                    ' </div>' +
+                    '                                </div>\n' +
+                    '                            </fieldset>'
+                )
+
+
+                console.log("imgsid+++++++++++++++++++++++++++++++++++++++", imname);
+                var sss = "#" + imname + "";
+                layer.photos({
+                    photos: sss
+                    , anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
+                });
+            });
+
+
+            var pirimgList = info.detail.image;//高拍仪各个拍照项目的数组
+            //高拍仪各个项目的照片
+            $.each(pirimgList, function (idx, obj) {
+                $.each(obj, function (index, obj2) {
+                    var type = obj2.image_type;
+                    var db = obj2.image_db;
+                    var url = obj2.image_url;
+                    if (type == 1) {
+                        $("#photo1").show();
+                        $("#photo1").children(".layui-elem-field").children(".layui-field-box").find(".LGallery").remove();
+                        $("#photo1").find(".TemplateParent").append('<div class="TemplateParent-Item" style="width: 10%"> <img src="' + url + '"/> <span>身份证照片</span> </div>');
+                        var imgjson = {};
+                        imgjson["image_type"] = type;
+                        // imgjson["image_url"] = aa.image_url;
+                        imgjson["image_db"] = db;
+                        photoList.push(imgjson);
+                    } else if (type == 2) {
+                        $("#photo2").show();
+                        $("#photo2").children(".layui-elem-field").children(".layui-field-box").find(".LGallery").remove();
+                        $("#photo2").find(".TemplateParent").append('<div class="TemplateParent-Item" style="width: 10%"> <img src="' + url + '"/> <span>合格证照片</span> </div>');
+                        var imgjson = {};
+                        imgjson["image_type"] = type;
+                        // imgjson["image_url"] = aa.image_url;
+                        imgjson["image_db"] = db;
+                        photoList.push(imgjson);
+                    } else if (type == 3) {
+                        $("#photo3").show();
+                        $("#photo3").children(".layui-elem-field").children(".layui-field-box").find(".LGallery").remove();
+                        $("#photo3").find(".TemplateParent").append('<div class="TemplateParent-Item" style="width: 10%"> <img src="' + url + '"/> <span>行驶证照片</span> </div>');
+                        var imgjson = {};
+                        imgjson["image_type"] = type;
+                        // imgjson["image_url"] = aa.image_url;
+                        imgjson["image_db"] = db;
+                        photoList.push(imgjson);
+                    } else if (type == 4) {
+                        $("#photo4").show();
+                        $("#photo4").children(".layui-elem-field").children(".layui-field-box").find(".LGallery").remove();
+                        $("#photo4").find(".TemplateParent").append('<div class="TemplateParent-Item" style="width: 10%"> <img src="' + url + '"/> <span>发票照片</span> </div>');
+                        var imgjson = {};
+                        imgjson["image_type"] = type;
+                        // imgjson["image_url"] = aa.image_url;
+                        imgjson["image_db"] = db;
+                        photoList.push(imgjson);
+                    } else if (type == 5) {
+                        $("#photo5").show();
+                        $("#photo5").children(".layui-elem-field").children(".layui-field-box").find(".LGallery").remove();
+                        $("#photo5").find(".TemplateParent").append('<div class="TemplateParent-Item" style="width: 10%"> <img src="' + url + '"/> <span>说明书照片</span> </div>');
+                        var imgjson = {};
+                        imgjson["image_type"] = type;
+                        // imgjson["image_url"] = aa.image_url;
+                        imgjson["image_db"] = db;
+                        photoList.push(imgjson);
+                    } else if (type == 6) {
+                        $("#photo6").show();
+                        $("#photo6").children(".layui-elem-field").children(".layui-field-box").find(".LGallery").remove();
+                        $("#photo6").find(".TemplateParent").append('<div class="TemplateParent-Item" style="width: 10%"> <img src="' + url + '"/> <span>保养手册照片</span> </div>');
+                        var imgjson = {};
+                        imgjson["image_type"] = type;
+                        // imgjson["image_url"] = aa.image_url;
+                        imgjson["image_db"] = db;
+                        photoList.push(imgjson);
+                    } else if (type == 0) {
+                        $("#photo0").show();
+                        $("#photo0").children(".layui-elem-field").children(".layui-field-box").find(".LGallery").remove();
+                        $("#photo0").find(".TemplateParent").append('<div class="TemplateParent-Item" style="width: 10%"> <img src="' + url + '"/> <span>扩展照片</span> </div>');
+                        var imgjson = {};
+                        imgjson["image_type"] = type;
+                        // imgjson["image_url"] = aa.image_url;
+                        imgjson["image_db"] = db;
+                        photoList.push(imgjson);
+                    }
+                });
+            });
+
+
+            initLG();
+            element.init();
+            //console.log(2);
+
+            form.render();
+        }, null, null, false);
+    }
+
+
+    //Demo
+    layui.use(['jquery', 'form', 'layer', 'laydate', 'element'], function () {
+
+        form = layui.form;
+        var $ = layui.$;
+        layer = layui.layer;
+        laydate = layui.laydate;
+        element = layui.element;
+
+        // $("#csh").on("click", function (res) {
+        //     console.log("执行了初始化");
+        //     initLG();
+        // });
+
+        //调用高拍仪
+        $(".takePhoto").on("click", function () {
+            var that = $(this);
+            console.log(that.attr("photo-type"));
+            var as = layer.open({
+                id: "takePhoto",
+                type: 2,
+                title: '高拍仪',
+                maxmin: true,
+                //area: ['1500px', '800px'],
+                //content : path+'/voteback/add.html',
+                content: 'photoTest/indexTwo.html?type=' + that.attr("photo-type"), //iframe的url
+                success: function (layero, index) {
+                    //传入参数，并赋值给iframe的元素
+                },
+                end: function (res) {
+                    console.log("存储的图片数组---", photoList);
+                    initLG();
+                }
+            });
+            layer.full(as);
+        });
+
+
+        // $("#in").on("click",function () {
+        //     layer.open({
+        //         type: 1,
+        //         area: ['420px', '240px'], //宽高
+        //         shade: [0.8, '#393D49'],
+        //         content: $("#pd")
+        //     });
+        // });
+        //
+        // $("#zhiding").on("click",function () {
+        //     layer.closeAll();
+        //     layer.open({
+        //         type: 1,
+        //         area: ['500px', '240px'], //宽高
+        //         shade: [0.8, '#393D49'],
+        //         content: $("#jsy")
+        //     });
+        // });
+
+
+        id = GetQueryString("id");
+        var state = GetQueryString("ism");
+        if (state == 1) {
+            $("#in").hide();
+            $("#choose_info").hide();
+        }
+
+        parkinfo(form);
+        yunshu(form);
+        kehu(form);//添加客户单位下拉信息
+
+
+        getinfo(id);
+
+
+        $("#choose_park").on("click", function () {
+
+            var as = layer.open({
+                id: "choose",
+                type: 2,
+                title: '选择停车位',
+                maxmin: true,
+                shadeClose: false,
+                shade: 0.8,
+                //area: ['1500px', '800px'],
+                //content : path+'/voteback/add.html',
+                content: 'park_info.html', //iframe的url
+                success: function (layero, index) {
+                    //传入参数，并赋值给iframe的元素
+                },
+                end: function (res) {
+                    form.render();
+                }
+            });
+            layer.full(as);
+        });
+
+
+        form.on('select(kh)', function (data) {
+            // console.log(data.elem); //得到select原始DOM对象
+            console.log(data.value); //得到被选中的值
+            // console.log(data.othis); //得到美化后的DOM对象
+            if (data.value != null && data.value != "") {
+                var id = data.value;
+                ajaxSubmit({customer_id: id}, Api.FWDT_Customer_Dw.Select_Customer_ById, "GET", function (res) {
+                    //客户
+                    // $("#kh").val(res.data.id);
+                    $("#customer_type").val(res.data.type);
+                    $("#customer_contacts").val(res.data.contacts);
+                    $("#customer_phone").val(res.data.phone);
+                    $("#customer_address").val(res.data.address);
+                    //feiyogn
+                    $("#free_days").val(res.data.free_days);
+                    $("#park_fee").val(res.data.car_park_fee);
+                    $("#wash_fee").val(res.data.car_wash_fee);
+                    $("#check_fee").val(res.data.car_check_fee);
+                })
+            }
+        });
+
+
+        //日期时间选择
+        laydate.render({
+            elem: '#time'
+            , type: 'datetime'
+        });
+
+
+        //监听 行驶证/发票 单选
+        form.on('radio(xf)', function (data) {
+            console.log(data.elem); //得到radio原始DOM对象
+            console.log(data.value); //被点击的radio的value值
+            var res = data.value;
+            if (res == 1) {
+                $("#photo4").hide();
+                $("#photo4").find(".TemplateParent").html("");
+                $("#fp").hide();
+                $("#xsz").show();
+            } else if (res == 2) {
+                $("#photo3").hide();
+                $("#photo3").find(".TemplateParent").html("");
+                $("#xsz").hide();
+                $("#fp").show();
+
+            }
+        });
+
+
+        $("#xzcw").on("click", function () {
+            layer.open({
+                type: 2,
+                title: "车位",
+                area: ['900px', '500px'],
+                //  offset: '50px',
+                anim: 6,
+                shadeClose: "true",
+                skin: "layui-layer-molv",
+                content: "photo.html"
+            });
+        })
+
+
+        //办理进场按钮提交
+        form.on('submit(demo1)', function (data) {
+            //layer.msg(JSON.stringify(data.field));
+            console.log("点击了办理进场按钮", data.field);
+            var res = data.field;
+            if (res.customer_id == null || res.customer_id == "") {
+                layer.msg("请选择客户单位");
+            } else if (res.customer_type == null || res.customer_type == "") {
+                layer.msg("请选择客户类型");
+            } else if (res.customer_contacts == null || res.customer_contacts == "") {
+                layer.msg("请填写客户联系人");
+                style_null("customer_contacts");
+            } else if (res.customer_phone == null || res.customer_phone == "") {
+                layer.msg("请填写客户联系电话");
+                style_null("customer_phone");
+            } else if (res.customer_address == null || res.customer_address == "") {
+                layer.msg("请填写客户地址");
+                style_null("customer_address");
+            } else if (res.vinno == null || res.vinno == "") {
+                layer.msg("请填写车架号");
+                style_null("vinno");
+            } else if (res.type == null || res.type == "") {
+                layer.msg("请填写车辆类型");
+                style_null("type");
+            } else if (res.brandmodel == null || res.brandmodel == "") {
+                layer.msg("请填写品牌型号");
+                style_null("brandmodel");
+            } else if (res.transport_id == null || res.transport_id == "") {
+                layer.msg("请选择运输单位");
+                style_null("transport_id");
+            } else if (res.member_name == null || res.member_name == "") {
+                layer.msg("请填写人员姓名");
+                style_null("member_name");
+            } else if (res.member_idcard == null || res.member_idcard == "") {
+                layer.msg("请填写身份证号");
+                style_null("member_idcard");
+            } else if (res.freepark_days == null || res.freepark_days == "") {
+                layer.msg("请填写免费天数");
+                style_null("freepark_days");
+            } else if (res.park_fee == null || res.park_fee == "") {
+                layer.msg("请填写停车费/天/台");
+                style_null("park_fee");
+            } else if (res.wash_fee == null || res.wash_fee == "") {
+                layer.msg("请填写洗车费");
+                style_null("wash_fee");
+            } else if (res.check_fee == null || res.check_fee == "") {
+                layer.msg("请填写检验费");
+                style_null("check_fee");
+            } else if (res.repair_fee == null || res.repair_fee == "") {
+                layer.msg("请填写快修费");
+                style_null("repair_fee");
+            }
+            // else if (res.invoice == null || res.invoice == "") {
+            //     layer.msg("请填写发票号");
+            //     style_null("invoice");
+            // }
+            // else if (res.park_id == null || res.park_id == "") {
+            //     layer.msg("请选择停车位");
+            //     style_null("park_id");
+            // }
+            else {
+                var json1 = {};
+                var tra = {};
+                var cus = {};
+                var car = {};
+                var member = {};
+                var detail = {};
+                json1["receive_id"] = res.receive_id;
+                json1["unionid"] = res.unionid;
+                tra["id"] = res.transport_id;
+                json1["transport"] = tra;
+                cus["id"] = res.customer_id;
+                json1["customer"] = cus;
+                car["vinno"] = res.vinno;
+                car["type"] = res.type;
+                car["brandmodel"] = res.brandmodel;
+                json1["car"] = car;
+                member["name"] = res.member_name;
+                member["idcard"] = res.member_idcard;
+                json1["member"] = member;
+                detail["park_type"] = res.park_type;
+                detail["pay_type"] = res.pay_type;
+                detail["freepark_days"] = res.freepark_days;
+                detail["park_fee"] = res.park_fee;
+                detail["wash_fee"] = res.wash_fee;
+                detail["check_fee"] = res.check_fee;
+                detail["repair_fee"] = res.repair_fee;
+                detail["invoice"] = res.invoice;
+                detail["include_tax"] = res.include_tax;
+                detail["remark"] = res.remark;
+                detail["park_id"] = res.park_id;
+                detail["driver_unionid"] = res.driver_unionid;
+                detail["imageList"] = photoList;
+                json1["detail"] = detail;
+                console.log(json1);
+
+                // json1= JSON.stringify(json1);
+                // console.log(json1);
+                var iddd = res.receive_id;
+                //先保存信息
+                ajaxSubmit(json1, Api.FWDT_YuYue_bljc.Save_bljc, "POST", function (res) {
+                    console.log("修改成功", res);
+                    //办理进场
+                    ajaxSubmit({receive_id: iddd}, Api.FWDT_YuYue_bljc.Submit_bljc, "GET", function (res2) {
+                        console.log("办理进场成功", res2);
+                        var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                        parent.layer.msg('办理进场成功');
+                        parent.layer.close(index);
+                    });
+                }, "json");
+
+
+            }
+
+            return false;
+        });
+
+        //保存按钮提交
+        form.on('submit(save)', function (data) {
+            //layer.msg(JSON.stringify(data.field));
+            console.log("点击了保存并关闭按钮", data.field);
+            var res = data.field;
+            var json1 = {};
+            var tra = {};
+            var cus = {};
+            var car = {};
+            var member = {};
+            var detail = {};
+            json1["receive_id"] = res.receive_id;
+            json1["unionid"] = res.unionid;
+            tra["id"] = res.transport_id;
+            json1["transport"] = tra;
+            cus["id"] = res.customer_id;
+            json1["customer"] = cus;
+            car["vinno"] = res.vinno;
+            car["type"] = res.type;
+            car["brandmodel"] = res.brandmodel;
+            json1["car"] = car;
+            member["name"] = res.member_name;
+            member["idcard"] = res.member_idcard;
+            json1["member"] = member;
+            detail["park_type"] = res.park_type;
+            detail["pay_type"] = res.pay_type;
+            detail["freepark_days"] = res.freepark_days;
+            detail["park_fee"] = res.park_fee;
+            detail["wash_fee"] = res.wash_fee;
+            detail["check_fee"] = res.check_fee;
+            detail["repair_fee"] = res.repair_fee;
+            detail["invoice"] = res.invoice;
+            detail["include_tax"] = res.include_tax;
+            detail["remark"] = res.remark;
+            detail["park_id"] = res.park_id;
+            detail["driver_unionid"] = res.driver_unionid;
+            detail["imageList"] = photoList;
+            json1["detail"] = detail;
+
+            console.log(json1);
+
+            // json1= JSON.stringify(json1);
+            // console.log(json1);
+
+            ajaxSubmit(json1, Api.FWDT_YuYue_bljc.Save_bljc, "POST", function (res) {
+                console.log("修改成功", res);
+                var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                parent.layer.msg('保存成功');
+                parent.layer.close(index);
+            }, "json");
+
+
+            return false;
+        });
+
+        //拒绝进场
+        form.on('submit(refuse)', function (data) {
+            //layer.msg(JSON.stringify(data.field));
+            console.log("点击了拒绝进场按钮", data.field);
+
+
+//            ajaxSubmit("", Api.FWDT_YuYue_bljc.Save_bljc, "POST", function (res) {
+//                console.log("修改成功", res);
+//
+//            }, "json");
+
+
+            return false;
+        });
+
+    });
+</script>
+</html>

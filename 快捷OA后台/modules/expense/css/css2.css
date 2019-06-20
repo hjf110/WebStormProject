@@ -1,0 +1,37 @@
+table {
+    font-size: 18px;
+    width: 100%;
+    text-align: center;
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000
+}
+
+table td {
+    position: relative;
+    border-left: 1px solid #000000;
+    border-top: 1px solid #000000;
+}
+
+/*// 没有打印时水印图片不显示*/
+.image {
+    display: none;
+}
+
+#qz{
+    position: relative;
+    top: 10px;
+    width: 550px;
+    margin: 0 auto;
+    text-align: center;
+}
+#qz span{
+    display: inline-block;
+}
+.s1{
+    position: absolute;
+    left: 0;
+}
+.s2{
+    position: absolute;
+    right: 30px;
+}

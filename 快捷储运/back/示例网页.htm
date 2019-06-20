@@ -1,0 +1,693 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+<meta http-equiv="X-UA-Compatible" content="IE=8" >
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" >
+<TITLE>SDK2.0测试</TITLE>
+<OBJECT ID="EloamGlobal_ID" CLASSID="CLSID:52D1E686-D8D7-4DF2-9A74-8B8F4650BF73"></OBJECT>
+<script language="javascript" type="text/javascript">
+	var EloamGlobal;
+	var DeviceMain;
+	var VideoMain;
+	var DeviceAssist;
+	var VideoAssist;
+	
+	var hasLoadSuccess = 0;
+	var readIDcard = false;
+
+	function Load()
+	{
+		EloamGlobal = document.getElementById("EloamGlobal_ID");
+		var ret = EloamGlobal.InitDevs();
+		
+		var scanSize = document.getElementById('selScanSize');
+		scanSize.add(new Option("原始尺寸"));
+		scanSize.add(new Option("中等尺寸"));
+		scanSize.add(new Option("较小尺寸"));
+		scanSize.add(new Option("自定义尺寸"));
+		scanSize.selectIndex = 0;
+	}
+
+	function Unload()
+	{
+		if (VideoMain)
+		{
+			ViewMain.SetText("", 0);
+			VideoMain.Destroy();
+			VideoMain = null;
+		}
+		if(DeviceMain)
+		{
+			DeviceMain.Destroy();
+			DeviceMain = null;
+		}
+		
+		if (VideoAssist)
+		{
+			ViewAssist.SetText("", 0);
+			VideoAssist.Destroy();
+			VideoAssist = null;
+					
+		}
+		if(DeviceAssist)
+		{
+			DeviceAssist.Destroy();
+			DeviceAssist = null;
+		}
+	
+		StopIDCard();
+		
+		EloamGlobal.DeinitDevs();
+		EloamGlobal = null;
+	}
+	
+	//属性设置
+	function Property()
+	{
+		if (DeviceMain)
+			DeviceMain.ShowProperty(ViewMain.GetView());
+			
+		if (DeviceAssist)
+			DeviceAssist.ShowProperty(ViewAssist.GetView());
+	}
+	
+	function RotateLeft()
+	{
+		if (VideoMain)
+			VideoMain.RotateLeft();
+		if (VideoAssist)
+			VideoAssist.RotateLeft();	
+	}
+	
+	function RotateRight()
+	{
+		if (VideoMain)
+			VideoMain.RotateRight();
+		if (VideoAssist)
+			VideoAssist.RotateRight();	
+	}
+	function SetDeskew(obj)
+	{
+		if (VideoMain)
+		{
+			if (obj.checked)
+				VideoMain.EnableDeskewEx(1);
+			else
+				VideoMain.DisableDeskew();
+		}
+	}
+	
+	function GetTimeString()
+	{
+		var date = new Date();
+		var yy = date.getFullYear().toString();
+		var mm = (date.getMonth() + 1).toString();
+		var dd = date.getDate().toString();
+		var hh = date.getHours().toString();
+		var nn = date.getMinutes().toString();
+		var ss = date.getSeconds().toString();
+		var mi = date.getMilliseconds().toString();
+		
+		var ret = yy + mm + dd + hh + nn + ss + mi;
+		return ret;
+	}
+	
+	function Scan1()
+	{
+		if (VideoMain)
+		{
+			var Name = "C:\\" + GetTimeString() + ".jpg";  	
+			var image = VideoMain.CreateImage(0, ViewMain.GetView());
+			if (image)
+			{
+				ViewMain.PlayCaptureEffect();
+				//图片base64
+				//var base64 = image.GetBase64(2, 0);
+				
+				var Name = "C:\\" + GetTimeString() + ".jpg";				
+				//默认地址保存不成功（没有文件夹保存权限），则保存在电脑临时文件目录
+				if(image.Save(Name, 0))
+				{
+					EloamThumbnail.Add(Name);
+				}
+				else
+				{
+					Name = EloamGlobal.GetTempName("jpg");	
+					image.Save(Name, 0);
+					EloamThumbnail.Add(Name);
+				}
+				image.Destroy();
+				image = null;
+			}
+		}
+	}
+	
+	function Scan2()
+	{
+		if (VideoAssist)
+		{
+			var Name = "C:\\" + GetTimeString() + ".jpg";  	
+			var image = VideoAssist.CreateImage(0, ViewAssist.GetView());
+			if (image)
+			{
+				ViewAssist.PlayCaptureEffect();
+				//图片base64
+				//var base64 = image.GetBase64(2, 0);
+				
+				var Name = "C:\\" + GetTimeString() + ".jpg";
+				//默认地址保存不成功（没有文件夹保存权限），则保存在电脑临时文件目录
+				if(image.Save(Name, 0))
+				{
+					EloamThumbnail.Add(Name);
+				}
+				else
+				{
+					Name = EloamGlobal.GetTempName("jpg");	
+					image.Save(Name, 0);
+					EloamThumbnail.Add(Name);
+				}
+				image.Destroy();
+				image = null;
+			}
+		}
+	}
+	function Scan()
+	{
+		Scan1();//主头拍照
+		Scan2();//副头拍照
+	}
+	
+	//******************************二代证*******************************************/
+	function StartIDCard()
+	{	
+		if(EloamGlobal.InitIdCard())
+		{
+			var ret = EloamGlobal.DiscernIdCard();
+			if(ret)
+			{
+				readIDcard = true;
+				document.getElementById("example").value= "启动二代证阅读成功！请刷卡";
+			}
+			else
+			{
+				document.getElementById("example").value= "启动二代证阅读失败！";
+			}		
+		}
+		else
+		{
+			document.getElementById("example").value= "初始化二代证阅读失败！";
+		}
+	}	
+
+	function StopIDCard()
+	{
+		EloamGlobal.StopIdCardDiscern();
+		EloamGlobal.DeinitIdCard()		
+		readIDcard = false;
+		
+		document.getElementById("example").value= "已停止";
+	}	
+	
+	function ReadIDCard()
+	{
+		if(readIDcard)
+		{
+			EloamGlobal.StopIdCardDiscern();
+			EloamGlobal.DeinitIdCard()		
+			readIDcard = false;
+		}  
+		if(EloamGlobal.InitIdCard())
+		{
+			var ret = EloamGlobal.ReadIdCard();
+			if(ret)
+			{
+				var str = GetTimeString() + "：";
+				var i;
+				for(i = 1; i < 19; i++ )
+				{
+					str += EloamGlobal.GetIdCardData(i);
+					str += ";";
+				}					
+				
+				document.getElementById("example").value=str;
+				//二代证实际大小85.6mm，宽度54mm，
+				var image = EloamGlobal.GetIdCardImage(6);
+				var Name = "C:\\idcard.jpg";
+				if(image.Save(Name, 0))
+				{
+					EloamThumbnail.Add(Name);
+				}
+				else
+				{
+					Name = EloamGlobal.GetTempName("jpg");	
+					image.Save(Name, 0);
+					EloamThumbnail.Add(Name);
+				}
+				
+				image.Destroy();
+				image = null;
+			}
+			else
+			{
+				document.getElementById("example").value= "读取二代证阅读失败！";
+			}
+			
+			EloamGlobal.DeinitIdCard();
+		}
+		else
+		{
+			document.getElementById("example").value= "初始化二代证阅读失败！";
+		}
+	}	
+	function OpenBothVideo2()
+	{	
+		
+	
+	}
+	
+	
+	
+	function OpenVideoMain()
+	{
+		CloseVideoMain();
+	
+		if(DeviceMain)
+		{
+			var mode = document.getElementById('selMode1');
+			var modeText = mode.options[mode.options.selectedIndex].text;
+			var subtype = (modeText == "YUY2"? 1:(modeText == "MJPG"? 2:(modeText == "UYVY"? 4:-1)));
+		
+			var select1 = document.getElementById('selRes1'); 
+			var nResolution1 = select1.selectedIndex;
+			
+			VideoMain = DeviceMain.CreateVideo(nResolution1, subtype);
+			if (VideoMain)
+			{
+				ViewMain.SelectVideo(VideoMain);
+				ViewMain.SetText("打开视频中，请等待...", 0);
+				
+			}
+		}
+	}
+	
+	function OpenVideoAssist()
+	{
+		CloseVideoAssist();
+	
+		if(DeviceAssist)
+		{
+			var mode = document.getElementById('selMode2');
+			var modeText = mode.options[mode.options.selectedIndex].text;
+			var subtype = (modeText == "YUY2"? 1:(modeText == "MJPG"? 2:(modeText == "UYVY"? 4:-1)));
+			
+			var select2 = document.getElementById('selRes2'); 
+			var nResolution2 = select2.selectedIndex;
+			
+			VideoAssist = DeviceAssist.CreateVideo(nResolution2, subtype);
+			if (VideoAssist)
+			{
+				ViewAssist.SelectVideo(VideoAssist);
+				ViewAssist.SetText("打开视频中，请等待...", 0);		
+			}
+		}
+	}
+	
+	function OpenBothVideo()
+	{	
+		OpenVideoMain();
+		OpenVideoAssist();
+	}
+	
+	function CloseVideoMain()
+	{
+		if (VideoMain)
+		{
+			VideoMain.Destroy();
+			VideoMain = null;	
+			ViewMain.SetText("", 0);	
+		}
+	}
+	
+	function CloseVideoAssist()
+	{
+		if (VideoAssist)
+		{
+			VideoAssist.Destroy();		
+			ViewAssist.SetText("", 0);				
+		}
+	}
+	
+	function CloseBothVideo()
+	{
+		CloseVideoMain();
+		CloseVideoAssist();
+	}
+	
+	//主摄像头出图格式切换
+	function changesubType1()
+	{
+		document.getElementById('selRes1').options.length = 0; 
+		var mode = document.getElementById('selMode1');
+		var modeText = mode.options[mode.options.selectedIndex].text;
+		var subtype = (modeText == "YUY2"? 1:(modeText == "MJPG"? 2:(modeText == "UYVY"? 4:-1)));
+		if((-1 != subtype) && (null != DeviceMain))
+		{
+			var select = document.getElementById('selRes1');
+			var nResolution = DeviceMain.GetResolutionCountEx(subtype);
+			for(var i = 0; i < nResolution; i++)
+			{
+				var width = DeviceMain.GetResolutionWidthEx(subtype, i);
+				var heigth = DeviceMain.GetResolutionHeightEx(subtype, i);
+				select.add(new Option(width.toString() + "*" + heigth.toString())); 
+			}
+			select.selectedIndex = 0;
+		}
+		OpenVideoMain();
+	}
+	
+	//副摄像头出图格式切换
+	function changesubType2()
+	{
+		document.getElementById('selRes2').options.length = 0; 
+		var mode = document.getElementById('selMode2');
+		var modeText = mode.options[mode.options.selectedIndex].text;
+		var subtype = (modeText == "YUY2"? 1:(modeText == "MJPG"? 2:(modeText == "UYVY"? 4:-1)));
+		if((-1 != subtype) && (null != DeviceAssist))
+		{
+			var select = document.getElementById('selRes2');
+			var nResolution = DeviceAssist.GetResolutionCountEx(subtype);
+			for(var i = 0; i < nResolution; i++)
+			{
+				var width = DeviceAssist.GetResolutionWidthEx(subtype, i);
+				var heigth = DeviceAssist.GetResolutionHeightEx(subtype, i);
+				select.add(new Option(width.toString() + "*" + heigth.toString())); 
+			}
+			select.selectedIndex = 0;
+		}
+		OpenVideoAssist();
+	}	
+	
+	//自定义拍照尺寸
+	function changeScanSize()
+	{
+		if(VideoMain)
+		{
+			var scanSize = document.getElementById('selScanSize').options.selectedIndex;
+			if(0 == scanSize)//原始尺寸
+			{
+				ViewMain.SetState(1);
+			}
+			else if(1 == scanSize || 2 == scanSize)
+			{
+				var rect;
+				var width = VideoMain.GetWidth();
+				var heigth = VideoMain.GetHeight();	
+					
+				if(1 == scanSize)//中等尺寸
+				{
+					rect = EloamGlobal.CreateRect(width * 1 / 30, heigth * 1 / 30, width * 14 / 15, heigth * 14 / 15);
+				}
+				if(2 == scanSize)//较小尺寸
+				{
+					rect = EloamGlobal.CreateRect(width/3, heigth/3, width/3, heigth/3);
+				}
+				
+				ViewMain.SetState(2);
+				ViewMain.SetSelectRect(rect);
+			}
+			else if(3 == scanSize)//自定义尺寸
+			{
+				//切换状态，清空框选区域
+				ViewMain.SetState(1);
+				ViewMain.SetState(2);
+				alert("在主摄像头界面中，按住鼠标拖动即可框选尺寸!");
+			}
+		}
+		else
+		{
+			alert("主摄像头视频未打开！");
+		}
+	}
+	
+	//缩略图全选
+	function checkAll()
+	{
+		var count = EloamThumbnail.GetCount();
+		if(count < 1)
+			return;
+		for(var i = 0; i < count; i++)
+		{
+			EloamThumbnail.SetCheck(i, true);
+		}
+	}	
+	//缩略图取消全选
+	function cancel()
+	{
+		var count = EloamThumbnail.GetCount();
+		if(count < 1)
+			return;
+		for(var i = 0; i < count; i++)
+		{
+			EloamThumbnail.SetCheck(i, false);
+		}
+	}	
+	
+	//获取本地文件base64
+	function getFileBase64()
+	{
+		var memory = EloamGlobal.CreateMemoryFromFile("C:\\1.pdf");
+		var base64 = memory.GetBase64();
+		alert(base64);
+		
+		memory.Destroy();
+		memory = null;
+	}
+	
+	//缩略图选中图片合成PDF文件
+	function BlendToPDF()
+	{
+		//获取列表内图像个数
+		var count = EloamThumbnail.GetCount();
+		if(count < 1)
+			return;
+		var imageList = EloamGlobal.CreateImageList();
+		if(!imageList)
+			return;
+		for(var i = 0; i < count; i++)
+		{
+			var hasCheck = EloamThumbnail.GetCheck(i);
+			if(hasCheck)
+			{
+				//获取图片路径
+				var path = EloamThumbnail.GetFileName(i);						
+				//通过文件创建图像 修改
+				var image = EloamGlobal.CreateImageFromFile(path, 0); 
+				imageList.Add(image);
+				EloamThumbnail.SetCheck(i, false);
+			}
+		}
+		var Name = "d:\\" + GetTimeString() + ".pdf";
+		if(imageList.SaveToPDF(2, Name, 0))
+		 alert("合成成功，文件路径：" + Name);
+		else
+			alert("合成失败，请重试！");
+	}
+	
+	//创建文件夹
+	function CreateDir()
+	{
+		//创建文件夹的路径用 "\\"，多级目录，需要一级一级向下创建
+		var dirPath = "c:\\1234";
+		EloamGlobal.CreateDir(dirPath);
+		dirPath = "c:\\1234\\5678";
+		EloamGlobal.CreateDir(dirPath);
+	}
+	
+</script>
+
+
+<script language="Javascript" event="DevChange(type, idx, dbt)" for="EloamGlobal_ID" type="text/JavaScript">
+//设备接入和丢失
+//type设备类型， 1 表示视频设备， 2 表示音频设备
+//idx设备索引
+//dbt设备动作类型
+	if (1 == type)
+	{
+		if (1 == dbt)//dbt 1 表示设备到达
+		{
+			var deviceType = EloamGlobal.GetEloamType(1, idx);
+			
+			if(1 == deviceType)//主摄像头
+			{
+				if(null == DeviceMain)
+				{
+					DeviceMain = EloamGlobal.CreateDevice(1, idx);
+					if (DeviceMain)
+					{
+						var label =  document.getElementById('lab1');
+						label.innerHTML = DeviceMain.GetFriendlyName();	
+						
+						var mode = document.getElementById('selMode1');
+						var subType = DeviceMain.GetSubtype();
+						if(0 != (subType & 1))
+						{
+							mode.add(new Option("YUY2"));
+						}
+						//默认MJPG出图格式
+						if(0 != (subType & 2))
+						{
+							mode.add(new Option("MJPG"), 0);
+						}
+						mode.selectedIndex = 0;
+						changesubType1();
+					}
+				}
+			}
+			else if(2 == deviceType || 3 == deviceType)//辅摄像头
+			{
+				if(null == DeviceAssist)
+				{
+					DeviceAssist = EloamGlobal.CreateDevice(1, idx);
+					if (DeviceAssist)
+					{
+						var label =  document.getElementById('lab2');
+						label.innerHTML = DeviceAssist.GetFriendlyName();	
+						
+						var mode = document.getElementById('selMode2');
+						var subType = DeviceAssist.GetSubtype();
+						if(0 != (subType & 1))
+						{
+							mode.add(new Option("YUY2"));
+						}
+						//默认MJPG出图格式
+						if(0 != (subType & 2))
+						{
+							mode.add(new Option("MJPG"), 0);
+						}
+						mode.selectedIndex = 0;
+						changesubType2();
+					}
+				}
+			}		
+		}
+		
+		if (2 == dbt)//dbt 2 表示设备丢失
+		{
+			if (DeviceMain)
+			{
+				if(idx == DeviceMain.GetIndex())
+				{
+					if(VideoMain)
+					{
+						VideoMain.Destroy();
+						VideoMain = null;
+						
+						ViewMain.SetText("", 0);
+					}
+					DeviceMain.Destroy();
+					DeviceMain = null;
+					
+					document.getElementById('selMode1').options.length = 0; 
+					document.getElementById('selScanSize').options.length = 0; 
+					document.getElementById('selRes1').options.length = 0; 
+				}
+			}			
+			if (DeviceAssist)
+			{
+				if(idx == DeviceAssist.GetIndex())
+				{
+					if(VideoAssist)
+					{
+						VideoAssist.Destroy();
+						VideoAssist = null;
+						
+						ViewAssist.SetText("", 0);												
+					}
+					DeviceAssist.Destroy();
+					DeviceAssist = null;
+					
+					document.getElementById('selMode2').options.length = 0; 
+					document.getElementById('selRes2').options.length = 0; 
+				}
+			}		
+		}	
+	}
+	
+</script>
+
+<script language="Javascript" event="Arrival(video, id)" for="EloamGlobal_ID" type="text/JavaScript">
+		
+	if (VideoMain == video && 1 == id)//视频到达
+	{
+	
+	}	
+</script>
+
+<script language="Javascript" event="IdCard(ret)" for="EloamGlobal_ID" type="text/JavaScript">
+	
+	if (1 == ret)
+	{
+		var str = GetTimeString() + "：";
+		var i;
+		for(i = 1; i < 19; i++ )
+		{
+			str += EloamGlobal.GetIdCardData(i);
+			str += ";";
+		}	
+		document.getElementById("example").value=str;
+		
+		var image = EloamGlobal.GetIdCardImage(4);
+		image.Save("C:\\idcard.jpg", 0);
+		image.Destroy();
+	}
+	
+</script>
+
+
+
+
+</HEAD>
+<BODY onload="Load()" onunload="Unload()">
+<div>
+	<OBJECT ID="ViewMain" CLASSID="CLSID:26BA9E7F-78E9-4FB8-A05C-A4185D80D759" WIDTH="0" HEIGHT="0" ></OBJECT>
+	<OBJECT ID="ViewAssist" CLASSID="CLSID:26BA9E7F-78E9-4FB8-A05C-A4185D80D759" WIDTH="1800" HEIGHT="1500"></OBJECT>
+</div>
+<div>
+	<OBJECT ID="EloamThumbnail" CLASSID="CLSID:B5535A1B-D25B-4B3C-854F-94B12E284A4E" WIDTH="1200" HEIGHT="200"></OBJECT>
+</div>
+
+<tr>
+	<td>	
+		<label id="lab1">设备1</label>
+		<select id="selMode1" style="width: 90px" name="selMode" onchange="changesubType1()"></select> 
+		<select id="selRes1" style="width: 90px" name="selRes" onchange="OpenVideoMain()"></select> 
+		<select id="selScanSize" style="width: 90px" name="selScanSize" onchange="changeScanSize()"></select> 
+		<label id="lab2">设备2</label>
+		<select id="selMode2" style="width: 90px" name="selMode" onchange="changesubType2()"></select> 
+		<select id="selRes2" style="width: 90px" name="selRes" onchange="OpenVideoAssist()"></select> 
+		<input class="submit_01" type="button" value="打开视频" onclick="OpenBothVideo()" />
+		<input class="submit_01" type="button" value="关闭视频" onclick="CloseBothVideo()" />
+		<input class="submit_01" type="button" value="拍照" onclick="Scan()" />
+		<input class="submit_01" type="button" value="铺满" onclick="OpenBothVideo2()" />
+		  <br />
+		<input class="submit_01" type="button" value="缩略图列表全选" onclick="checkAll()" />
+		<input class="submit_01" type="button" value="取消全选" onclick="cancel()" />
+		<input class="submit_01" type="button" value="获取文件base64" onclick="getFileBase64()" />
+		<input class="submit_01" type="button" value="合成pdf" onclick="BlendToPDF()" />
+		<input class="submit_01" type="button" value="创建目录" onclick="CreateDir()" />
+		
+		<br />	
+		<input class="submit_01" type="button" value="左转" onclick="RotateLeft()" />
+		<input class="submit_01" type="button" value="右转" onclick="RotateRight()" />
+		<input class="submit_01" type="button" value="属性" onclick="Property()" />
+		<input id="setdeskew" type="checkbox" value="" onclick="SetDeskew(this)" />纠偏裁边
+		<b>|</b>
+		<input class="submit_01" type="button" value="启动二代证阅读" onclick="StartIDCard()" />
+		<input class="submit_01" type="button" value="停止阅读" onclick="StopIDCard()" />
+		<input class="submit_01" type="button" value="单次读取二代证" onclick="ReadIDCard()" />
+		<input type="text" id="example" size = "155"/>
+	</td>
+</tr>
+
+</BODY>
+</HTML>

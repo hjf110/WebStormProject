@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择车辆(接车)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="../layer_mobile/layer.js"></script>
+    <script src="../js/common/api.js"></script>
+    <script type="text/javascript" src="../js/jquery.md5.js"></script>
+
+</head>
+<link rel="stylesheet" href="../js/layuiadmin/style/login.css" media="all">
+<link rel="stylesheet" href="util/water_up_down/css/normalize.css">
+<link rel="stylesheet" href="util/water_up_down/css/style3.css">
+<link rel="stylesheet" href="../css/css2.css">
+<link rel="stylesheet" href="../layer_mobile/need/layer.css">
+<!--[if IE]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<script>document.documentElement.className = 'js';</script>
+
+<body>
+<svg class="hidden">
+    <defs>
+        <symbol id="icon-arrow" viewBox="0 0 24 24">
+            <title>arrow</title>
+            <polygon points="6.3,12.8 20.9,12.8 20.9,11.2 6.3,11.2 10.2,7.2 9,6 3.1,12 9,18 10.2,16.8 "/>
+        </symbol>
+        <symbol id="icon-drop" viewBox="0 0 24 24">
+            <title>drop</title>
+            <path d="M12,21c-3.6,0-6.6-3-6.6-6.6C5.4,11,10.8,4,11.4,3.2C11.6,3.1,11.8,3,12,3s0.4,0.1,0.6,0.3c0.6,0.8,6.1,7.8,6.1,11.2C18.6,18.1,15.6,21,12,21zM12,4.8c-1.8,2.4-5.2,7.4-5.2,9.6c0,2.9,2.3,5.2,5.2,5.2s5.2-2.3,5.2-5.2C17.2,12.2,13.8,7.3,12,4.8z"/>
+            <path d="M12,18.2c-0.4,0-0.7-0.3-0.7-0.7s0.3-0.7,0.7-0.7c1.3,0,2.4-1.1,2.4-2.4c0-0.4,0.3-0.7,0.7-0.7c0.4,0,0.7,0.3,0.7,0.7C15.8,16.5,14.1,18.2,12,18.2z"/>
+        </symbol>
+        <symbol id="icon-grid" viewBox="0 0 100 100">
+            <title>grid</title>
+            <rect x="8.4" y="8.9" width="20.1" height="20.1"/>
+            <rect x="40" y="8.9" width="20.1" height="20.1"/>
+            <rect x="71.6" y="8.9" width="20.1" height="20.1"/>
+            <rect x="8.3" y="40" width="20.1" height="20.1"/>
+            <rect x="39.9" y="40" width="20.1" height="20.1"/>
+            <rect x="71.6" y="40" width="20.1" height="20.1"/>
+            <rect x="8.3" y="71" width="20.1" height="20.1"/>
+            <rect x="39.9" y="71" width="20.1" height="20.1"/>
+            <rect x="71.6" y="71" width="20.1" height="20.1"/>
+        </symbol>
+        <symbol id="icon-sound-on" viewBox="0 0 100 100">
+            <title>sound on</title>
+            <path d="M57.9,13c-6.6,0-13.1,1.8-18.8,5.1c-5.1,3-9.3,7.1-12.5,12.1H12.5c-5.7,0-10.4,4.7-10.4,10.4v18.9
+						c0,5.7,4.7,10.4,10.4,10.4h14.1c3.1,4.9,7.4,9.1,12.5,12.1c5.7,3.3,12.1,5.1,18.8,5.1c1.5,0,2.7-1.2,2.7-2.7V15.7
+						C60.6,14.2,59.4,13,57.9,13z M25.5,64.5h-13c-2.8,0-5.1-2.3-5.1-5.1V40.6c0-2.8,2.3-5.1,5.1-5.1h13C25.5,35.5,25.5,64.5,25.5,64.5
+						z M55.2,81.6c-10-0.8-19.1-6.5-24.4-15.1V33.6c5.3-8.6,14.4-14.3,24.4-15.1V81.6z"/>
+            <path d="M71,29.4c-1.2-0.8-2.9-0.6-3.7,0.7c-0.8,1.2-0.6,2.9,0.7,3.7c5.3,3.7,8.5,9.8,8.5,16.3S73.3,62.6,68,66.3
+						c-1.2,0.8-1.5,2.5-0.7,3.7c0.5,0.8,1.3,1.1,2.2,1.1c0.5,0,1.1-0.2,1.5-0.5C77.8,66,81.8,58.3,81.8,50S77.8,34.1,71,29.4z"/>
+            <path d="M81.3,18.3c-1.2-0.8-2.9-0.6-3.7,0.7c-0.8,1.2-0.6,2.9,0.7,3.7c8.9,6.2,14.3,16.4,14.3,27.3
+						s-5.3,21.1-14.3,27.3c-1.2,0.8-1.5,2.5-0.7,3.7c0.5,0.8,1.3,1.1,2.2,1.1c0.5,0,1.1-0.2,1.5-0.5C91.7,74.5,97.9,62.6,97.9,50
+						S91.7,25.5,81.3,18.3z"/>
+        </symbol>
+        <symbol id="icon-sound-off" viewBox="0 0 100 100">
+            <title>sound off</title>
+            <path d="M57.9,13c-6.6,0-13.1,1.8-18.8,5.1c-5.1,3-9.3,7.1-12.5,12.1H12.5c-5.7,0-10.4,4.7-10.4,10.4v18.9
+						c0,5.7,4.7,10.4,10.4,10.4h14.1c3.1,4.9,7.4,9.1,12.5,12.1c5.7,3.3,12.1,5.1,18.8,5.1c1.5,0,2.7-1.2,2.7-2.7V15.7
+						C60.6,14.2,59.4,13,57.9,13z M25.5,64.5h-13c-2.8,0-5.1-2.3-5.1-5.1V40.6c0-2.8,2.3-5.1,5.1-5.1h13C25.5,35.5,25.5,64.5,25.5,64.5z
+						M55.2,81.6c-10-0.8-19.1-6.5-24.4-15.1V33.6c5.3-8.6,14.4-14.3,24.4-15.1V81.6z"/>
+            <g>
+                <path d="M68.4,66.4c-0.7,0-1.4-0.3-1.9-0.8c-1-1-1-2.7,0-3.8l27.6-27.6c1-1,2.7-1,3.8,0c1,1,1,2.7,0,3.8L70.3,65.7
+						C69.8,66.2,69.1,66.4,68.4,66.4z"/>
+                <path d="M96,66.4c-0.7,0-1.4-0.3-1.9-0.8L66.6,38.1c-1-1-1-2.7,0-3.8c1-1,2.7-1,3.8,0l27.6,27.6c1,1,1,2.7,0,3.8
+						C97.4,66.2,96.7,66.4,96,66.4z"/>
+            </g>
+        </symbol>
+    </defs>
+</svg>
+<main class="landing-layout">
+    <!-- Landing wrap with sections -->
+    <div class="landing-wrap">
+        <section class="landing landing--above"
+                 style="background-image: url(./util/water_up_down/img/5.jpg);"></section>
+        <section class="landing landing--beneath" style="background-image: url(./util/water_up_down/img/6.jpg);">
+            <canvas id="bubbles"></canvas>
+        </section>
+    </div><!-- /landing-wrap -->
+    <!-- Landing header with title -->
+    <header class="landing-header">
+        <h1 class="landing-header__title" aria-label="Blue Divers">
+            <span>请</span><span>选</span><span>择</span><span>待</span>
+            <span>入</span><span>库</span><span>车</span><span>辆</span>
+        </h1>
+        <!--        <p class="landing-header__tagline">欢迎使用</p>-->
+    </header><!-- /landing-header -->
+    <!-- Trigger button for layout change -->
+    <button id="button_index" class="button button--trigger" aria-label="View more">
+        <svg class="icon icon--grid icon--shown">
+            <use xlink:href="#icon-grid"></use>
+        </svg>
+        <svg class="icon icon--arrow-up icon--hidden">
+            <use xlink:href="#icon-arrow"></use>
+        </svg>
+    </button>
+    <!-- Sound on/off button -->
+    <button class="button button--sound" aria-label="Toggle sound">
+        <svg class="icon icon--sound-on icon--shown">
+            <use xlink:href="#icon-sound-on"></use>
+        </svg>
+        <svg class="icon icon--sound-off icon--hidden">
+            <use xlink:href="#icon-sound-off"></use>
+        </svg>
+    </button>
+    <!-- Featured content that gets shown after the layout opens -->
+    <section class="featured-content">
+
+    </section><!-- /featured-content -->
+    <!-- jq22 header -->
+    <header class="jq22-header">
+        <h1 class="jq22-header__title"><span id="header_title"></span>,欢迎您!</h1>
+        <!--        <nav class="jq22-demos">-->
+        <!--            <a href="index.html">Demo1</a>-->
+        <!--            <a href="index2.html">Demo 2</a>-->
+        <!--            <a class="current-demo" href="index3.html">Demo 3</a>-->
+        <!--        </nav>-->
+    </header>
+    <!-- /jq22-header -->
+    <div class="loader">
+        <svg class="loader__img" viewBox="0 0 100 100" width="100px" height="100px">
+            <circle class="loader__circle" cx="22.8" cy="77.6" r="16.5"/>
+            <circle class="loader__circle" cx="52.2" cy="82.9" r="6.5"/>
+            <circle class="loader__circle" cx="79.8" cy="69.8" r="13.1"/>
+        </svg>
+    </div>
+</main>
+<div class="main-box hide">
+    <!--    <div align="center" class="head-message">-->
+    <!--        <span></span>请选择待接车车辆-->
+    <!--    </div>-->
+    <form action="BindCar.html">
+        <div class="cf-box">
+            <div class="cf-body">
+                <ul id="box">
+
+                    <!--                    <li class="cf-a">-->
+                    <!--                    <span class="cf-li">12373764HCH37381</span>-->
+                    <!--                    <span style="display: none" class="rn">12373764HCH37381</span>-->
+                    <!--                    </li>-->
+                    <!--                    <li class="cf-a">-->
+                    <!--                        <span class="cf-li">12373764HCH37381</span>-->
+                    <!--                        <span style="display: none" class="rn">12373764HCH37381</span>-->
+                    <!--                    </li>-->
+                    <!--                    <li class="cf-a">-->
+                    <!--                        <span class="cf-li">12373764HCH37381</span>-->
+                    <!--                        <span style="display: none" class="rn">12373764HCH37381</span>-->
+                    <!--                    </li>-->
+                    <!--                    <li class="cf-a">-->
+                    <!--                        <span class="cf-li">12373764HCH37381</span>-->
+                    <!--                        <span style="display: none" class="rn">12373764HCH37381</span>-->
+                    <!--                    </li>-->
+                    <!--                    <li class="cf-a">-->
+                    <!--                    <span class="cf-li">12373764HCH37382</span>-->
+                    <!--                    <span style="display: none" class="rn">12373764HCH37381</span>-->
+                    <!--                    </li>-->
+                    <!--                    <li class="cf-a">-->
+                    <!--                    <span class="cf-li">12373764HCH37383</span>-->
+                    <!--                    <span style="display: none" class="rn">12373764HCH37381</span>-->
+                    <!--                    </li>-->
+
+                </ul>
+            </div>
+        </div>
+        <button class="ocr-submit-2" type="button">确认</button>
+    </form>
+</div>
+</body>
+<script type="text/javascript" src="../js/jquery-geturlcode.js"></script>
+<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+<script type="text/javascript" src="../js/localjs.js"></script>
+<script src="./util/water_up_down/js/howler.min.js"></script>
+<script src="./util/water_up_down/js/imagesloaded.pkgd.min.js"></script>
+<script src="./util/water_up_down/js/main_3.js"></script>
+<script type="text/javascript">
+    var storage_number;
+    // function callAndroid(){
+    //     // 由于对象映射，所以调用test对象等于调用Android映射的对象，方法名要一致
+    //     test.showtw("js调用了android中的方法");
+    // }
+    //
+    // function sendMsg(res) {
+    //     alert(res);
+    // }
+    var z = 0;
+
+
+    var type_only;
+
+
+    $(function () {
+
+        type_only = GetQueryString("type");
+
+
+        setTimeout(function () {
+            $("#button_index").click();
+            $(".main-box").fadeIn(3000);
+            $("#button_index").toggle(
+                function () {
+                    $(".main-box").fadeOut(1000);
+                },
+                function () {
+                    $(".main-box").fadeIn(3000);
+                }
+            );
+        }, 1000);
+
+        var username = sessionStorage.getItem('username');
+        $("#header_title").html(username);//存入姓名
+
+        get_Car_List();//获取接车列表
+
+
+        //点击接车确认按钮
+        $(".ocr-submit-2").on("click", function () {
+            // test.showtw("js调用了android中的方法");
+            if (storage_number == "" || storage_number == null) {
+                layer.open({
+                    content: '请选择车架号'
+                    , skin: 'msg'
+                    , time: 2 //2秒后自动关闭
+                });
+            } else {
+                Ok_get_Car();
+            }
+        });
+
+    });
+
+
+    //数据操作
+    function Caozuo() {
+
+        $("li").on("click", function () {
+            $("li").each(function () {
+                $(this).attr("class", "cf-a");
+                $(this).find("img").attr("src", "");
+            });
+            $(this).attr("class", "cf-b");
+            $(this).find("img").attr("src", "../image/yes0.png");
+            storage_number = $(this).find(".rn").val();
+            console.log("接车码-----" + storage_number);
+        });
+    }
+
+
+    //获取待接车列表
+    function get_Car_List() {
+        var timestamp = (new Date()).valueOf();// 时间戳----
+        //生成sign
+        var MD5String = "timestamp=" + timestamp + pass;
+        var MD5 = $.md5(MD5String);
+        MD5 = MD5.toUpperCase();//字母转为大写
+        var sign = pass + MD5;// 加密参数----
+        var token = sessionStorage.getItem('token');
+        console.log("token-----" + token);
+        var url;
+
+        if(type_only==1){
+            url = Api.PDA_jieche.FindCar_Only;
+        }else{
+            url = Api.PDA_jieche.FindCar;
+        }
+
+
+
+        $.ajax({
+            type: "GET",
+            url: url,
+            data: {
+                timestamp: timestamp,
+                sign: sign
+            },
+            dataType: 'json',
+            beforeSend: function (request) {
+                request.setRequestHeader("KJCY-TOKEN", token);
+                request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            },
+            success: function (res) {
+                //alert(1);
+                // alert(data.msg);
+                console.log(res);
+
+                if (res.msg == "success") {
+                    $.each(res.data, function (idx, obj) {
+                        console.log(obj.vinno);
+                        console.log(obj.storagenumber);
+                        $("#box").append('<li class="cf-a">\n' +
+                            '                    <span class="cf-img"><img style="width: 20px;" src="" ></span>' +
+                            '                    <span class="cf-li">' + obj.vinno + '</span>\n' +
+                            '                    <input type="hidden" class="rn" value="' + obj.storagenumber + '">\n' +
+                            '                </li>');
+                    });
+
+                    Caozuo();
+                }
+            },
+            error: function (XMLHttpResponse, textStatus, errorThrown) {
+                console.log("1 异步调用返回失败,XMLHttpResponse.readyState:" + XMLHttpResponse.readyState);
+                console.log("2 异步调用返回失败,XMLHttpResponse.status:" + XMLHttpResponse.status);
+                console.log("3 异步调用返回失败,textStatus:" + textStatus);
+                console.log("4 异步调用返回失败,errorThrown:" + errorThrown);
+
+            }
+        })
+    }
+
+    //确认接车
+    function Ok_get_Car() {
+        var timestamp = (new Date()).valueOf();// 时间戳----
+        //生成sign
+        var MD5String = "storage_number=" + storage_number + "&timestamp=" + timestamp + pass;
+        var MD5 = $.md5(MD5String);
+        MD5 = MD5.toUpperCase();//字母转为大写
+        var sign = pass + MD5;// 加密参数----
+        var token = sessionStorage.getItem('token');
+        console.log("token-----" + token);
+
+        $.ajax({
+            type: "GET",
+            url: Api.PDA_jieche.Ok_Car,
+            data: {
+                timestamp: timestamp,
+                sign: sign,
+                storage_number: storage_number
+            },
+            dataType: 'json',
+            beforeSend: function (request) {
+                request.setRequestHeader("KJCY-TOKEN", token);
+                // request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            },
+            success: function (res) {
+                //alert(1);
+                // alert(data.msg);
+                if (res.msg == "success") {
+                    $.cookie("storage_number", storage_number, {path: '/'});//将接车码存入cookie
+                    //跳转页面
+                    window.location.href = "BindCar.html";
+                }
+            },
+            error: function (XMLHttpResponse, textStatus, errorThrown) {
+                console.log("1 异步调用返回失败,XMLHttpResponse.readyState:" + XMLHttpResponse.readyState);
+                console.log("2 异步调用返回失败,XMLHttpResponse.status:" + XMLHttpResponse.status);
+                console.log("3 异步调用返回失败,textStatus:" + textStatus);
+                console.log("4 异步调用返回失败,errorThrown:" + errorThrown);
+
+            }
+        })
+    }
+
+
+</script>
+
+
+</html>

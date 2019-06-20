@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>事故</title>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="ie-stand">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../plugins/jqgrid/ui.jqgrid-bootstrap.css">
+    <link rel="stylesheet" href="../../plugins/ztree/css/metroStyle/metroStyle.css">
+    <link rel="stylesheet" href="../../css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../..//css/main.css">
+    <link rel="stylesheet" href="../../plugins/treegrid/jquery.treegrid.css">
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/table.css">
+
+    <script src="../../libs/jquery-3.3.1.js"></script>
+    <script src="../../plugins/layer/layer.js"></script>
+    <script src="../../libs/bootstrap.min.js"></script>
+    <script src="../../libs/vue.min.js"></script>
+    <script src="../../libs/bootstrap-table.min.js"></script>
+    <script src="../../plugins/treegrid/jquery.treegrid.min.js"></script>
+    <script src="../../plugins/treegrid/jquery.treegrid.bootstrap3.js"></script>
+    <script src="../../plugins/treegrid/jquery.treegrid.extension.js"></script>
+    <script src="../../plugins/treegrid/tree.table.js"></script>
+    <script src="../../plugins/jqgrid/grid.locale-cn.js"></script>
+    <script src="../../plugins/jqgrid/jquery.jqGrid.min.js"></script>
+    <script src="../../plugins/ztree/jquery.ztree.all.min.js"></script>
+    <script src="../../plugins/treeview/bootstrap-treeview.js"></script>
+
+    <link rel="stylesheet" href="../../plugins/select/css/bootstrap-select.css">
+    <script src="../../plugins/select/bootstrap-select.js"></script>
+    <script src="../../plugins/select/defaults-zh_CN.js"></script>
+
+    <script src="../../js/common/api.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/tool.js"></script>
+    <script src="../../js/common/extend.js"></script>
+    <script src="../../js/common/tool.js"></script>
+    <script src="./js/dom-to-image.js"></script>
+    <script src="./js/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="./css/sheet.css">
+    <link rel="stylesheet" href="../../libs/datetimepicker/bootstrap-datetimepicker.min.css">
+    <script src="../../libs/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+    <script src="../../libs/datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+
+    <link rel="stylesheet" href="./libs/viewer/viewer.css">
+    <script src="./libs/viewer/viewer.js"></script>
+
+</head>
+<body style="height: 100%">
+<div id="armorapp">
+    <div v-show="showList">
+        <div class="grid-btn" style="display: none" id="operation">
+            <div>
+                <div class="form-group col-sm-2">
+                    <input type="text" class="form-control" v-model="q.query" @keyup.enter="query" placeholder="名称">
+                </div>
+
+                <!--<input type="text" class="form-control" id="startTime" readonly-->
+                <!--style="width: 200px;display: inline-block" v-show="bridgeFinance">-->
+                <!--<input type="text" class="form-control" id="endTime" readonly-->
+                <!--style="width: 200px;display: inline-block" v-show="bridgeFinance">-->
+
+                <a class="btn btn-default" @click="query">查询</a>
+            </div>
+            <br/>
+            <!--状态 1 未处理 2 未调度 3 已调度 4 继续跑 5 已完成-->
+            <div style="margin-left: 20px">
+                <a class="btn btn-primary btn-sm lookInfo"><i
+                        class="fa fa-plus"></i>&nbsp;查看详情</a>
+                <!--<a class="btn btn-primary btn-sm reviewAdopt" v-show="isFaultManage&&state==1"><i-->
+                        <!--class="fa fa-plus"></i>&nbsp;确认报修</a>-->
+                <!--<a class="btn btn-primary btn-sm reviewNotAdopt" v-show="isFaultManage&&state==1"><i-->
+                        <!--class="fa fa-close"></i>&nbsp;不报修</a>-->
+                <!--<a class="btn btn-primary btn-sm ydd" v-show="isFaultDispatch&&state==2"><i-->
+                <!--class="fa fa-plus"></i>&nbsp;已调度</a>-->
+                <!--<a class="btn btn-primary btn-sm wait" v-show="isFaultSalesman&&state==1"><i-->
+                <!--class="fa fa-plus"></i>&nbsp;等待</a>-->
+                <!--<a class="btn btn-primary btn-sm leave" v-show="isFaultSalesman&&state==1"><i-->
+                <!--class="fa fa-plus"></i>&nbsp;离开</a>-->
+                <!--<a class="btn btn-primary btn-sm out" v-show="isFaultSalesman&&state==1"><i-->
+                <!--class="fa fa-plus"></i>&nbsp;拖离</a>-->
+                <a class="btn btn-primary btn-sm dws" v-show="isFaultManage&&(state=='6,7,8')"><i
+                        class="fa fa-plus"></i>&nbsp;完善表格</a>
+                <a class="btn btn-primary btn-sm complete" v-show="isFaultManage&&(state=='6,7,8')"><i
+                        class="fa fa-plus"></i>&nbsp;确认完成</a>
+                <a class="btn btn-primary btn-sm lookForm" v-show="(isFaultManage||isAccidentObservation)&&state==5"><i
+                        class="fa fa-plus"></i>&nbsp;查看表单</a>
+                <a class="btn btn-primary btn-sm refresh"><i
+                        class="fa fa-refresh"></i>&nbsp;刷新</a>
+                <span>
+                    <select class="selectpicker stateSelect" title="未处理">
+                        <option value="1">未处理</option>
+                        <!--<option value="2">未调度</option>-->
+                        <!--<option value="3">已调度</option>-->
+                        <option value="6,7,8">已处理</option>
+                        <option value="5">已完成</option>
+                    </select>
+                </span>
+            </div>
+        </div>
+
+
+        <div id="list"></div>
+    </div>
+
+    <div class="form-group" style="display: none;margin: 10px" id="reason">
+        <textarea class="form-control" rows="10" id="reasonInfo"></textarea>
+    </div>
+
+</div>
+
+</body>
+<script src="../../js/control/bootstrapTableTemplate.js"></script>
+<script src="../../js/control/layerDialog.js"></script>
+<script src="./js/config.js"></script>
+<script src="./js/new_car_check.js"></script>
+
+
+</html>

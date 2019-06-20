@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拍照</title>
+    <link href="../image/ioc/favicon.ico" rel="icon" type="image/x-ico">
+
+    <script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+    <script src="../js/layuiadmin/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../js/common/localjs.js"></script>
+    <script type="text/javascript" src="../js/common/tool.js"></script>
+    <link rel="stylesheet" type="text/css" href="../js/layuiadmin/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" href="../js/layuiadmin/style/login.css" media="all">
+
+</head>
+<body>
+<div style="margin-top: 10px;margin-left: 10px">
+    <button type="button" class="layui-btn layui-btn-normal layui-btn-sm" onclick="StartVideo()">
+        <i class="layui-icon">&#xe6ed;</i>
+        打开摄像头
+    </button>
+    <button type="button" class="layui-btn layui-btn-warm layui-btn-sm" onclick="CloseVideo()">
+        <i class="layui-icon">&#x1006;</i>
+        关闭摄像头
+    </button>
+    <button type="button" class="layui-btn layui-btn-danger layui-btn-sm" onclick="Capture()">
+        <i class="layui-icon">&#xe660;</i>拍照
+    </button>
+</div>
+<div style="float: left;width:350px; height:350px;">
+    <object id="axCam_Ocx" style=" width:350px; height:350px;"
+            classid="clsid:ce2d72f2-ad28-4013-a24b-c3f76c5a1944"
+            codebase="CamOcx.cab #version=1,0,0,1">
+    </object>
+</div>
+<div class="grid-btn" style="float:left;width: 400px;">
+    <div class="btn-group" role="group" id="financeMark">
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="./js/photo.js"></script>
+<script>
+
+</script>
+</html>

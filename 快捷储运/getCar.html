@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择检验区域</title>
+
+</head>
+<link rel="stylesheet" href="css/css.css">
+<link rel="stylesheet" href="layer_mobile/need/layer.css">
+<link rel="stylesheet" href="../js/layuiadmin/style/login.css" media="all">
+<body>
+<a href="index.html">
+    <div class="back">
+        <img class="back-img" src="image/back.png"><span class="back-text">返回</span>
+    </div>
+</a>
+<div class="head">
+    <div class="head-img">
+        <img class="head-img-1" src="image/learning.png"/>
+    </div>
+    <div class="head-text">
+        <h2>宁波快捷汽车储运有限公司</h2>
+    </div>
+</div>
+<div align="center" class="head-message">
+    请选择检验区域
+</div>
+<div class="pm" align="center">
+</div>
+</body>
+<script type="text/javascript" src="./js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="./js/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="./js/jquery.md5.js"></script>
+<script type="text/javascript" src="./js/jquery-geturlcode.js"></script>
+<script type="text/javascript" src="./js/jquery.cookie.js"></script>
+<script type="text/javascript" src="./js/common/localjs.js"></script>
+<script type="text/javascript">
+
+    $(function () {
+        jieche();
+    });
+
+
+    function jieche() {
+        var timestamp = (new Date()).valueOf();// 时间戳----
+        //生成sign
+        var MD5String = "timestamp=" + timestamp + pass;
+        var MD5 = $.md5(MD5String);
+        MD5 = MD5.toUpperCase();//字母转为大写
+        var sign = pass + MD5;// 加密参数----
+        var token = sessionStorage.getItem('token');
+        console.log("token-----" + token);
+        tojieche(timestamp, sign, token);
+    }
+
+    function tojieche(timestamp, sign, token) {
+        //获取车道数接口
+        /*
+        * a）接口地址：/receivecar/lines
+        * b）访问方式：GET
+        * c) 需要的参数 :   timestamp ,sign
+        * */
+        $.ajax({
+            type: "GET",
+            url: path + "/receivecar/lines",
+            beforeSend: function (xx) {
+                xx.setRequestHeader("KJCY-TOKEN", token);
+            },
+            data: {
+                "timestamp": timestamp,
+                "sign": sign
+            },
+            dataType: "json",
+            success: function (data) {
+                var res = data.data;
+
+                console.log("返回的msg--------",data.msg);
+                console.log("返回的数据--------",res);
+                if (data.msg == "success") {
+
+                    //如果成功,添加车道信息
+                    $.each(res, function (idx, obj) {
+                        var url = "Frame.html?cd="+obj.name+"&no="+obj.no+"";
+                        $(".pm").append('<a href="'+url+'">' +
+                            '<div class="pm-navigation pm-navigation-2">' +
+                            '<div class="pm-y pm-gc-nopd pm-button">' +
+                            '<img class="pm-img" src="image/cd.png">' +
+                            '</div>' +
+                            '<p class="pm-text">' + obj.name + '</p>' +
+                            '</div>' +
+                            '</a>')
+                    })
+                }
+            },
+            error: function (XMLHttpResponse, textStatus, errorThrown) {
+                console.log("1 异步调用返回失败,XMLHttpResponse.readyState:" + XMLHttpResponse.readyState);
+                console.log("2 异步调用返回失败,XMLHttpResponse.status:" + XMLHttpResponse.status);
+                console.log("3 异步调用返回失败,textStatus:" + textStatus);
+                console.log("4 异步调用返回失败,errorThrown:" + errorThrown);
+
+            }
+        });
+    }
+</script>
+</html>

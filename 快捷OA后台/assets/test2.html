@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="jtsgForm" class="form">
+    <div class="title-lg">自车交通事故</div>
+    <!--基本信息-->
+    <div class="partBox basicInfo">
+        <div class="title-md">基本情况</div>
+        <div class="line"></div>
+        <div class="contentBox">
+            <div class="trBox">
+                <div class="tdBox-2">
+                    <div class="title-sm title-left">技师姓名</div>
+                    <input id="jsxm" type="text" class="form-control width-1" placeholder="" readonly="readonly" v-bind:value="jsxm" v-model="jsxm" /></div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-right">车牌号</div>
+                    <input id="cph" type="text" class="form-control width-1" placeholder="" readonly="readonly"v-bind:value="cph" v-model="cph" /></div>
+            </div>
+            <div class="trBox">
+                <div class="tdBox-1">
+                    <div class="title-sm title-left">事故发生时间</div>
+                    <input id="endTime" type="text" class="form-control width-1" readonly="" style="display: inline-block" v-show="bridgeFinance"v-bind:value="sgfssj" v-model="sgfssj" /></div>
+            </div>
+            <div class="trBox">
+                <div class="tdBox-1">
+                    <div class="title-sm ver-top title-left">事故发生地点</div>
+                    <textarea id="sgfsdd" class="form-control ver-top width-2" name="deblock_udid" rows="5" readonly="readonly"v-bind:value="sgfsdd" v-model="sgfsdd"></textarea>
+                </div>
+            </div>
+            <div class="trBox">
+                <div class="tdBox-2">
+                    <div class="title-sm title-left">我司车辆是否能正常行驶</div>
+                    <select id="normalDriving" class="form-control width-1" v-bind:value="zcxs" v-model="zcxs">
+                        <option value="1">是</option>
+                        <option value="2">否</option></select>
+                </div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-right">是否有人员受伤</div>
+                    <select id="personnelInjury" class="form-control width-1"v-bind:value="ryss" v-model="ryss">
+                        <option value="1">是</option>
+                        <option value="2">否</option></select>
+                </div>
+            </div>
+            <div class="trBox">
+                <div class="tdBox-1">
+                    <div class="title-sm ver-top title-left">交警责任判定</div>
+                    <textarea class="form-control ver-top width-2" id="responsibilityJudgement" name="deblock_udid" rows="5" v-bind:value="jjzrpd" v-model="jjzrpd"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--受损情况-->
+    <div class="partBox damageSituation">
+        <div class="title-md">受损情况</div>
+        <div class="line"></div>
+        <div class="contentBox">
+            <div class="trBox">
+                <div class="tdBox-2">
+                    <div class="title-sm title-left">我方车辆损伤情况</div>
+                    <textarea class="form-control ver-top width-1" id="we" name="deblock_udid" rows="5" v-bind:value="wfclssqk" v-model="wfclssqk"></textarea>
+                </div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-right">损伤金额</div>
+                    <input type="text" id="weAmountDamage" class="form-control width-1" placeholder=""v-bind:value="ssje1" v-model="ssje1"></div>
+            </div>
+            <div class="trBox">
+                <div class="tdBox-2">
+                    <div class="title-sm title-left">对方车辆损伤情况</div>
+                    <textarea class="form-control ver-top width-1" id="other" name="deblock_udid" rows="5"v-bind:value="dfclssqk" v-model="dfclssqk"></textarea>
+                </div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-right">损伤金额</div>
+                    <input type="text" id="otherAmountDamage" class="form-control width-1" placeholder=""v-bind:value="ssje2" v-model="ssje2"></div>
+            </div>
+            <div class="trBox">
+                <div class="tdBox-2">
+                    <div class="title-sm title-left">其他损伤</div>
+                    <textarea class="form-control ver-top width-1" id="others" name="deblock_udid" rows="5"v-bind:value="qtss" v-model="qtss"></textarea>
+                </div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-right">损伤金额</div>
+                    <input type="text" id="othersAmountDamage" class="form-control width-1" placeholder=""v-bind:value="ssje3" v-model="ssje3"></div>
+            </div>
+            <div class="trBox">
+                <div class="tdBox-2">
+                    <div class="title-sm title-left">人员受伤情况</div>
+                    <textarea class="form-control ver-top width-1" id="personnelInjuries" name="deblock_udid" rows="5"v-bind:value="ryssqk" v-model="ryssqk"></textarea>
+                </div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-right">损伤金额</div>
+                    <input type="text" id="personnelInjuryAmountDamage" class="form-control width-1" placeholder=""v-bind:value="ssje4" v-model="ssje4"></div>
+            </div>
+        </div>
+    </div>
+    <!--赔付情况-->
+    <div class="partBox compensationSituation">
+        <div class="title-md">赔付情况</div>
+        <div class="line"></div>
+        <div class="contentBox">
+            <div class="trBox">
+                <div class="tdBox-3">
+                    <div class="title-sm">处理人员</div>
+                    <select id="handle" class="form-control width-3" v-bind:value="clry" v-model="clry">
+                        <option value="1">公司处理</option>
+                        <option value="2">技师处理</option></select>
+                </div>
+                <div class="tdBox-3">
+                    <div class="title-sm">技师KPI扣分</div>
+                    <input id="kpiDeduction" type="text" class="form-control width-3" placeholder=""v-bind:value="kpi" v-model="kpi"></div>
+                <div class="tdBox-3">
+                    <div class="title-sm">技师处罚金额</div>
+                    <input id="amountPenalty" type="text" class="form-control width-3" placeholder=""v-bind:value="jscfje" v-model="jscfje"></div>
+            </div>
+            <div class="trBox">
+                <div class="tdBox-2">
+                    <div class="title-sm title-left">技师承担赔付比例</div>
+                    <input type="text" id="proportionCompensation" class="form-control width-1" placeholder=""v-bind:value="jscdpfbl" v-model="jscdpfbl"></div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-right">技师赔付金额</div>
+                    <input type="text" id="compensationAmountTechnicians" class="form-control width-1" placeholder=""v-bind:value="jspcje" v-model="jspfje"></div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-left">我方定损金额</div>
+                    <input type="text" id="ourFixedLoss" class="form-control width-1" placeholder=""v-bind:value="wfdsje" v-model="wfdsje"></div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-right">保险赔付金额</div>
+                    <input type="text" id="ourInsurance" class="form-control width-1" placeholder=""v-bind:value="bxpfje" v-model="bxpfje"></div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-left">到账日期</div>
+                    <input type="text" class="form-control width-1" id="ourTime" readonly style="display: inline-block" v-show="bridgeFinance" v-bind:value="dzrq" v-model="dzrq"></div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-right">到账金额</div>
+                    <input type="text" id="ourArrivalAccount" class="form-control width-1" placeholder="" v-bind:value="dzje" v-model="dzje"></div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-left">对方定损金额</div>
+                    <input type="text" id="otherFixedLoss" class="form-control width-1" placeholder="" v-bind:value="dfdsje" v-model="dfdsje"></div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-right">保险赔付金额</div>
+                    <input type="text" id="otherInsurance" class="form-control width-1" placeholder="" v-bind:value="bxpfje" v-model="bxpfje"></div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-left">到账日期</div>
+                    <input type="text" class="form-control width-1" id="otherTime" readonly style="display: inline-block" v-show="bridgeFinance" v-bind:value="dzrq" v-model="dzrq"></div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-right">到账金额</div>
+                    <input type="text" id="otherArrivalAccount" class="form-control width-1" placeholder="" v-bind:value="dzje2" v-model="dzje2"></div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-left">其他损伤定损金额</div>
+                    <input type="text" id="othersFixedLoss" class="form-control width-1" placeholder=""v-bind:value="qtssdsje" v-model="qtssdsje"></div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-right">保险赔付金额</div>
+                    <input type="text" id="othersInsurances" class="form-control width-1" placeholder=""v-bind:value="bxpfje2" v-model="bxpfje2"></div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-left">到账日期</div>
+                    <input type="text" class="form-control width-1" id="othersTime" readonly style="display: inline-block" v-show="bridgeFinance"v-bind:value="dzrq2" v-model="dzrq2"></div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-right">到账金额</div>
+                    <input type="text" id="othersArrivalAccount" class="form-control width-1" placeholder=""v-bind:value="dzje3" v-model="dzje3"></div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-left">人员受伤金额</div>
+                    <input type="text" id="personnelInjuryFixedLoss" class="form-control width-1" placeholder=""v-bind:value="ryssje" v-model="ryssje"></div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-right">保险赔付金额</div>
+                    <input type="text" id="personnelInjuryInsurance" class="form-control width-1" placeholder=""v-bind:value="bxpfje3" v-model="bxpfje3"></div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-left">到账日期</div>
+                    <input type="text" class="form-control width-1" id="personnelInjuryTime" readonly style="display: inline-block" v-show="bridgeFinance"v-bind:value="dzrq4" v-model="dzrq4"></div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-right">到账金额</div>
+                    <input type="text" class="form-control width-1" id="personnelInjuryArrivalAccount" placeholder=""v-bind:value="dzje4" v-model="dzje4"></div>
+            </div>
+        </div>
+    </div>
+    <!--事故分析-->
+    <div class="partBox accidentAnalysis">
+        <div class="title-md">事故分析</div>
+        <div class="line"></div>
+        <div class="contentBox">
+            <div class="trBox">
+                <div class="tdBox-1">
+                    <div class="title-sm ver-top title-left">事故分析及改进措施</div>
+                    <textarea class="form-control ver-top width-2" id="accidentAnalysis" name="deblock_udid" rows="5" v-bind:value="sgfx" v-model="sgfx"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="buttonBox">
+        <button id="saveBtn" class="button1">保存</button>
+    </div>
+</div>
+</body>
+</html>

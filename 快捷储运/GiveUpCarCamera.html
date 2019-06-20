@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>还车拍照</title>
+
+</head>
+<link rel="stylesheet" href="css/css.css">
+<link rel="stylesheet" href="././js/layer_mobile/need/layer.css">
+<link rel="stylesheet" href="../js/layuiadmin/style/login.css" media="all">
+<body>
+<a href="GiveUpCar.html">
+    <div class="back">
+        <img class="back-img" src="image/back.png"><span class="back-text">返回</span>
+    </div>
+</a>
+<div class="head">
+    <div class="head-img">
+        <img class="head-img-1" src="image/learning.png"/>
+    </div>
+    <div class="head-text">
+        <h2>宁波快捷汽车储运有限公司</h2>
+    </div>
+</div>
+<div align="center" class="head-message">
+    请拍摄车辆和客户照片
+</div>
+<div class="pm-ocr" align="center">
+    <div class="pm-navigation ">
+        <form action="getCarSuccess.html">
+            <div id="ocr" class="pm-y pm-ocr-nopd pm-button-ocr">
+
+                <img class="pm-img " src="image/ocr.png">
+
+                <!--扫描未完成等待画面-->
+                <!--<div id="ocr-image" class="dn">-->
+                <!--<img class="ocr-img" src="image/timg.gif">-->
+                <!--<div class="ocr-img-text">正在扫描图片请稍后...</div>-->
+                <!--</div>-->
+                <!--<img class="dn" id="pic">-->
+            </div>
+            <!--调用摄像头拍照-->
+            <input style="display: none" id="camera" type="file" accept="image/*" capture="camera">
+            <!--<input class="ocr-text" align="center" type="text">-->
+            <div>
+                <img class="gcc-img" id="pic1" src="image/p2.png">
+                <img class="gcc-img" id="pic2" src="image/p2.png">
+                <img class="gcc-img" id="pic3" src="image/p2.png">
+            </div>
+            <div align="center">
+                <button type="button" id="prev" class="b2-s gcc-button .button-quit">上一步</button>
+                <button type="button" id="next" class="b2-x gcc-button">下一步</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="./js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="./js/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="./js/jquery.md5.js"></script>
+<script type="text/javascript" src="./js/jquery-geturlcode.js"></script>
+<script type="text/javascript" src="./js/jquery.cookie.js"></script>
+<script type="text/javascript" src="./js/common/localjs.js"></script>
+<script type="text/javascript" src="./js/jquery-getFormData.js"></script>
+<script type="text/javascript">
+    var fd;
+    var i = 0;
+    var p1="";
+    var p2="";
+    var p3="";
+
+
+    $(function () {
+        fd = getFormCode();//获取表单提交授权码
+    })
+
+
+    /*上一步*/
+    $("#prev").on("click", function () {
+        window.location.href="GiveUpCar.html";
+    });
+    /*下一步*/
+    $("#next").on("click", function () {
+        if(p1==""||p1==null||p2==""||p2==null||p3==""||p3==null){
+            layer.open({
+                content: '请拍照!',
+                style: 'font-size:20px;color:red;background-color:#d5dee7;width:400px;letter-spacing:4px;',
+                time: 2
+            });
+        }else{
+            TiJiaoJiaoChe();
+        }
+
+    });
+
+
+
+
+    $("#ocr").on("click", function () {
+        //alert(123);
+        // $("#camera").click();
+        $("#camera").click();
+    })
+
+    $(".pm-navigation").on("change", "input[type=file]", function () {
+        var filePath = $(this).val(); //读取图片路径
+        // alert(filePath);
+        var fr = new FileReader(); //创建new FileReader()对象
+
+        var imgObj = this.files[0]; //获取图片
+        if (i == 0) {
+            p1= imgObj;
+        }
+        if (i == 1) {
+            p2 = imgObj;
+        }
+        if (i == 2) {
+            p3 = imgObj;
+        }
+        //alert(imgObj);
+        fr.readAsDataURL(imgObj); //将图片读取为DataURL
+        //var obj = $("#pic"); //
+
+        if (filePath.indexOf("jpg") != -1 || filePath.indexOf("JPG") != -1 || filePath.indexOf("PNG") != -1 || filePath.indexOf("png") != -1) {
+            var arr = filePath.split('\\');
+            var fileName = arr[arr.length - 1];
+
+            // $(this).parent().next().show();
+
+            fr.onload = function () {
+                //alert(obj);
+                //this.result  //图片base64 编码字符
+                if (i == 0) {
+                    //p1= this.result;
+                    $("#pic1").attr('src', this.result);
+                   // console.log("p1----" + p1);
+                }
+                if (i == 1) {
+                   // p2 = this.result;
+                    $("#pic2").attr('src', this.result);
+                   // console.log("p2----" + p2);
+                }
+                if (i == 2) {
+                   // p3 = this.result;
+                    $("#pic3").attr('src', this.result);
+                   // console.log("p3----" + p3);
+                }
+                i = i + 1;
+            };
+        } else {
+            // $(this).parent().next().show();
+            //$(this).parent().next().children("i").html("您未上传文件，或者您上传文件类型有误！").css("color", "red");
+            //$(this).parent().next().html("您未上传文件，或者您上传文件类型有误！").css("color","red");
+            return false
+        }
+    });
+
+    /*扫描成功后执行的函数*/
+    function success(date) {
+        $("#ocr-image").hide();//隐藏进度条
+        $("#pic").show(); //显示拍摄的图片
+        $(".ocr-text").val(date);//车架号输入框赋值
+    }
+    
+    
+    /*提交交车接口*/
+    function TiJiaoJiaoChe() {
+
+        var storage_number = $.cookie("storage_number");//交车码----
+        var vinno = $.cookie("vinno");//车架号----
+        var id_card = $.cookie("id_card");//身份证号----
+        var timestamp = (new Date()).valueOf();// 时间戳----
+
+        var MD5String;
+        //生成sign
+        MD5String = "id_card=" + id_card + "&storage_number=" + storage_number + "&timestamp=" + timestamp+"&vinno=" + vinno + pass;
+
+        var MD5 = $.md5(MD5String);
+        MD5 = MD5.toUpperCase();//字母转为大写
+        var sign = pass + MD5;// 加密参数----
+        var token = $.cookie("token");
+
+        console.log("拼接的加密参数----" + MD5String);
+        console.log("MD5----" + MD5);
+        console.log("需要的参数------------");
+        // console.log("接车记录码--storage_number--" + storage_number);
+        console.log("时间戳-- timestamp--" + timestamp);
+        console.log("sign----" + sign);
+
+        //方法示例
+        // 获取页面已有的一个form表单
+        //var form = document.getElementById("myForm");
+        // 用表单来初始化
+        var formData = new FormData();
+        formData.append("user_picture",p1);
+        formData.append("car_picture",p2);
+        formData.append("car_inside_picture",p3);
+        //formData.append("vinnop", $("#camera")[0].files[0]);
+        formData.append("storage_number", storage_number);
+        formData.append("vinno", vinno);
+        formData.append("id_card", id_card);
+        formData.append("timestamp", timestamp);
+        formData.append("sign", sign);
+        $.ajax({
+            type: "POST",
+            url: path + "/deliverycar/submit",
+            data: formData,
+            cache: false,    //上传文件不需缓存
+            processData: false, //需设置为false。因为data值是FormData对象，不需要对数据做处理
+            contentType: false, //需设置为false。因为是FormData对象，且已经声明了属性enctype="multipart/form-data"
+            dataType: 'json',
+            beforeSend: function (request) {
+                request.setRequestHeader("KJCY-TOKEN", token);
+                request.setRequestHeader("FORM-TOKEN", fd);
+            },
+            success: function (res) {
+                //alert(1);
+                // alert(data.msg);
+                if (res.msg == "success") {
+//                    $("#ocr-image").hide();//隐藏进度条
+//                    $("#pic").show(); //显示拍摄的图片
+//                    $(".ocr-text").val(data.data);//车架号输入框赋值
+//                    $("#tj").show();
+                    $.cookie("storage_number",res.data,{path:'/'});
+                    window.location.href="GiveUpCarSuccess.html";
+                }
+            },
+            error: function (XMLHttpResponse, textStatus, errorThrown) {
+                console.log("1 异步调用返回失败,XMLHttpResponse.readyState:" + XMLHttpResponse.readyState);
+                console.log("2 异步调用返回失败,XMLHttpResponse.status:" + XMLHttpResponse.status);
+                console.log("3 异步调用返回失败,textStatus:" + textStatus);
+                console.log("4 异步调用返回失败,errorThrown:" + errorThrown);
+
+            }
+        })
+
+    }
+
+
+
+
+
+
+
+
+    function convertBase64UrlToBlob(urlData){
+
+        var bytes=window.atob(urlData.split(',')[1]);        //去掉url的头，并转换为byte
+
+        //处理异常,将ascii码小于0的转换为大于0
+        var ab = new ArrayBuffer(bytes.length);
+        var ia = new Uint8Array(ab);
+        for (var i = 0; i < bytes.length; i++) {
+            ia[i] = bytes.charCodeAt(i);
+        }
+
+        return new Blob( [ab] , {type : 'image/png'});
+    }
+    
+    
+    
+    
+    
+</script>
+</html>

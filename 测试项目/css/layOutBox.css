@@ -1,0 +1,109 @@
+.productDetails {
+	position: relative;
+}
+
+#layOutBox {
+ 	background: rgba(0, 0, 0, .7);
+ 	font-size: 14px;
+ 	color: #000;
+ 	margin: 0;
+ 	padding: 20px 40px;
+ 	width: 100%;
+ 	height: 100%;
+ 	position: absolute;
+ 	z-index: 999999;
+ 	top: 0;
+ 	left: 0;
+ 	display: none;
+ }
+ 
+#layOutBox .content {
+ 	position: relative;
+ }
+ 
+#layOutBox .content .infoBox .title {
+	color: #00a1e0;
+	font-size: 20px;
+	margin-bottom: 30px;
+}
+
+#layOutBox .content .infoBox .contactBtn {
+	border: 2px #00a1e0 solid;
+	color: #00a1e0;
+	margin: 20px 150px;
+}
+
+#layOutBox .content .infoBox .contactBtn a {
+	color: #00a1e0;
+	text-align: center;
+	display: block;
+	height: 30px;
+    line-height: 30px;
+}
+
+.swiperBox {
+	padding: 100px 60px;
+}
+
+ .swiper-container {
+ 	width: 50%;
+ 	height: 50%;
+ 	margin: 0;
+ 	display: inline-block;
+ }
+ 
+ .swiper-slide {
+ 	text-align: center;
+ 	font-size: 18px;
+ 	background: #fff;
+ 	/* Center slide text vertically */
+ 	display: -webkit-box;
+ 	display: -ms-flexbox;
+ 	display: -webkit-flex;
+ 	display: flex;
+ 	-webkit-box-pack: center;
+ 	-ms-flex-pack: center;
+ 	-webkit-justify-content: center;
+ 	justify-content: center;
+ 	-webkit-box-align: center;
+ 	-ms-flex-align: center;
+ 	-webkit-align-items: center;
+ 	align-items: center;
+ }
+ 
+ .swiper-slide img {
+ 	width: 100%;
+ 	height: 100%;
+ }
+ 
+/*.swiper-button-prev {
+	position: relative;
+	right: 0px;
+}*/
+
+.swiper-button-next {
+	right: 46.5%;
+}
+
+.infoBox {
+	background-color: white;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 40%;
+	height: 155%;
+	overflow: auto;
+}
+
+.exit {
+	position: absolute;
+	top: -15px;
+	right: -15px;
+	width: 30px;
+	height: 30px;
+	background-image: url("../images/xubox_ico0.png");
+	background-position: -60px -195px;
+}
+.exit:hover {
+	background-position: -91px -195px;
+}

@@ -1,0 +1,243 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+.hide{
+    display: none;
+}
+/*主体背景色*/
+body {
+    /*border: solid 1px red;*/
+    background: linear-gradient(#e9edf0, #d4dee7) no-repeat;
+    background-size: 100%;
+
+}
+
+ul li {
+    list-style: none;
+}
+
+a {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-user-select: none;
+    /*-moz-user-focus: none;*/
+    -moz-user-select: none;
+    color: #000;
+    text-decoration: none;
+}
+
+button {
+    outline: none;
+}
+
+/*钉钉二维码登录页面*/
+.DDLogin {
+    font-size: 13px;
+    margin: 20% auto 0 auto;
+}
+
+.DDLogin div {
+    margin-top: 20%;
+}
+
+/*首页css样式 */
+.head-message {
+    margin-top: 5%;
+    font-size: 19px;
+    letter-spacing: 4px;
+    text-indent: 4px;
+}
+
+.head {
+    font-size: 12px;
+    letter-spacing: 5px;
+}
+
+.pm {
+    margin-top: 10%;
+}
+
+.pm-y {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pm-navigation {
+
+    display: inline-block;
+    text-align: center;
+}
+
+.pm-navigation-1 {
+    margin: 15px 11%;
+}
+
+.pm-navigation-2 {
+    margin: 10px 15%;
+}
+
+.pm-button {
+    margin: 0 auto;
+    line-height: 30px;
+    width: 80px;
+    height: 80px;
+    border-radius: 20%;
+    overflow: hidden;
+    box-shadow: 5px 5px 5px #888888
+}
+
+.pm-text {
+    margin: 10px auto 0 auto;
+    font-size: 15px;
+    color: #4f565c;
+}
+
+.pm-img {
+    width: 80px;
+}
+
+.pm-sj-1 {
+    background: linear-gradient(#f6bc7c, #f3d286) no-repeat;
+}
+
+.pm-sj-2 {
+    background: linear-gradient(#86c6ec, #93ceea) no-repeat;
+}
+
+.pm-sj-3 {
+    background: linear-gradient(#208984, #63c4a8) no-repeat;
+}
+
+.pm-sj-nopd {
+    background: linear-gradient(#f4735b, #fbb3aa) no-repeat;
+}
+
+/*接车页面css代码*/
+.cf-box {
+    width: 90%;
+    height:250px;
+    margin: 35px auto 0;
+    /*border: solid red 1px;*/
+    font-size: 16px;
+    font-weight: bolder;
+    text-indent: 1em;
+
+}
+
+.cf-body {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+
+}
+
+.cf-body::-webkit-scrollbar {
+    display: none
+}
+
+.cf-body ul li {
+
+    margin-top: 20px;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    letter-spacing: 2px;
+    position: relative;
+
+}
+
+.cf-a {
+    position: relative;
+    color: #a3aab4;
+    background: #eef5fb;
+}
+
+.cf-img{
+   /*// width: 10px;*/
+    position: absolute;
+    top: 4px;
+    left: -10px;
+}
+
+.cf-b {
+    color: white;
+    background: #4785d6;
+}
+
+.ocr-submit-2 {
+    position: fixed;
+    left: 25%;
+    bottom: 10%;
+    margin: 0 auto;
+    width: 50%;
+    height: 30px;
+    background: #4876FF;
+    color: white;
+    font-size: 20px;
+    border: none;
+    box-shadow: 2px 3px 5px #888888;
+    letter-spacing: 10px;
+    line-height: 30px;
+}
+
+/*绑定车位卡片页面css代码   红色对和错的颜色色号  #d81e06   */
+.bc-box {
+    margin-top: 80px;
+}
+
+.bc-but {
+    letter-spacing: 10px;
+    text-indent: 10px;
+    width: 120px;
+    height: 80px;
+    background: linear-gradient(#5186d4, #6ba3e2) no-repeat;
+    text-align: center;
+    line-height: 80px;
+    color: white;
+    font-size: 40px;
+
+}
+
+.bc-but-ok {
+    letter-spacing: 10px;
+    text-indent: 10px;
+    width: 120px;
+    height: 80px;
+    background: linear-gradient(#5186d4, #6ba3e2) no-repeat;
+    text-align: center;
+    line-height: 80px;
+    color: white;
+    font-size: 20px;
+}
+
+.bc-msg {
+    letter-spacing: 3px;
+    text-indent: 3px;
+    color: #d81e06;
+    font-size: 10px;
+    height: 30px;
+    line-height: 30px;
+    position: relative;
+
+}
+
+.bc-msg-img {
+    width: 15px;
+    vertical-align: middle;
+    position: relative;
+    bottom: 1px;
+    right: 5px;
+}
+.main-box{
+    width: 100%;
+    position: fixed;
+    top: 30%;
+    z-index: 20;
+}

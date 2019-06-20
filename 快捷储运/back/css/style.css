@@ -1,0 +1,54 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+body {
+    overflow-y:scroll;
+}
+/*主体背景色*/
+/*body {*/
+    /*!*border: solid 1px red;*!*/
+    /*background: linear-gradient(#e9edf0, #d4dee7) no-repeat;*/
+    /*background-size: 100%;*/
+
+/*}*/
+
+ul li {
+    list-style: none;
+}
+
+a {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-user-select: none;
+    /*-moz-user-focus: none;*/
+    -moz-user-select: none;
+    color: #000;
+    text-decoration: none;
+}
+
+button {
+    outline: none;
+}
+
+.hide{
+    display: none;
+}
+
+
+.layui-table-cell {
+    text-align: center;
+    height: 100%;
+    max-width: 100%;
+}
+.zhezhu{
+    position: absolute;
+    width: 98%;
+    height: 90%;
+    /*border: 1px red solid;*/
+    z-index: 100;
+}

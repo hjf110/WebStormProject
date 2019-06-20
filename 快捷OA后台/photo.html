@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=10"/>
+    <title>Title</title>
+
+</head>
+<body>
+
+<div style="width: 600px">
+    <div class="grid-btn">
+        <div class="btn-group" role="group">
+            <a class="btn btn-primary btn-sm" onclick="StartVideo()"><i class="fa fa-video-camera"></i>&nbsp;打开摄像头</a>
+            <a class="btn btn-danger btn-sm" onclick="CloseVideo()"><i class="fa fa-video-camera"></i>&nbsp;关闭摄像头</a>
+            <a class="btn btn-primary btn-sm"><i class="fa fa-camera"></i>&nbsp;拍照</a>
+        </div>
+    </div>
+    <object id="axCam_Ocx" style=" width:544px; height:544px;" classid="clsid:ce2d72f2-ad28-4013-a24b-c3f76c5a1944"
+            codebase="CamOcx.cab #version=1,0,0,1">
+    </object>
+    <div class="grid-btn">
+        <div class="btn-group" role="group">
+            <img src="http://106.12.22.69:1120/expense.jpg" style="width: 80px;margin-top: 10px"/>
+        </div>
+    </div>
+    <input type="file" id="file" />
+</div>
+
+</body>
+<script language="javascript">
+
+    var CamID = 0;  //此例程默认以第一个摄像头打开
+    var OpenFormat = 1;      //打开格式：0->YUY；1->MJPG
+    //开启摄像头
+    function StartVideo() {
+        var width = 1024;
+        var height = 768;
+        var i = axCam_Ocx.CAM_Open(CamID, OpenFormat, width, height);
+
+        if (i == 0) tips("开启设备成功");
+        else tips("开启设备失败");
+
+    }
+
+    //关闭摄像头
+    function CloseVideo() {
+        axCam_Ocx.CAM_Close()
+        tips("关闭设备");
+    }
+
+    setTimeout(function () {
+        StartVideo();
+    }, 1000)
+    // StartVideo();
+</script>
+</html>

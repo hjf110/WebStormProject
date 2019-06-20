@@ -1,0 +1,1670 @@
+/* 横向放置的手机和竖向放置的平板之间的分辨率 */
+/*@media only screen and (min-width: 501px) and (max-width: 1366px) {*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.hide {
+    display: none;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+/*主体背景色*/
+body {
+    /*border: solid 1px red;*/
+    background: linear-gradient(#e9edf0, #d4dee7) no-repeat;
+    background-size: 100%;
+
+}
+
+ul li {
+    list-style: none;
+}
+
+a {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-user-select: none;
+    /*-moz-user-focus: none;*/
+    -moz-user-select: none;
+    color: #000;
+    text-decoration: none;
+}
+
+button {
+    outline: none;
+}
+
+/*字体美化  实现3D感文字标题*/
+.threed {
+    font-size: 22px;
+    color: #fafafa;
+    letter-spacing: 0;
+    text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135
+}
+
+.dn {
+    display: none;
+}
+
+.head {
+    width: 325px;
+    /*border: 1px red solid;*/
+    margin: 5% auto 0 auto;
+
+}
+
+.head-img, .head-text {
+    display: inline-block;
+}
+
+.head-text {
+    text-shadow: 1px 1px 1px #b8c6d7;
+    color: #7693be;
+    width: 82%;
+    /*border: 1px red solid;*/
+    font-size: 12px;
+    letter-spacing: 4px;
+
+}
+
+.head-img-1 {
+    width: 25px;
+    position: relative;
+    top: 6px;
+}
+
+.head-message {
+    color: #6a6e71;
+    font-size: 20px;
+    /*border: solid 1px red;*/
+    /*width: 170px;*/
+    margin-top: 2%;
+    margin-bottom: 1%;
+    letter-spacing: 3px;
+}
+
+.head-message-2 {
+    font-size: 24px;
+    /*border: solid 1px red;*/
+    /*width: 170px;*/
+    margin: 2%;
+}
+
+/*返回按钮css  色号#0061b2  ---------------------- */
+.back {
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    width: 80px;
+    height: 35px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*border: 1px red solid;*/
+}
+
+.back-img {
+    width: 20px;
+}
+
+.back-text {
+    line-height: 35px;
+    color: #0061b2;
+    font-size: 20px;
+    position: relative;
+    bottom: 2px;
+}
+
+/*放弃按钮-----------------------------------------------*/
+.quit {
+    position: absolute;
+    top: 1%;
+    right: 2%;
+    width: 80px;
+    height: 35px;
+    border-radius: 35px;
+    font-size: 20px;
+    /*line-height: 35px;*/
+    text-align: center;
+    color: white;
+    background: linear-gradient(#e1e8f9, #5781be) no-repeat;
+    border: 1px solid #3A5FCD;
+}
+
+.button-quit {
+    letter-spacing: 4px;
+    width: 80px;
+    height: 35px;
+    border-radius: 35px;
+    font-size: 20px;
+    /*line-height: 35px;*/
+    text-align: center;
+    color: white;
+    background: linear-gradient(#e1e8f9, #5781be) no-repeat;
+    border: 1px solid #3A5FCD;
+}
+
+/*等待页面部分---------------------*/
+/*首页部分------------------------------------------------*/
+.pm {
+    margin-top: 10%;
+}
+
+.pm-y {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pm-navigation {
+    display: inline-block;
+    text-align: center;
+}
+
+.pm-navigation-1 {
+    margin: 35px 5%;
+}
+
+.pm-navigation-2 {
+    margin: 10px 15%;
+}
+
+.pm-button {
+    margin: 0 auto;
+    line-height: 30px;
+    width: 140px;
+    height: 140px;
+    border-radius: 20%;
+    overflow: hidden;
+    box-shadow: 5px 5px 5px #888888
+}
+
+.pm-text {
+    margin: 10px auto 0 auto;
+    font-size: 18px;
+    color: #4f565c;
+}
+
+.pm-img {
+    width: 70px;
+}
+
+.pm-sj-1 {
+    background: linear-gradient(#f6bc7c, #f3d286) no-repeat;
+}
+
+.pm-sj-2 {
+    background: linear-gradient(#86c6ec, #93ceea) no-repeat;
+}
+
+.pm-sj-3 {
+    background: linear-gradient(#6cc679, #8ccd84) no-repeat;
+}
+
+.pm-sj-nopd {
+    background: linear-gradient(#6a7888, #798996) no-repeat;
+}
+
+/*接车部分----------------------------------------------------------*/
+.pm-gc-nopd {
+    background: linear-gradient(#6a7888, #798996) no-repeat;
+}
+
+/*扫描车架号部分------------------------------------------------*/
+.pm-ocr-nopd {
+    background: white;
+}
+
+.pm-button-ocr {
+    margin: 0 auto;
+    line-height: 30px;
+    width: 500px;
+    height: 150px;
+    border-radius: 0%;
+    overflow: hidden;
+    box-shadow: 5px 5px 7px #888888;
+}
+
+.ocr-text {
+    margin-top: 40px;
+    border: none;
+    width: 430px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 23px;
+    text-indent: 2em;
+}
+
+.ocr-submit {
+    margin-top: 11%;
+    width: 250px;
+    height: 45px;
+    background: #4c83d6;
+    color: white;
+    font-size: 27px;
+    border: none;
+    box-shadow: 5px 5px 10px #888888
+}
+
+#ocr {
+    position: relative;
+}
+
+.ocr-img {
+    width: 270px;
+}
+
+.ocr-img-text {
+    position: absolute;
+    bottom: 65px;
+    right: 58px;
+}
+
+/*接车完成页面-----------------------------------*/
+.ocr-submit-1 {
+    position: absolute;
+    left: 35%;
+    bottom: 20%;
+    margin: 0 auto;
+    width: 30%;
+    height: 45px;
+    background: #4876FF;
+    color: white;
+    font-size: 30px;
+    border: none;
+    box-shadow: 2px 3px 5px #888888;
+    letter-spacing: 10px;
+    line-height: 45px;
+}
+
+.s-message {
+    width: 450px;
+    /*border: 1px red solid;*/
+    margin: 10% auto 0 auto;
+}
+
+.s-text {
+    margin: 8% 0;
+    text-align: left;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: #a0a7b1;
+}
+
+/*选择车架号页面*/
+
+
+
+.left_lan {
+
+    height: 100%;
+    width: 18%;
+    background: #1E9FFF;
+    /*background-color:#000000;*/
+    opacity: 0.2;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+
+}
+
+.right_lan_image {
+    width: 30px;
+    /*height: 100px;*/
+    position: absolute;
+    bottom: 45%;
+    right: 0%;
+}
+
+
+.choose_state_title {
+    text-align: center;
+    color: red;
+}
+
+.choose_state {
+    z-index: 2;
+    background:whitesmoke;
+    display: inline-block;
+    /*border: 1px red solid;*/
+    width: 82%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+    right: 0%;
+
+    /*animation:myfirst 2s;*/
+    /*-moz-animation:myfirst 2s; !* Firefox *!*/
+    /*-webkit-animation:myfirst 2s; !* Safari and Chrome *!*/
+    /*-o-animation:myfirst 2s; !* Opera *!*/
+}
+
+.right_lan {
+    z-index: 1;
+    height: 50%;
+    width: 30px;
+    background: #1E9FFF;
+    /*background-color:#000000;*/
+    opacity: 0.2;
+    position: fixed;
+    right: 0%;
+    top: 25%;
+}
+
+
+.choose_state_min {
+    z-index: 100;
+    /*border: 1px black solid;*/
+    width: 17%;
+    height: 50%;
+    position: fixed;
+    top: 25%;
+    right: -17%;
+
+    /*animation:myfirst 2s;*/
+    /*-moz-animation:myfirst 2s; !* Firefox *!*/
+    /*-webkit-animation:myfirst 2s; !* Safari and Chrome *!*/
+    /*-o-animation:myfirst 2s; !* Opera *!*/
+}
+
+/*@keyframes myfirst*/
+/*{*/
+/*    0%   { right:-200px;  top: 25%;}*/
+/*    25%  { right:-150px;  top: 25%;}*/
+/*    50%  { right:-100px;  top: 25%;}*/
+/*    75%  { right:-50px;  top: 25%;}*/
+/*    100% { right:0px;  top: 25%;}*/
+/*}*/
+
+/*@-moz-keyframes myfirst !* Firefox *!*/
+/*{*/
+/*    0%   { right:-200px; top:0px;}*/
+/*    25%  { right:-150px; top:0px;}*/
+/*    50%  { right:-100px; top:200px;}*/
+/*    75%  { right:-50px; top:200px;}*/
+/*    100% { right:0px; top:0px;}*/
+/*}*/
+
+/*@-webkit-keyframes myfirst !* Safari 和 Chrome *!*/
+/*{*/
+/*    0%   { right:-200px; top:0px;}*/
+/*    25%  { right:-150px; top:0px;}*/
+/*    50%  { right:-100px; top:200px;}*/
+/*    75%  { right:-50px; top:200px;}*/
+/*    100% { right:0px; top:0px;}*/
+/*}*/
+
+/*@-o-keyframes myfirst !* Opera *!*/
+/*{*/
+/*    0%   { right:-200px; top:0px;}*/
+/*    25%  { right:-150px; top:0px;}*/
+/*    50%  { right:-100px; top:200px;}*/
+/*    75%  { right:-50px; top:200px;}*/
+/*    100% { right:0px; top:0px;}*/
+/*}*/
+
+
+.button-choose {
+    margin-left: 15%;
+    margin-top: 27%;
+    width: 70%;
+    height: 45px;
+    background: #4876FF;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    border: none;
+    box-shadow: 2px 3px 5px #888888;
+    letter-spacing: 10px;
+    text-indent: 5px;
+    line-height: 45px;
+
+
+    margin-left: 15%;
+    margin-top: 27%;
+    width: 70%;
+    height: 45px;
+    background: linear-gradient(to bottom, #4eb5e5 0%,#389ed5 100%);
+    border: none;
+    border-radius: 5px;
+    position: relative;
+    border-bottom: 5px solid #2b8bc6;
+    color: #fbfbfb;
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+    text-shadow: 1px 1px 1px rgba(0,0,0,.4);
+    font-size: 20px;
+    text-align: center;
+    box-shadow: 0px 3px 0px rgba(0,0,0,.2);
+    cursor: pointer;
+
+
+
+
+
+}
+
+.ocr-submit-2 {
+    position: absolute;
+    left: 35%;
+    bottom: 7%;
+    margin: 0 auto;
+    width: 30%;
+    height: 45px;
+    background: #4876FF;
+    color: white;
+    font-size: 30px;
+    border: none;
+    box-shadow: 2px 3px 5px #888888;
+    letter-spacing: 10px;
+    line-height: 45px;
+}
+
+
+.cf-li {
+    display: inline-block;
+    /*border: red 1px solid;*/
+    width: 96%;
+    height: 100%;
+    /*z-index: 20;*/
+}
+
+.cf-img {
+    /*// width: 10px;*/
+    position: absolute;
+    top: 4px;
+    right: 20px;
+}
+
+.cf-state {
+    color: black;
+    text-align: center;
+    background: lime;
+    line-height: 28px;
+    height: 50%;
+    font-size: 15px;
+    position: absolute;
+    right: 120px;
+    top: 16px;
+}
+
+.cf-state-ing {
+    color: white;
+    text-align: center;
+    background: red;
+    line-height: 28px;
+    height: 50%;
+    font-size: 15px;
+    position: absolute;
+    right: 120px;
+    top: 16px;
+}
+
+.cf-state-text {
+    position: relative;
+    right: 9px;
+}
+
+.cf-box {
+    width: 65%;
+    height: 47%;
+    position: fixed;
+    top: 25%;
+    right: 17%;
+
+    /*border: solid red 1px;*/
+    font-size: 22px;
+    text-indent: 1em;
+
+}
+
+.cf-head {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background: linear-gradient(#d3e6ff, #d2e7fd) no-repeat;
+    font-weight: bold;
+    color: #566477;
+}
+
+.cf-body {
+    background: #eef5fb;
+    width: 100%;
+    height: 90%;
+    overflow-y: auto;
+    color: #a3aab4;
+}
+
+.cf-body::-webkit-scrollbar {
+    display: none
+}
+
+.cf-body ul li {
+
+    height: 60px;
+    line-height: 60px;
+    letter-spacing: 2px;
+    border-bottom: 1px solid #87CEFF;
+    position: relative;
+
+}
+
+.cf-radio {
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    border: solid blue 1px;
+    position: absolute;
+    top: 38%;
+    right: 4%;
+    /*background-image: url('../image/yes.png');*/
+    background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+}
+
+input[type="radio"]:checked + .cf-radio {
+
+}
+
+.cf-back {
+    background-image: url('../image/yes.png');
+}
+
+/*选择检测项目页面-------------------------------------*/
+/*1.头部区域*/
+.cp-head {
+    font-size: 20px;
+    margin-right: 20px;
+    float: right;
+    border-bottom: solid 1px #bec5cb;
+    width: 76%;
+    height: 100px;
+    position: relative;
+    color: #979aa1;
+}
+
+.cp-text {
+    letter-spacing: 4px;
+    position: absolute;
+    left: 2px;
+    bottom: 10px;
+}
+
+.cp-text-2-s1 {
+    letter-spacing: 17px;
+}
+
+.cp-text-2-s2 {
+    position: relative;
+    right: 15px;
+}
+
+.cp-quit {
+    position: absolute;
+    top: 55%;
+    right: 5%;
+}
+
+/*2.左边tab栏区域*/
+.cp-left {
+    margin-top: 20px;
+    float: left;
+    border-right: solid 1px #bec5cb;
+    width: 19%;
+}
+
+.active {
+    background: #DEDEDE;
+}
+
+.tab {
+    display: none;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.content .selected {
+    display: block;
+}
+
+.content {
+    position: absolute;
+    bottom: 0;
+    right: 0px;
+    /*border: solid 1px blue;*/
+    width: 77%;
+    height: 81%;
+}
+
+.cp-in {
+    width: 70px;
+    height: 70px;
+}
+
+.cp-img {
+    width: 70px;
+}
+
+/*3.主体区域代码*/
+.pm-cp-back {
+    background: #e1e4eb;
+}
+
+.tab-li {
+    position: relative;
+    float: left;
+    width: 230px;
+    height: 85px;
+    border-radius: 3%;
+    margin: 10px;
+    display: table; /*重点*/
+    box-shadow: 2px 2px 5px #B8B8B8;
+}
+
+.tab-li-text-left {
+    text-align: left;
+}
+
+.tab-li-text {
+    color: #7b7f82;
+    text-align: center;
+    width: 67%;
+    height: 100%;
+    /*border: solid 1px red;*/
+    word-wrap: break-word;
+    word-break: normal;
+    font-size: 22px;
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
+    left: 5px;
+
+}
+
+.dian_ji {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+
+/*上一步,下一步,完成按钮样式*/
+.bt-box {
+    position: fixed;
+    bottom: 6%;
+    right: 0%;
+}
+
+.bt-box button {
+    margin-right: 40px;
+    width: 120px;
+    height: 35px;
+    border-radius: 35px;
+    font-size: 20px;
+    /*line-height: 35px;*/
+    text-align: center;
+    color: white;
+    background: linear-gradient(#e1e8f9, #5781be) no-repeat;
+    border: 1px solid #3A5FCD;
+}
+
+/*开关部分代码*/
+.layui-form-switch {
+    min-width: 56px;
+    height: 35px;
+    position: absolute;
+    top: 15px;
+    right: 7px;
+    box-shadow: inset 0 1px 2px 1px #000;
+}
+
+.layui-form-onswitch i {
+    left: 100%;
+    margin-left: 32px;
+}
+
+.layui-form-switch i {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    width: 30px;
+    height: 30px;
+    box-shadow: 2px 2px 5px #000;
+}
+
+/*轮播图部分代码*/
+#pic {
+    width: 100%;
+    /* height: 618px; */
+    overflow: hidden;
+}
+
+#pic #img {
+    width: 400%;
+    height: 300px;
+    position: relative;
+}
+
+.pic-div-2 {
+    position: relative;
+    left: 623px;
+}
+
+#img .pic-div {
+    width: 30%;
+    height: 618px;
+    float: left;
+    /*background-color: orange;*/
+    text-align: center;
+    line-height: 300px;
+    /*color: white;*/
+}
+
+#circle {
+    width: 72px;
+    height: 40px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    top: -40px;
+}
+
+#circle ul li {
+    width: 15px;
+    height: 15px;
+    background-color: #bec4cf;
+    list-style: none;
+    float: left;
+    border-radius: 10px;
+    margin: 15px 10px 0 10px;
+}
+
+#circle ul .active {
+    background-color: gray;
+}
+
+/*能耗页面css代码*/
+.per-time {
+    margin: 28px 0;
+    font-size: 24px;
+}
+
+.per-time div {
+    display: inline-block;
+}
+
+.per-time .input {
+    /*box-shadow: inset 0 1px 2px 1px gray;*/
+    border: none;
+    text-align: center;
+    font-size: 24px;
+    height: 35px;
+    width: 170px;
+}
+
+.per-main {
+
+    /*border: solid 1px red;*/
+    width: 80%;
+    height: 55%;
+    margin: 0px auto;
+}
+
+.pre-tab-head {
+    position: relative;
+    left: 125px;
+}
+
+.per-tab {
+    display: inline-block;
+    margin: 30px;
+}
+
+.pt1 {
+    float: left;
+}
+
+.pt2 {
+    float: right;
+}
+
+.per-tab input {
+    height: 25px;
+    border: none;
+}
+
+.per-tab ul li {
+    margin: 30px;
+}
+
+.per-tab ul li span {
+    position: relative;
+    right: 15px;
+
+}
+
+.per-button {
+    margin: 0;
+    width: 30%;
+    position: relative;
+    left: 35%;
+
+}
+
+/*交车页面css---------*/
+.gc-in {
+    /*box-shadow: inset 0 1px 2px 1px gray;*/
+    border: none;
+    text-align: center;
+    font-size: 24px;
+    height: 35px;
+    width: 450px;
+    margin: 0 15px;
+
+}
+
+.gc-info {
+    position: relative;
+    left: 15%;
+    width: 70%;
+    height: 270px;
+    border: 3px red solid;
+    background: #eef5fb;
+}
+
+.gc-info div {
+    font-size: 20px;
+    margin: 25px;
+    color: #63686e;
+}
+
+.gc-button {
+    margin-top: 3%;
+    letter-spacing: 4px;
+    position: relative;
+    left: 40%;
+    width: 20%;
+    height: 35px;
+    border-radius: 35px;
+    font-size: 20px;
+    /*line-height: 35px;*/
+    text-align: center;
+    color: white;
+    background: linear-gradient(#e1e8f9, #5781be) no-repeat;
+    border: 1px solid #3A5FCD;
+}
+
+/*交车拍摄页面css代码*/
+.gcc-img {
+    border: 1px black solid;
+    width: 150px;
+    margin: 20px 50px 0px;
+
+}
+
+.gcc-button {
+    width: 20%;
+    height: 35px;
+    border-radius: 35px;
+    font-size: 20px;
+    /*line-height: 35px;*/
+    text-align: center;
+    color: white;
+    background: linear-gradient(#e1e8f9, #5781be) no-repeat;
+    border: 1px solid #3A5FCD;
+    margin: 40px 20px 0px;
+}
+
+/*交车成功css代码*/
+.gcs-text {
+    margin-top: 200px;
+    font-size: 25px;
+    color: #69737c;
+    letter-spacing: 10px;
+}
+
+.pswp__button--close {
+    background: white;
+}
+
+/*@media only screen and (max-width: 500px) {*/
+/*    * {*/
+/*        margin: 0;*/
+/*        padding: 0;*/
+/*    }*/
+
+/*    html, body {*/
+/*        height: 100%;*/
+/*        overflow: hidden;*/
+/*    }*/
+
+/*    !*主体背景色*!*/
+/*    body {*/
+/*        !*border: solid 1px red;*!*/
+/*        background: linear-gradient(#e9edf0, #d4dee7) no-repeat;*/
+/*        background-size: 100%;*/
+
+/*    }*/
+
+/*    ul li {*/
+/*        list-style: none;*/
+/*    }*/
+
+/*    a {*/
+/*        -webkit-tap-highlight-color: rgba(255, 255, 255, 0);*/
+/*        -webkit-user-select: none;*/
+/*        !*-moz-user-focus: none;*!*/
+/*        -moz-user-select: none;*/
+/*        color: #000;*/
+/*        text-decoration: none;*/
+/*    }*/
+
+/*    button {*/
+/*        outline: none;*/
+/*    }*/
+
+/*    !*字体美化  实现3D感文字标题*!*/
+/*    .threed {*/
+/*        font-size: 22px;*/
+/*        color: #fafafa;*/
+/*        letter-spacing: 0;*/
+/*        text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135*/
+/*    }*/
+
+/*    .dn {*/
+/*        display: none;*/
+/*    }*/
+
+/*    .head {*/
+/*        text-align: center;*/
+/*        width: 90%;*/
+/*        !*border: 1px red solid;*!*/
+/*        margin: 20% auto 0 auto;*/
+
+/*    }*/
+
+/*    .head-img, .head-text {*/
+/*        display: inline-block;*/
+/*    }*/
+
+/*    .head-text {*/
+/*        text-shadow: 1px 1px 1px #b8c6d7;*/
+/*        color: #7693be;*/
+/*        width: 82%;*/
+/*        !*border: 1px red solid;*!*/
+/*        font-size: 10px;*/
+/*        letter-spacing: 4px;*/
+
+/*    }*/
+
+/*    .head-img-1 {*/
+/*        width: 25px;*/
+/*        position: relative;*/
+/*        top: 6px;*/
+/*    }*/
+
+/*    .head-message {*/
+/*        color: #6a6e71;*/
+/*        font-size: 15px;*/
+/*        !*border: solid 1px red;*!*/
+/*        !*width: 170px;*!*/
+/*        margin-top: 5%;*/
+/*        margin-bottom: 2%;*/
+/*        letter-spacing: 3px;*/
+/*    }*/
+
+/*    .head-message-2 {*/
+/*        font-size: 15px;*/
+/*        !*border: solid 1px red;*!*/
+/*        !*width: 170px;*!*/
+/*        margin: 2%;*/
+/*    }*/
+
+/*    !*返回按钮css  色号#0061b2  ---------------------- *!*/
+/*    .back {*/
+/*        text-align: center;*/
+/*        display: table-cell;*/
+/*        vertical-align: middle;*/
+/*        width: 50px;*/
+/*        height: 35px;*/
+/*        position: absolute;*/
+/*        top: 0;*/
+/*        left: 0;*/
+/*        !*border: 1px red solid;*!*/
+/*    }*/
+
+/*    .back-img {*/
+/*        width: 15px;*/
+/*    }*/
+
+/*    .back-text {*/
+/*        line-height: 35px;*/
+/*        color: #0061b2;*/
+/*        font-size: 15px;*/
+/*        position: relative;*/
+/*        bottom: 2px;*/
+/*    }*/
+
+/*    !*放弃按钮-----------------------------------------------*!*/
+/*    .quit {*/
+/*        position: absolute;*/
+/*        top: 1%;*/
+/*        right: 2%;*/
+/*        width: 60px;*/
+/*        height: 20px;*/
+/*        border-radius: 35px;*/
+/*        font-size: 10px;*/
+/*        !* line-height: 35px; *!*/
+/*        text-align: center;*/
+/*        color: white;*/
+/*        background: linear-gradient(#e1e8f9, #5781be) no-repeat;*/
+/*        border: 1px solid #3A5FCD;*/
+/*    }*/
+
+/*    .button-quit {*/
+/*        letter-spacing: 4px;*/
+/*        width: 80px;*/
+/*        height: 35px;*/
+/*        border-radius: 35px;*/
+/*        font-size: 20px;*/
+/*        !*line-height: 35px;*!*/
+/*        text-align: center;*/
+/*        color: white;*/
+/*        background: linear-gradient(#e1e8f9, #5781be) no-repeat;*/
+/*        border: 1px solid #3A5FCD;*/
+/*    }*/
+
+/*    !*等待页面部分---------------------*!*/
+/*    !*首页部分------------------------------------------------*!*/
+/*    .pm {*/
+/*        margin-top: 10%;*/
+/*    }*/
+
+/*    .pm-y {*/
+/*        display: flex;*/
+/*        justify-content: center;*/
+/*        align-items: center;*/
+/*    }*/
+
+/*    .pm-navigation {*/
+/*        display: inline-block;*/
+/*        text-align: center;*/
+/*    }*/
+
+/*    .pm-navigation-1 {*/
+/*        margin: 10px 5%;*/
+/*    }*/
+
+/*    .pm-navigation-2 {*/
+/*        margin: 10px 5%;*/
+/*    }*/
+
+/*    .pm-button {*/
+/*        margin: 0 auto;*/
+/*        line-height: 30px;*/
+/*        width: 100px;*/
+/*        height: 100px;*/
+/*        border-radius: 20%;*/
+/*        overflow: hidden;*/
+/*        box-shadow: 5px 5px 5px #888888*/
+/*    }*/
+
+/*    .pm-text {*/
+/*        margin: 10px auto 0 auto;*/
+/*        font-size: 15px;*/
+/*        color: #4f565c;*/
+/*    }*/
+
+/*    .pm-img {*/
+/*        width: 100px;*/
+/*    }*/
+
+/*    .pm-sj-1 {*/
+/*        background: linear-gradient(#f6bc7c, #f3d286) no-repeat;*/
+/*    }*/
+
+/*    .pm-sj-2 {*/
+/*        background: linear-gradient(#86c6ec, #93ceea) no-repeat;*/
+/*    }*/
+
+/*    .pm-sj-3 {*/
+/*        background: linear-gradient(#6cc679, #8ccd84) no-repeat;*/
+/*    }*/
+
+/*    .pm-sj-nopd {*/
+/*        background: linear-gradient(#6a7888, #798996) no-repeat;*/
+/*    }*/
+
+/*    !*接车部分----------------------------------------------------------*!*/
+/*    .pm-gc-nopd {*/
+/*        background: linear-gradient(#6a7888, #798996) no-repeat;*/
+/*    }*/
+
+/*    !*扫描车架号部分------------------------------------------------*!*/
+/*    .pm-ocr-nopd {*/
+/*        background: white;*/
+/*    }*/
+
+/*    .pm-button-ocr {*/
+/*        margin: 0 auto;*/
+/*        !*position: relative;*!*/
+/*        !*left: 21%;*!*/
+/*        line-height: 30px;*/
+/*        width: 150px;*/
+/*        height: 150px;*/
+/*        border-radius: 50%;*/
+/*        overflow: hidden;*/
+/*        box-shadow: 5px 5px 7px #888888*/
+/*    }*/
+
+/*    .ocr-text {*/
+/*        margin-top: 40px;*/
+/*        border: none;*/
+/*        width: 90%;*/
+/*        height: 35px;*/
+/*        line-height: 35px;*/
+/*        font-size: 24px;*/
+/*        text-indent: 2em;*/
+/*    }*/
+
+/*    .ocr-submit {*/
+/*        margin-top: 25%;*/
+/*        width: 160px;*/
+/*        height: 45px;*/
+/*        background: #4c83d6;*/
+/*        color: white;*/
+/*        font-size: 25px;*/
+/*        border: none;*/
+/*        box-shadow: 5px 5px 10px #888888;*/
+/*    }*/
+
+/*    #ocr {*/
+/*        position: relative;*/
+/*    }*/
+
+/*    .ocr-img {*/
+/*        width: 150px;*/
+/*    }*/
+
+/*    .ocr-img-text {*/
+/*        font-size: 10px;*/
+/*        position: absolute;*/
+/*        bottom: 40px;*/
+/*        right: 10px;*/
+/*    }*/
+
+/*    !*接车完成页面-----------------------------------*!*/
+/*    .ocr-submit-1 {*/
+/*        position: absolute;*/
+/*        left: 25%;*/
+/*        bottom: 10%;*/
+/*        margin: 0 auto;*/
+/*        width: 50%;*/
+/*        height: 35px;*/
+/*        background: #4876FF;*/
+/*        color: white;*/
+/*        font-size: 20px;*/
+/*        border: none;*/
+/*        box-shadow: 2px 3px 5px #888888;*/
+/*        letter-spacing: 10px;*/
+/*        text-indent: 10px;*/
+/*        line-height: 35px;*/
+/*    }*/
+
+/*    .s-message {*/
+/*        width: 230px;*/
+/*        !*border: 1px red solid;*!*/
+/*        margin: 35% auto 0 auto;*/
+/*    }*/
+
+/*    .s-text {*/
+/*        margin: 8% 0;*/
+/*        text-align: left;*/
+/*        font-size: 15px;*/
+/*        letter-spacing: 2px;*/
+/*        text-indent: 2px;*/
+/*        color: #a0a7b1;*/
+/*    }*/
+
+/*    !*选择车架号页面*!*/
+/*    .ocr-submit-2 {*/
+/*        position: absolute;*/
+/*        left: 35%;*/
+/*        bottom: 7%;*/
+/*        margin: 0 auto;*/
+/*        width: 30%;*/
+/*        height: 45px;*/
+/*        background: #4876FF;*/
+/*        color: white;*/
+/*        font-size: 20px;*/
+/*        border: none;*/
+/*        box-shadow: 2px 3px 5px #888888;*/
+/*        letter-spacing: 10px;*/
+/*        text-indent: 10px;*/
+/*        line-height: 45px;*/
+/*    }*/
+
+/*    .cf-li {*/
+/*        display: inline-block;*/
+/*        !*border: red 1px solid;*!*/
+/*        width: 100%;*/
+/*        height: 100%;*/
+/*        !*z-index: 20;*!*/
+/*    }*/
+
+/*    .cf-box {*/
+/*        width: 80%;*/
+/*        height: 200px;*/
+/*        margin: 35px auto 0;*/
+/*        !*border: solid red 1px;*!*/
+/*        font-size: 10px;*/
+/*        text-indent: 1em;*/
+
+/*    }*/
+
+/*    .cf-head {*/
+/*        width: 100%;*/
+/*        height: 40px;*/
+/*        line-height: 40px;*/
+/*        background: linear-gradient(#d3e6ff, #d2e7fd) no-repeat;*/
+/*        font-weight: bold;*/
+/*        color: #566477;*/
+/*    }*/
+
+/*    .cf-body {*/
+/*        background: #eef5fb;*/
+/*        width: 100%;*/
+/*        height: 90%;*/
+/*        overflow-y: auto;*/
+/*        color: #a3aab4;*/
+/*    }*/
+
+/*    .cf-body::-webkit-scrollbar {*/
+/*        display: none*/
+/*    }*/
+
+/*    .cf-body ul li {*/
+
+/*        height: 60px;*/
+/*        line-height: 60px;*/
+/*        letter-spacing: 2px;*/
+/*        border-bottom: 1px solid #87CEFF;*/
+/*        position: relative;*/
+
+/*    }*/
+
+/*    .cf-radio {*/
+/*        display: inline-block;*/
+/*        height: 15px;*/
+/*        width: 15px;*/
+/*        border: solid blue 1px;*/
+/*        position: absolute;*/
+/*        top: 38%;*/
+/*        right: 4%;*/
+/*        !*background-image: url('../image/yes.png');*!*/
+/*        background-size: 100% 100%;*/
+/*        -moz-background-size: 100% 100%;*/
+/*        background-repeat: no-repeat;*/
+/*        background-position: center;*/
+/*        vertical-align: middle;*/
+/*    }*/
+
+/*    input[type="radio"]:checked + .cf-radio {*/
+
+/*    }*/
+
+/*    .cf-back {*/
+/*        background-image: url('../image/yes.png');*/
+/*    }*/
+
+/*    !*选择检测项目页面-------------------------------------*!*/
+/*    !*1.头部区域*!*/
+/*    .cp-head {*/
+/*        font-size: 20px;*/
+/*        margin-right: 20px;*/
+/*        float: right;*/
+/*        border-bottom: solid 1px #bec5cb;*/
+/*        width: 76%;*/
+/*        height: 100px;*/
+/*        position: relative;*/
+/*        color: #979aa1;*/
+/*    }*/
+
+/*    .cp-text {*/
+/*        letter-spacing: 4px;*/
+/*        position: absolute;*/
+/*        left: 2px;*/
+/*        bottom: 10px;*/
+/*    }*/
+
+/*    .cp-text-2-s1 {*/
+/*        letter-spacing: 17px;*/
+/*    }*/
+
+/*    .cp-text-2-s2 {*/
+/*        position: relative;*/
+/*        right: 15px;*/
+/*    }*/
+
+/*    .cp-quit {*/
+/*        position: absolute;*/
+/*        top: 55%;*/
+/*        right: 5%;*/
+/*    }*/
+
+/*    !*2.左边tab栏区域*!*/
+/*    .cp-left {*/
+/*        margin-top: 20px;*/
+/*        float: left;*/
+/*        border-right: solid 1px #bec5cb;*/
+/*        width: 19%;*/
+/*    }*/
+
+/*    .active {*/
+/*        background: #DEDEDE;*/
+/*    }*/
+
+/*    .tab {*/
+/*        display: none;*/
+/*        position: relative;*/
+/*        width: 100%;*/
+/*        height: 100%;*/
+/*    }*/
+
+/*    .content .selected {*/
+/*        display: block;*/
+/*    }*/
+
+/*    .content {*/
+/*        position: absolute;*/
+/*        bottom: 0;*/
+/*        right: 0px;*/
+/*        !*border: solid 1px blue;*!*/
+/*        width: 81%;*/
+/*        height: 86%;*/
+/*    }*/
+
+/*    .cp-in {*/
+/*        width: 50px;*/
+/*        height: 50px;*/
+/*    }*/
+
+/*    .cp-img {*/
+/*        width: 50px;*/
+/*    }*/
+
+/*    !*3.主体区域代码*!*/
+/*    .pm-cp-back {*/
+/*        background: #e1e4eb;*/
+/*    }*/
+
+/*    .tab-li {*/
+/*        position: relative;*/
+/*        float: left;*/
+/*        width: 235px;*/
+/*        height: 100px;*/
+/*        border-radius: 3%;*/
+/*        margin: 20px;*/
+/*        display: table; !*重点*!*/
+/*        box-shadow: 2px 2px 5px #B8B8B8;*/
+/*    }*/
+
+/*    .tab-li-text-left {*/
+/*        text-align: left;*/
+/*    }*/
+
+/*    .tab-li-text {*/
+/*        color: #7b7f82;*/
+/*        text-align: center;*/
+/*        width: 67%;*/
+/*        height: 100%;*/
+/*        !*border: solid 1px red;*!*/
+/*        word-wrap: break-word;*/
+/*        word-break: normal;*/
+/*        font-size: 22px;*/
+/*        display: table-cell;*/
+/*        vertical-align: middle;*/
+/*        position: relative;*/
+/*        left: 5px;*/
+
+/*    }*/
+
+/*    !*上一步,下一步,完成按钮样式*!*/
+/*    .bt-box {*/
+/*        position: fixed;*/
+/*        bottom: 6%;*/
+/*        right: 0%;*/
+/*    }*/
+
+/*    .bt-box button {*/
+/*        margin-right: 40px;*/
+/*        width: 120px;*/
+/*        height: 35px;*/
+/*        border-radius: 35px;*/
+/*        font-size: 20px;*/
+/*        !*line-height: 35px;*!*/
+/*        text-align: center;*/
+/*        color: white;*/
+/*        background: linear-gradient(#e1e8f9, #5781be) no-repeat;*/
+/*        border: 1px solid #3A5FCD;*/
+/*    }*/
+
+/*    !*开关部分代码*!*/
+/*    .layui-form-switch {*/
+/*        min-width: 56px;*/
+/*        height: 35px;*/
+/*        position: absolute;*/
+/*        top: 24px;*/
+/*        right: 7px;*/
+/*        box-shadow: inset 0 1px 2px 1px #000;*/
+/*    }*/
+
+/*    .layui-form-onswitch i {*/
+/*        left: 100%;*/
+/*        margin-left: 32px;*/
+/*    }*/
+
+/*    .layui-form-switch i {*/
+/*        position: absolute;*/
+/*        left: 2px;*/
+/*        top: 2px;*/
+/*        width: 30px;*/
+/*        height: 30px;*/
+/*        box-shadow: 2px 2px 5px #000;*/
+/*    }*/
+
+/*    !*轮播图部分代码*!*/
+/*    #pic {*/
+/*        width: 100%;*/
+/*        height: 618px;*/
+/*        overflow: hidden;*/
+/*    }*/
+
+/*    #pic #img {*/
+/*        width: 400%;*/
+/*        height: 300px;*/
+/*        position: relative;*/
+/*    }*/
+
+/*    .pic-div-2 {*/
+/*        position: relative;*/
+/*        left: 660px;*/
+/*    }*/
+
+/*    #img .pic-div {*/
+/*        width: 30%;*/
+/*        height: 618px;*/
+/*        float: left;*/
+/*        !*background-color: orange;*!*/
+/*        text-align: center;*/
+/*        line-height: 300px;*/
+/*        !*color: white;*!*/
+/*    }*/
+
+/*    #circle {*/
+/*        width: 72px;*/
+/*        height: 40px;*/
+/*        margin: 0 auto;*/
+/*        position: relative;*/
+/*        z-index: 2;*/
+/*        top: -40px;*/
+/*    }*/
+
+/*    #circle ul li {*/
+/*        width: 15px;*/
+/*        height: 15px;*/
+/*        background-color: #bec4cf;*/
+/*        list-style: none;*/
+/*        float: left;*/
+/*        border-radius: 10px;*/
+/*        margin: 15px 10px 0 10px;*/
+/*    }*/
+
+/*    #circle ul .active {*/
+/*        background-color: gray;*/
+/*    }*/
+
+/*    !*能耗页面css代码*!*/
+/*    .per-time {*/
+/*        margin: 70px 0;*/
+/*        font-size: 24px;*/
+/*    }*/
+
+/*    .per-time div {*/
+/*        display: inline-block;*/
+/*    }*/
+
+/*    .per-time .input {*/
+/*        !*box-shadow: inset 0 1px 2px 1px gray;*!*/
+/*        border: none;*/
+/*        text-align: center;*/
+/*        font-size: 24px;*/
+/*        height: 35px;*/
+/*        width: 170px;*/
+/*    }*/
+
+/*    .per-main {*/
+/*        position: relative;*/
+/*        left: 85px;*/
+/*        !*border: solid 1px red;*!*/
+/*        width: 80%;*/
+/*        height: 55%;*/
+/*        margin: 0px auto;*/
+/*    }*/
+
+/*    .pre-tab-head {*/
+/*        position: relative;*/
+/*        left: 125px;*/
+/*    }*/
+
+/*    .per-tab {*/
+/*        display: inline-block;*/
+/*        margin: 30px;*/
+/*    }*/
+
+/*    .per-tab input {*/
+/*        height: 25px;*/
+/*        border: none;*/
+/*    }*/
+
+/*    .per-tab ul li {*/
+/*        margin: 30px;*/
+/*    }*/
+
+/*    .per-tab ul li span {*/
+/*        position: relative;*/
+/*        right: 15px;*/
+
+/*    }*/
+
+/*    .per-button {*/
+/*        margin: 0;*/
+/*        width: 30%;*/
+/*        position: fixed;*/
+/*        left: 35%;*/
+/*        bottom: 15%;*/
+
+/*    }*/
+
+/*    !*交车页面css---------*!*/
+/*    .gc-in {*/
+/*        !*box-shadow: inset 0 1px 2px 1px gray;*!*/
+/*        border: none;*/
+/*        text-align: center;*/
+/*        font-size: 24px;*/
+/*        height: 35px;*/
+/*        width: 450px;*/
+/*        margin: 0 15px;*/
+
+/*    }*/
+
+/*    .gc-info {*/
+/*        position: fixed;*/
+/*        top: 30%;*/
+/*        left: 15%;*/
+/*        width: 70%;*/
+/*        height: 350px;*/
+/*        border: 3px red solid;*/
+/*        background: #eef5fb;*/
+/*    }*/
+
+/*    .gc-info div {*/
+/*        font-size: 20px;*/
+/*        margin: 25px;*/
+/*        color: #63686e;*/
+/*    }*/
+
+/*    .gc-button {*/
+/*        letter-spacing: 4px;*/
+/*        position: fixed;*/
+/*        bottom: 10%;*/
+/*        left: 40%;*/
+/*        width: 20%;*/
+/*        height: 35px;*/
+/*        border-radius: 35px;*/
+/*        font-size: 20px;*/
+/*        !*line-height: 35px;*!*/
+/*        text-align: center;*/
+/*        color: white;*/
+/*        background: linear-gradient(#e1e8f9, #5781be) no-repeat;*/
+/*        border: 1px solid #3A5FCD;*/
+/*    }*/
+
+/*    !*交车拍摄页面css代码*!*/
+/*    .gcc-img {*/
+/*        border: 1px black solid;*/
+/*        width: 150px;*/
+/*        margin: 20px 50px 0px;*/
+
+/*    }*/
+
+/*    .gcc-button {*/
+/*        width: 20%;*/
+/*        height: 35px;*/
+/*        border-radius: 35px;*/
+/*        font-size: 20px;*/
+/*        !*line-height: 35px;*!*/
+/*        text-align: center;*/
+/*        color: white;*/
+/*        background: linear-gradient(#e1e8f9, #5781be) no-repeat;*/
+/*        border: 1px solid #3A5FCD;*/
+/*        margin: 40px 20px 0px;*/
+/*    }*/
+
+/*    !*交车成功css代码*!*/
+/*    .gcs-text {*/
+/*        margin-top: 200px;*/
+/*        font-size: 25px;*/
+/*        color: #69737c;*/
+/*        letter-spacing: 10px;*/
+/*    }*/
+/*}*/

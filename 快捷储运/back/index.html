@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>快捷储运管理系统</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="快捷储运管理系统">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link href="../image/ioc/favicon.ico" rel="icon" type="image/x-ico">
+    <!--
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        -->
+    <link rel="stylesheet" href="../js/layuiadmin/style/login.css" media="all">
+    <link rel="stylesheet" href="../js/layuiadmin/layui/css/layui.css"
+          media="all">
+    <link rel="stylesheet" href="../js/layuiadmin/style/admin.css" media="all">
+    <script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+    <link rel="stylesheet" href="../layuiadmin/layui/font2/iconfont.css">
+    <script src="../layuiadmin/layui/font2/iconfont.js"></script>
+</head>
+<body class="layui-layout-body">
+<div id="LAY_app">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <!-- 头部 左边 区域  -->
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item layadmin-flexible" lay-unselect>
+                    <a href="javascript:;" layadmin-event="flexible" title="侧边伸缩">
+                        <i class="layui-icon layui-icon-shrink-right" id="LAY_app_flexible"></i>
+                    </a>
+                </li>
+                <!--<li class="layui-nav-item layui-hide-xs" lay-unselect>-->
+                <!--<a href="${pageContext.request.contextPath }/info/toview-0-0-1-1.html" target="_blank" title="前台">-->
+                <!--<i class="layui-icon layui-icon-website"></i>-->
+                <!--</a>-->
+                <!--</li>-->
+                <li class="layui-nav-item" lay-unselect>
+                    <a href="javascript:;" layadmin-event="refresh" title="刷新">
+                        <i class="layui-icon layui-icon-refresh-3"></i>
+                    </a>
+                </li>
+            </ul>
+            <!-- 头部 右边 区域  -->
+            <ul class="layui-nav layui-layout-right" lay-filter="layadmin-layout-right">
+                <!-- <li class="layui-nav-item" lay-unselect>
+                    <a lay-href="app/message/index.html" layadmin-event="message" lay-text="消息中心">
+                        <i class="layui-icon layui-icon-notice"></i>
+
+                        如果有新消息，则显示小圆点
+                        <span class="layui-badge-dot"></span>
+                    </a>
+                </li> -->
+                <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                    <a href="javascript:;" layadmin-event="theme" title="背景主题">
+                        <i class="layui-icon layui-icon-theme"></i>
+                    </a>
+                </li>
+                <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                    <a href="javascript:;" layadmin-event="note" title="便签">
+                        <i class="layui-icon layui-icon-note"></i>
+                    </a>
+                </li>
+                <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                    <a href="javascript:;" layadmin-event="fullscreen" title="全屏"
+                       class="layui-anim-loop layui-anim-rotate">
+                        <i class="layui-icon layui-icon-snowflake "></i>
+                    </a>
+                </li>
+                <li class="layui-nav-item" lay-unselect>
+                    <!--用户 按钮-->
+                    <a href="javascript:;">
+                        <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                        <cite class="username">无</cite>
+                    </a>
+<!--                    <dl class="layui-nav-child">-->
+<!--                        &lt;!&ndash; <dd>-->
+<!--                            <a lay-href="set/user/info.html">基本资料</a>-->
+<!--                        </dd>-->
+<!--                        <dd>-->
+<!--                            <a lay-href="set/user/password.html">修改密码</a>-->
+<!--                        </dd>-->
+<!--                        <hr> &ndash;&gt;-->
+<!--                        <dd layadmin-event="logout" style="text-align: center;">-->
+<!--                            <a class="out">退出</a>-->
+<!--                        </dd>-->
+<!--                    </dl>-->
+                </li>
+                <li class="layui-nav-item"><a class="out">退出</a></li>
+                <!-- <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                    <a href="javascript:;" layadmin-event="about">
+                        <i class="layui-icon layui-icon-more-vertical"></i>
+                    </a>
+                </li>
+                <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-unselect>
+                    <a href="javascript:;" layadmin-event="more">
+                        <i class="layui-icon layui-icon-more-vertical"></i>
+                    </a>
+                </li> -->
+            </ul>
+
+        </div>
+
+        <!-- 侧边菜单 -->
+        <div class="layui-side layui-side-menu">
+            <div class="layui-side-scroll">
+                <div class="layui-logo" lay-href="home/console.html">
+                    <span>快捷储运管理系统</span>
+                </div>
+
+                <ul class=" layui-nav layui-nav-tree" lay-shrink="all" id="menu_dt"
+                    lay-filter="layadmin-system-side-menu">
+                    <li data-name="ren" class="rendan layui-nav-item">
+                        <!-- 标题头 -->
+                        <a href="javascript:;" lay-tips="人员" lay-direction="2">
+                            <i class="layui-icon  iconfont">&#xe65d;</i>
+<!--                            <i class="layui-icon layui-icon-jie-suo"></i>-->
+                            <cite>工作人员管理</cite>
+                        </a>
+                        <!--下面分支-->
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a lay-href="people_run_list_.html">人员管理</a>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li data-name="home" class="rendan layui-nav-item">
+                        <!-- 标题头 -->
+                        <a href="javascript:;" lay-tips="库" lay-direction="2">
+                            <i class="layui-icon layui-icon-home"></i>
+                            <cite>客户信息</cite>
+                        </a>
+                        <!--下面分支-->
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a lay-href="transport_unit_library.html">运输单位信息</a>
+                            </dd>
+                            <dd data-name="console" class="layui-this">
+                                <a lay-href="customer_unit_library.html">客户单位信息</a>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li data-name="shenghe" class="layui-nav-item">
+                        <a href="javascript:;" lay-tips="接车" lay-direction="2">
+                            <i class="layui-icon layui-icon-template"></i>
+                            <cite>业务处理</cite>
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd class="ruku">
+                                <a lay-href="receive_car_list.html">接车单</a>
+                            </dd>
+                            <dd class="chuku">
+                                <a lay-href="delivery_car_list.html">交车单</a>
+                            </dd>
+                            <dd>
+                                <a lay-href="PDI_detection_record_list.html">PDI检测</a>
+                            </dd>
+                            <dd data-name="grid">
+                                <a href="javascript:;">预约业务</a>
+                                <dl class="layui-nav-child">
+                                    <dd class="ruku" data-name="list">
+                                        <a lay-href="reservation_storage.html">预约接车</a>
+                                    </dd>
+                                    <dd class="chuku" data-name="mobile">
+                                        <a lay-href="delivery_car_yy_fwdt_list.html">预约交车</a>
+                                    </dd>
+                                </dl>
+                            </dd>
+                        </dl>
+                    </li>
+
+                    <li data-name="shenghe" class="layui-nav-item">
+                        <a href="javascript:;" lay-tips="接车" lay-direction="2">
+                            <i class="layui-icon layui-icon-template"></i>
+                            <cite>操作</cite>
+                        </a>
+                        <dl class="layui-nav-child">
+                            <!--<dd>-->
+                            <!--<a lay-href="get_Car_in.html">办理进场</a>-->
+                            <!--</dd>-->
+                            <dd>
+                                <a lay-href="in_the_library_car.html">在库车辆</a>
+                            </dd>
+
+                        </dl>
+                    </li>
+                    <li data-name="shenghe" class="layui-nav-item">
+                        <a href="javascript:;" lay-tips="接车" lay-direction="2">
+                            <i class="layui-icon layui-icon-template"></i>
+                            <cite>PAD端车辆信息</cite>
+                        </a>
+                        <dl class="layui-nav-child">
+                            <!--<dd>-->
+                            <!--<a lay-href="get_Car_in.html">办理进场</a>-->
+                            <!--</dd>-->
+                            <dd>
+                                <a lay-href="PAD_Car_info_list.html">车辆信息</a>
+                            </dd>
+
+                        </dl>
+                    </li>
+                </ul>
+                <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="menu_kh"
+                    lay-filter="layadmin-system-side-menu">
+                    <li data-name="home" class="layui-nav-item">
+                        <!-- 标题头 -->
+                        <a href="javascript:;" lay-tips="库" lay-direction="2">
+                            <i class="layui-icon layui-icon-home"></i>
+                            <cite>(客户)预约</cite>
+                        </a>
+                        <!--下面分支-->
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <!--                                <a lay-href="reservation_kh_storage.html">预约入库单(接车单)</a>-->
+                                <a lay-href="reservation_storage.html">预约入库单(接车单)</a>
+                            </dd>
+                            <dd>
+                                <a lay-href="delivery_car_yy_kh_list.html">预约出库单(交车单)</a>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li data-name="shenghe" class="layui-nav-item">
+                        <a href="javascript:;" lay-tips="接车" lay-direction="2">
+                            <i class="layui-icon layui-icon-template"></i>
+                            <cite>操作</cite>
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a lay-href="in_the_library_car_customer.html">在库车辆</a>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+                <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="menu_ys"
+                    lay-filter="layadmin-system-side-menu">
+                    <li data-name="home" class="layui-nav-item">
+                        <!-- 标题头 -->
+                        <a href="javascript:;" lay-tips="库" lay-direction="2">
+                            <i class="layui-icon layui-icon-home"></i>
+                            <cite>(运输)车辆管理</cite>
+                        </a>
+                        <!--下面分支-->
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <!--                                <a lay-href="reservation_kh_storage.html">预约入库单(接车单)</a>-->
+                                <a lay-href="transport_car_manage.html">车辆管理</a>
+                            </dd>
+                        </dl>
+                    </li>
+                    <!--                    <li data-name="shenghe" class="layui-nav-item">-->
+                    <!--                        <a href="javascript:;" lay-tips="接车" lay-direction="2">-->
+                    <!--                            <i class="layui-icon layui-icon-template"></i>-->
+                    <!--                            <cite>操作</cite>-->
+                    <!--                        </a>-->
+                    <!--                        <dl class="layui-nav-child">-->
+                    <!--                            <dd>-->
+                    <!--                                <a lay-href="in_the_library_car_customer.html">在库车辆</a>-->
+                    <!--                            </dd>-->
+                    <!--                        </dl>-->
+                    <!--                    </li>-->
+                </ul>
+            </div>
+        </div>
+
+        <!-- 页面标签 -->
+        <div class="layadmin-pagetabs" id="LAY_app_tabs">
+            <div class="layui-icon layadmin-tabs-control layui-icon-prev" layadmin-event="leftPage"></div>
+            <div class="layui-icon layadmin-tabs-control layui-icon-next" layadmin-event="rightPage"></div>
+            <div class="layui-icon layadmin-tabs-control layui-icon-down">
+                <ul class="layui-nav layadmin-tabs-select" lay-filter="layadmin-pagetabs-nav">
+                    <li class="layui-nav-item" lay-unselect><a href="javascript:;"></a>
+                        <dl class="layui-nav-child layui-anim-fadein">
+                            <dd layadmin-event="closeThisTabs">
+                                <a href="javascript:;">关闭当前标签页</a>
+                            </dd>
+                            <dd layadmin-event="closeOtherTabs">
+                                <a href="javascript:;">关闭其它标签页</a>
+                            </dd>
+                            <dd layadmin-event="closeAllTabs">
+                                <a href="javascript:;">关闭全部标签页</a>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+            <div class="layui-tab" lay-unauto lay-allowClose="true" lay-filter="layadmin-layout-tabs">
+                <ul class="layui-tab-title" id="LAY_app_tabsheader">
+                    <li lay-id="home/console.html" class="layui-this"><i class="layui-icon layui-icon-home"></i></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- 主体内容 -->
+        <div class="layui-body" id="LAY_app_body">
+            <div class="layadmin-tabsbody-item layui-show">
+                <!--src="${pageContext.request.contextPath }/voteback/tohome.html" -->
+                <iframe frameborder="0" class="layadmin-iframe" src="index_home.html"></iframe>
+            </div>
+        </div>
+
+        <!-- 辅助元素，一般用于移动设备下遮罩 -->
+        <div class="layadmin-body-shade" layadmin-event="shade"></div>
+    </div>
+</div>
+<!--<input type="hidden" id="path" value="<%=basePath%>">-->
+<div class="layui-trans layadmin-user-login-footer">
+    <p>Copyright © 2019 by 中国联合网络通信有限公司宁波市分公司 All rights reserved.</p>
+</div>
+
+
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script src="../js/layuiadmin/layui/layui.js"></script>
+<script type="text/javascript" src="../layer_mobile/layer.js"></script>
+<script type="text/javascript" src="../js/jquery.md5.js"></script>
+<script type="text/javascript" src="../js/jquery-geturlcode.js"></script>
+<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+<script src="../js/common/api.js"></script>
+<script src="../js/common/localjs.js"></script>
+<script type="text/javascript" src="../js/mui.min.js"></script>
+
+
+<script type="text/javascript">
+    var ref = "";
+    var path = $("#path").val();
+
+
+    $(function () {
+
+        // $(".username").html(sessionStorage.getItem('username'));//赋值姓名
+        var aa = sessionStorage.getItem('token'); //
+        console.log("token为", aa);
+
+
+        var static = GetQueryString("static");
+        if (static == 1) {//服务大厅
+            $(".rendan").hide();//人员单位管理权限
+            $(".ruku").hide();//办理入库权限
+            $(".chuku").hide();//办理出库权限
+            var authorityList = sessionStorage.getItem('authorityList');
+
+            console.log("权限为", authorityList);
+            var jsonlist = JSON.parse(authorityList);
+            console.log("转为", jsonlist);
+            $.each(jsonlist, function (idx, obj) {
+                if (obj.id == 9) {
+                    $(".chuku").show();
+                }
+                if (obj.id == 10) {
+                    $(".ruku").show();
+                }
+                if (obj.id == 11) {
+                    $(".rendan").show();
+                }
+            });
+            $("#menu_kh").hide();
+            $("#menu_ys").hide();
+            $(".username").html(sessionStorage.getItem('username'));//赋值姓名
+        } else if (static == 2) {//客户登录
+            $(".username").html(sessionStorage.getItem('customer_fullname'));//赋值姓名
+            $("#menu_dt").hide();
+            $("#menu_ys").hide();
+        } else if (static == 3) {
+            $(".username").html(sessionStorage.getItem('transport_fullname'));//赋值姓名
+            $("#menu_dt").hide();
+            $("#menu_kh").hide();
+        }
+
+
+        $(".out").on("click", function () {
+            sessionStorage.setItem('token', null); // 存入一个值
+            if (static == 1) {//服务大厅
+                window.location.href = "login.html";
+            } else if (static == 2) {//客户登录
+                window.location.href = "login_kh.html";
+            }else if (static == 3) {//客户登录
+                window.location.href = "login_ys.html";
+            }
+        })
+
+    });
+
+
+    //2. 定时刷新调用的方法
+    /* function consoleLog() {
+        $.ajax({
+            type : "POST",
+            url : path + "login/timeout.json",
+            dataType : "json",
+            success : function(data) {
+                if (data.res == "yes") {
+                    window.location.href = path + "login/tlogin.html";
+                    clearInterval(ref);
+                }
+            },
+            error : function(data) {
+                alert("服务器错误");
+            }
+        });
+    }
+    //3. 设置定时刷新
+    ref = setInterval(function() {
+        consoleLog();
+    }, (30*60+2)*1000); */
+    //这样会每2秒执行一次consoleLog方法
+
+    //4. 阻止定时刷新
+</script>
+
+
+<script>
+    layui.config({
+        base: '../layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use('index');
+</script>
+</body>
+</html>

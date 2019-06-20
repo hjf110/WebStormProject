@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>用户管理</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <link rel="stylesheet" href="./css/font-awesome.min.css">
+    <link rel="stylesheet" href="./plugins/jqgrid/ui.jqgrid-bootstrap.css">
+    <link rel="stylesheet" href="./plugins/ztree/css/metroStyle/metroStyle.css">
+    <link rel="stylesheet" href="./css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./plugins/treegrid/jquery.treegrid.css">
+
+
+    <link rel="stylesheet" href="./plugins/select/css/bootstrap-select.css">
+
+
+    <script src="./libs/jquery.min.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./libs/bootstrap.min.js"></script>
+    <script src="./libs/vue.min.js"></script>
+
+    <script src="./plugins/layer/layer.js"></script>
+    <script src="./plugins/treegrid/jquery.treegrid.min.js"></script>
+    <script src="./plugins/treegrid/jquery.treegrid.bootstrap3.js"></script>
+    <script src="./plugins/treegrid/jquery.treegrid.extension.js"></script>
+    <script src="./plugins/treegrid/tree.table.js"></script>
+    <script src="./plugins/jqgrid/grid.locale-cn.js"></script>
+    <script src="./plugins/jqgrid/jquery.jqGrid.min.js"></script>
+    <script src="./plugins/ztree/jquery.ztree.all.min.js"></script>
+    <script src="./assets/js/chosen.jquery.min.js"></script>
+    <script src="./plugins/select/bootstrap-select.js"></script>
+    <script src="./plugins/select/defaults-zh_CN.js"></script>
+
+    <link rel="stylesheet" href="./plugins/fileinput/css/fileinput.css">
+    <link rel="stylesheet" href="./plugins/fileinput/css/fileinput-rtl.css">
+    <script src="./plugins/fileinput/js/fileinput.js"></script>
+    <script src="./plugins/fileinput/js/locales/zh.js"></script>
+
+    <script src="./plugins/treeview/bootstrap-treeview.js"></script>
+
+    <link rel="stylesheet" href="./plugins/validator/css/bootstrapValidator.css">
+    <script src="./plugins/validator/js/bootstrapValidator.js"></script>
+    <script src="./plugins/validator/js/zh_CN.js"></script>
+
+
+    <link rel="stylesheet" href="./libs/datetimepicker/bootstrap-datetimepicker.min.css">
+    <script src="./libs/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+    <script src="./libs/datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+</head>
+<body>
+
+<div class="panel panel-default">
+    <div class="panel-heading">常用表单</div>
+
+
+    <!--作为组件使用-->
+    <!--作为组件使用-->
+
+
+    <form class="form-horizontal">
+        <div class="form-group">
+            <div class="col-sm-2 control-label">文本框</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="登录账号"/>
+            </div>
+
+            <input type="text" value="2017-07-31 17:58" id="datetimepicker" readonly  class="form_datetime" data-date-format="yyyy-mm-dd hh:ii">
+
+
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-sm-2 control-label">密码</div>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" v-model="user.password" placeholder="密码"/>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-sm-2 control-label">密码</div>
+            <div class="col-sm-10">
+                <div id="sel"></div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-sm-2 control-label">下拉单选</div>
+            <div class="col-sm-10">
+
+
+                <select class="selectpicker" multiple data-live-search="true" title="请选择省份">
+                    <option value="1">广东省</option>
+                    <option value="2">广西省</option>
+                    <option value="3">福建省</option>
+                    <option value="4" selected="selected">湖南省</option>
+                    <option value="5">山东省</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-sm-2 control-label">下拉树形</div>
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <input type="text" class="form-control" readonly="readonly">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right"
+                            style=" padding: 0px ;overflow: auto ;max-height: 300px ;">
+                            <div id="treeview3"></div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-2 control-label">密码</div>
+            <div class="col-sm-10">
+                <div id="fi"></div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-sm-2 control-label"></div>
+            <input type="button" class="btn btn-primary" value="确定"/>
+            &nbsp;&nbsp;<input type="button" class="btn btn-warning" value="返回"/>
+        </div>
+
+    </form>
+</div>
+
+</body>
+<script src="./js/control/bootstrapFileInput.js"></script>
+<script>
+    $('#datetimepicker').datetimepicker({
+        format: 'yyyy-mm-dd hh:ii',
+        language: "zh-CN"
+    });
+    $("#fi").bootstrapFileInput({});
+</script>
+
+</html>

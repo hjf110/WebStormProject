@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PDI检测(指定驾驶员)</title>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="PDI检测(指定驾驶员)">
+    <link href="../image/ioc/favicon.ico" rel="icon" type="image/x-ico">
+
+    <link rel="stylesheet" href="../js/layuiadmin/style/login.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../js/layuiadmin/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+
+</head>
+<body style="overflow-y:scroll;">
+<div style="padding: 15px;">
+    <form class="layui-form layui-form-pane">
+        <div class="layui-form-item">
+            <label class="layui-form-label">司机姓名</label>
+            <div class="layui-input-block">
+                <select id="driver_unionid" name="driver_unionid" lay-search="">
+                    <option value="">直接选择或搜索选择</option>
+                    <option value="VR8lNC40ZWiPFWSwQmBKpSwiEiE">司机1</option>
+                    <option value="VR8lNC40ZWiPFWSwQmBKpSwiEiE">司机2</option>
+                    <option value="VR8lNC40ZWiPFWSwQmBKpSwiEiE">司机3</option>
+                    <option value="VR8lNC40ZWiPFWSwQmBKpSwiEiE">司机4</option>
+                    <option value="VR8lNC40ZWiPFWSwQmBKpSwiEiE">司机5</option>
+                    <option value="VR8lNC40ZWiPFWSwQmBKpSwiEiE">司机6</option>
+                    <option value="VR8lNC40ZWiPFWSwQmBKpSwiEiE">司机7</option>
+                    <option value="VR8lNC40ZWiPFWSwQmBKpSwiEiE">司机8</option>
+                    <option value="VR8lNC40ZWiPFWSwQmBKpSwiEiE">司机9</option>
+                    <option value="VR8lNC40ZWiPFWSwQmBKpSwiEiE">司机10</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formDemo">确定</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="layui-trans layadmin-user-login-footer">
+    <p>Copyright © 2019 by 中国联合网络通信有限公司宁波市分公司 All rights reserved.</p>
+</div>
+</body>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script src="../js/layuiadmin/layui/layui.js"></script>
+<script type="text/javascript" src="../layer_mobile/layer.js"></script>
+<script type="text/javascript" src="../js/jquery.md5.js"></script>
+<script type="text/javascript" src="../js/jquery-geturlcode.js"></script>
+<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+<script src="../js/common/api.js"></script>
+<script src="../js/common/localjs.js"></script>
+<script type="text/javascript" src="../js/mui.min.js"></script>
+<script>
+
+
+    //Demo
+    layui.use(['jquery', 'form', 'layer', 'laydate'], function () {
+        var form = layui.form,
+            $ = layui.$,
+            layer = layui.layer,
+            laydate = layui.laydate;
+
+
+        var storagenumber = GetQueryString("storagenumber");
+        var type = GetQueryString("type");
+
+        //日期时间选择
+        laydate.render({
+            elem: '#time'
+            , type: 'datetime'
+            , min: 0
+            , max: 0
+        });
+
+
+        //监听提交
+        form.on('submit(formDemo)', function (data) {
+            //layer.msg(JSON.stringify(data.field));
+            console.log(data.field);
+            var result = data.field;
+
+            var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+            if (result.driver_unionid == "" || result.driver_unionid == null) {
+                layer.msg("请选择一个司机");
+            } else {
+                if (type != 1) {
+                    result["storagenumber"] = storagenumber;
+                    console.log(result);
+                    ajaxSubmit(result, Api.FWDT_PDI_jiance.To_Driver, "POST", function (res) {
+
+                        parent.layui.table.reload("customer_unit_library", {page: {curr: 1}});
+                        parent.layer.msg('驾驶员指定成功');
+                        parent.layer.close(index);
+                    }, "json");
+                }else{
+                    var cook = $.cookie("carinfo");
+                    //JSON.parse( jsonStr );
+                    console.log("carinfo---",JSON.parse(cook));
+
+                    result["cars"] =  $.cookie("carinfo");
+                    parent.du=result.driver_unionid;
+                    parent.layer.close(index);
+                   // console.log("---",JSON.stringify(result));
+                    // ajaxSubmit(result,Api.FWDT_PDI_jiance.Add_PDI_jianche,"POST",function () {
+                    //     var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                    //     parent.layui.table.reload("customer_unit_library", {page: {curr: 1}});
+                    //     parent.layer.msg('PDI检测单创建成功');
+                    //     parent.layer.close(index);
+                    // },"json",true);
+                }
+
+            }
+            return false;
+        });
+    });
+</script>
+</html>

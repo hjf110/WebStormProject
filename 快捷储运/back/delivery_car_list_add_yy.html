@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>预约单转接车单</title>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="预约单转接车单">
+    <link href="../image/ioc/favicon.ico" rel="icon" type="image/x-ico">
+    <!--
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        -->
+
+    <link rel="stylesheet" href="../js/layuiadmin/style/login.css" media="all">
+    <script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+    <link rel="stylesheet" type="text/css" href="../js/layuiadmin/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body class="layui-layout-body" style="overflow-y:scroll;">
+<!--<input type="hidden" id="path" name="path" value="${pageContext.request.contextPath }" />-->
+<!-- 内容主体区域 -->
+<div style="padding: 15px;">
+
+    <div class="demoTable">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">搜索名称:</label>
+                <div class="layui-inline">
+                    <input id="demoReload" type="text" name="title" required lay-verify="required" placeholder="请输入标题"
+                           autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn" data-type="reload">
+                        <i class="layui-icon">&#xe615;</i> 查找
+                    </button>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">日期区间:</label>
+                <div class="layui-inline">
+                    <input id="time" type="text" class="layui-input">
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn" data-type="timeselect">
+                        <i class="layui-icon">&#xe615;</i> 查找
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+
+        <button style="display: none;" id="shuaxing" class="layui-btn" data-type="shuaxing">刷新</button>
+        <!-- <button class="layui-btn" data-type="addSort1">新增新闻</button> -->
+    </div>
+
+
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-xs" lay-event="look">查看</a>
+        <!--        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>-->
+        <!--<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>-->
+    </script>
+
+    <!--<script type="text/html" id="switchTpl">-->
+    <!--&lt;!&ndash; 线上状态 &ndash;&gt;-->
+    <!--<input type="checkbox" name="status" value="{{d.id}}" lay-skin="switch" lay-text="上线|下线" lay-filter="status" {{-->
+    <!--d.status== 1 ? 'checked' : '' }}>-->
+    <!--</script>-->
+    <!--<script type="text/html" id="tuijian">-->
+    <!--&lt;!&ndash; 是否推荐&ndash;&gt;-->
+    <!--<input type="checkbox" name="tuijian" value="{{d.id}}" lay-skin="switch" lay-text="推荐|不推荐" lay-filter="tuijian"-->
+    <!--{{ d.tuijian== 2 ? 'checked' : '' }}>-->
+    <!--</script>-->
+
+    <div style="display:none;" id="tool">
+        <!-- <span>搜索关键字:</span>
+        <div class="layui-inline">
+            <input class="layui-input" name="id" id="demoReload" autocomplete="off">
+        </div>
+        <button class="layui-btn" lay-event="reload">
+            <i class="layui-icon">&#xe615;</i>
+            搜索
+        </button> -->
+        <button class="layui-btn " lay-event="yy_to_jieche">
+            <i class="layui-icon">&#xe654;</i> 转为接车单(先勾选)
+        </button>
+        <!--<button class="layui-btn " lay-event="del_library">-->
+        <!--<i class="layui-icon">&#xe640;</i> 删除-->
+        <!--</button>-->
+    </div>
+
+
+    <!--数据表格主体-->
+    <table id="customer_unit_library" lay-filter="customer_unit_library" class="layui-table"></table>
+
+</div>
+<div class="layui-trans layadmin-user-login-footer">
+    <p style="color: white;">Copyright © 2019 by 中国联合网络通信有限公司宁波市分公司 All rights reserved.</p>
+</div>
+</body>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script src="../js/layuiadmin/layui/layui.js"></script>
+<script type="text/javascript" src="../layer_mobile/layer.js"></script>
+<script type="text/javascript" src="../js/jquery.md5.js"></script>
+<script type="text/javascript" src="../js/jquery-geturlcode.js"></script>
+<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+<script src="../js/common/api.js"></script>
+<script src="../js/common/localjs.js"></script>
+<script type="text/javascript" src="../js/mui.min.js"></script>
+
+<script>
+    //JavaScript代码区域
+    layui.use('element', function () {
+        var element = layui.element;
+
+    });
+</script>
+<script>
+    layui.use(['table', 'laydate'], function () {
+        var table = layui.table,
+            form = layui.form,
+            laydate = layui.laydate;
+
+        //渲染时间选择
+        laydate.render({
+            elem: '#time', //指定元素
+            range: '-'
+        });
+
+
+        //渲染数据表格
+        table.render({
+            elem: '#customer_unit_library',
+            id: 'customer_unit_library',
+            url: Api.FWDT_YuYue_jiaoche.Select_jiaoche_jilu,
+            where: {
+                "valid": 1
+            },
+            parseData: function (res) {
+                console.log(res);
+                return {
+                    "code": res.code, //解析接口状态
+                    "msg": res.msg, //解析提示文本
+                    "count": res.data.total, //解析数据长度
+                    "data": res.data.list //解析数据列表
+                };
+            },
+            request: {
+                pageName: 'page' //页码的参数名称，默认：page
+                , limitName: 'count' //每页数据量的参数名，默认：limit
+            },
+            cols: [[
+                {
+                    type: 'checkbox',
+                    //fixed : 'left'
+                }
+                , {
+                    type: "numbers"
+                    , title: '编号'
+                    //style : 'height:60px;width:60px;line-height:60px!important;',
+                    //fixed : 'left',
+                    // sort: true
+                }
+                , {
+                    field: 'id'
+                    , title: 'id'
+                    //style : 'height:60px;width:60px;line-height:60px!important;',
+                    //fixed : 'left',
+                    // sort: true
+                }
+
+                , {
+                    field: 'customer_name'
+                    , title: '客户单位'
+                    //style : 'height:60px;width:60px;line-height:60px!important;',
+                    // templet: '<div><img src="${pageContext.request.contextPath}{{d.image}}"></div>'
+                }
+                , {
+                    field: 'transport_plantype'
+                    , title: '运输方式'
+                    //style : 'height:60px;width:60px;line-height:60px!important;',
+                    // templet: '<div><img src="${pageContext.request.contextPath}{{d.image}}"></div>'
+                }
+                , {
+                    field: 'transport_name'
+                    , title: '运输单位'
+                    , templet: '#dname'
+                }
+                , {
+                    field: 'number'
+                    , title: '出库车辆数'
+
+                }
+                , {
+                    field: 'outtime'
+                    , title: '预约出库时间'
+
+                }
+                , {
+                    field: 'createtime'
+                    , title: '订单创建时间'
+
+                }
+                , {
+                    field: 'create_username'
+                    , title: '创建单位'
+
+                }
+                , {
+                    title: '操作',
+                    fixed: 'right',
+                    width: 200,
+                    align: 'center',
+                    toolbar: '#barDemo'
+                }
+            ]],
+            page: true,
+            limit: 20,
+            limits: [1, 2, 60, 80, 100],
+            toolbar: '#tool'
+        });
+
+
+        //监听线上操作
+//        form.on('switch(status)', function (obj) {
+//            //layer.tips(this.value + ' ' + this.name + '：' + obj.elem.checked, obj.othis);
+//            var id = this.value;
+//            if (obj.elem.checked) {
+//                //layer.confirm('要上线吗', function(index) {
+//                $.ajax({
+//                    type: "POST",
+//                    url: path + "/voteback/xx.html",
+//                    data: {
+//                        "status": 1,
+//                        "id": id
+//                    },
+//                    dataType: "json",
+//                    success: function (data) {
+//                        if (data.bb == "yes") {
+//                            //layer.alert("上线成功!");
+//                            //$('#shuaxing').click();
+//                        } else {
+//                            layer.alert("上线失败!");
+//                        }
+//                    },
+//                    error: function () {
+//                        alert("上线操作失败");
+//                    }
+//                });
+//                //});
+//
+//            } else if (!obj.elem.checked) {
+//                //layer.confirm('要下线吗', function(index) {
+//                $.ajax({
+//                    type: "POST",
+//                    url: path + "/voteback/xx.html",
+//                    data: {
+//                        "status": 2,
+//                        "id": id
+//                    },
+//                    dataType: "json",
+//                    success: function (data) {
+//                        if (data.bb == "yes") {
+//                            //layer.alert("下线成功!");
+//                            //$('#shuaxing').click();
+//                        } else {
+//                            layer.alert("下线失败!");
+//                        }
+//                    },
+//                    error: function () {
+//                        alert("下线操作失败");
+//                    }
+//                });
+//                //});
+//            }
+//        });
+
+//        form.on('switch(tuijian)', function (obj) {
+//            //layer.tips(this.value + ' ' + this.name + '：' + obj.elem.checked, obj.othis);
+//            var id = this.value;
+//            if (obj.elem.checked) {
+//                //layer.confirm('要上线吗', function(index) {
+//                $.ajax({
+//                    type: "POST",
+//                    url: path + "/voteback/tuijian.html",
+//                    data: {
+//                        "tuijian": 2,
+//                        "id": id
+//                    },
+//                    dataType: "json",
+//                    success: function (data) {
+//                        if (data.res == "yes") {
+//                            //layer.alert("推荐成功!");
+//                            //$('#shuaxing').click();
+//                        } else {
+//                            layer.alert("推荐失败!");
+//                        }
+//                    },
+//                    error: function () {
+//                        alert("推荐操作失败");
+//                    }
+//                });
+//                //});
+//
+//            } else if (!obj.elem.checked) {
+//                //layer.alert("取消推荐成功!");
+//                //layer.confirm('要下线吗', function(index) {
+//                $.ajax({
+//                    type: "POST",
+//                    url: path + "/voteback/tuijian.html",
+//                    data: {
+//                        "tuijian": 1,
+//                        "id": id
+//                    },
+//                    dataType: "json",
+//                    success: function (data) {
+//                        if (data.res == "yes") {
+//                            //layer.alert("取消推荐成功!");
+//                            //$('#shuaxing').click();
+//                        } else {
+//                            layer.alert("取消推荐失败!");
+//                        }
+//                    },
+//                    error: function () {
+//                        alert("取消推荐操作失败");
+//                    }
+//                });
+//                //});
+//            }
+//        });
+
+
+        //监听单元格编辑
+//        table.on('edit(test)', function (obj) {
+//            var value = obj.value, //得到修改后的值
+//                data = obj.data, //得到所在行所有键值
+//                field = obj.field; //得到字段
+//            //layer.msg('[ID: ' + data.id + '] ' + field + ' 字段更改为：' + value);
+//            $.post(path + '/voteback/pro/modifity_PaiXu', {
+//                "id": data.id,
+//                "asc": data.asc
+//            }, function (res) {
+//                table.reload('news', {
+//                    page: {
+//                        curr: 1 //重新从第 1 页开始
+//                    }
+//                });
+//            }, 'json');
+//
+//
+//        });
+
+
+        //监听头工具事件
+        table.on('toolbar(customer_unit_library)', function (obj) {
+
+            switch (obj.event) {
+                case 'yy_to_jieche':
+                    var checkStatus = table.checkStatus(obj.config.id);
+                    var data = checkStatus.data;
+                    //alert(data);
+//                    var allNews = JSON.stringify(data);
+                    if (data == null || data == " "||data.length==0) {
+                        layer.msg("请先勾选预约单")
+                    } else {
+                        console.log(data);
+                        $.each(data, function (idx, obj) {
+                            ajaxSubmit({id: obj.id}, Api.FWDT_jiaoche.YY_Zhuang_jiache, "GET", function (res) {
+//                                parent.layui.table.reload("customer_unit_library", {page: {curr: 1}});
+//                                table.reload('customer_unit_library', {
+//                                    page: {
+//                                        curr: 1 //重新从第 1 页开始
+//                                    }
+//                                });
+                            });
+                        });
+                        var a = layer.load(2, {shade: false});
+                        setTimeout(function () {
+                            close(a);
+                            var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                            parent.layer.msg('转化成功');
+                            parent.layer.close(index);
+                        }, 2000)
+
+                    }
+                    break;
+                case 'add_library':
+                    var as = layer.open({
+                        id: "add_library",
+                        type: 2,
+                        title: '添加预约入库单',
+                        maxmin: true,
+                        shadeClose: false,
+                        shade: 0.8,
+                        //area: ['1500px', '800px'],
+                        //content : path+'/voteback/add.html',
+                        content: 'reservation_storage_add.html', //iframe的url
+                        success: function (layero, index) {
+                            //传入参数，并赋值给iframe的元素
+                        }
+                    });
+                    layer.full(as);
+                    break;
+                case 'del_library':
+                    var checkStatus = table.checkStatus(obj.config.id);
+                    var data = checkStatus.data;
+                    var allNews = JSON.stringify(data);
+                    layer.confirm('真的要删除吗', function (index) {
+                        $.ajax({
+                            type: "POST",
+                            url: '<%=request.getContextPath()%>/voteback/pro/delAllPro',
+                            data: {
+                                "allNews": allNews
+                            },
+                            dataType: "json",
+                            success: function (data) {
+                                if (data.res == "yes") {
+                                    layer.alert("删除成功!");
+                                    $("#shuaxing").click();
+                                } else if (data.res == "no") {
+                                    layer.alert("删除失败!");
+                                } else {
+                                    layer.alert("请勾选要删除的数据");
+                                }
+                            },
+                            error: function () {
+                                alert("删除操作失败");
+                            }
+                        });
+                    });
+
+                    break;
+
+            }
+
+
+        });
+
+
+        //监听工具条
+        table.on('tool(customer_unit_library)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'detail') {
+                //layer.msg('ID：' + data.id + ' 的查看操作');
+                layer.open({
+                    id: "layer_say_hello",
+                    type: 2,
+                    title: data.title,
+                    maxmin: true,
+                    shadeClose: false,
+                    shade: 0.8,
+                    area: ['1000px', '800px'],
+                    //content : path+'/voteback/add.html',
+                    content: path + '/info/show/new-' + data.id + '.html?m=1', //iframe的url
+                    success: function (layero, index) {
+                        //传入参数，并赋值给iframe的元素
+                        $('#shuaxing').click();
+                    }
+                });
+
+            } else if (obj.event === 'del') {
+                layer.confirm('真的要删除吗', function (index) {
+                    $.ajax({
+                        type: "POST",
+                        url: '<%=request.getContextPath()%>/voteback/pro/delPro',
+                        data: {
+                            "id": data.id,
+                        },
+                        dataType: "json",
+                        success: function (data) {
+
+
+                            if (data.res == "yes") {
+                                layer.alert("删除成功!");
+                                obj.del();
+                                layer.close(index);
+                            } else {
+                                layer.alert("删除失败!");
+                            }
+                        },
+                        error: function () {
+                            alert("删除操作失败");
+                        }
+                    });
+
+                });
+            } else if (obj.event === 'edit') {
+                //layer.alert('编辑行：<br>' + JSON.stringify(data));
+                var as = layer.open({
+                    id: "ModifityNews",
+                    type: 2,
+                    title: data.title,
+                    maxmin: true,
+                    shadeClose: false,
+                    shade: 0.8,
+                    area: ['1500px', '800px'],
+                    //content : path+'/voteback/add.html',
+                    content: 'reservation_storage_Mot.html?id=' + data.id, //iframe的url
+                    success: function (layero, index) {
+                        //传入参数，并赋值给iframe的元素
+                    }
+                });
+                layer.full(as);
+            } else if (obj.event === 'look') {
+                //layer.alert('编辑行：<br>' + JSON.stringify(data));
+                var as = layer.open({
+                    id: "look",
+                    type: 2,
+                    title: data.title,
+                    maxmin: true,
+                    shadeClose: false,
+                    shade: 0.8,
+                    area: ['1500px', '800px'],
+                    //content : path+'/voteback/add.html',
+                    content: 'delivery_car_yy_fwdt_list_Look.html?id=' + data.id, //iframe的url
+                    success: function (layero, index) {
+                        //传入参数，并赋值给iframe的元素
+                    }
+                });
+                layer.full(as);
+            }
+        });
+        var $ = layui.$,
+            active = {
+                //关键字搜索
+                reload: function () {
+                    var demoReload = $('#demoReload');
+                    var time = $('#time');
+                    console.log(demoReload.val());
+                    //执行重载
+                    table.reload('customer_unit_library', {
+                        page: {
+                            curr: 1 //重新从第 1 页开始
+                        },
+                        where: {
+                            keyword: demoReload.val(),
+                            dateStr: time.val()
+                        }
+                    });
+                },
+                timeselect: function () {
+                    var time = $('#time');
+                    var demoReload = $('#demoReload');
+                    console.log(time.val());
+                    table.reload('customer_unit_library', {
+                        page: {
+                            curr: 1 //重新从第 1 页开始
+                        },
+                        where: {
+                            keyword: demoReload.val(),
+                            dateStr: time.val()
+                        }
+                    });
+                },
+                shuaxing: function () {
+                    //var demoReload = $('#demoReload');
+                    //执行重载
+                    table.reload('news', {
+                        page: {
+                            curr: 1 //重新从第 1 页开始
+                        }
+                    });
+                },
+                addSort1: function () {
+                    //var demoReload = $('#demoReload');
+                    //弹出添加用户窗口
+                    var index = layer.open({
+                        id: "addNews",
+                        type: 2,
+                        title: '添加新闻',
+                        maxmin: true,
+                        shadeClose: false,
+                        shade: 0.8,
+                        area: ['1500px', '800px'],
+                        //content : path+'/voteback/add.html',
+                        content: path + '/voteback/add.html', //iframe的url
+                        success: function (layero, index) {
+                            //传入参数，并赋值给iframe的元素
+                        }
+                    });
+                    layer.full(index);
+                }
+            };
+
+
+        $('.demoTable .layui-btn').on('click', function () {
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+
+    });
+</script>
+
+</html>

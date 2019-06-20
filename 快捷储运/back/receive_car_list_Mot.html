@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改接车单</title>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="修改接车单">
+    <link href="../image/ioc/favicon.ico" rel="icon" type="image/x-ico">
+
+    <link rel="stylesheet" href="../js/layuiadmin/style/login.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../js/layuiadmin/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+
+
+</head>
+<body>
+<div style="padding: 15px;">
+    <form class="layui-form layui-form-pane">
+
+
+        <div class="layui-form-item ">
+            <label class="layui-form-label">客户单位</label>
+            <div class="layui-input-block">
+                <select id="kh" name="customer_id" required lay-verify="required" lay-filter="kh" lay-search>
+                    <option value="">请选择客户单位</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <table class="layui-table">
+                <thead>
+                <tr>
+                    <th width="33%">车架号</th>
+                    <th width="33%">车辆类型</th>
+                    <th width="33%">品牌型号</th>
+                </tr>
+                </thead>
+                <tbody id="box">
+                <tr class="zu">
+                    <td><input id="vinno" name="vinno" type="text" autocomplete="off" class="layui-input "></td>
+                    <td><input id="car_type" name="car_type" type="text" autocomplete="off" class="layui-input "></td>
+                    <td><input id="car_brandmodel" name="car_brandmodel" type="text" autocomplete="off" class="layui-input "></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-block">
+                <textarea id="remark" name="remark"  placeholder="请输入"
+                          class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+        <!--<div class="layui-form-item">-->
+            <!--<label class="layui-form-label">创建时间</label>-->
+            <!--<div class="layui-input-block">-->
+                <!--<input id="time" type="text" name="dateStr" required lay-verify="required" autocomplete="off"-->
+                       <!--class="layui-input">-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">创建人</label>
+            <div class="layui-input-block">
+                <input type="text" id="create_user_name" name="create_user_name" required lay-verify="required" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="demo1">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+
+        <input type="hidden" id="j_id" name="id" />
+        <!--<input type="hidden" id="number" name="number" />-->
+    </form>
+</div>
+</body>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script src="../js/layuiadmin/layui/layui.js"></script>
+<script type="text/javascript" src="../layer_mobile/layer.js"></script>
+<script type="text/javascript" src="../js/jquery.md5.js"></script>
+<script type="text/javascript" src="../js/jquery-geturlcode.js"></script>
+<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+<script src="../js/common/api.js"></script>
+<script src="../js/common/localjs.js"></script>
+<script type="text/javascript" src="../js/mui.min.js"></script>
+<script>
+    var a;
+    var i = 0;
+
+    function getinfo() {
+        var id = GetQueryString("id");
+        ajaxSubmit({id:id},Api.FWDT_jieche.Select_jieche_ById,"GET",function (res) {
+            console.log(res);
+            $("#kh").val(res.data.customer_id);
+            $("#vinno").val(res.data.vinno);
+            $("#car_type").val(res.data.car_type);
+            $("#car_brandmodel").val(res.data.car_brandmodel);
+            $("#remark").val(res.data.remark);
+            $("#create_user_name").val(res.data.create_user_name);
+            $("#j_id").val(res.data.id);
+//            $("#number").val(res.number);
+
+            form.render();
+
+        })
+    }
+
+
+    //查询客户单位
+    function kehu() {
+        $.ajax({
+            type: "GET",
+            url: Api.FWDT_Customer_Dw.Drop_Down_Customer_Info,
+            dataType: 'json',
+            beforeSend: function (request) {
+                // request.setRequestHeader("KJCY-TOKEN", token);
+                //request.setRequestHeader("FORM-TOKEN", fd);
+                // request.setRequestHeader("Content-Type", "application/json");
+            },
+            success: function (res) {
+                console.log("msg信息------" + res.msg);
+                // alert("添加成功");
+                if (res.msg == "success") {
+                    // var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                    // parent.layui.table.reload('transport_unit_library',{page:{curr:1}});
+                    // parent.layer.msg('添加成功');
+                    // parent.layer.close(index);
+                    $.each(res.data, function (idx, obj) {
+                        $("#kh").append(' <option value="' + obj.id + '">' + obj.full_name + '</option>');
+                    });
+                    form.render();
+                }
+            },
+            error: function (XMLHttpResponse, textStatus, errorThrown) {
+                console.log("1 异步调用返回失败,XMLHttpResponse.readyState:" + XMLHttpResponse.readyState);
+                console.log("2 异步调用返回失败,XMLHttpResponse.status:" + XMLHttpResponse.status);
+                console.log("3 异步调用返回失败,textStatus:" + textStatus);
+                console.log("4 异步调用返回失败,errorThrown:" + errorThrown);
+
+            }
+        });
+
+
+    }
+
+
+    var form;
+
+    //Demo
+    layui.use(['jquery', 'form', 'layer', 'laydate'], function () {
+        form = layui.form;
+        var $ = layui.$,
+            layer = layui.layer,
+            laydate = layui.laydate;
+
+        kehu();//加载客户单位下拉框
+
+        getinfo();//获得原有信息
+
+
+
+        //监听数量选择
+//        $("#num").on("input propertychange", function (event) {
+//            a = $(this).val();
+//            i = 0;
+//            $("#box").html("");
+//            console.log(a);
+//            if (a == "" || a == null || a == 0) {
+//                $("#box").html("");
+//            } else {
+//                for (var i = 0; i < a; i++) {
+//                    $("#box").append('<tr class="zu">\n' +
+//                        '<td><input  type="text"  autocomplete="off" class="layui-input a"></td>\n' +
+//                        '<td><input  type="text"  autocomplete="off" class="layui-input b"></td>\n' +
+//                        '<td><input  type="text"  autocomplete="off" class="layui-input c"></td>\n' +
+//                        '</tr>');
+//                }
+//            }
+//        });
+        //添加车辆
+//        $("#add").on("click", function () {
+//            i++;
+//            if (a == "" || a == null) {
+//                layer.msg("请输入车子数量")
+//            } else if (i > a) {
+//                layer.msg("您总共只输入了" + a + "辆车")
+//            } else {
+//                $("#box").append('<tr class="zu">\n' +
+//                    '                    <td><input  type="text" name="" autocomplete="off" class="layui-input cj"></td>\n' +
+//                    '                    <td><input type="text" name="" autocomplete="off" class="layui-input lx"></td>\n' +
+//                    '                    <td><input  type="text" name="" autocomplete="off" class="layui-input pp"></td>\n' +
+//                    '                </tr>');
+//            }
+//        })
+
+
+        //日期时间选择
+        laydate.render({
+            elem: '#time'
+            , type: 'datetime'
+        });
+
+//        $("#pz").on("click", function () {
+//            layer.open({
+//                type: 2,
+//                title: "拍照",
+//                area: ['900px', '500px'],
+//                //  offset: '50px',
+//                anim: 6,
+//                shadeClose: "true",
+//                skin: "layui-layer-molv",
+//                content: "photo.html"
+//            });
+//        })
+        //监听提交
+
+        form.on('submit(demo1)', function (data) {
+            // layer.msg(JSON.stringify(data.field));
+            console.log(data.field);
+//            var res = [];
+//            //添加车辆信息
+//            $(".zu").each(function () {
+//                var re = {};
+//                var a = $(this).find(".a").val();
+//                var b = $(this).find(".b").val();
+//                var c = $(this).find(".c").val();
+//                re["vinno"] = a;
+//                re["car_type"] = b;
+//                re["car_brandmodel"] = c;
+//                res.push(re);
+//            });
+//            console.log(res);
+            var b = data.field;
+//            b["carInfoList"] = res;
+            var json = JSON.stringify(b);//获得表单元素组合的json数组
+            console.log(json);
+
+            ajaxSubmit(b,Api.FWDT_jieche.Update_jieche_ById,"POST",function (res) {
+                var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                parent.layui.table.reload("customer_unit_library", {page: {curr: 1}});
+                parent.layer.msg('修改成功');
+                parent.layer.close(index);
+            },"json")
+
+            return false;
+        });
+    });
+</script>
+</html>

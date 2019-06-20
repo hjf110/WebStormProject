@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>用户管理</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../plugins/jqgrid/ui.jqgrid-bootstrap.css">
+    <link rel="stylesheet" href="../../plugins/ztree/css/metroStyle/metroStyle.css">
+    <link rel="stylesheet" href="../../css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../..//css/main.css">
+    <link rel="stylesheet" href="../../plugins/treegrid/jquery.treegrid.css">
+
+    <script src="../../libs/jquery.min.js"></script>
+    <script src="../../plugins/layer/layer.js"></script>
+    <script src="../../libs/bootstrap.min.js"></script>
+    <script src="../../libs/vue.min.js"></script>
+    <script src="../../libs/bootstrap-table.min.js"></script>
+    <script src="../../plugins/treegrid/jquery.treegrid.min.js"></script>
+    <script src="../../plugins/treegrid/jquery.treegrid.bootstrap3.js"></script>
+    <script src="../../plugins/treegrid/jquery.treegrid.extension.js"></script>
+    <script src="../../plugins/treegrid/tree.table.js"></script>
+    <script src="../../plugins/jqgrid/grid.locale-cn.js"></script>
+    <script src="../../plugins/jqgrid/jquery.jqGrid.min.js"></script>
+    <script src="../../plugins/ztree/jquery.ztree.all.min.js"></script>
+    <script src="../../js/common/api.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/tool.js"></script>
+
+</head>
+
+<body>
+
+<div id="armorapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+            <div>
+                <div class="form-group col-sm-2">
+                    <input type="text" class="form-control" v-model="q.name" @keyup.enter="query" placeholder="图标名称">
+                </div>
+                <a class="btn btn-default" @click="query">查询</a>
+                <!--<a class="btn btn-primary btn-sm" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>-->
+                <!--<a class="btn btn-primary btn-sm" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>-->
+            </div>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+</div>
+</body>
+
+<script>
+    $(function () {
+        $("#jqGrid").jqGrid({
+            url: baseURL + 'sysIcon/list',
+            datatype: "json",
+            colModel: [
+                {
+                    label: 'ID',
+                    name: 'id',
+                    width: 75,
+                    key: true
+                },
+                {
+                    label: '名称',
+                    name: 'name',
+                    width: 75
+                },
+                {
+                    label: '样式',
+                    name: 'classCode',
+                    width: 75
+                },
+                {
+                    label: '图标',
+                    name: 'classCode',
+                    width: 75,
+                    formatter: function (value, options, row) {
+                        return '<i class="' + value + '"></i>';
+                    }
+                },
+                {
+                    label: '类型',
+                    name: 'type',
+                    width: 75,
+                    formatter: function (value, options, row) {
+                        return value === 0 ?
+                            '<span class="label label-danger">系统图标</span>' :
+                            '<span class="label label-success">自定义图标</span>';
+                    }
+                }
+            ],
+            viewrecords: true,
+            height: 'auto',
+            rowNum: 10,
+            rowList: [10, 15, 20, 25, 30, 35, 40, 45, 50],
+            rownumbers: true,
+            rownumWidth: 50,
+            autowidth: true,
+            multiselect: true,
+            pager: "#jqGridPager",
+            jsonReader: {
+                root: "page.records",
+                page: "page.current",
+                total: "page.pages",
+                records: "page.total"
+            },
+            prmNames: {
+                page: "page",
+                rows: "limit",
+                order: "order"
+            },
+            gridComplete: function () {
+                //隐藏grid底部滚动条
+                $("#jqGrid").closest(".ui-jqgrid-bdiv").css({
+                    "overflow-x": "hidden"
+                });
+            }
+        });
+    });
+
+
+    var vueSelf;
+    vueSelf = new Vue({
+        el: '#armorapp',
+        data: {
+            q: {
+                name: null
+            },
+            showList: true,
+        },
+        mounted: function () {
+            vueSelf = this;
+        },
+        methods: {
+            query: function () {
+                vueSelf.reload();
+            },
+            reload: function () {
+                var page = $("#jqGrid").jqGrid('getGridParam', 'page');
+                $("#jqGrid").jqGrid('setGridParam', {
+                    postData: {'name': vueSelf.q.name},
+                    page: page
+                }).trigger("reloadGrid");
+            }
+        }
+    });
+</script>
+
+</html>

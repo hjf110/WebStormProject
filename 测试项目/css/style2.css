@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+
+#demo{width:1100px;margin:0 auto;position:relative;overflow:hidden;}
+/* - - - - - - - - - - */
+.slide .pane{text-align:center;width:1000px;margin:0 auto;z-index:1;overflow:hidden;}
+.slide.slide3 .icons{height:100px;margin:0 auto 0;text-align:center;width:900px;z-index:999999!important;}
+.slide.slide3 .arrowcontainer{position:relative;}
+.slide.slide3 .arrow{color:#ffffff;font-size:150%;left:160px;position:absolute;top:-90px;width:130px;font-weight:bold;}
+.slide.slide3 .arrow img{float:right;}
+.slide.slide3 .cont{width:100%;margin:0 auto 150px;overflow:hidden}
+.slide.slide3 .icons img{cursor:pointer;display:block;float:left;margin:0;padding:10px;}
+.slide.slide3 .icons img:hover{background:url(/upload/images/glow2.png) repeat scroll 0 0 transparent;}
+
+.slide.slide3 .content2,.slide.slide3 .content3,.slide.slide3 .content4,.slide.slide3 .content5{display:none}
+.slide.slide3.s0{background:url(../images/premimum.jpg);no-repeat;background-size: cover;
+    background-position: 0 0;overflow:hidden;}
+
+.slide.slide3.s1{background:url(../images/premimum.jpg);no-repeat;background-size: cover;
+    background-position: 0 0;overflow:hidden;}
+.slide.slide3.s2{background:url(../images/premimum.jpg);no-repeat;background-size: cover;
+    background-position: 0 0;overflow:hidden;}
+.s1{background:url(../images/premimum.jpg);no-repeat;background-size: cover;
+    background-position: 0 0;overflow:hidden;}  
+/*.slide.slide3.s4{background:url(../images/home.jpg);no-repeat;background-size: cover;
+    background-position: 0 0;overflow:hidden;}
+.slide.slide3.s5{background:url(../images/natural.jpg);no-repeat;background-size: cover;
+    background-position: 0 0;overflow:hidden}*/

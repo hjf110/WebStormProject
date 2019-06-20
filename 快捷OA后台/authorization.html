@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>授权逻辑页面</title>
+</head>
+<link rel="stylesheet" href="./assets/css/bootstrap.css"/>
+<script src="./libs/jquery.min.js"></script>
+<script src="./plugins/jqgrid/grid.locale-cn.js"></script>
+<script src="./plugins/jqgrid/jquery.jqGrid.min.js"></script>
+<script src="./plugins/layer/layer.js"></script>
+<script src="./js/control/layerDialog.js"></script>
+<script src="./libs/vue.min.js"></script>
+<script src="./js/common/api.js"></script>
+<script src="./js/common/common.js"></script>
+<script src="./js/common/tool.js"></script>
+<script src="./modules/expense/js/config.js"></script>
+<body>
+<!--loading-->
+<div class="modal fade" id="loading" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop='static'>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    提示
+                </h4>
+            </div>
+            <div class="modal-body" >
+                正在登录请稍等！
+            </div>
+        </div>
+    </div>
+</div>
+
+<img id="captcha" style="display: none"/>
+</body>
+
+<script src="./js/authorization.js"></script>
+</html>

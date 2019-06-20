@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>尿素</title>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="ie-stand">
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../plugins/jqgrid/ui.jqgrid-bootstrap.css">
+    <link rel="stylesheet" href="../../plugins/ztree/css/metroStyle/metroStyle.css">
+    <link rel="stylesheet" href="../../css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../..//css/main.css">
+    <link rel="stylesheet" href="../../plugins/treegrid/jquery.treegrid.css">
+    <link rel="stylesheet" href="../../css/common.css">
+
+
+    <script src="../../libs/jquery-3.3.1.js"></script>
+    <script src="../../plugins/layer/layer.js"></script>
+    <script src="../../libs/bootstrap.min.js"></script>
+    <script src="../../libs/vue.min.js"></script>
+    <script src="../../libs/bootstrap-table.min.js"></script>
+    <script src="../../plugins/treegrid/jquery.treegrid.min.js"></script>
+    <script src="../../plugins/treegrid/jquery.treegrid.bootstrap3.js"></script>
+    <script src="../../plugins/treegrid/jquery.treegrid.extension.js"></script>
+    <script src="../../plugins/treegrid/tree.table.js"></script>
+    <script src="../../plugins/jqgrid/grid.locale-cn.js"></script>
+    <script src="../../plugins/jqgrid/jquery.jqGrid.min.js"></script>
+    <script src="../../plugins/ztree/jquery.ztree.all.min.js"></script>
+    <script src="../../plugins/treeview/bootstrap-treeview.js"></script>
+
+    <link rel="stylesheet" href="../../plugins/select/css/bootstrap-select.css">
+    <script src="../../plugins/select/bootstrap-select.js"></script>
+    <script src="../../plugins/select/defaults-zh_CN.js"></script>
+
+    <script src="../../js/common/api.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/tool.js"></script>
+    <script src="../../js/common/extend.js"></script>
+    <script src="./js/dom-to-image.js"></script>
+    <script src="./js/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="./css/sheet.css">
+    <link rel="stylesheet" href="../../libs/datetimepicker/bootstrap-datetimepicker.min.css">
+    <script src="../../libs/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+    <script src="../../libs/datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+    <link rel="stylesheet" href="./libs/viewer/viewer.css">
+    <script src="./libs/viewer/viewer.js"></script>
+</head>
+<body style="height: 100%">
+<div id="armorapp">
+    <div v-show="showList">
+        <div class="grid-btn" style="display: none" id="operation">
+
+            <div>
+                <div class="form-group col-sm-2">
+                    <input type="text" class="form-control" v-model="q.query" @keyup.enter="query" placeholder="名称">
+                </div>
+                <input type="text" class="form-control" id="startTime" readonly
+                       style="width: 200px;display: inline-block" v-show="ureaFinance">
+                <input type="text" class="form-control" id="endTime" readonly
+                       style="width: 200px;display: inline-block" v-show="ureaFinance">
+
+                <a class="btn btn-default" @click="query">查询</a>
+
+            </div>
+            <br/>
+
+            <div style="margin-left: 20px">
+                <a class="btn btn-primary btn-sm reviewAdopt" v-show="ureaBatch && nowState==0"><i
+                        class="fa fa-plus"></i>&nbsp;审批通过</a>
+                <a class="btn btn-primary btn-sm reviewNotAdopt" v-show="ureaBatch && nowState==0"><i
+                        class="fa fa-times"></i>&nbsp;审批不通过</a>
+
+                <a class="btn btn-primary btn-sm makeMoney" v-show="ureaFinance && (nowState==3)"><i
+                        class="fa fa-plus"></i>&nbsp;确认打款</a>
+                <a class="btn btn-primary btn-sm complete" v-show="ureaFinance && (nowState==8)"><i
+                class="fa fa-plus"></i>&nbsp;确认完成</a>
+
+
+                <a class="btn btn-primary btn-sm info"><i class="fa fa-info"></i>&nbsp;查看详情</a>
+                <a class="btn btn-primary btn-sm download" v-show="ureaFinance && (nowState==6||nowState==8)"><i
+                        class="fa fa-download"></i>&nbsp;下载报销单</a>
+                <a class="btn btn-primary btn-sm urge" v-show="ureaFinance"><i class="fa fa-comment"></i>&nbsp;催寄发票</a>
+                <a class="btn btn-primary btn-sm refresh"><i
+                        class="fa fa-refresh"></i>&nbsp;刷新</a>
+                <span v-show="ureaFinance">
+                    <select class="selectpicker stateSelect" title="未打款">
+                        <option value="3">未打款</option>
+                        <option value="8">已打款</option>
+                        <option value="6">已完成</option>
+                    </select>
+                </span>
+
+
+                <span v-show="ureaBatch">
+                    <select class="selectpicker ureaBatchSelect" title="未审批">
+                        <option value="1">未审批</option>
+                        <option value="2">已审批</option>
+                    </select>
+                </span>
+                <span style="float: right; color: red;margin-left: 10px;font-size: 150%;"
+                      v-show="ureaFinance && (nowState==3)">
+                    未打款单数:{{singleNum}} 未打款总金额:{{singleMoney}}元
+                </span>
+                <span style="float: right; color: red;margin-left: 10px;font-size: 150%;"
+                      v-show="ureaFinance && (nowState==8)">
+                    已打款单数:{{singleNum}} 已打款总金额:{{singleMoney}}元
+                </span>
+                <span style="float: right; color: red;margin-left: 10px;font-size: 150%;"
+                      v-show="ureaFinance && (nowState==6)">
+                    已完成单数:{{singleNum}} 已完成总金额:{{singleMoney}}元
+                </span>
+            </div>
+
+        </div>
+        <div id="list"></div>
+    </div>
+
+
+    <div class="form-group" style="display: none;margin: 10px" id="reason">
+        <textarea class="form-control" rows="10" id="reasonInfo"></textarea>
+    </div>
+
+
+    <div id="urea" style="display: none ;margin: 10px;">
+        <div class="table-responsive">
+            <table border="0" cellspacing="0" cellpadding="0" class="table">
+                <tr class=" label-primary">
+                    <th scope="col" width="50%" colspan="2"><span style="color:white">基本信息</span></th>
+                </tr>
+                <tr class="active">
+                    <td>报销人</td>
+                    <td>{{baseInfo.driverName}}</td>
+                </tr>
+                <tr class="success">
+                    <td>报销金额</td>
+                    <td>{{baseInfo.money}}</td>
+                </tr>
+                <tr class="active">
+                    <td>申请购买数量</td>
+                    <td>{{baseInfo.apply}}</td>
+                </tr>
+                <tr class="success">
+                    <td>允许购买数量</td>
+                    <td>{{baseInfo.allow}}</td>
+                </tr>
+                <tr class="active">
+                    <td>存货</td>
+                    <td>{{baseInfo.stock}}</td>
+                </tr>
+
+                <tr class="success">
+                    <td>公里数</td>
+                    <td>{{baseInfo.kilometre}}</td>
+                </tr>
+                <tr class="active">
+                    <td>车牌号</td>
+                    <td>{{baseInfo.plateNumber}}</td>
+                </tr>
+
+                <tr class="success" v-show="baseInfo.batchName!=null">
+                    <td>审批人</td>
+                    <td>{{baseInfo.batchName}}</td>
+                </tr>
+                <tr class="active" v-show="baseInfo.checkTime!=null">
+                    <td>审批通过时间</td>
+                    <td>{{Tool.dataHelper.timeStampToDateFormat(baseInfo.checkTime, "yyyy-MM-dd hh:mm")}}</td>
+                </tr>
+                <tr class="success" v-show="baseInfo.financeName!=null">
+                    <td>打款人</td>
+                    <td>{{baseInfo.financeName}}</td>
+                </tr>
+                <tr class="active" v-show="baseInfo.financeTime!=null">
+                    <td>打款时间</td>
+                    <td>{{Tool.dataHelper.timeStampToDateFormat(baseInfo.financeTime, "yyyy-MM-dd hh:mm")}}</td>
+                </tr>
+                <tr class="success" v-show="baseInfo.receivablesType!=null">
+                    <td>打款方式</td>
+                    <td>{{baseInfo.receivablesType}}</td>
+                </tr>
+                <tr class="active" v-show="baseInfo.receivablesAccount!=null">
+                    <td>打款账号</td>
+                    <td>{{baseInfo.receivablesAccount}}</td>
+                </tr>
+                <tr class="success" v-show="baseInfo.confirmName!=null">
+                    <td>确认完成人</td>
+                    <td>{{baseInfo.confirmName}}</td>
+                </tr>
+                <tr class="active" v-show="baseInfo.confirmTime!=null">
+                    <td>确认完成时间</td>
+                    <td>{{Tool.dataHelper.timeStampToDateFormat(baseInfo.confirmTime, "yyyy-MM-dd hh:mm")}}</td>
+                </tr>
+                <tr class="success" v-show="baseInfo.reimbursementTime!=null">
+                    <td>选择报销方式时间</td>
+                    <td>{{Tool.dataHelper.timeStampToDateFormat(baseInfo.reimbursementTime, "yyyy-MM-dd hh:mm")}}</td>
+                </tr>
+
+            </table>
+        </div>
+
+        <div class="table-responsive" v-show="reviewHistory!=null &&　reviewHistory.length != 0">
+            <table border="0" cellspacing="0" cellpadding="0" class="table">
+                <tr class=" label-primary">
+                    <th scope="col" width="50%" colspan="2"><span style="color:white">审核历史</span></th>
+                </tr>
+                <tr class="active" v-for="(one,index) in reviewHistory">
+                    <td>审核人：{{one.name}}</td>
+                    <td>修改意见：{{one.expenseInfo}}</td>
+                    <!--<td>审核时间：{{one.add_time}}</td>-->
+                </tr>
+            </table>
+        </div>
+
+        <div class="table-responsive" id="invoice" v-show="baseInfo.invoiceMark!=''&& baseInfo.invoiceMark!=null">
+            <table border="0" cellspacing="0" cellpadding="0" class="table">
+                <tr class=" label-primary">
+                    <th scope="col" width="50%" colspan="2"><span style="color:white">发票照片</span></th>
+                </tr>
+                <tr class="active">
+                    <td>
+                        <img class="image" v-for="(one,index) in invoiceMarkArray"
+                             style="width: 100px;margin-left: 10px" :src="one">
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="table-responsive" id="express" v-show="baseInfo.courierMark!=''&& baseInfo.courierMark!=null">
+            <table border="0" cellspacing="0" cellpadding="0" class="table">
+                <tr class=" label-primary">
+                    <th scope="col" width="50%"><span style="color:white">快递照片</span></th>
+                </tr>
+                <tr class="active">
+                    <td>
+                        <img class="image" v-for="(one,index) in courierMarkArray"
+                             style="width: 100px;margin-left: 10px" :src="one">
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="table-responsive"  id="ureaNum" v-show="baseInfo.ureaMark!=''&&baseInfo.ureaMark!=null">
+            <table border="0" cellspacing="0" cellpadding="0" class="table">
+                <tr class=" label-primary">
+                    <th scope="col" width="50%"><span style="color:white">公里数和尿素照片</span></th>
+                </tr>
+                <tr class="active">
+                    <td>
+                        <img class="image" v-for="(one,index) in ureaMarkArray"
+                             style="width: 100px;margin-left: 10px" :src="one">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="table-responsive" id="invoiceReceived" v-show="baseInfo.financeMark!=''&& baseInfo.financeMark!=null">
+            <table border="0" cellspacing="0" cellpadding="0" class="table">
+                <tr class=" label-primary">
+                    <th scope="col" width="50%"><span style="color:white">已收发票照片</span></th>
+                </tr>
+                <tr class="active">
+                    <td>
+                        <img class="image" v-for="(one,index) in financeMarkArray"
+                             style="width: 100px;margin-left: 10px" :src="one">
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="form-horizontal" style="display: none;" id="makeMoneyFormInfo">
+        <div class="form-group">
+            <div class="col-sm-2 control-label">支付方式</div>
+            <div class="col-sm-10">
+                <select class="selectpicker receivablesType" title="支付宝">
+                    <option value="支付宝" selected="selected">支付宝</option>
+                    <option value="微信">微信</option>
+                    <option value="银行卡">银行卡</option>
+                    <option value="钉钉">钉钉</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">支付账号</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control receivablesAccount" placeholder="支付账号"/>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-horizontal" style="display: none;" id="allowFormInfo">
+
+        <div class="form-group">
+            <div class="col-sm-2 control-label">允许购买数量</div>
+            <div class="col-sm-10">
+                <input type="number" class="form-control receivablesAccount" id="allowInfo" placeholder="允许购买数量"/>
+            </div>
+        </div>
+    </div>
+    <!--报销单-->
+    <div id="voucher" style="width:1600px;display: none">
+        <div class="voucher" v-for="(one,index) in sheetData">
+            <div class="title-lg fontSize30">费用报销凭单</div>
+            <div class="cachetRed">
+                <img src="http://weika1.jiuhuanhb.com:8080/armor/modules/expense/img/cachetRed.png"/>
+            </div>
+            <div class="mainContent">
+                <div class="topContent">
+                    <div class="cachetBlack">
+                        <img src="http://weika1.jiuhuanhb.com:8080/armor/modules/expense/img/cachetBlack.png"/>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="title-sm">报账日期：</div>
+                            <span class="reimburseTime">{{one.declarationTime}}</span>
+                        </div>
+                        <div class="col-4">
+                            <div class="title-sm">项目名称：</div>
+                            <span class="reimburseName">技师-尿素费报销</span>
+                        </div>
+                        <div class="col-4">
+                            <div class="title-sm">凭证编码：</div>
+                            <span class="voucherCode">{{one.number}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="title-sm">报销部门：</div>
+                            <span class="department">救援部</span>
+                        </div>
+                        <div class="col-4">
+                            <div class="title-sm">报销人员：</div>
+                            <span class="personnel">{{one.driverName}}</span>
+                        </div>
+                        <div class="col-4">
+                            <div class="title-sm">票据：</div>
+                            <span class="voucherNum">1</span>张
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="title-sm">支出类别：</div>
+                            <span class="expenseType">普通发票</span>
+                        </div>
+                    </div>
+                    <div class="row fontSize30">
+                        <div class="col-4" style="width: 60%;">
+                            <div class="title-sm">总金额：</div>
+                            <span class="total">{{one.money}} 元</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottomContent">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="title-sm">费用明细</div>
+                        </div>
+                    </div>
+                    <table cellpadding="10">
+                        <tr>
+                            <td class="col-2">费用日期</td>
+                            <td class="col-2">费用类型</td>
+                            <td class="col-6">费用明细摘要</td>
+                            <td class="col-2">金额</td>
+                        </tr>
+                        <tr>
+                            <td class="payTime col-2">{{one.declarationTime}}</td>
+                            <td class="payType col-2">技师-尿素费</td>
+                            <td class="payDetail col-6">{{one.plateNumber}}</td>
+                            <td class="col-2">{{one.money}}</td>
+                        </tr>
+                        <tr>
+                            <td class="col-2">合计</td>
+                            <td class="col-2"></td>
+                            <td class="col-6"></td>
+                            <td class="col-2">{{one.money}}</td>
+                        </tr>
+                    </table>
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="title-sm">审批：</div>
+                            <span class="examine">{{one.batchName}}</span>
+
+                        </div>
+                        <div class="col-4">
+                            <div class="title-sm">出纳：</div>
+                            <span class="cashier">{{one.financeName}}</span>
+                        </div>
+                        <div class="col-4">
+                            <div class="title-sm">领款人：</div>
+                            <span class="personnel">{{one.driverName}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--报销单-->
+
+    </div>
+
+
+</body>
+<script src="../../js/control/bootstrapTableTemplate.js"></script>
+<script src="../../js/control/layerDialog.js"></script>
+<script src="./js/config.js"></script>
+<script src="./js/urea.js"></script>
+
+</html>

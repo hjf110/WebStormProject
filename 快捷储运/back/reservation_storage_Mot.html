@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改预约入库单(服务大厅)</title>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="修改预约入库单">
+    <link href="../image/ioc/favicon.ico" rel="icon" type="image/x-ico">
+    <link rel="stylesheet" href="../js/layuiadmin/style/login.css" media="all">
+
+    <link rel="stylesheet" type="text/css" href="../js/layuiadmin/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <script src="../js/layuiadmin/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+
+</head>
+<body style="overflow-y:scroll;">
+<div style="padding: 15px;">
+    <form class="layui-form layui-form-pane">
+        <div class="layui-form-item ">
+            <label class="layui-form-label">客户单位</label>
+            <div class="layui-input-block">
+                <select id="kh" name="customer_id" required lay-verify="required" lay-filter="kh">
+                    <option value="">请选择客户单位</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">存车数量</label>
+                <div class="layui-input-inline">
+                    <input id="num" type="text" name="number" required lay-verify="required" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <button id="add" type="button" class="layui-btn layui-btn-normal">填写车辆信息</button>
+            </div>
+            <div class="layui-inline">
+                (可以不完善车辆信息直接填数量)
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <table class="layui-table">
+                <thead>
+                <tr>
+                    <th width="33%">车架号</th>
+                    <th width="33%">车辆类型</th>
+                    <th width="33%">品牌型号</th>
+                </tr>
+                </thead>
+                <tbody id="box">
+
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">入库时间</label>
+                <div class="layui-input-inline">
+                    <input id="dateStr" type="text" name="dateStr" required lay-verify="required" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">预计停留</label>
+                <div class="layui-input-inline">
+                    <input id="park_days" type="text" name="park_days" required lay-verify="required" autocomplete="off"
+                           class="layui-input" placeholder="天">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">运输单位</label>
+                <div class="layui-input-inline">
+                    <select id="ys" name="transport_id" required lay-verify="required" lay-filter="ys">
+                        <option value="">请选择运输单位</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">司机姓名</label>
+                <div class="layui-input-inline">
+                    <input id="driver_name" type="text" name="driver_name" required lay-verify="required" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-block">
+                <textarea id="remark" name="remark"  placeholder="请输入"
+                          class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn" lay-submit lay-filter="demo1">立即添加</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+        <input id="customer_name" type="hidden" name="customer_name" value="">
+        <input id="yyid" type="hidden" name="id" value="">
+        <input id="transport_name" type="hidden" name="transport_name" value="">
+        <input id="create_user_name" type="hidden" name="create_user_name" value="无">
+    </form>
+</div>
+</body>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script src="../js/layuiadmin/layui/layui.js"></script>
+<script type="text/javascript" src="../layer_mobile/layer.js"></script>
+<script type="text/javascript" src="../js/jquery.md5.js"></script>
+<script type="text/javascript" src="../js/jquery-geturlcode.js"></script>
+<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+<script src="../js/common/api.js"></script>
+<script src="../js/common/localjs.js"></script>
+<script type="text/javascript" src="../js/mui.min.js"></script>
+<script>
+
+    var a;
+    var i = 0;
+
+    var form;
+    var id;
+
+    $(function () {
+
+    })
+
+    //查询运输单位
+    function yunshu() {
+
+        $.ajax({
+            type: "GET",
+            url: Api.FWDT_Transport_Dw.Select_Transport,
+            dataType: 'json',
+            async: false,
+            beforeSend: function (request) {
+                // request.setRequestHeader("KJCY-TOKEN", token);
+                //request.setRequestHeader("FORM-TOKEN", fd);
+                // request.setRequestHeader("Content-Type", "application/json");
+            },
+            success: function (res) {
+                console.log("msg信息------" + res.msg);
+                // alert("添加成功");
+                if (res.msg == "success") {
+                    // var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                    // parent.layui.table.reload('transport_unit_library',{page:{curr:1}});
+                    // parent.layer.msg('添加成功');
+                    // parent.layer.close(index);
+                    $.each(res.data.list, function (idx, obj) {
+                        $("#ys").append(' <option value="' + obj.id + '">' + obj.full_name + '</option>');
+                    });
+                    form.render();
+                    console.log("运输单位下拉创建成功-------------------");
+                }
+            },
+            error: function (XMLHttpResponse, textStatus, errorThrown) {
+                console.log("1 异步调用返回失败,XMLHttpResponse.readyState:" + XMLHttpResponse.readyState);
+                console.log("2 异步调用返回失败,XMLHttpResponse.status:" + XMLHttpResponse.status);
+                console.log("3 异步调用返回失败,textStatus:" + textStatus);
+                console.log("4 异步调用返回失败,errorThrown:" + errorThrown);
+
+            }
+        })
+
+
+    }
+
+    //查询客户单位
+    function kehu() {
+        $.ajax({
+            type: "GET",
+            url: Api.FWDT_Customer_Dw.Drop_Down_Customer_Info,
+            dataType: 'json',
+            async: false,
+            beforeSend: function (request) {
+                // request.setRequestHeader("KJCY-TOKEN", token);
+                //request.setRequestHeader("FORM-TOKEN", fd);
+                // request.setRequestHeader("Content-Type", "application/json");
+            },
+            success: function (res) {
+                console.log("msg信息------" + res.msg);
+                // alert("添加成功");
+                if (res.msg == "success") {
+                    // var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                    // parent.layui.table.reload('transport_unit_library',{page:{curr:1}});
+                    // parent.layer.msg('添加成功');
+                    // parent.layer.close(index);
+                    $.each(res.data, function (idx, obj) {
+                        $("#kh").append(' <option value="' + obj.id + '">' + obj.full_name + '</option>');
+                    });
+                    form.render();
+                    console.log("客户单位下拉创建成功-------------------");
+                }
+            },
+            error: function (XMLHttpResponse, textStatus, errorThrown) {
+                console.log("1 异步调用返回失败,XMLHttpResponse.readyState:" + XMLHttpResponse.readyState);
+                console.log("2 异步调用返回失败,XMLHttpResponse.status:" + XMLHttpResponse.status);
+                console.log("3 异步调用返回失败,textStatus:" + textStatus);
+                console.log("4 异步调用返回失败,errorThrown:" + errorThrown);
+
+            }
+        })
+
+
+    }
+
+
+    //获得预约单信息
+    function get() {
+        id = GetQueryString("id");
+
+        console.log("id为;",id);
+        kehu();
+        yunshu();
+
+
+
+        $.ajax({
+            type: "GET",
+            url: Api.FWDT_YuYue_jieche.Look_YuYue_jieche,
+            data:{
+              id:id
+            },
+            dataType: 'json',
+            async: false,
+            beforeSend: function (request) {
+                // request.setRequestHeader("KJCY-TOKEN", token);
+                //request.setRequestHeader("FORM-TOKEN", fd);
+                // request.setRequestHeader("Content-Type", "application/json");
+            },
+            success: function (res) {
+                console.log("msg信息------", res.msg);
+                console.log("返回的信息------",res);
+                // alert("添加成功");
+                if (res.msg == "success") {
+                    var rc = res.data;
+                    var cl = res.data.carInfoList;
+                    // var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                    // parent.layui.table.reload('transport_unit_library',{page:{curr:1}});
+                    // parent.layer.msg('添加成功');
+                    // parent.layer.close(index);
+                    $("#kh").val(rc.customer_id);
+                    $("#num").val(rc.number);
+                    $("#dateStr").val(rc.appointment_time);
+                    $("#park_days").val(rc.park_days);
+                    $("#ys").val(rc.transport_id);
+                    $("#driver_name").val(rc.driver_name);
+                    $("#remark").val(rc.remark);
+                    $("#customer_name").val(rc.customer_name);
+                    $("#transport_name").val(rc.transport_name);
+                    $("#yyid").val(rc.id);
+
+                    a=rc.number;
+                    i=rc.number+1;
+
+                    $.each(cl, function (idx, obj) {
+                        var o1 = obj.vin_no;
+                        var o2 = obj.type;
+                        var o3 = obj.brand_model;
+                        if(o1==null){
+                            o1="";
+                        }
+                        if(o2==null){
+                            o2="";
+                        }
+                        if(o3==null){
+                            o3="";
+                        }
+
+                        $("#box").append('<tr class="zu">\n' +
+                            '                    <td><input  type="text"  autocomplete="off" class="layui-input a" value="'+o1+'"></td>\n' +
+                            '                    <td><input  type="text"  autocomplete="off" class="layui-input b" value="'+o2+'"></td>\n' +
+                            '                    <td><input  type="text"  autocomplete="off" class="layui-input c" value="'+o3+'"></td>\n' +
+                            '                </tr>');
+                    });
+                    form.render();
+                }
+            },
+            error: function (XMLHttpResponse, textStatus, errorThrown) {
+                console.log("1 异步调用返回失败,XMLHttpResponse.readyState:" + XMLHttpResponse.readyState);
+                console.log("2 异步调用返回失败,XMLHttpResponse.status:" + XMLHttpResponse.status);
+                console.log("3 异步调用返回失败,textStatus:" + textStatus);
+                console.log("4 异步调用返回失败,errorThrown:" + errorThrown);
+
+            }
+        })
+
+
+    }
+
+
+
+
+
+    //Demo
+    layui.use(['jquery', 'form', 'layer', 'laydate'], function () {
+        form = layui.form;
+        var $ = layui.$,
+            layer = layui.layer,
+            laydate = layui.laydate;
+
+
+        get();
+        // form.render();
+
+//
+//        $("#kh").change(function(){
+//            var a = $(this).find("option:selected").text();
+//            console.log(a);
+//        })
+
+
+        form.on('select(kh)', function (data) {
+//            console.log(data); //得到select原始DOM对象
+//            console.log(data.elem); //得到select原始DOM对象
+//            console.log(data.value); //得到被选中的值
+//            console.log(data.othis); //得到美化后的DOM对象
+//            console.log(this.innerText);// 获得选中的文本值
+            $("#customer_name").val(this.innerText);
+
+
+        });
+
+        form.on('select(ys)', function (data) {
+//            console.log(data.elem); //得到select原始DOM对象
+//            console.log(data.value); //得到被选中的值
+//            console.log(data.othis); //得到美化后的DOM对象
+//            console.log(this.innerText);// 获得选中的文本值
+            $("#transport_name").val(this.innerText);
+        });
+
+
+        //监听数量选择
+        $("#num").on("input propertychange", function (event) {
+            a = $(this).val();
+            i = 0;
+            $("#box").html("");
+            console.log(a);
+            if (a == "" || a == null || a == 0) {
+                $("#box").html("");
+            } else {
+//                for(var i= 0;i<a;i++){
+//                    $("#box").append('<tr class="zu">\n' +
+//                        '                    <td><input  type="text" name="as[]" autocomplete="off" class="layui-input cj"></td>\n' +
+//                        '                    <td><input type="text" name="bs[]" autocomplete="off" class="layui-input lx"></td>\n' +
+//                        '                    <td><input  type="text" name="cs[]" autocomplete="off" class="layui-input pp"></td>\n' +
+//                        '                </tr>');
+//                }
+            }
+        });
+
+
+        //添加车辆
+        $("#add").on("click", function () {
+            i++;
+            if (a == "" || a == null) {
+                layer.msg("请输入车子数量")
+            } else if (i > a) {
+                layer.msg("您总共只输入了" + a + "辆车")
+            } else {
+                $("#box").append('<tr class="zu">\n' +
+                    '                    <td><input  type="text"  autocomplete="off" class="layui-input a"></td>\n' +
+                    '                    <td><input  type="text"  autocomplete="off" class="layui-input b"></td>\n' +
+                    '                    <td><input  type="text"  autocomplete="off" class="layui-input c"></td>\n' +
+                    '                </tr>');
+            }
+        })
+
+
+        //日期时间选择
+        laydate.render({
+            elem: '#dateStr'
+            ,position: 'fixed'
+            ,min: 0 //7天前
+        });
+
+        $("#pz").on("click", function () {
+            layer.open({
+                type: 2,
+                title: "拍照",
+                area: ['900px', '500px'],
+                //  offset: '50px',
+                anim: 6,
+                shadeClose: "true",
+                skin: "layui-layer-molv",
+                content: "photo.html"
+            });
+        })
+        //监听提交
+        form.on('submit(demo1)', function (data) {
+            //layer.msg(JSON.stringify(data.field));
+            console.log(data.field);
+
+            var res = [];
+            $(".zu").each(function () {
+                var re = {};
+                var a = $(this).find(".a").val();
+                var b = $(this).find(".b").val();
+                var c = $(this).find(".c").val();
+                re["vin_no"] = a;
+                re["type"] = b;
+                re["brand_model"] = c;
+                res.push(re);
+            })
+            console.log(res);
+            var b = data.field;
+            b["carInfoList"] = res;
+            var json = JSON.stringify(b);
+            console.log(json);
+
+            $.ajax({
+                type: "POST",
+                url: Api.FWDT_YuYue_jieche.Update_YuYue_jieche,
+                data: json,
+                dataType: 'json',
+                beforeSend: function (request) {
+                  var  token="adsfasdfad";
+                    request.setRequestHeader("KJCY-TOKEN", token);
+                    //request.setRequestHeader("FORM-TOKEN", fd);
+                    request.setRequestHeader("Content-Type", "application/json");
+                },
+                success: function (res) {
+                    console.log("msg信息------" + res.msg);
+                    // alert("添加成功");
+                    if (res.msg == "success") {
+                        var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                        parent.layui.table.reload('customer_unit_library', {page: {curr: 1}});
+                        parent.layer.msg('修改成功');
+                        parent.layer.close(index);
+                    }
+
+                },
+                error: function (XMLHttpResponse, textStatus, errorThrown) {
+                    console.log("1 异步调用返回失败,XMLHttpResponse.readyState:" + XMLHttpResponse.readyState);
+                    console.log("2 异步调用返回失败,XMLHttpResponse.status:" + XMLHttpResponse.status);
+                    console.log("3 异步调用返回失败,textStatus:" + textStatus);
+                    console.log("4 异步调用返回失败,errorThrown:" + errorThrown);
+
+                }
+            })
+
+
+            return false;
+        });
+    });
+</script>
+</html>

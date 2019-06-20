@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+		<link rel="stylesheet/less" type="text/css" href="../css/pontage.less?v=0.01" />
+		<!--<link rel="stylesheet/less" type="text/css" href="../lc_plugin/timeLine/style.css?v=0.01" />-->
+		<title>快捷OA</title>
+		<link rel="stylesheet" href="../css/steps.css">
+		<script src="../js/steps.js"></script>
+	</head>
+	<body>
+		<div class="pontage">
+			<!--banner报销单状态-->
+			<div class="reimbursementBox">
+				<div class="reimbursementType">过桥费报销已关闭</div>
+				<div id="reimState" class="reimbursementState"></div>
+				<!--<div class="cd-horizontal-timeline">-->
+					<!--<div class="timeline">-->
+						<!--<div class="events-wrapper">-->
+							<!--<div class="events">-->
+								<!--<ol>-->
+									<!--<li><a href="#" data-date="01/10/2014" class="selected">申报中</a></li>-->
+									<!--<li><a href="#" data-date="01/20/2014">待审核</a></li>-->
+									<!--<li><a href="#" data-date="01/30/2014">待打款</a></li>-->
+									<!--<li><a href="#" data-date="01/40/2014">已完成</a></li>-->
+									<!--&lt;!&ndash;<li><a href="#" data-date="01/50/2014">4</a></li>&ndash;&gt;-->
+									<!--&lt;!&ndash;<li><a href="#" data-date="01/60/2014">5</a></li>&ndash;&gt;-->
+									<!--&lt;!&ndash;<li><a href="#" data-date="01/70/2014">6</a></li>&ndash;&gt;-->
+									<!--&lt;!&ndash;<li><a href="#" data-date="01/80/2014">7</a></li>&ndash;&gt;-->
+									<!--&lt;!&ndash;<li><a href="#" data-date="01/90/2014">8</a></li>&ndash;&gt;-->
+									<!--&lt;!&ndash;<li><a href="#" data-date="01/100/2014">9</a></li>&ndash;&gt;-->
+									<!--&lt;!&ndash;<li><a href="#" data-date="01/110/2014">10</a></li>&ndash;&gt;-->
+								<!--</ol>-->
+
+								<!--<span class="filling-line" aria-hidden="true"></span>-->
+							<!--</div> &lt;!&ndash; .events &ndash;&gt;-->
+						<!--</div> &lt;!&ndash; .events-wrapper &ndash;&gt;-->
+
+						<!--&lt;!&ndash;<ul class="cd-timeline-navigation">&ndash;&gt;-->
+							<!--&lt;!&ndash;<li><a href="#0" class="prev inactive" style="list-style: none!important;"><</a></li>&ndash;&gt;-->
+							<!--&lt;!&ndash;<li><a href="#0" class="next"  style="list-style: none!important;">></a></li>&ndash;&gt;-->
+						<!--&lt;!&ndash;</ul> &lt;!&ndash; .cd-timeline-navigation &ndash;&gt;&ndash;&gt;-->
+					<!--</div></div>-->
+<!--				<div class="reimbursementTip">改报销单正在加载数据，请稍后</div>-->
+				<div id="steps"></div>
+			</div>
+			
+<!--			<div class="mainContent">-->
+<!--				-->
+<!--				&lt;!&ndash;申报信息&ndash;&gt;-->
+<!--				<div class="applyBox">-->
+<!--					-->
+<!--					&lt;!&ndash;标题栏&ndash;&gt;-->
+<!--					<div class="titleBar">-->
+<!--						<div class="title">-->
+<!--							<i class="public-icon public-iconApplyInfo"></i>-->
+<!--							<span>申报信息</span>-->
+<!--						</div>-->
+<!--						<div class="time type1 type2 type3 type4 type5">-->
+<!--							<i class="public-icon public-iconTimeBlue"></i>-->
+<!--							<span>申报时间：<span class="detailedTime">2018/10/16 13：20</span></span>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					-->
+<!--					&lt;!&ndash;内容&ndash;&gt;-->
+<!--					<div class="applyContent">-->
+<!--						<div class="listBox company" style="display: none;">-->
+<!--							<span class="titleSm">申报单位：</span>-->
+<!--							<span class="companyName">A公司</span>-->
+<!--						</div>-->
+<!--						<div class="listBox declarer">-->
+<!--							<span class="titleSm">申报人：</span>-->
+<!--							<span id="sjName" class="companyName"></span>-->
+<!--						</div>-->
+<!--						<div class="listBox orderNum">-->
+<!--							<span class="titleSm">任务订单号：</span>-->
+<!--							<input id="ddh" class="type1Input" type="text" name="orderNum" placeholder="填写订单号内容不得少于6位"/>-->
+<!--						</div>-->
+<!--						<div class="listBox carNum">-->
+<!--							<span class="titleSm">车牌号：</span>-->
+<!--							<input id="cph" class="type1Input" type="text" name="carNum" placeholder="请输入车牌号" />-->
+<!--						</div>-->
+<!--						<div class="listBox moneyNum">-->
+<!--							<span class="titleSm">报销金额：</span>-->
+<!--							<input id="je" class="type1Input" type="text" name="moneyNum" placeholder="请输入金额（元）" onkeyup="value=value.replace(/[^\d.]/g,'')" />-->
+<!--						</div>-->
+
+<!--						<div class="invoice">-->
+<!--							<span class="titleSm">收费站电脑屏幕照片：</span>-->
+<!--							&lt;!&ndash;<div class="uploadInvoiceBtn type-1 type-3"><span>上传发票照片</span></div>&ndash;&gt;-->
+<!--							<div class="photoBox">-->
+<!--								<div class="add type-1 type-3">-->
+<!--									<img src="../img/add.png">-->
+<!--								</div>-->
+<!--							</div>-->
+<!--						</div>-->
+
+<!--						<div class="listBox bxfs mode type2 type3 type5 type6 bxbgcolor">-->
+<!--							<span style="display: block" class="titleSm colorWarning">请选择报销方式：</span>-->
+<!--							<div class="modeB">-->
+<!--								<i class="public-icon public-iconRadioSelected"></i>-->
+<!--								<span class="modeBName">快递发票报销</span>-->
+<!--							</div>-->
+<!--							<div class="modeA">-->
+<!--								<i class="public-icon public-iconRadio"></i>-->
+<!--								<span class="modeAName">现场报销</span>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--						<div class="listBox bxfs uploadPhoto type2 type3 type5 type6 bxbgcolor" >-->
+<!--							<input id="kddh" type="text" name="courierNum" placeholder="点击输入快递单号" onfocus="this.placeholder=''" onblur="this.placeholder='请填写快递单号'" />-->
+<!--							<div class="uploadPhotoBtn type2"><span>上传快递单照片</span></div>-->
+<!--							<div class="photoBox">-->
+<!--								&lt;!&ndash;<div class="add type2" style="display: none">&ndash;&gt;-->
+<!--									&lt;!&ndash;<img src="../img/add.png">&ndash;&gt;-->
+<!--								&lt;!&ndash;</div>&ndash;&gt;-->
+<!--							</div>-->
+<!--						</div>-->
+
+<!--						<div class="btnGroup type2 type-3 type-2 type-1">-->
+<!--							<div class="submitBtn">提交</div>-->
+<!--						</div>-->
+<!--						-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				-->
+<!--				&lt;!&ndash;审核信息&ndash;&gt;-->
+<!--				<div class="examineBox type-1 type1 type2 type3 type5 type6" >-->
+<!--					-->
+<!--					&lt;!&ndash;标题栏&ndash;&gt;-->
+<!--					<div class="titleBar">-->
+<!--						<div class="title">-->
+<!--							<i class="public-icon public-iconExamine"></i>-->
+<!--							<span>审核信息</span>-->
+<!--						</div>-->
+<!--						<div class="time" style="display: none">-->
+<!--							<i class="public-icon public-iconTimeBlue"></i>-->
+<!--							<span>审核时间：<span class="detailedTime">2018/10/16 13：20</span></span>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					-->
+<!--					&lt;!&ndash;内容&ndash;&gt;-->
+<!--					<div class="examineContent">-->
+<!--						<div class="btnGroup type1">-->
+<!--							<div class="passBtn">审核通过</div>-->
+<!--							<div class="noPassBtn">不通过</div>-->
+<!--						</div>-->
+<!--						&lt;!&ndash;<textarea class="type1" id="noReason" name="reason" placeholder="请填写不通过原因" onfocus="this.placeholder=''" onblur="this.placeholder='请填写不通过原因'"></textarea>&ndash;&gt;-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				-->
+<!--				&lt;!&ndash;打款信息&ndash;&gt;-->
+<!--				<div class="payBox type3 type6">-->
+<!--					-->
+<!--					&lt;!&ndash;标题栏&ndash;&gt;-->
+<!--					<div class="titleBar">-->
+<!--						<div class="title">-->
+<!--							<i class="public-icon public-iconPay"></i>-->
+<!--							<span>打款信息</span>-->
+<!--						</div>-->
+<!--						<div class="time " style="display: none;">-->
+<!--							<i class="public-icon public-iconTimeBlue"></i>-->
+<!--							<span>确认时间：<span class="detailedTime"></span></span>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					-->
+<!--					&lt;!&ndash;内容&ndash;&gt;-->
+<!--					<div class="payContent">-->
+<!--						<div class="listBox company" style="display: none">-->
+<!--							<span class="titleSm">财务单位：</span>-->
+<!--							<span class="companyName">A公司</span>-->
+<!--						</div>-->
+<!--						<div class="listBox declarer">-->
+<!--							<span class="titleSm">打款人：</span>-->
+<!--							<span id="dkqrr" class="companyName"></span>-->
+<!--						</div>-->
+<!--						&lt;!&ndash;<div class="listBox orderNum">&ndash;&gt;-->
+<!--							&lt;!&ndash;<span class="titleSm">收款人：</span>&ndash;&gt;-->
+<!--							&lt;!&ndash;<input id="skr" type="text" name="orderNum" placeholder="请填写收款人" onfocus="this.placeholder=''" onblur="this.placeholder='XX司机'" />&ndash;&gt;-->
+<!--						&lt;!&ndash;</div>&ndash;&gt;-->
+<!--						<div class="listBox orderNum">-->
+<!--							<span class="titleSm">支付方式：</span>-->
+<!--							&lt;!&ndash;<input id="skfs" type="text" name="orderNum" placeholder="请填写收款方式" onfocus="this.placeholder=''" onblur="this.placeholder='银行卡'" />&ndash;&gt;-->
+<!--							<select id="payType">-->
+<!--								<option value="钉钉">钉钉</option>-->
+<!--								<option value="微信">微信</option>-->
+<!--								<option value="支付宝" >支付宝</option>-->
+<!--								<option value="银行卡" selected="selected">银行卡</option>-->
+<!--							</select>-->
+<!--						</div>-->
+<!--						<div class="listBox orderNum">-->
+<!--							<span class="titleSm">支付账号：</span>-->
+<!--							<input id="skzh" type="text" style="background-color: white;width: 50%;" name="orderNum" placeholder="请填写收款账户" />-->
+<!--						</div>-->
+<!--						<div class="listBox orderNum">-->
+<!--							<span class="titleSm">支付时间：</span>-->
+<!--							<input id="dksj" type="text" style="background-color: white;width: 50%;" name="orderNum" placeholder="请填写打款日期" readonly />-->
+<!--						</div>-->
+<!--						<div class="btnGroup caiwu type3">-->
+<!--							<div class="confirm">确认支付</div>-->
+<!--						</div>-->
+<!--						<div class="cwPic" style="display: none;margin-top: 10px">-->
+<!--							<span class="titleSm">已收发票照片：</span>-->
+<!--							<div class="photoBox">-->
+<!--								<div class="add" style="display: none">-->
+<!--									<img src="../img/add.png">-->
+<!--								</div>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--						<div class="btnGroup caiwu2 type3">-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+			
+		</div>
+	</body>
+	<script type="text/javascript" src="../lc_js/less.min.js"></script>
+    <script type="text/javascript" src="../lc_js/jquery-3.1.1.min.js"></script>
+	<!--<script type="text/javascript" src="../lc_plugin/timeLine/main.js"></script>-->
+	<script type="text/javascript" src="../js/dingtalk.open.js"></script>
+	<!--<script type="text/javascript" src="../lc_plugin/timeLine/jquery.mobile.custom.min.js"></script>-->
+	<script type="text/javascript" src="../js/public.js"></script>
+    <script type="text/javascript" src="../js/pontage.js"></script>
+</html>

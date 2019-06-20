@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>高拍仪</title>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="高拍仪">
+    <link href="../image/ioc/favicon.ico" rel="icon" type="image/x-ico">
+    <link rel="stylesheet" type="text/css" href="gaopaiyi.css">
+    <link rel="stylesheet" type="text/css" href="../../layuiadmin/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../util/lgallery/css/lgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="../util/lgallery/css/demo.min.css">
+
+
+</head>
+<body>
+<tr>
+    <div id="a" class="pic-box">
+        <div class="layui-btn layui-btn-sm layui-btn-radius layui-btn-danger pic-static">主</div>
+        <img id="bigPriDev"/></img>
+    </div>
+    <div id="b" class="pic-box">
+        <div class="layui-btn layui-btn-sm layui-btn-radius layui-btn-danger pic-static">副</div>
+        <img id="bigSubDev"/></img>
+    </div>
+    <div id="a1" class="pic-box-2">
+        <!--        <div class="layui-btn layui-btn-sm layui-btn-radius layui-btn-danger pic-static">主-浏览</div>-->
+        <div class=TemplateParent data-lgparent data-lgtitle="1,2,3,4,5"
+             data-lglabel="Picture 1,Picture 2,Picture 3,Picture 4,Picture 5"
+             data-lgdescription="Description 1, Description 2,Description 3,Description 4,Description 5">
+            <div class="TemplateParent-Item">
+                <img id="devPhoto"/></img>
+                <span>主-浏览</span>
+            </div>
+        </div>
+    </div>
+    <div id="b1" class="pic-box-2 left-px">
+        <!--        <div class="layui-btn layui-btn-sm layui-btn-radius layui-btn-danger pic-static">副-浏览</div>-->
+        <div class=TemplateParent data-lgparent data-lgtitle="1,2,3,4,5"
+             data-lglabel="Picture 1,Picture 2,Picture 3,Picture 4,Picture 5"
+             data-lgdescription="Description 1, Description 2,Description 3,Description 4,Description 5">
+            <div class="TemplateParent-Item">
+                <img id="devPhoto2"/></img>
+                <span>副-浏览</span>
+            </div>
+        </div>
+        <!--        <img id="devPhoto2"/></img>-->
+    </div>
+
+    <textarea class="hide" id="output"></textarea><br/>
+    <br/>
+</tr>
+<tr>
+
+    <br/>
+<tr>
+    <!--    设备一-->
+    <select class="hide" id="priModelList" style="width: 120px;display: none;"></select>
+    <select class="hide" id="priResolutionList" style="width: 120px;display: none;"></select>
+    <!--    设备二-->
+    <select class="hide" id="subModelList" style="width: 120px"></select>
+    <select class="hide" id="subResolutionList" style="width: 120px"></select>
+
+    <div class="right-box">
+        <form class="layui-form" action="">
+            <fieldset class="layui-elem-field">
+                <legend>操作</legend>
+                <div class="layui-field-box">
+                    <div class="margin-box">
+                        <!--    <input id="showProperty" type="button" value="属性设置"/>-->
+                        <button id="showProperty" type="button" class="layui-btn  layui-btn-normal button-width">
+                            属性设置
+                        </button>
+                    </div>
+                    <div class="margin-box">
+                        <select id="setScanSize" lay-filter="setScanSize">
+                            <option value="0" selected>A4</option>
+                            <option value="1">A5</option>
+                            <option value="2">证件</option>
+                        </select>
+                    </div>
+                    <div class="margin-box">
+                        <button id="photographPri" type="button" class="layui-btn  layui-btn-warm button-width">
+                            资料拍摄
+                        </button>
+                    </div>
+                    <div id="b2" class="margin-box">
+                        <button id="photographUnite" type="button" class="layui-btn  layui-btn-warm button-width">
+                            人证合一
+                        </button>
+                    </div>
+                    <div class="margin-box">
+                        <button id="singleReadIDCard" type="button" class="layui-btn  layui-btn-normal button-width">
+                            读取证件
+                        </button>
+                    </div>
+                    <div class="check-box margin-box">
+                        <input type="checkbox" name="" lay-filter="setdeskew" title="纠偏裁边">
+                    </div>
+                    <div class="margin-box">
+                        <button id="retake" type="button" class="layui-btn   layui-btn-primary button-width">
+                            删除图片
+                        </button>
+                    </div>
+                    <div class="margin-box">
+                        <button id="confirm" type="button"
+                                class="layui-btn  layui-btn-normal layui-btn-danger button-width">
+                            确定
+                        </button>
+                    </div>
+
+                    <div class="margin-box hide">
+                        <button id="rotateLeft" type="button" class="layui-btn  layui-btn-normal button-width">
+                            左转
+                        </button>
+                    </div>
+                    <div class="margin-box hide">
+                        <!--    <input id="rotateRight" type="button" value="右转"/>-->
+                        <button id="rotateRight" type="button" class="layui-btn  layui-btn-normal button-width">
+                            右转
+                        </button>
+                    </div>
+
+                    </select>
+                </div>
+            </fieldset>
+
+
+            <!--不用的按钮--------------------------------------------------------------------------------------开始---------------------->
+            <div class="layui-card hide">
+                <div class="layui-card-header">初始化操作</div>
+                <div class="layui-card-body">
+                    <button id="openHtml" type="button" class="layui-btn layui-btn-sm  layui-btn-normal">初始化</button>
+                    <button id="closeHtml" type="button" class="layui-btn layui-btn-sm layui-btn-danger">反初始化</button>
+                </div>
+            </div>
+
+            <div class="layui-card hide">
+                <div class="layui-card-header">主摄像头</div>
+                <div class="layui-card-body">
+                    <label class="hide" id="lab1">设备1</label>
+                    <!--    设置尺寸：-->
+
+                    <button id="openPriVideo" type="button" class="layui-btn layui-btn-sm layui-btn-normal">打开主视频
+                    </button>
+                    <button id="closePriVideo" type="button" class="layui-btn  layui-btn-sm layui-btn-danger">关闭主视频
+                    </button>
+
+                </div>
+            </div>
+
+            <div class="layui-card hide">
+                <div class="layui-card-header">副摄像头</div>
+                <div class="layui-card-body">
+                    <label class="hide" id="lab2">设备2</label>
+
+                    <button id="openSubVideo" type="button" class="layui-btn layui-btn-sm layui-btn-normal">打开副视频
+                    </button>
+                    <button id="closeSubVideo" type="button" class="layui-btn layui-btn-sm layui-btn-danger">关闭副视频
+                    </button>
+                    <button id="photographSub" type="button" class="layui-btn  layui-btn-warm button-width hide">
+                        副头拍摄
+                    </button>
+                </div>
+            </div>
+
+
+            <div class="layui-card hide">
+                <div class="layui-card-header">身份证</div>
+                <div class="layui-card-body">
+                    <!--                <input class="hide" id="startIDCard" type="button" value="启动二代证阅读"/>-->
+                    <!--                <input class="hide" id="stopIDCard" type="button" value="停止"/>-->
+                    <!--    <input id="singleReadIDCard" type="button" value="读取二代证"/>-->
+
+                </div>
+            </div>
+            <div class="layui-card hide">
+                <div class="layui-card-header">设置</div>
+                <div class="layui-card-body">
+
+                    <!--        <input id="setdeskew" type="checkbox" value=""/>纠偏裁边-->
+                    <!--    <input id="rotateLeft" type="button" value="左转"/>-->
+
+                    <input class="hide" id="startIDCard" type="button" value="启动二代证阅读"/>
+                    <input class="hide" id="stopIDCard" type="button" value="停止"/>
+                    <!--                        <input id="singleReadIDCard" type="button" value="读取二代证"/>-->
+                    <!--                <button id="singleReadIDCard" type="button" class="layui-btn layui-btn-sm layui-btn-normal">读取二代证</button>-->
+                    <input class="hide" id="ftpUpload" type="button" value="FTP上传"/>
+                    <input class="hide" id="createFTPDir" type="button" value="FTP创建目录"/>
+                    <input class="hide" id="httpUpload" type="button" value="HTTP上传"/>
+                </div>
+            </div>
+            <!--不用的按钮--------------------------------------------------------------------------------------结束---------------------->
+
+        </form>
+    </div>
+    <br/>
+    <div class="hide" id="container" style="float:left;"></div>
+    </td>
+</tr>
+</body>
+<script src="../../js/jquery-1.8.3.min.js"></script>
+<script src="../../layuiadmin/layui/layui.js"></script>
+<script src="../../js/common/localjs.js"></script>
+<script src="../../js/common/api.js"></script>
+<script src="../../js/jquery-geturlcode.js"></script>
+<script type="text/javascript" src="./qwebchannel.js"></script>
+<script src="../util/lgallery/js/lgallery.min.js"></script>
+<script type="text/javascript">
+
+    var jiuchuo = 0;
+    //BEGIN SETUP
+    //拍照数据（base64）
+    var baseUrl;
+    var socket;
+    //储存图片路径的变量和数组
+    var imgPath = "";
+    var imgPathArray = new Array();
+
+
+    var priBase64;
+    var subBase64;
+
+    var type;
+
+    //预览图片
+    function openImage(imageItem) {
+        console.log("点击了预览图片")
+        var imgbase64 = imageItem.parentNode.id;
+        var element = document.getElementById("devPhoto");
+        // element.src = url +'?'+ Math.random();//原版方法
+        element.src = imgbase64;
+        //console.log(imageItem.parentNode.id);
+        //var url = "C:/Users/Administrator/Desktop/eloamPhoto/2018.07.06.17.12.21.jpg";
+        //var url = imageItem.parentNode.id;
+        //window.showModalDialog(url, null, "dialogHeight:700px; dialogWidth:810px; resizable:yes");
+    }
+
+    //增加图片缩略图
+    function addImgDiv() {
+        var container = document.getElementById('container');
+        var newchild = document.createElement("div");
+        newchild.setAttribute("style", "float:left");
+        newchild.setAttribute("id", imgPath);
+        newchild.innerHTML = "<img width='105' height='85' src='" + imgPath + "' onclick='openImage(this)' /></img><input type='checkbox' onchange='checkboxClicked(this)' />";
+        container.appendChild(newchild);
+    }
+
+    //清空缩略图
+    function removeAll() {
+        document.getElementById('container').innerHTML = "";
+        imgPathArray = [];
+    }
+
+    //处理缩略图CheckBox点击事件-------------复选框选择事件
+    function checkboxClicked(checkboxItem) {
+        if (imgPathArray.indexOf(checkboxItem.parentNode.id) < 0) {
+            imgPathArray.push(checkboxItem.parentNode.id);
+            console.log("勾上了图片数组------", imgPathArray);
+        } else {
+            var index = imgPathArray.indexOf(checkboxItem.parentNode.id);
+            imgPathArray.splice(index, 1);
+            console.log("取消勾子图片数组------", imgPathArray);
+        }
+    }
+
+    function openSocket() {
+        layui.use('form', function () {
+            var form = layui.form;
+
+
+            type = GetQueryString("type");
+
+            console.log("拍照的类型为-----", type);
+
+            if (type != 1) {
+                $("#b").hide();
+                $("#b1").hide();
+                $("#b2").hide();
+            }
+
+            $("#priModelList").hide();
+            //监听提交
+            form.on('submit(formDemo)', function (data) {
+                layer.msg(JSON.stringify(data.field));
+                return false;
+            });
+
+            socket = new WebSocket(baseUrl);
+            socket.onclose = function () {
+                console.error("web channel closed");
+            };
+            socket.onerror = function (error) {
+                console.error("web channel error: " + error);
+            };
+            socket.onopen = function () {
+                output("WebSocket connected");
+                new QWebChannel(socket, function (channel) {
+
+                    //获取注册的对象
+                    window.dialog = channel.objects.dialog;
+                    //网页关闭函数
+                    window.onbeforeunload = function () {
+                        dialog.get_actionType("closeSignal");
+                    };
+                    window.onunload = function () {
+                        dialog.get_actionType("closeSignal");
+                    };
+                    dialog.html_loaded("two");//初始化高拍仪
+                    console.log("初始化成功-----");
+                    //反初始化
+                    document.getElementById("closeHtml").onclick = function () {
+                        dialog.get_actionType("closeSignal");
+                        var element = document.getElementById("bigPriDev");
+                        element.src = "";
+                        var element1 = document.getElementById("bigSubDev");
+                        element1.src = "";
+                    };
+                    //初始化
+                    document.getElementById("openHtml").onclick = function () {
+                        dialog.html_loaded("two");
+                    };
+                    /***********设备状态更改（区分摄像头）*****************/
+                    //网页控件事件，模式列表点击
+                    document.getElementById("priModelList").onchange = function () {
+                        //清除展示信息
+                        var resolutionList = document.getElementById("priResolutionList");
+                        resolutionList.options.length = 0;
+                        var select = document.getElementById("priModelList");
+                        dialog.devChanged("primaryDev_:" + select.value);
+                    };
+                    //网页控件事件，分辨率列表点击
+                    document.getElementById("priResolutionList").onchange = function () {
+                        //清除展示信息
+                        var select = document.getElementById("priResolutionList");
+                        dialog.devChanged("primaryDev_:" + select.value);
+                    };
+                    //网页控件事件，模式列表点击
+                    document.getElementById("subModelList").onchange = function () {
+                        //清除展示信息
+                        var resolutionList = document.getElementById("subResolutionList");
+                        resolutionList.options.length = 0;
+                        var select = document.getElementById("subModelList");
+                        dialog.devChanged("subDev_:" + select.value);
+                    };
+                    //网页控件事件，分辨率列表点击
+                    document.getElementById("subResolutionList").onchange = function () {
+                        //清除展示信息
+                        var select = document.getElementById("subResolutionList");
+                        dialog.devChanged("subDev_:" + select.value);
+                    };
+                    //设置尺寸列表点击，只有主头有设置尺寸
+                    form.on('select(setScanSize)', function (data) {
+                        console.log(data.elem); //得到select原始DOM对象
+                        console.log(data.value); //得到被选中的值
+                        console.log(data.othis); //得到美化后的DOM对象
+                        var res = data.value;
+
+                        if (res == 0) {
+                            dialog.get_actionType("setScanSize_ori");
+                        } else if (res == 1) {
+                            dialog.get_actionType("setScanSize_A5");
+                        } else if (res == 2) {
+                            dialog.get_actionType("setScanSize_card");
+                        }
+                    });
+
+
+                    //人证合一拍摄
+                    $("#photographUnite").on("click", function () {
+                        dialog.photoBtnClicked("primaryDev_");
+                        dialog.photoBtnClicked("subDev_");
+                    });
+
+                    //清除重拍
+                    $("#retake").on("click", function () {
+                        layer.msg("清除成功");
+                        if (type == 1) {//人证合一拍摄
+                            console.log("双摄");
+                            $("#devPhoto").attr("src", "");
+                            $("#devPhoto2").attr("src", "");
+                            layer.msg("清除成功");
+                        } else {
+                            console.log("单摄");
+                            $("#devPhoto").attr("src", "");
+                            layer.msg("清除成功");
+                            // $("#devPhoto2").attr("src","");
+                        }
+                    });
+
+                    //点击了确定按钮将图片返回
+                    $("#confirm").on("click", function () {
+                        var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                        // layer.msg("清除成功");
+                        if (priBase64 != "" && priBase64 != null) {
+                            if (type == 1) {//人证合一拍摄
+                                console.log("双摄");
+                                ImageajaxSubmit(priBase64, Api.Image_OnLoad.OnLoad, "POST", function (res) {
+                                    console.log("成功-----", res);
+                                    var aa = res.data;
+                                    parent.$("#photo1").show();
+                                    parent.$("#photo1").children(".layui-elem-field").children(".layui-field-box").find(".LGallery").remove();
+                                    parent.$("#photo1").find(".TemplateParent").append('<div class="TemplateParent-Item" style="width: 10%"> <img src="' + aa.image_url + '"/> <span>身份证照片</span> </div>');
+                                    var imgjson = {};
+                                    imgjson["image_type"] = type;
+                                    // imgjson["image_url"] = aa.image_url;
+                                    imgjson["image_db"] = aa.image_db;
+                                    parent.photoList.push(imgjson);
+                                    ImageajaxSubmit(subBase64, Api.Image_OnLoad.OnLoad, "POST", function (res) {
+                                        console.log("成功-----", res);
+                                        var bb = res.data;
+                                        parent.$("#photo1").show();
+                                        parent.$("#photo1").children(".layui-elem-field").children(".layui-field-box").find(".LGallery").remove();
+                                        parent.$("#photo1").find(".TemplateParent").append('<div class="TemplateParent-Item" style="width: 10%"> <img src="' + bb.image_url + '"/> <span>人员照片</span> </div>');
+                                        var imgjson2 = {};
+                                        imgjson2["image_type"] = type;
+                                        // imgjson2["image_url"] = bb.image_url;
+                                        imgjson2["image_db"] = bb.image_db;
+                                        parent.photoList.push(imgjson2);
+                                        if (jiuchuo == 1) {//如果纠错被选中就关闭纠错
+                                            dialog.get_actionType("setdeskew");
+                                        }
+                                        parent.layer.msg('高拍仪关闭');
+                                        // dialog.get_actionType("closeSignal");
+                                        parent.layer.close(index);
+                                    });
+                                });
+                            } else {
+                                console.log("单摄");
+
+                                if (type == 2) {//合格证照片
+                                    ImageajaxSubmit(priBase64, Api.Image_OnLoad.OnLoad, "POST", function (res) {
+                                        console.log("成功-----", res);
+                                        var aa = res.data;
+                                        var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                                        parent.$("#photo2").show();
+                                        parent.$("#photo2").children(".layui-elem-field").children(".layui-field-box").find(".LGallery").remove();
+                                        parent.$("#photo2").find(".TemplateParent").append('<div class="TemplateParent-Item" style="width: 10%"> <img src="' + aa.image_url + '"/> <span>合格证照片</span> </div>');
+                                        var imgjson = {};
+                                        imgjson["image_type"] = type;
+                                        // imgjson["image_url"] = aa.image_url;
+                                        imgjson["image_db"] = aa.image_db;
+                                        parent.photoList.push(imgjson);
+                                        // parent.initLG();
+                                        if (jiuchuo == 1) {//如果纠错被选中就关闭纠错
+                                            dialog.get_actionType("setdeskew");
+                                        }
+                                        parent.layer.msg('高拍仪关闭');
+                                        // dialog.get_actionType("closeSignal");
+                                        parent.layer.close(index);
+                                    });
+                                } else if (type == 3) {//行驶证照片
+                                    ImageajaxSubmit(priBase64, Api.Image_OnLoad.OnLoad, "POST", function (res) {
+                                        console.log("成功-----", res);
+                                        var aa = res.data;
+                                        parent.$("#photo3").show();
+                                        parent.$("#photo3").children(".layui-elem-field").children(".layui-field-box").find(".LGallery").remove();
+                                        parent.$("#photo3").find(".TemplateParent").append('<div class="TemplateParent-Item" style="width: 10%"> <img src="' + aa.image_url + '"/> <span>行驶证照片</span> </div>');
+                                        var imgjson = {};
+                                        imgjson["image_type"] = type;
+                                        // imgjson["image_url"] = aa.image_url;
+                                        imgjson["image_db"] = aa.image_db;
+                                        parent.photoList.push(imgjson);
+                                        // parent.initLG();
+                                        if (jiuchuo == 1) {//如果纠错被选中就关闭纠错
+                                            dialog.get_actionType("setdeskew");
+                                        }
+                                        parent.layer.msg('高拍仪关闭');
+                                        // dialog.get_actionType("closeSignal");
+                                        parent.layer.close(index);
+                                    });
+                                } else if (type == 4) {//发票照片
+                                    ImageajaxSubmit(priBase64, Api.Image_OnLoad.OnLoad, "POST", function (res) {
+                                        console.log("成功-----", res);
+                                        var aa = res.data;
+                                        parent.$("#photo4").show();
+                                        parent.$("#photo4").children(".layui-elem-field").children(".layui-field-box").find(".LGallery").remove();
+                                        // parent.$("#photo4").find(".LGallery").remove();
+                                        parent.$("#photo4").find(".TemplateParent").append('<div class="TemplateParent-Item" style="width: 10%"> <img src="' + aa.image_url + '"/> <span>发票照片</span> </div>');
+                                        var imgjson = {};
+                                        imgjson["image_type"] = type;
+                                        // imgjson["image_url"] = aa.image_url;
+                                        imgjson["image_db"] = aa.image_db;
+                                        parent.photoList.push(imgjson);
+                                        // parent.initLG();
+                                        if (jiuchuo == 1) {//如果纠错被选中就关闭纠错
+                                            dialog.get_actionType("setdeskew");
+                                        }
+                                        parent.layer.msg('高拍仪关闭');
+                                        // dialog.get_actionType("closeSignal");
+                                        parent.layer.close(index);
+                                    });
+                                } else if (type == 5) {//说明书照片
+                                    ImageajaxSubmit(priBase64, Api.Image_OnLoad.OnLoad, "POST", function (res) {
+                                        console.log("成功-----", res);
+                                        var aa = res.data;
+                                        parent.$("#photo5").show();
+                                        parent.$("#photo5").children(".layui-elem-field").children(".layui-field-box").find(".LGallery").remove();
+                                        parent.$("#photo5").find(".TemplateParent").append('<div class="TemplateParent-Item" style="width: 10%"> <img src="' + aa.image_url + '"/> <span>说明书照片</span> </div>');
+                                        var imgjson = {};
+                                        imgjson["image_type"] = type;
+                                        // imgjson["image_url"] = aa.image_url;
+                                        imgjson["image_db"] = aa.image_db;
+                                        parent.photoList.push(imgjson);
+                                        // parent.initLG();
+                                        if (jiuchuo == 1) {//如果纠错被选中就关闭纠错
+                                            dialog.get_actionType("setdeskew");
+                                        }
+                                        parent.layer.msg('高拍仪关闭');
+                                        // dialog.get_actionType("closeSignal");
+                                        parent.layer.close(index);
+                                    });
+                                } else if (type == 6) {//保养手册照片
+                                    ImageajaxSubmit(priBase64, Api.Image_OnLoad.OnLoad, "POST", function (res) {
+                                        console.log("成功-----", res);
+                                        var aa = res.data;
+                                        parent.$("#photo6").show();
+                                        parent.$("#photo6").children(".layui-elem-field").children(".layui-field-box").find(".LGallery").remove();
+                                        parent.$("#photo6").find(".TemplateParent").append('<div class="TemplateParent-Item" style="width: 10%"> <img src="' + aa.image_url + '"/> <span>保养手册照片</span> </div>');
+                                        var imgjson = {};
+                                        imgjson["image_type"] = type;
+                                        // imgjson["image_url"] = aa.image_url;
+                                        imgjson["image_db"] = aa.image_db;
+                                        parent.photoList.push(imgjson);
+                                        // parent.initLG();
+                                        if (jiuchuo == 1) {//如果纠错被选中就关闭纠错
+                                            dialog.get_actionType("setdeskew");
+                                        }
+                                        parent.layer.msg('高拍仪关闭');
+                                        // dialog.get_actionType("closeSignal");
+                                        parent.layer.close(index);
+                                    });
+
+                                } else if (type == 0) {//扩展照片
+                                    ImageajaxSubmit(priBase64, Api.Image_OnLoad.OnLoad, "POST", function (res) {
+                                        console.log("成功-----", res);
+                                        var aa = res.data;
+                                        parent.$("#photo0").show();
+                                        parent.$("#photo0").children(".layui-elem-field").children(".layui-field-box").find(".LGallery").remove();
+                                        parent.$("#photo0").find(".TemplateParent").append('<div class="TemplateParent-Item" style="width: 10%"> <img src="' + aa.image_url + '"/> <span>扩展照片</span> </div>');
+                                        var imgjson = {};
+                                        imgjson["image_type"] = type;
+                                        // imgjson["image_url"] = aa.image_url;
+                                        imgjson["image_db"] = aa.image_db;
+                                        parent.photoList.push(imgjson);
+                                        // parent.initLG();
+                                        if (jiuchuo == 1) {//如果纠错被选中就关闭纠错
+                                            dialog.get_actionType("setdeskew");
+                                        }
+                                        parent.layer.msg('高拍仪关闭');
+                                        // dialog.get_actionType("closeSignal");
+                                        parent.layer.close(index);
+                                    });
+                                } else if (type == 10) {//客户单位合同照片
+                                    ImageajaxSubmit(priBase64, Api.Image_OnLoad.OnLoad, "POST", function (res) {
+                                        console.log("成功-----", res);
+                                        var aa = res.data;
+                                        parent.$("#photo10").show();
+                                        parent.$("#photo10").children(".layui-elem-field").children(".layui-field-box").find(".LGallery").remove();
+                                        parent.$("#photo10").find(".TemplateParent").append('<div class="TemplateParent-Item" style="width: 10%"> <img src="' + aa.image_url + '"/> <span>合同照片</span> </div>');
+                                        var imgjson = {};
+                                        // imgjson["image_type"] = type;
+                                        // // imgjson["image_url"] = aa.image_url;
+                                        // imgjson["image_db"] = aa.image_db;
+                                        parent.contracts.push(aa.image_db);
+                                        // parent.initLG();
+                                        if (jiuchuo == 1) {//如果纠错被选中就关闭纠错
+                                            dialog.get_actionType("setdeskew");
+                                        }
+                                        parent.layer.msg('高拍仪关闭');
+                                        // dialog.get_actionType("closeSignal");
+                                        parent.layer.close(index);
+                                    });
+                                } else if (type == 11) {//运输单位合同照片
+                                    ImageajaxSubmit(priBase64, Api.Image_OnLoad.OnLoad, "POST", function (res) {
+                                        console.log("成功-----", res);
+                                        var aa = res.data;
+                                        parent.$("#photo11").show();
+                                        parent.$("#photo11").children(".layui-elem-field").children(".layui-field-box").find(".LGallery").remove();
+                                        parent.$("#photo11").find(".TemplateParent").append('<div class="TemplateParent-Item" style="width: 10%"> <img src="' + aa.image_url + '"/> <span>合同照片</span> </div>');
+                                        var imgjson = {};
+                                        // imgjson["image_type"] = type;
+                                        // // imgjson["image_url"] = aa.image_url;
+                                        // imgjson["image_db"] = aa.image_db;
+                                        parent.contracts.push(aa.image_db);
+                                        // parent.initLG();
+                                        if (jiuchuo == 1) {//如果纠错被选中就关闭纠错
+                                            dialog.get_actionType("setdeskew");
+                                        }
+                                        parent.layer.msg('高拍仪关闭');
+                                        // dialog.get_actionType("closeSignal");
+                                        parent.layer.close(index);
+                                    });
+                                }
+
+
+                                // ImageajaxSubmit(priBase64, Api.Image_OnLoad.OnLoad, "POST", function (res) {
+                                //     console.log("成功-----", res);
+                                //     var aa = res.data;
+                                //     var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                                //     if (type == 2) {//合格证照片
+                                //         parent.$("#photo2").show();
+                                //         parent.$("#photo2").children(".layui-elem-field").children(".layui-field-box").find(".LGallery").remove();
+                                //         parent.$("#photo2").find(".TemplateParent").append('<div class="TemplateParent-Item" style="width: 10%"> <img src="' + aa.image_url + '"/> <span>合格证照片</span> </div>');
+                                //         var imgjson = {};
+                                //         imgjson["image_type"] = type;
+                                //         imgjson["image_url"] = aa.image_url;
+                                //         imgjson["image_db"] = aa.image_db;
+                                //         parent.photoList.push(imgjson);
+                                //         parent.initLG();
+                                //     } else if (type == 3) {//行驶证照片
+                                //         parent.$("#photo3").show();
+                                //         // parent.$("#photo3").find(".LGallery").remove();
+                                //         parent.$("#photo3").find(".TemplateParent").append('<div class="TemplateParent-Item" style="width: 10%"> <img src="' + aa.image_url + '"/> <span>行驶证照片</span> </div>');
+                                //         var imgjson = {};
+                                //         imgjson["image_type"] = type;
+                                //         imgjson["image_url"] = aa.image_url;
+                                //         imgjson["image_db"] = aa.image_db;
+                                //         parent.photoList.push(imgjson);
+                                //         parent.initLG();
+                                //     } else if (type == 4) {//行驶证照片
+                                //         parent.$("#photo4").show();
+                                //         parent.$("#photo4").children(".layui-elem-field").children(".layui-field-box").find(".LGallery").remove();
+                                //         // parent.$("#photo4").find(".LGallery").remove();
+                                //         parent.$("#photo4").find(".TemplateParent").append('<div class="TemplateParent-Item" style="width: 10%"> <img src="' + aa.image_url + '"/> <span>发票照片</span> </div>');
+                                //         var imgjson = {};
+                                //         imgjson["image_type"] = type;
+                                //         imgjson["image_url"] = aa.image_url;
+                                //         imgjson["image_db"] = aa.image_db;
+                                //         parent.photoList.push(imgjson);
+                                //         parent.initLG();
+                                //     } else if (type == 5) {//行驶证照片
+                                //         parent.$("#photo5").show();
+                                //         parent.$("#photo5").find(".LGallery").remove();
+                                //         parent.$("#photo5").find(".TemplateParent").append('<div class="TemplateParent-Item" style="width: 10%"> <img src="' + aa.image_url + '"/> <span>说明书照片</span> </div>');
+                                //         var imgjson = {};
+                                //         imgjson["image_type"] = type;
+                                //         imgjson["image_url"] = aa.image_url;
+                                //         imgjson["image_db"] = aa.image_db;
+                                //         parent.photoList.push(imgjson);
+                                //     } else if (type == 6) {//行驶证照片
+                                //         parent.$("#photo6").show();
+                                //         parent.$("#photo6").find(".LGallery").remove();
+                                //         parent.$("#photo6").find(".TemplateParent").append('<div class="TemplateParent-Item" style="width: 10%"> <img src="' + aa.image_url + '"/> <span>保养手册照片</span> </div>');
+                                //         var imgjson = {};
+                                //         imgjson["image_type"] = type;
+                                //         imgjson["image_url"] = aa.image_url;
+                                //         imgjson["image_db"] = aa.image_db;
+                                //         parent.photoList.push(imgjson);
+                                //
+                                //     } else if (type == 0) {//行驶证照片
+                                //         parent.$("#photo0").show();
+                                //         parent.$("#photo0").find(".LGallery").remove();
+                                //         parent.$("#photo0").find(".TemplateParent").append('<div class="TemplateParent-Item" style="width: 10%"> <img src="' + aa.image_url + '"/> <span>扩展照片</span> </div>');
+                                //         var imgjson = {};
+                                //         imgjson["image_type"] = type;
+                                //         imgjson["image_url"] = aa.image_url;
+                                //         imgjson["image_db"] = aa.image_db;
+                                //         parent.photoList.push(imgjson);
+                                //
+                                //     }
+                                //     if (jiuchuo == 1) {//如果纠错被选中就关闭纠错
+                                //         dialog.get_actionType("setdeskew");
+                                //     }
+                                //     parent.layer.msg('高拍仪关闭');
+                                //     // dialog.get_actionType("closeSignal");
+                                //     parent.layer.close(index);
+                                // });
+                            }
+
+                            // var scheduleList = [{
+                            //     "image_type": 0,
+                            //     "image_url": "http://115.238.154.91:8082/kjcy-image/images/827ccb0eea8a706c4c34a16891f84e7b/289537586e968c5d074c11f6d6fb7df1.jpeg",
+                            //     "image_db": "827ccb0eea8a706c4c34a16891f84e7b/289537586e968c5d074c11f6d6fb7df1.jpeg"
+                            // }];
+                            // var arr = {};
+                            // arr["0"] = scheduleList;
+                            // var ccc = JSON.stringify(arr);
+                            // console.log(ccc);
+                        } else {
+                            parent.layer.msg('请拍摄照片');
+                        }
+                    });
+
+
+                    // document.getElementById("setScanSize").onchange = function () {
+                    //     var select = document.getElementById("setScanSize");
+                    //     if (select.value == "原始尺寸") {
+                    //         dialog.get_actionType("setScanSize_ori");
+                    //     }
+                    //     if (select.value == "A5") {
+                    //         dialog.get_actionType("setScanSize_A5");
+                    //     }
+                    //     if (select.value == "卡片") {
+                    //         dialog.get_actionType("setScanSize_card");
+                    //     }
+                    // };
+                    //打开主视频
+                    document.getElementById("openPriVideo").onclick = function () {
+                        var resolutionList = document.getElementById("priResolutionList");
+                        resolutionList.options.length = 0;
+                        var modelList = document.getElementById("priModelList");
+                        modelList.options.length = 0;
+                        var label1 = document.getElementById("lab1").innerHTML;
+                        dialog.devChanged("primaryDev_:" + label1);
+                    };
+                    //关闭主视频
+                    document.getElementById("closePriVideo").onclick = function () {
+                        dialog.get_actionType("closePriVideo");
+                        var element = document.getElementById("bigPriDev");
+                        element.src = "";
+                    };
+                    //打开副视频
+                    document.getElementById("openSubVideo").onclick = function () {
+                        var resolutionList = document.getElementById("subResolutionList");
+                        resolutionList.options.length = 0;
+                        var modelList = document.getElementById("subModelList");
+                        modelList.options.length = 0;
+                        var label1 = document.getElementById("lab2").innerHTML;
+                        dialog.devChanged("subDev_:" + label1);
+                    };
+                    //关闭副视频
+                    document.getElementById("closeSubVideo").onclick = function () {
+                        dialog.get_actionType("closeSubVideo");
+                        var element = document.getElementById("bigSubDev");
+                        element.src = "";
+                    };
+                    //主摄像头拍照按钮点击
+                    document.getElementById("photographPri").onclick = function () {
+                        dialog.photoBtnClicked("primaryDev_");
+                        // dialog.get_actionType("savePhotoPriDev");//保存到本地
+                    };
+                    //副摄像头拍照按钮点击
+                    document.getElementById("photographSub").onclick = function () {
+                        dialog.photoBtnClicked("subDev_");
+                        // dialog.get_actionType("savePhotoSubDev");//保存到本地
+                    };
+                    //左转
+                    document.getElementById("rotateLeft").onclick = function () {
+                        dialog.get_actionType("rotateLeft");
+                    };
+                    //右转
+                    document.getElementById("rotateRight").onclick = function () {
+                        dialog.get_actionType("rotateRight");
+                    };
+                    //属性设置
+                    document.getElementById("showProperty").onclick = function () {
+                        dialog.get_actionType("showProperty");
+                    };
+
+                    //纠偏裁边
+                    form.on('checkbox(setdeskew)', function (data) {
+                        console.log(data.elem); //得到checkbox原始DOM对象
+                        console.log(data.elem.checked); //是否被选中，true或者false
+                        console.log(data.value); //复选框value值，也可以通过data.elem.value得到
+                        console.log(data.othis); //得到美化后的DOM对象
+                        if (data.elem.checked == true) {
+                            jiuchuo = 1;
+                        } else if (data.elem.checked == false) {
+                            jiuchuo = 0;
+                        }
+                        dialog.get_actionType("setdeskew");
+                    });
+
+                    //纠偏裁边
+                    // document.getElementById("setdeskew").onclick = function () {
+                    //     dialog.get_actionType("setdeskew");
+                    // };
+
+
+                    //二代证阅读
+                    document.getElementById("startIDCard").onclick = function () {
+                        dialog.get_actionType("startIDCard");
+                    };
+                    //停止二代证阅读
+                    document.getElementById("stopIDCard").onclick = function () {
+                        dialog.get_actionType("stopIDCard");
+                    };
+                    //单次二代证阅读
+                    document.getElementById("singleReadIDCard").onclick = function () {
+                        dialog.get_actionType("singleReadIDCard");
+                    };
+                    //ftp服务器创建目录，多层目录需要一层一层创建
+                    document.getElementById("createFTPDir").onclick = function () {
+                        //ftp带用户名密码格式：ftp://liuliangjin:123456@192.168.1.61:21
+                        dialog.get_functionTypes("createFTPDir", "ftp://192.168.1.61:2121", "/first", "");
+                        dialog.get_functionTypes("createFTPDir", "ftp://192.168.1.61:2121", "/first/second", "");
+
+                    };
+                    //ftp上传按钮点击
+                    document.getElementById("ftpUpload").onclick = function () {
+                        //ftp带用户名密码格式：ftp://liuliangjin:123456@192.168.1.162:21
+                        //参数2为url、3为本地文件地址、4为上传后的地址，文件名
+                        //dialog.get_functionTypes("createFTPDir", "ftp://192.168.1.16:2121", "/11", "");
+                        //dialog.get_functionTypes("ftpUpload", "ftp://192.168.1.61:2121", "d://Com接口文档.pdf", "/11/Com接口文档.pdf");
+                        dialog.get_functionTypes("ftpUpload", "ftp://192.168.1.61:2121", "d://idface.jpg", "idface.jpg");
+                    };
+                    //http上传按钮点击
+                    document.getElementById("httpUpload").onclick = function () {
+                        //http上传url格式固定为：http://192.168.1.61:8080/FileStreamDemo/servlet/FileSteamUpload?
+                        //只能修改ip和端口，不能修改其他内容
+                        //参数2为url、3为本地文件地址、4为上传后的地址，文件名
+                        dialog.get_functionTypes("httpUpload", "http://192.168.1.61:8080/FileStreamDemo/servlet/FileSteamUpload?", "d://idface.jpg", "idface1.jpg");
+                    };
+
+
+                    //服务器返回消息
+                    dialog.sendPrintInfo.connect(function (message) {
+                        output(message);
+                        // console.log("返回的信息----", message);
+                        /********主头设备信息***********/
+                        //设备名
+                        if (message.indexOf("priDevName:") >= 0) {
+                            message = message.substr(11);
+                            var label = document.getElementById("lab1");
+                            label.innerHTML = message;
+                        }
+                        //主头设备出图格式
+                        if (message.indexOf("priModel:") >= 0) {
+                            message = message.substr(9);
+                            var select = document.getElementById("priModelList");
+                            if (message.indexOf("MJPG") >= 0) {
+                                select.add(new Option(message), 0);
+                            } else {
+                                select.add(new Option(message));
+                            }
+                            select.selectedIndex = 0;
+                        }
+                        //主头设备分辨率
+                        if (message.indexOf("priResolution:") >= 0) {
+                            message = message.substr(14);
+                            var select = document.getElementById("priResolutionList");
+                            select.add(new Option(message));
+                            if (select.options.length > 3) {
+                                select.selectedIndex = 0;
+                            }
+                        }
+                        /********副头设备信息***********/
+                        //设备名
+                        else if (message.indexOf("subDevName:") >= 0) {
+                            message = message.substr(11);
+                            var label = document.getElementById("lab2");
+                            label.innerHTML = message;
+                        }
+                        //副头设备出图格式
+                        if (message.indexOf("subModel:") >= 0) {
+                            message = message.substr(9);
+                            var select = document.getElementById("subModelList");
+                            if (message.indexOf("MJPG") >= 0) {
+                                select.add(new Option(message), 0);
+                            } else {
+                                select.add(new Option(message));
+                            }
+                            select.selectedIndex = 0;
+                        }
+                        //副头设备分辨率
+                        if (message.indexOf("subResolution:") >= 0) {
+                            message = message.substr(14);
+                            var select = document.getElementById("subResolutionList");
+                            select.add(new Option(message));
+                            if (select.options.length > 2) {
+                                select.selectedIndex = 0;
+                            }
+                        }
+                        //图片保存后返回路径关键字savePhoto_success:
+                        else if (message.indexOf("savePhoto_success:") >= 0) {
+                            // imgPath = message.substr(18);
+                            // addImgDiv();
+                        }
+                        //读取身份证信息
+                        if (message.indexOf("IDcardInfo:") >= 0) {
+                            var idcard = "";
+                            var info = message.substr(11);
+                            console.log("身份证信息为----", info);
+                            var info2 = info.trim().split(/\s+/);
+                            console.log("转换后身份证信息为----", info2);
+                            $.each(info2, function (idx, obj) {
+                                var aaa = testId(obj);
+                                if (aaa == true) {
+                                    idcard = obj;
+                                }
+                            });
+                            console.log("姓名为-----", info2[0]);
+                            console.log("身份证为------", idcard);
+                            parent.$("#member_name").val(info2[0]);//赋值姓名
+                            parent.$("#member_idcard").val(idcard);//赋值身份证号码
+                        }
+
+                    });
+                    //接收图片流用来展示，多个，较小的base64，主头数据
+                    dialog.send_priImgData.connect(function (message) {
+                        var element = document.getElementById("bigPriDev");
+                        element.src = "data:image/jpg;base64," + message;
+                    });
+                    //接收图片流用来展示，多个，较小的base64，副头数据
+                    dialog.send_subImgData.connect(function (message) {
+                        var element = document.getElementById("bigSubDev");
+                        element.src = "data:image/jpg;base64," + message;
+                    });
+                    //接收拍照base64，主头数据
+                    dialog.send_priPhotoData.connect(function (message) {
+                        priBase64 = "";//清空主头数据
+                        var element = document.getElementById("devPhoto");
+                        element.src = "data:image/jpg;base64," + message;
+                        console.log("主头返回的图片数据------", element.src);
+                        imgPath = element.src;
+                        priBase64 = element.src;//主头数据base64
+                        layer.msg("拍摄成功");
+                        initLG();
+                        //addImgDiv();//添加图片数组列表
+                    });
+                    //接收拍照base64，副头数据
+                    dialog.send_subPhotoData.connect(function (message) {
+                        subBase64 = "";//清空副头数据
+                        var element = document.getElementById("devPhoto2");
+                        element.src = "data:image/jpg;base64," + message;
+                        console.log("副头返回的图片数据------", element.src);
+                        imgPath = element.src;
+                        subBase64 = element.src;//副头数据base64
+                        layer.msg("拍摄成功");
+                        //addImgDiv();//添加图片数组列表
+                    });
+                    output("ready to send/receive messages!");
+                    //网页加载完成信号
+                    dialog.html_loaded("two");
+                });
+            }
+        });
+    };
+
+    //输出信息
+    function output(message) {
+        var output = document.getElementById("output");
+        output.innerHTML = output.innerHTML + message + "\n";
+        output.scrollTop = output.scrollHeight;
+    }
+
+    //网页初始化函数
+    window.onload = function () {
+        initLG();
+        baseUrl = "ws://127.0.0.1:12345";
+        output("Connecting at " + baseUrl + ".");
+        openSocket();
+        // var scanSize = document.getElementById('setScanSize');
+        // scanSize.add(new Option("原始尺寸"));
+        // scanSize.add(new Option("A5"));
+        // scanSize.add(new Option("卡片"));
+        // scanSize.selectIndex = 0;
+    }
+    //END SETUP
+</script>
+</html>

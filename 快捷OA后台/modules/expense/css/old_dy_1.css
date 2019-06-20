@@ -1,0 +1,56 @@
+table {
+    font-size: 18px;
+    width: 100%;
+    text-align: center;
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000
+}
+
+table td {
+    position: relative;
+    border-left: 1px solid #000000;
+    border-top: 1px solid #000000
+}
+
+/*//使用相对定位将水印图片层级往下，显示成背景效果*/
+.image {
+    position: relative;
+    top: 0px;
+    z-index: -100;
+    width: 200px;
+    display: inline;
+}
+
+/*//使用绝对定位将需要打印的内容的层级往上显示，并设置显示的位置*/
+.text {
+    position: absolute;
+    top: 5%;
+    z-index: 100;
+    width: 98%;
+
+}
+
+.t-box{
+    height: 200px;
+    position: relative;
+}
+.t-box-title{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.t-box-foot{
+    text-align: left;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+.t-box-body{
+    text-align: left;
+    text-indent: 2em;
+    position: relative;
+    left: 10%;
+    /*border: 1px red solid;*/
+    height: 150px;
+    width: 80%;
+}

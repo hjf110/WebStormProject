@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>检测区域选择</title>
+
+</head>
+<link rel="stylesheet" href="css/css.css">
+<link rel="stylesheet" href="../js/layuiadmin/style/login.css" media="all">
+<body>
+<a href="index.html">
+    <div class="back">
+        <img class="back-img" src="image/back.png"><span class="back-text">返回</span>
+    </div>
+</a>
+<div class="head">
+    <div class="head-img">
+        <img class="head-img-1" src="image/learning.png"/>
+    </div>
+    <div class="head-text">
+        <h2>宁波快捷汽车储运有限公司</h2>
+    </div>
+</div>
+<div align="center" class="head-message">
+    请选择检测区域
+</div>
+<div class="pm" align="center">
+    <a id="a1" href="chooseFrame.html">
+        <div class="pm-navigation pm-navigation-1">
+            <div class="pm-y pm-sj-1 pm-button">
+                <img class="pm-img" src="image/jian1.png">
+            </div>
+            <p class="pm-text">检验一区</p>
+        </div>
+    </a>
+    <a id="a2" href="chooseFrame.html">
+        <div class="pm-navigation pm-navigation-1">
+            <div class="pm-y pm-sj-2 pm-button">
+                <img class="pm-img" src="image/jian2.png">
+            </div>
+            <p class="pm-text">检验二区</p>
+        </div>
+    </a>
+    <a id="a3" href="chooseFrame.html">
+        <div class="pm-navigation pm-navigation-1">
+            <div class="pm-y pm-sj-3 pm-button">
+                <img class="pm-img" src="image/jian3.png">
+            </div>
+            <p class="pm-text">检验三区</p>
+        </div>
+    </a>
+    <a id="a4" href="chooseFrame.html">
+        <div class="pm-navigation pm-navigation-1">
+            <div class="pm-y pm-sj-nopd pm-button">
+                <img class="pm-img" src="image/jian4.png">
+            </div>
+            <p class="pm-text">检验四区</p>
+        </div>
+    </a>
+</div>
+</body>
+<script type="text/javascript" src="./js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="./js/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="./js/jquery.md5.js"></script>
+<script type="text/javascript" src="./js/jquery-geturlcode.js"></script>
+<script type="text/javascript" src="./js/jquery.cookie.js"></script>
+<script type="text/javascript" src="./js/common/localjs.js"></script>
+<script type="text/javascript" src="./js/jquery-getFormData.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#a1").on("click",function(){
+            //将检测区域存入cookie
+            $.cookie("qy","检测一区", {path: '/'});
+            window.location.href="chooseFrame.html"
+        });
+        $("#a2").on("click",function(){
+            //将检测区域存入cookie
+            $.cookie("qy","检测二区", {path: '/'});
+            window.location.href="chooseFrame.html"
+        });
+        $("#a3").on("click",function(){
+            //将检测区域存入cookie
+            $.cookie("qy","检测三区", {path: '/'});
+            window.location.href="chooseFrame.html"
+        });
+        $("#a4").on("click",function(){
+            //将检测区域存入cookie
+            $.cookie("qy","检测四区", {path: '/'});
+            window.location.href="chooseFrame.html"
+        });
+    });
+
+</script>
+
+</html>

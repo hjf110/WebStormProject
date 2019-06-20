@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择车辆(PDI检测 确定后检测完成)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+    <script src="../js/layuiadmin/layui/layui.js"></script>
+    <script type="text/javascript" src="../layer_mobile/layer.js"></script>
+    <script type="text/javascript" src="../js/jquery.md5.js"></script>
+    <script type="text/javascript" src="../js/jquery-geturlcode.js"></script>
+    <script type="text/javascript" src="../js/jquery.cookie.js"></script>
+    <script src="../js/common/api.js"></script>
+    <script src="../js/common/localjs.js"></script>
+    <script type="text/javascript" src="../js/mui.min.js"></script>
+    <link rel="stylesheet" href="../js/layuiadmin/style/login.css" media="all">
+
+    <link rel="stylesheet" href="../css/css2.css">
+    <link rel="stylesheet" href="../layer_mobile/need/layer.css">
+
+
+
+</head>
+
+
+<body>
+<div class="head">
+    张三,上午好!
+</div>
+<div align="center" class="head-message">
+   <span></span>请选择车辆
+</div>
+<form action="UntyingCar.html">
+    <div class="cf-box">
+        <div class="cf-body">
+            <ul id="box">
+<!--                <li class="cf-a">-->
+<!--                    <span class="cf-li">12373764HCH37381</span>-->
+<!--                </li>-->
+<!--                <li class="cf-b">-->
+<!--                    <span class="cf-li">12373764HCH37382</span>-->
+<!--                </li>-->
+<!--                <li class="cf-a">-->
+<!--                    <span class="cf-li">12373764HCH37383</span>-->
+<!--                </li>-->
+<!--                <li class="cf-a">-->
+<!--                    <span class="cf-li">12373764HCH37383</span>-->
+<!--                </li>-->
+<!--                <li class="cf-a">-->
+<!--                    <span class="cf-li">12373764HCH37383</span>-->
+<!--                </li>-->
+<!--                <li class="cf-a">-->
+<!--                    <span class="cf-li">12373764HCH37383</span>-->
+<!--                </li>-->
+<!--                <li class="cf-a">-->
+<!--                    <span class="cf-li">12373764HCH37383</span>-->
+<!--                </li>-->
+<!--                <li class="cf-a">-->
+<!--                    <span class="cf-li">12373764HCH37383</span>-->
+<!--                </li>-->
+<!--                <li class="cf-a">-->
+<!--                    <span class="cf-li">12373764HCH37383</span>-->
+<!--                </li >-->
+<!--                <li class="cf-a">-->
+<!--                    <span class="cf-li">12373764HCH37383</span>-->
+<!--                </li>-->
+<!--                <li class="cf-a">-->
+<!--                    <span class="cf-li">12373764HCH37383</span>-->
+<!--                </li>-->
+<!--                <li class="cf-a">-->
+<!--                    <span class="cf-li">12373764HCH37383</span>-->
+<!--                </li>-->
+
+            </ul>
+        </div>
+    </div>
+
+
+    <button class="ocr-submit-2" type="button" >确认</button>
+</form>
+</body>
+
+<script type="text/javascript" >
+    // $(function () {
+    //     $("li").on("click",function () {
+    //         $("li").each(function () {
+    //             $(this).attr("class","cf-a");
+    //         });
+    //         $(this).attr("class","cf-b");
+    //     })
+    // })
+
+
+
+    var storage_number;
+
+
+    $(function () {
+
+        get_Car_List();//获取接车列表
+
+
+        //点击接车确认按钮
+        $(".ocr-submit-2").on("click",function () {
+            Ok_get_Car();
+            // if(storage_number==""||storage_number==null){
+            //     layer.open({
+            //         content: '请选择车架号'
+            //         ,skin: 'msg'
+            //         ,time: 2 //2秒后自动关闭
+            //     });
+            // }else{
+            //     Ok_get_Car();
+            // }
+        });
+
+    });
+
+
+    //数据操作
+    //点击获得接车码
+    function Caozuo() {
+
+        $("li").on("click",function () {
+            $("li").each(function () {
+                $(this).attr("class","cf-a");
+                $(this).find("img").attr("src","");
+            });
+            $(this).attr("class","cf-b");
+            $(this).find("img").attr("src","../image/yes0.png");
+            storage_number = $(this).find(".rn").val();
+            console.log("接车码-----"+storage_number);
+        });
+    }
+
+
+    //获取待接车列表
+    function get_Car_List() {
+        var timestamp = (new Date()).valueOf();// 时间戳----
+        //生成sign
+        var MD5String = "timestamp=" + timestamp + pass;
+        var MD5 = $.md5(MD5String);
+        MD5 = MD5.toUpperCase();//字母转为大写
+        var sign = pass + MD5;// 加密参数----
+        var token = sessionStorage.getItem('token');
+        console.log("token-----" + token);
+
+        $.ajax({
+            type: "GET",
+            url: Api.PDA_pdi.FindCar_PDI,
+            data:{
+                timestamp:timestamp,
+                sign:sign
+            },
+            dataType: 'json',
+            beforeSend: function (request) {
+                request.setRequestHeader("KJCY-TOKEN", token);
+                request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            },
+            success: function (res) {
+                //alert(1);
+                // alert(data.msg);
+                if (res.msg == "success") {
+                    $.each(res.data, function(idx, obj) {
+                        console.log(obj.vinno);
+                        console.log(obj.storagenumber);
+                        $("#box").append('<li class="cf-a">\n' +
+                            '                    <span class="cf-img"><img style="width: 20px;" src="" ></span>'+
+                            '                    <span class="cf-li">'+obj.vinno+'</span>\n' +
+                            '                    <input type="hidden" class="rn" value="'+obj.storagenumber+'">\n' +
+                            '                </li>');
+                    });
+
+                    Caozuo();
+                }
+            },
+            error: function (XMLHttpResponse, textStatus, errorThrown) {
+                console.log("1 异步调用返回失败,XMLHttpResponse.readyState:" + XMLHttpResponse.readyState);
+                console.log("2 异步调用返回失败,XMLHttpResponse.status:" + XMLHttpResponse.status);
+                console.log("3 异步调用返回失败,textStatus:" + textStatus);
+                console.log("4 异步调用返回失败,errorThrown:" + errorThrown);
+
+            }
+        })
+    }
+    //确认接车
+    function Ok_get_Car() {
+        var timestamp = (new Date()).valueOf();// 时间戳----
+        //生成sign
+        var MD5String ="storage_number="+storage_number+ "&timestamp=" + timestamp + pass;
+        var MD5 = $.md5(MD5String);
+        MD5 = MD5.toUpperCase();//字母转为大写
+        var sign = pass + MD5;// 加密参数----
+        var token = $.cookie("token");
+        console.log("token-----" + token);
+
+        layer.open({
+            type: 2
+            ,content: '解绑成功,请稍后'
+        });
+
+        ajaxSubmit({storage_number:storage_number},Api.PDA_pdi.Ok_PDI,"GET",function () {
+            window.location.href = "Ok_PDI.html?msg=PDI检测完成";
+        },null,true);
+
+
+        // //暂无借口先测试
+        // $.cookie("storage_number",storage_number,{path: '/'});//将接车码存入cookie
+        // window.location.href="CheckUntyingPDI2.html";
+
+
+        // $.ajax({
+        //     type: "GET",
+        //     url: Api.PDA_jieche.Ok_Car,
+        //     data:{
+        //         timestamp:timestamp,
+        //         sign:sign,
+        //         storage_number:storage_number
+        //     },
+        //     dataType: 'json',
+        //     beforeSend: function (request) {
+        //         request.setRequestHeader("KJCY-TOKEN", token);
+        //         // request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        //     },
+        //     success: function (res) {
+        //         //alert(1);
+        //         // alert(data.msg);
+        //         if (res.msg = "success") {
+        //             $.cookie("storage_number",storage_number,{path: '/'});//将接车码存入cookie
+        //             //跳转页面
+        //             window.location.href="BindCar.html";
+        //         }
+        //     },
+        //     error: function (XMLHttpResponse, textStatus, errorThrown) {
+        //         console.log("1 异步调用返回失败,XMLHttpResponse.readyState:" + XMLHttpResponse.readyState);
+        //         console.log("2 异步调用返回失败,XMLHttpResponse.status:" + XMLHttpResponse.status);
+        //         console.log("3 异步调用返回失败,textStatus:" + textStatus);
+        //         console.log("4 异步调用返回失败,errorThrown:" + errorThrown);
+        //
+        //     }
+        // })
+    }
+
+
+
+
+
+</script>
+
+</html>

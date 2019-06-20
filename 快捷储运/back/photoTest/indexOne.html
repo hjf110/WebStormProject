@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <script type="text/javascript" src="./qwebchannel.js"></script>
+        <script type="text/javascript">
+            //BEGIN SETUP
+			//拍照数据（base64）
+			var baseUrl;
+			var socket;
+			
+			function openSocket() {				
+				socket = new WebSocket(baseUrl);
+                socket.onclose = function()
+                {
+                    console.error("web channel closed");
+                };
+                socket.onerror = function(error)
+                {
+                    console.error("web channel error: " + error);
+                };
+				socket.onopen = function()
+                {
+                    output("WebSocket start connect");
+                    new QWebChannel(socket, function(channel) {
+                        // make dialog object accessible globally
+                        window.dialog = channel.objects.dialog;
+						//网页关闭函数
+						window.onbeforeunload = function() {
+							dialog.get_actionType("closeSignal");
+						}
+						window.onunload = function() {
+							dialog.get_actionType("closeSignal");
+						}
+						//反初始化
+						document.getElementById("closeHtml").onclick = function() {
+							dialog.get_actionType("closeSignal");
+							var element = document.getElementById("bigPriDev");
+							element.src = "";			
+						};
+						//初始化
+						document.getElementById("openHtml").onclick = function() {
+							dialog.html_loaded("one");			
+						};
+						//设备列表点击
+						document.getElementById("devList").onchange = function() {
+							//清除展示信息
+							var resolutionList = document.getElementById("resolutionList");
+							resolutionList.options.length = 0;
+							var modelList = document.getElementById("modelList");
+							modelList.options.length = 0;
+							var select = document.getElementById("devList");
+							dialog.devChanged("primaryDev_:" + select.value);
+						};
+						//模式列表点击
+						document.getElementById("modelList").onchange = function() {
+							//清除展示信息
+							var resolutionList = document.getElementById("resolutionList");
+							resolutionList.options.length = 0;
+							var select = document.getElementById("modelList");
+							dialog.devChanged("primaryDev_:" + select.value);
+						};
+						
+						//分辨率列表点击
+						document.getElementById("resolutionList").onchange = function() {
+							//清除展示信息
+							var select = document.getElementById("resolutionList");
+							dialog.devChanged("primaryDev_:" + select.value);
+						};
+						//设置尺寸列表点击，只有主头有设置尺寸
+						document.getElementById("setScanSize").onchange = function() {
+							var select = document.getElementById("setScanSize");
+							if(select.value == "原始尺寸")
+							{
+								dialog.get_actionType("setScanSize_ori");
+							}
+							if(select.value == "A5")
+							{
+								dialog.get_actionType("setScanSize_A5");
+							}
+							if(select.value == "卡片")
+							{
+								dialog.get_actionType("setScanSize_card");
+							}
+						};
+						//打开视频
+						document.getElementById("openPriVideo").onclick = function() {
+							//清除展示信息
+							var resolutionList = document.getElementById("resolutionList");
+							resolutionList.options.length = 0;
+							var modelList = document.getElementById("modelList");
+							modelList.options.length = 0;
+							var select = document.getElementById("devList");
+							dialog.devChanged("primaryDev_:" + select.value);
+						};
+						//关闭视频
+						document.getElementById("closePriVideo").onclick = function() {
+							dialog.get_actionType("closePriVideo");	
+							var element = document.getElementById("bigPriDev");
+							element.src = "";	
+						};
+						//拍照按钮点击
+						document.getElementById("photographPri").onclick = function() {
+							dialog.photoBtnClicked("primaryDev_");
+							dialog.get_actionType("savePhotoPriDev");
+						};
+						//左转
+						document.getElementById("rotateLeft").onclick = function() {
+							dialog.get_actionType("rotateLeft");
+						};
+						//右转
+						document.getElementById("rotateRight").onclick = function() {
+							dialog.get_actionType("rotateRight");
+						};
+						//属性设置
+						document.getElementById("showProperty").onclick = function() {
+							dialog.get_actionType("showProperty");
+						};
+						//纠偏裁边
+						document.getElementById("setdeskew").onclick = function() {
+							dialog.get_actionType("setdeskew");	
+						};
+
+						//二代证阅读
+						document.getElementById("startIDCard").onclick = function() {
+							dialog.get_actionType("startIDCard");	
+						};
+						//停止二代证阅读
+						document.getElementById("stopIDCard").onclick = function() {
+							dialog.get_actionType("stopIDCard");	
+						};
+						//单次二代证阅读
+						document.getElementById("singleReadIDCard").onclick = function() {
+							dialog.get_actionType("singleReadIDCard");	
+						};
+						//ftp服务器创建目录，多层目录需要一层一层创建
+						document.getElementById("createFTPDir").onclick = function() {
+							//ftp带用户名密码格式：ftp://liuliangjin:123456@192.168.1.61:21
+							dialog.get_functionTypes("createFTPDir", "ftp://192.168.1.61:2121", "/first", "");
+							dialog.get_functionTypes("createFTPDir", "ftp://192.168.1.61:2121", "/first/second", "");
+							
+						};
+						//ftp上传按钮点击
+						document.getElementById("ftpUpload").onclick = function() {
+							//ftp带用户名密码格式：ftp://liuliangjin:123456@192.168.1.162:21
+							//参数2为url、3为本地文件地址、4为上传后的地址，文件名
+							//dialog.get_functionTypes("createFTPDir", "ftp://192.168.1.16:2121", "/11", "");
+							//dialog.get_functionTypes("ftpUpload", "ftp://192.168.1.61:2121", "d://Com接口文档.pdf", "/11/Com接口文档.pdf");
+							dialog.get_functionTypes("ftpUpload", "ftp://192.168.1.61:2121", "d://idface.jpg", "idface.jpg");
+						};
+						//http上传按钮点击
+						document.getElementById("httpUpload").onclick = function() {
+						//http上传url格式固定为：http://192.168.1.61:8080/FileStreamDemo/servlet/FileSteamUpload?
+						//只能修改ip和端口，不能修改其他内容
+						//参数2为url、3为本地文件地址、4为上传后的地址，文件名
+							dialog.get_functionTypes("httpUpload", "http://192.168.1.61:8080/FileStreamDemo/servlet/FileSteamUpload?", "d://idface.jpg", "idface1.jpg");
+						};
+						
+						
+						
+						
+						//服务器返回消息
+                        dialog.sendPrintInfo.connect(function(message) {
+							output(message);
+							//设备信息 priModel
+							if(message.indexOf("priDevName:") >= 0)
+							{
+								message = message.substr(11);
+								var select = document.getElementById("devList");
+								if(message.indexOf("USB") >= 0)
+								{
+									select.add(new Option(message));									
+								} else{
+									select.add(new Option(message), 0);
+								}
+								select.selectedIndex=0;
+							}
+							//设备出图格式
+							if(message.indexOf("priModel:") >= 0)
+							{
+								message = message.substr(9);
+								var select = document.getElementById("modelList");
+								if(message.indexOf("MJPG") >= 0)
+								{
+									select.add(new Option(message), 0);									
+								} else{
+									select.add(new Option(message));
+								}
+								select.selectedIndex=0;
+							}
+							//设备分辨率
+							if(message.indexOf("priResolution:") >= 0)
+							{
+								message = message.substr(14);
+								var select = document.getElementById("resolutionList");
+								select.add(new Option(message));
+								if(select.options.length > 3)
+								{
+									select.selectedIndex = 2;
+								}
+							}
+							//图片保存后返回路径关键字savePhoto_success:
+							else if(message.indexOf("savePhoto_success:") >= 0)
+							{
+								imgPath = message.substr(18);
+							}
+						
+                        });
+						//接收图片流用来展示，多个，较小的base64，副头数据
+						dialog.send_priImgData.connect(function(message) {
+							var element = document.getElementById("bigPriDev");
+							element.src = "data:image/jpg;base64," + message;							
+                        });
+						//接收拍照base64
+						dialog.send_priPhotoData.connect(function(message) {
+							var element = document.getElementById("devPhoto");
+							element.src = "data:image/jpg;base64," + message;							
+                        });
+                        output("ready to send/receive messages!");
+						//网页加载完成信号
+						dialog.html_loaded("one");
+                    });
+                }
+			}
+			//输出信息
+            function output(message){
+                var output = document.getElementById("output");
+                output.innerHTML = output.innerHTML + message + "\n";
+				output.scrollTop = output.scrollHeight;				
+            }
+			//网页初始化函数
+            window.onload = function() {
+				baseUrl = "ws://127.0.0.1:12345";			  
+                output("Connecting at " + baseUrl + ".");
+				openSocket(); 
+				var scanSize = document.getElementById('setScanSize');
+				scanSize.add(new Option("原始尺寸"));
+				scanSize.add(new Option("A5"));
+				scanSize.add(new Option("卡片"));
+				scanSize.selectIndex = 0;							
+            }
+            //END SETUP
+        </script>
+        <style type="text/css">
+            html {
+                height: 100%;
+                width: 100%;
+            }
+            #input {
+                width: 400px;
+                margin: 0 10px 0 0;
+            }
+            #output {
+                width: 500px;
+                height: 200px;
+				margin: 0 10px 0 0;
+            }
+			
+        </style>
+    </head>
+    <body>
+	<tr>
+		<img id="bigPriDev" width="640" height="480"  /></img>	
+		<img id="devPhoto" width="360" height="270"  /></img>
+        <textarea id="output"></textarea><br />	
+		<input id="input" style="width:666px"/><input id="sendOrder" type="button" value="发送命令" />
+		<br />
+	</tr>		
+		<tr>
+			<input id="openHtml" type="button" value="初始化" />
+			<input id="closeHtml" type="button" value="反初始化" />
+			<br />
+			设备列表：<select id="devList" style="width: 120px" ></select> 
+			<select id="modelList" style="width: 120px" ></select>
+			<select id="resolutionList" style="width: 120px" ></select> 
+			设置尺寸：<select id="setScanSize" style="width: 90px" ></select> 
+			<input id="openPriVideo" type="button" value="打开主视频" />
+			<input id="closePriVideo" type="button" value="关闭主视频"  />	
+			<input id="photographPri" type="button" value="拍照"  />
+			<input id="imageBlend" type="button" value="合成图像" />
+			<br />
+			<input id="setdeskew" type="checkbox" value="" />纠偏裁边
+			<input id="rotateLeft" type="button" value="左转" />
+			<input id="rotateRight" type="button" value="右转" />		
+			<input id="showProperty" type="button" value="属性设置" />	
+			<input id="startIDCard" type="button" value="启动二代证阅读" />
+			<input id="stopIDCard" type="button" value="停止" />
+			<input id="singleReadIDCard" type="button" value="单次读取二代证" />|
+			<input id="ftpUpload" type="button" value="FTP上传" />	
+			<input id="createFTPDir" type="button" value="FTP创建目录" />
+			<input id="httpUpload" type="button" value="HTTP上传" />|
+			<br />
+			<div id="container" style="float:left;"> </div>	
+			</td>
+		</tr>
+	</body>
+</html>

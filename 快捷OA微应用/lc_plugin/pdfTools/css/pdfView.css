@@ -1,0 +1,125 @@
+.shadeBox{
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10000;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	background-color: rgba(63,63,63,0.8);
+}
+
+.topBar{
+	position: absolute;
+	top:0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 30px;
+	z-index: 10001;
+	background-color: #474747;
+	border-bottom: 2px solid #333333;
+	text-align: center;
+	padding: 3px;
+	box-sizing: border-box;
+}
+
+
+.canvasBox{
+	position: absolute;
+	top: 32px;
+	left: 0;
+	right: 0;
+	width: 100%;
+	text-align: center;
+	bottom: 0;
+	overflow: auto;
+	z-index: 10001;
+}
+
+.topInput{
+    background-color: #5E5E5E;
+    border: 1px solid #333333;
+    width: 50px;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    height: 20px;
+    line-height: 20px;
+    padding: 1px 0;
+}
+
+.topSpan{
+	color:white;
+	vertical-align: middle;
+	line-height: 24px;
+	font-size: 12px;
+	display: inline-block;
+	margin: 0 5px;
+}
+
+.topBtn{
+    color: white;
+    background-color: #5f5f5f;
+    border: 1px solid #333333;
+    font-size: 14px;
+    line-height: 20px;
+    outline: none;
+    padding: 1px 6px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.topBtn:active{
+	background-color: #808080;
+}
+
+.topBtn.go{
+	
+}
+
+.topBtn.next,.topBtn.prev,.topBtn.smaller,.topBtn.bigger,.topBtn.close{
+	height: 24px;
+	vertical-align: middle;
+	width: 35px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.topBtn.prev{
+	background-image: url(../img/toolbarButton-pageUp.png);
+	margin-right: 10px;
+}
+
+.topBtn.next{
+	background-image: url(../img/toolbarButton-pageDown.png);
+	margin-left: 10px;
+}
+
+.topBtn.smaller{
+	background-image: url(../img/toolbarButton-zoomOut.png);
+	margin-right: 10px;
+}
+
+.topBtn.bigger{
+	background-image: url(../img/toolbarButton-zoomIn.png);
+	margin-left: 10px;
+}
+
+.topBtn.close{
+	position: absolute;
+	right: 20px;
+	background-image: url(../img/close.png);
+	background-color: #474747;
+	border: 1px solid #474747;
+}
+
+.topBtn.close:active{
+	background-color: #808080;
+}

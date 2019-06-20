@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <script type="text/javascript" src="../lc_js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="dingding.js"></script>
+    <script type="text/javascript" src="public.js"></script>
+
+</head>
+<body>
+    <input type="button" value="startR" id="startR">
+    <input type="button" value="stopR" id="stopR">
+    <input type="button" value="onR" id="onR">
+    <input type="button" value="down" id="down">
+    <input type="button" value="play" id="play">
+    <input type="button" value="pause" id="pause">
+    <input type="button" value="resume" id="resume">
+    <input type="button" value="stop" id="stop">
+    <input type="button" value="onPlayEnd" id="onPlayEnd">
+    <input type="file" value="请上传文件"/>
+    <a href="入住信息.docx" >下载文件</a>
+    <script>
+        function initPageMain() {
+            $(function () {
+                $('#startR').click(function () {
+                    dd.device.audio.startRecord({
+                        onSuccess : function () {
+                        },
+                        onFail : function (err) {
+                        }
+                    });
+                });
+
+                $("#stopR").click(function () {
+                    dd.device.audio.stopRecord({
+                        onSuccess : function(res) {
+                            var MediaId = res.mediaId;
+                            var Duration=res.duration;
+                            console.log(res.mediaId);
+                            console.log(res.duration);
+                            $("#play").click(function () {
+                                dd.device.audio.play({
+                                    localAudioId: MediaId,
+                                    onSuccess: function () {
+                                        console.log(" 播放成功");
+                                    },
+                                    onFail: function (err) {
+                                        console.log(" 播放失败");
+                                    }
+                                });
+                            });
+                            $("#pause").click(function () {
+                                dd.device.audio.pause({
+                                    localAudioId : MediaId,
+                                    onSuccess : function() {
+                                        console.log("暂停了");
+                                    },
+                                    onFail : function(err) {
+                                    }
+                                });
+                            });
+                            $("#resume").click(function () {
+                                dd.device.audio.resume({
+                                    localAudioId : MediaId,
+                                    onSuccess : function() {
+                                        console.log("resume");
+                                    },
+                                    onFail : function(err) {
+                                    }
+                                });
+                            });
+                            $("#stop").click(function () {
+                                dd.device.audio.stop({
+                                    localAudioId : MediaId,
+                                    onSuccess : function (res) {
+                                        console.log("stop");
+                                    },
+                                    onFail : function () {
+                                    }
+                                });
+                            });
+                            $("#onPlayEnd").click(function () {
+                                dd.device.audio.onPlayEnd({
+                                    onSuccess : function (res) {
+                                        console.log("播放完毕");
+                                    },
+                                    onFail : function (err) {
+                                    }
+                                });
+                            });
+
+                            $("#down").click(function () {
+                                dd.device.audio.download({
+                                    mediaId: MediaId,
+                                    onSuccess: function (res) {
+                                        var LocalAudioID = res.localAudioId;
+                                        console.log("下载成功");
+
+                                    },
+                                    onFail: function (err) {
+                                        console.log("下载失败");
+                                    }
+                                });
+                            });
+
+
+                        },
+                        onFail : function (err) {
+                        }
+                    });
+                });
+
+
+
+
+
+            });
+        }
+    </script>
+
+</body>
+</html>

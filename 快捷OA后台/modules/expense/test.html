@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="jcForm" class="form">
+    <div class="title-lg">旧车装卸事故</div><!--基本信息-->
+    <div class="partBox basicInfo">
+        <div class="title-md">基本情况</div>
+        <div class="line"></div>
+        <div class="contentBox">
+            <div class="trBox">
+                <div class="tdBox-2">
+                    <div class="title-sm title-left">技师姓名</div>
+                    <input id="jsxm" type="text" class="form-control width-1" placeholder="" readonly="readonly"
+                           v-bind:value="jsxm"/></div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-right">自车牌照</div>
+                    <input id="cph" type="text" class="form-control width-1" placeholder="" v-bind:value="zcpz"
+                           v-model="zcpz"/></div>
+            </div>
+            <div class="trBox">
+                <div class="tdBox-1">
+                    <div class="title-sm title-left">事故发生时间</div>
+                    <input id="endTime" type="text" class="form-control width-1" readonly=""
+                           style="display: inline-block" v-show="bridgeFinance" v-bind:value="sgfssj"/></div>
+            </div>
+            <div class="trBox">
+                <div class="tdBox-1">
+                    <div class="title-sm ver-top title-left">事故发生地点</div>
+                    <textarea id="sgfsdd" class="form-control ver-top width-2" name="deblock_udid" rows="5"
+                              readonly="readonly" v-bind:value="sgfsdd"></textarea></div>
+            </div>
+            <div class="trBox">
+                <div class="tdBox-2">
+                    <div class="title-sm title-left">客户单位</div>
+                    <input id="customerUnit" type="text" class="form-control width-1" readonly="readonly"
+                           v-bind:value="khdw"/></div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-right">订单编号</div>
+                    <input type="text" id="orderNumber" class="form-control width-1" placeholder="" v-bind:value="ddbh"
+                           v-model="ddbh"></div>
+            </div>
+            <div class="trBox">
+                <div class="tdBox-2">
+                    <div class="title-sm title-left" id="">任务类型</div>
+                    <select class="form-control width-1" id="taskType" v-bind:value="rwlx" v-model="rwlx">
+                        <option value="1">拖车</option>
+                        <option value="2">搭电</option>
+                        <option value="3">换胎</option>
+                        <option value="4">困境</option>
+                        <option value="5">吊车</option>
+                        <option value="6">地库</option>
+                    </select></div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-right">客户车辆车型</div>
+                    <select id="newOld" class="form-control width-1" v-bind:value="khcllx" v-model="khcllx">
+                        <option value="1">新车</option>
+                        <option value="2">旧车</option>
+                    </select></div>
+            </div>
+            <div class="trBox">
+                <div class="tdBox-1">
+                    <div class="title-sm ver-top title-left">客户车辆受损情况</div>
+                    <textarea class="form-control ver-top width-2" id="customerVehiclesDamage" name="deblock_udid"
+                              rows="5" v-bind:value="khclssqk" v-model="khclssqk"></textarea></div>
+            </div>
+            <div class="trBox">
+                <div class="tdBox-1">
+                    <div class="title-sm ver-top title-left">我方车辆受损情况</div>
+                    <textarea class="form-control ver-top width-2" id="ourVehiclesDamage" name="deblock_udid" rows="5"
+                              v-bind:value="wfclssqk" v-model="wfclssqk"></textarea></div>
+            </div>
+            <div class="trBox">
+                <div class="tdBox-2">
+                    <div class="title-sm title-left">是否有人员受伤</div>
+                    <select class="form-control width-1" id="injured" v-bind:value="sfss" v-model="sfss">
+                        <option value="1">是</option>
+                        <option value="2">否</option>
+                    </select></div>
+            </div>
+        </div>
+    </div><!--受损情况-->
+    <div class="partBox damageSituation">
+        <div class="title-md">受损情况</div>
+        <div class="line"></div>
+        <div class="contentBox">
+            <div class="trBox">
+                <div class="tdBox-2">
+                    <div class="title-sm title-left">客户车辆损伤描述</div>
+                    <textarea class="form-control ver-top width-1" id="customerVehicleDamageDescription"
+                              name="deblock_udid" rows="5" v-bind:value="khclssms" v-model="khclssms"></textarea></div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-right">损伤金额</div>
+                    <input id="customerMoney" type="text" class="form-control width-1" placeholder=""
+                           v-bind:value="ssje1" v-model="ssje1"></div>
+            </div>
+            <div class="trBox">
+                <div class="tdBox-2">
+                    <div class="title-sm title-left">我方车辆受损描述</div>
+                    <textarea class="form-control ver-top width-1" id="ourVehicleDamageDescription" name="deblock_udid"
+                              rows="5" v-bind:value="wfclssms" v-model="wfclssms"></textarea></div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-right">损伤金额</div>
+                    <input type="text" id="ourMoney" class="form-control width-1" placeholder="" v-bind:value="ssje2"
+                           v-model="ssje2"></div>
+            </div>
+            <div class="trBox">
+                <div class="tdBox-2">
+                    <div class="title-sm title-left">其他损伤</div>
+                    <textarea class="form-control ver-top width-1" id="otherInjuries" name="deblock_udid" rows="5"
+                              v-bind:value="qtss" v-model="qtss"></textarea></div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-right">损伤金额</div>
+                    <input type="text" id="otherMoney" class="form-control width-1" placeholder="" v-bind:value="ssje3"
+                           v-model="ssje3"></div>
+            </div>
+            <div class="trBox">
+                <div class="tdBox-2">
+                    <div class="title-sm title-left">人员受伤情况</div>
+                    <textarea class="form-control ver-top width-1" id="peopleInjure" name="deblock_udid" rows="5"
+                              v-bind:value="ryssqk" v-model="ryssqk"></textarea></div>
+                <div class="tdBox-2">
+                    <div class="title-sm title-right">损伤金额</div>
+                    <input type="text" id="peopleMoney" class="form-control width-1" placeholder="" v-bind:value="ssje4"
+                           v-model="ssje4"></div>
+            </div>
+        </div>
+    </div><!--赔付情况-->
+    <div class="partBox compensationSituation">
+        <div class="title-md">赔付情况</div>
+        <div class="line"></div>
+        <div class="contentBox">
+            <div class="trBox">
+                <div class="tdBox-3">
+                    <div class="title-sm fontNum4">处理人员</div>
+                    <select id="companyTechnician" class="form-control width-3" v-bind:value="clry" v-model="clry">
+                        <option value="1">公司处理</option>
+                        <option value="2">技师处理</option>
+                    </select></div>
+                <div class="tdBox-3">
+                    <div class="title-sm fontNum5">技师KPI扣分</div>
+                    <input id="KPI" type="text" class="form-control width-3" placeholder="" v-bind:value="kpi"
+                           v-model="kpi"></div>
+                <div class="tdBox-3">
+                    <div class="title-sm fontNum5">技师处罚金额</div>
+                    <input id="techniciansPunishmentMonkey" type="text" class="form-control width-3" placeholder=""
+                           v-bind:value="jscfje" v-model="jscfje"></div>
+            </div>
+            <div class="trBox">
+                <div class="tdBox-3">
+                    <div class="title-sm fontNum4">客户车辆定损金额</div>
+                    <input id="customerVehiclesFixedLoss" type="text" class="form-control width-3" placeholder=""
+                           v-bind:value="khcldsje" v-model="khcldsje"></div>
+                <div class="tdBox-3">
+                    <div class="title-sm fontNum5">实际赔付金额</div>
+                    <input id="actualAmountPaid" type="text" class="form-control width-3" placeholder=""
+                           v-bind:value="sjpfje" v-model="sjpfje"></div>
+                <div class="tdBox-3">
+                    <div class="title-sm fontNum5">保险免赔金额</div>
+                    <input id="insuranceDeductibleAmount" type="text" class="form-control width-3" placeholder=""
+                           v-bind:value="bxmpje" v-model="bxmpje"></div>
+            </div>
+            <div class="trBox">
+                <div class="tdBox-3">
+                    <div class="title-sm fontNum4">折旧费用</div>
+                    <input id="depreciationExpenses" type="text" class="form-control width-3" placeholder=""
+                           v-bind:value="zjfy" v-model="zjfy"></div>
+                <div class="tdBox-3">
+                    <div class="title-sm fontNum5">保险赔付到账日期</div>
+                    <input type="text" id="insurancePaymentsTime" class="form-control width-3" placeholder=""
+                           v-bind:value="bxpfdzje" v-model="bxpfdzje"></div>
+                <div class="tdBox-3 fontNum5">
+                    <div class="title-sm">保险赔付金额</div>
+                    <input type="text" id="insurancePaymentsMoney" class="form-control width-3" placeholder=""
+                           v-bind:value="bxpfje" v-model="bxpfje"></div>
+            </div>
+            <div class="trBox">
+                <div class="tdBox-2">
+                    <div class="title-sm fontNum4">公司损失金额</div>
+                    <input id="companyLostMonkey" type="text" class="form-control width-3" placeholder=""
+                           v-bind:value="gsssje" v-model="gsssje"></div>
+            </div>
+            <div class="trBox">
+                <div class="tdBox-2">
+                    <div class="title-sm fontNum4">技师承担比例</div>
+                    <input id="techniciansAssumeScale" type="text" class="form-control width-3" placeholder=""
+                           v-bind:value="jscdbl" v-model="jscdbl"></div>
+                <div class="tdBox-2">
+                    <div class="title-sm fontNum4">技师承担金额</div>
+                    <input id="techniciansTakeAmount" type="text" class="form-control width-3" placeholder=""
+                           v-bind:value="jscdje" v-model="jscdje"></div>
+            </div>
+        </div>
+    </div><!--事故分析-->
+    <div class="partBox accidentAnalysis">
+        <div class="title-md">事故分析</div>
+        <div class="line"></div>
+        <div class="contentBox">
+            <div class="trBox">
+                <div class="tdBox-1">
+                    <div class="title-sm ver-top title-left">事故分析及改进措施</div>
+                    <textarea class="form-control ver-top width-2" id="accidentAnalysisImprovementMeasures"
+                              name="deblock_udid" rows="5" v-bind:value="sgfx" v-model="sgfx"></textarea></div>
+            </div>
+        </div>
+    </div>
+    <div class="partBox accidentAnalysis">
+        <div class="title-md">处理人员</div>
+        <div class="line"></div>
+        <div class="contentBox">
+            <div class="trBox">
+                <div class="tdBox-2">
+                    <div class="title-sm fontNum4">车管姓名</div>
+                    <input id="cgxm" type="text" class="form-control width-3" placeholder="" v-bind:value="cgxm"
+                           v-model="cgxm" readonly="readonly"></div>
+            </div>
+        </div>
+    </div>
+    <div class="buttonBox">
+        <button id="saveBtn" class="button1" v-on:click="saveBtn">保存</button>
+    </div>
+</div>
+
+</body>
+</html>

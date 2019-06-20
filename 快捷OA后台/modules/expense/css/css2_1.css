@@ -1,0 +1,43 @@
+table {
+    font-size: 18px;
+    width: 100%;
+    text-align: center;
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000
+}
+
+table td {
+    position: relative;
+    border-left: 1px solid #000000;
+    border-top: 1px solid #000000;
+}
+
+/*// 没有打印时水印图片不显示*/
+.image {
+    display: none;
+}
+
+.t-box{
+    height: 200px;
+    position: relative;
+}
+.t-box-title{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.t-box-foot{
+    text-align: left;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+.t-box-body{
+    text-align: left;
+    text-indent: 2em;
+    position: relative;
+    left: 10%;
+    /*border: 1px red solid;*/
+    height: 150px;
+    width: 80%;
+}

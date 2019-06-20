@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet/less" type="text/css" href="../css/accidentdeclare2.css" />
+    <link rel="stylesheet" href="../css/steps.css">
+    <script src="../js/steps.js"></script>
+    <title>事故申报</title>
+</head>
+<body>
+
+    <div class="accidentdeclare">
+    	
+        <!--banner报销单状态-->
+        <div class="reimbursementBox">
+            <div class="reimbursementType"><span>事故申报单</span></div>
+            <div id="reimState" class="reimbursementState" style="display: none"></div>
+            <div class="reimbursementTip"></div>
+            <div id="steps"></div>
+        </div>
+
+        <div class="mainContent">
+        	<!--申报信息-->
+            <div class="applyBox">
+                <!--标题栏-->
+                <div class="titleBar">
+                    <div class="title">
+                        <i class="public-icon public-iconApplyInfo"></i>
+                        <span>申报信息</span>
+                    </div>
+                    <div class="time">
+                        <i class="public-icon public-iconTimeBlue"></i>
+                        <span><span class="detailedTime"></span></span>
+                    </div>
+                </div>
+
+                <!--内容-->
+                <div class="applyContent">
+                    <div class="listBox company" style="display: none;">
+                        <span class="titleSm">申报单位：</span>
+                        <span class="companyName">A公司</span>
+                    </div>
+                    <div class="listBox declarer">
+                        <span class="titleSm">申报人：</span>
+                        <span id="sjName" class="companyName"></span>
+                        <span id="bh" class="bh">拨号</span>
+                    </div>
+                    <div class="listBox moneyNum">
+                        <span class="titleSm">事故性质：</span>
+                        <select id="je" class="type1Select"  style="-moz-appearance: none;-webkit-appearance: none;padding-top: 5px;font-size: 14px">
+                            <!--<option value="kong" style="display: none"></option>-->
+                            <option value="kong" disabled selected hidden>请您做出选择</option>
+                            <option value="2">新车检查问题反馈</option>
+                            <option value="3">自车交通事故</option>
+                            <option value="1">旧车装卸事故</option>
+                            <option value="4">新车检查装卸事故</option>
+                            <!--<option value="5">新车检查事故</option>-->
+                        </select>
+                    </div>
+                    <div class="listBox moneyNum xcjczxsg">
+                        <span class="titleSm">事故发生地：</span>
+                        <select id="sgfsd" class="type1Select"  style="-moz-appearance: none;-webkit-appearance: none;padding-top: 5px;font-size: 14px">
+                            <!--<option value="kong" style="display: none"></option>-->
+                            <option value="kong" disabled selected hidden>请您做出选择</option>
+                            <option value="2">任务地</option>
+                            <option value="3">途中</option>
+                            <option value="1">目的地</option>
+                        </select>
+                    </div>
+                    <div class="listBox chooseHide carNum khdw xcjcwtfk jczxsg xcjcsg xcjczxsg" >
+                        <span class="titleSm">客户单位：</span>
+                        <input id="customer" class="type1Input" type="text" name="carNum" style="font-size: 14px" placeholder="请填写客户单位名称" />
+                    </div>
+                    <div class="listBox chooseHide orderNum dis2 xcjcwtfk zcjtsg jczxsg xcjcsg xcjczxsg">
+                        <span class="titleSm" style="float: left">事故地点：</span><div id="btn_place"><img src="../img/dingwei.png"></div>
+                        <div class="clearfix"></div>
+                        <p id="ddh" class="type1Input"  name="orderNum"></p>
+                    </div>
+                    <div class="listBox chooseHide carNum dis3 xcjcwtfk zcjtsg jczxsg xcjcsg xcjczxsg" >
+                        <span class="titleSm">自车牌照：</span>
+                        <input id="ccsj" class="type1Input" type="text" name="carNum" placeholder="请填写自车牌照" />
+                    </div>
+
+
+                    <div class="invoice chooseHide dis4 xcjcwtfk">
+                        <span class="titleSm">新车问题照片：</span>
+                        <!--<div class="uploadInvoiceBtn type-1 type-3"><span>上传发票照片</span></div>-->
+                        <div class="photoBox">
+                            <div class="photo1 xcjcwtfk xccjh">
+                                <p> + </p>
+                                <snap>新车车架号照片</snap>
+                            </div>
+                            <div class="add ">
+                                <img src="../img/add.png">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="invoice chooseHide dis4 xcjcsg xcjcsgxccjhBox xcjczxsg">
+                        <span class="titleSm">新车检查照片：</span>
+                        <!--<div class="uploadInvoiceBtn type-1 type-3"><span>上传发票照片</span></div>-->
+                        <div class="photoBox">
+                            <div class="photo1 xcjcsg xcjcsgxccjh xcjczxsg">
+                                <p> + </p>
+                                <snap>新车车架号照片</snap>
+                            </div>
+                            <div class="add ">
+                                <img src="../img/add.png">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="invoice chooseHide dis4 zcjtsg sgqjzbox jczxsg xcjczxsg">
+                        <span class="titleSm">事故全景照：</span>
+                        <!--<div class="uploadInvoiceBtn type-1 type-3"><span>上传发票照片</span></div>-->
+                        <div class="photoBox">
+                            <div class="photo1 zcjtsg jczxsg sgqjz xcjczxsg">
+                                <p> + </p>
+                                <snap>全景照-1</snap>
+                            </div>
+                            <div class="photo1 zcjtsg jczxsg sgqjz xcjczxsg">
+                                <p> + </p>
+                                <snap>全景照-2</snap>
+                            </div>
+                            <div class="photo1 zcjtsg jczxsg sgqjz xcjczxsg">
+                                <p> + </p>
+                                <snap>全景照-3</snap>
+                            </div>
+                            <div class="add ">
+                                <img src="../img/add.png">
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="invoice chooseHide dis4 zczBox xcjcsg">
+                        <span class="titleSm">整车照：</span>
+                        <!--<div class="uploadInvoiceBtn type-1 type-3"><span>上传发票照片</span></div>-->
+                        <div class="photoBox">
+                            <div class="photo1 xcjcsg zcz">
+                                <p> + </p>
+                                <snap>整车照-1</snap>
+                            </div>
+                            <div class="add ">
+                                <img src="../img/add.png">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="invoice chooseHide dis4 zcjtsg ssbwzbox jczxsg xcjcsg xcjcsgBox xcjczxsg">
+                        <span class="titleSm">受损部位照：</span>
+                        <!--<div class="uploadInvoiceBtn type-1 type-3"><span>上传发票照片</span></div>-->
+                        <div class="photoBox">
+                            <div class="photo1 zcjtsg ssbwz xcjcsg jczxsg xcjczxsg">
+                                <p> + </p>
+                                <snap>受损部位照-1</snap>
+                            </div>
+                            <div class="photo1 zcjtsg ssbwz xcjcsg jczxsg xcjczxsg">
+                                <p> + </p>
+                                <snap>受损部位照-2</snap>
+                            </div>
+                            <div class="photo1 zcjtsg ssbwz xcjcsg jczxsg xcjczxsg">
+                                <p> + </p>
+                                <snap>受损部位照-3</snap>
+                            </div>
+                            <div class="add ">
+                                <img src="../img/add.png">
+                            </div>
+                        </div>
+                    </div>
+
+
+
+					<!--<div class="invoice2 dis3">
+                        <span class="titleSm">事故照片：</span>
+                        &lt;!&ndash;<div class="uploadInvoiceBtn type-1 type-3"><span>上传事故照片</span></div>&ndash;&gt;
+                        <div class="photoBox">
+                            <div class="add ">
+                                <img src="../img/add.png">
+                            </div>
+                        </div>
+                    </div>-->
+
+                </div>
+
+                <!--提交-->
+                <div class="btnGroup2 chooseHide dis_btn btn_look xcjcwtfk zcjtsg jczxsg xcjcsg xcjczxsg" >
+                    <div class="submitBtn">提交</div>
+                </div>
+            </div>
+
+            <!--业务员-->
+            <div class="applyBox ywyHide">
+                <!--标题栏-->
+                <div class="titleBar">
+                    <div class="title">
+                        <i class="public-icon public-iconExamine"></i>
+                        <span>业务员处理信息</span>
+                    </div>
+                </div>
+                <!--内容-->
+                <div class="applyContent">
+                    <!--新车装卸事故和新车检查事故-->
+                    <div class="listBox moneyNum">
+                        <span class="titleSm">处理状态：</span>
+                        <select id="Salesman_je" class="type1Select"  style="-moz-appearance: none;-webkit-appearance: none;padding-top: 5px;font-size: 14px">
+                            <option value="kong" disabled selected hidden>请您做出选择</option>
+                            <option value="1">等待</option>
+                            <option value="2">离开</option>
+                            <option value="3">拖离</option>
+                        </select>
+                    </div>
+                    <div class="listBox ccReason" >
+                        <span class="titleSm">处理意见：</span><textarea id="Suggest" class="type1Input" type="text" name="carNum" rows="5" placeholder="请输入您的意见"></textarea>
+                    </div>
+
+                </div>
+                <!--提交-->
+                <div class="btnGroup2" >
+                    <div class="submitYwyBtn">提交</div>
+                </div>
+            </div>
+
+            <!--业务员新车检查问题反馈-->
+            <div class="applyBox ywy2Hide">
+                <!--标题栏-->
+                <div class="titleBar">
+                    <div class="title">
+                        <i class="public-icon public-iconExamine"></i>
+                        <span>业务员处理信息</span>
+                    </div>
+                    <div class="time">
+                        <i class="public-icon public-iconTimeBlue"></i>
+                        <span><span class="ywyDetailedTime"></span></span>
+                    </div>
+                </div>
+                <!--内容-->
+                <div class="applyContent">
+                    <!--新车装卸事故和新车检查事故-->
+                    <div class="listBox moneyNum">
+                        <span class="titleSm">处理人：</span><span id="ywyName"></span>
+                    </div>
+                    <div class="listBox moneyNum">
+                        <span class="titleSm">处理状态：</span>
+                        <select id="Salesman2_je" class="type1Select"  style="-moz-appearance: none;-webkit-appearance: none;padding-top: 5px;font-size: 14px">
+                            <option value="kong" disabled selected hidden>请您做出选择</option>
+                            <option value="1">任务继续</option>
+                            <option value="2">任务取消</option>
+                        </select>
+                    </div>
+                    <div class="listBox ccReason" >
+                        <span class="titleSm">处理意见：</span><textarea id="Suggest2" class="type1Input" type="text" name="carNum" rows="5" placeholder="请输入您的意见"></textarea>
+                    </div>
+
+                </div>
+                <!--提交-->
+                <div class="btnGroup2" >
+                    <div class="submit2YwyBtn">提交</div>
+                </div>
+            </div>
+
+            <!--业务员新车检查装卸事故-->
+            <div class="applyBox ywy3Hide">
+                <!--标题栏-->
+                <div class="titleBar">
+                    <div class="title">
+                        <i class="public-icon public-iconExamine"></i>
+                        <span>业务员处理信息</span>
+                    </div>
+                    <div class="time">
+                        <i class="public-icon public-iconTimeBlue"></i>
+                        <span><span class="ywyDetailedTime"></span></span>
+                    </div>
+                </div>
+                <!--内容-->
+                <div class="applyContent">
+                    <!--新车装卸事故和新车检查事故-->
+                    <div class="listBox moneyNum">
+                        <span class="titleSm">处理人：</span><span id="ywy3Name"></span>
+                    </div>
+                    <div class="listBox moneyNum">
+                        <span class="titleSm">处理状态：</span>
+                        <select id="ywy3clzt" class="type1Select"  style="-moz-appearance: none;-webkit-appearance: none;padding-top: 5px;font-size: 14px">
+                            <option value="kong" disabled selected hidden>请您做出选择</option>
+                            <option value="3">事故车拖回</option>
+                            <option value="4">事故车留存</option>
+                        </select>
+                    </div>
+                    <div class="listBox ccReason" >
+                        <span class="titleSm">处理意见：</span><textarea id="Suggest3" class="type1Input" type="text" name="carNum" rows="5" placeholder="请输入您的意见"></textarea>
+                    </div>
+
+                </div>
+                <!--提交-->
+                <div class="btnGroup2" >
+                    <div class="submit2YwyBtn">提交</div>
+                </div>
+            </div>
+
+
+            <!--旧车装卸事故、自测交通事故处理信息-->
+            <div class="applyBox jczc">
+                <!--标题栏-->
+                <div class="titleBar">
+                    <div class="title">
+                        <i class="public-icon public-iconExamine"></i>
+                        <span>车管处理结果</span>
+                    </div>
+                    <div class="time">
+                        <i class="public-icon public-iconTimeBlue"></i>
+                        <span><span class="cgDetailedTime"></span></span>
+                    </div>
+                </div>
+                <!--内容-->
+                <div class="applyContent">
+                    <div class="listBox moneyNum">
+                        <span class="titleSm">车管姓名：</span>
+                        <span id="cgName"></span>
+                    </div>
+                    <div class="listBox moneyNum">
+                        <!--新车问题反馈-->
+                        <span class="titleSm">处理状态：</span>
+                        <select id="cg_je" class="type1Select"  style="-moz-appearance: none;-webkit-appearance: none;padding-top: 5px;font-size: 14px">
+                            <option value="kong" disabled selected hidden>请您做出选择</option>
+                            <option value="1">任务继续</option>
+                            <option value="2">任务取消</option>
+                        </select>
+                    </div>
+                    <div class="listBox ccReason cgclyjBox" >
+                        <span class="titleSm">处理意见：</span><textarea id="cgclyj" class="type1Input" type="text" name="carNum" rows="5" placeholder="请输入您的意见"></textarea>
+                    </div>
+                    <!--提交-->
+                    <div class="btnGroup2" >
+                        <div class="submitCgClBtn">提交</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!--调度确认-->
+            <div class="applyBox ddHide">
+                <!--标题栏-->
+                <div class="titleBar">
+                    <div class="title">
+                        <i class="public-icon public-iconExamine"></i>
+                        <span>调度确认信息</span>
+                    </div>
+                    <div class="time ddtime">
+                        <i class="public-icon public-iconTimeBlue"></i>
+                        <span><span class="ddDetailedTime"></span></span>
+                    </div>
+                </div>
+                <!--内容-->
+                <div class="applyContent">
+                    <!--新车装卸事故和新车检查事故-->
+                    <div class="listBox moneyNum">
+                        <span class="titleSm">调度：</span>
+                        <span id="ddName"></span>
+                    </div>
+
+                    <div class="listBox moneyNum" style="display: none">
+                        <span class="titleSm">调度确认：</span>
+                        <select id="ddqr" class="type1Select"  style="-moz-appearance: none;-webkit-appearance: none;padding-top: 5px;font-size: 14px">
+                            <!--<option value="kong" disabled selected hidden>请选择</option>-->
+                            <option value="1" disabled selected>已确认</option>
+                        </select>
+                    </div>
+                </div>
+                <!--提交-->
+                <div class="btnGroup2 ddqrBtn" >
+                    <div class="submit2ddQrBtn">调度确认</div>
+                </div>
+            </div>
+
+            <!--处理信息-->
+            <div class="dealBox type4 type5 type6">
+
+                <!--标题栏-->
+                <div class="titleBar">
+                    <div class="title">
+                        <i class="public-icon public-iconApplyInfo"></i>
+                        <span>处理信息</span>
+                    </div>
+                </div>
+
+                <!--内容-->
+                <div class="applyContent">
+                    <div class="listBox declarer">
+                        <span class="titleSm">处理人：</span>
+                        <span id="sjName2" class="companyName"></span>
+                    </div>
+                    <div class="listBox orderNum">
+                        <span class="titleSm">处理时间：</span>
+                        <span id="dksj"></span>
+                    </div>
+                    <div class="listBox moneyNum">
+                        <span class="titleSm">处理方式：</span>
+                        <select id="dealMode">
+						  <option value="就近维修">就近维修</option>
+						  <option value="返厂维修">返厂维修</option>
+						  <option value="事故处理中">事故处理中</option>
+						  <option value="事故已处理">事故已处理</option>
+						</select>
+                    </div>
+
+                    <!--确认按钮-->
+                    <div class="btnGroup type4 type5">
+                        <div class="confirm">确认</div>
+                    </div>
+					
+                </div>
+            </div>
+
+            <!-- 自车交通事故反馈表 -->
+            <div class="applyBox feedbackFormSelf" >
+                <!--标题栏-->
+                <div class="titleBar">
+                    <div class="title">
+                        <i class="public-icon public-iconApplyInfo"></i>
+                        <span>反馈表</span>
+                    </div>
+                </div>
+
+                <!--内容-->
+                <div class="applyContent">
+                    <div class="listBox declarer">
+                        <span class="titleSm">交警责任判定：</span>
+                        <span id="jjzrpdSelf"></span>
+                    </div>
+                    <div class="listBox orderNum">
+                        <span class="titleSm">总体损失金额：</span>
+                        <span id="ztssjeSelf"></span>
+                    </div>
+                    <div class="listBox declarer">
+                        <span class="titleSm">公司损失金额：</span>
+                        <span id="gsssjeSelf"></span>
+                    </div>
+                    <div class="listBox orderNum">
+                        <span class="titleSm">KPI扣分：</span>
+                        <span id="kpiSelf"></span>
+                    </div>
+                    <div class="listBox declarer">
+                        <span class="titleSm">技师处罚金额：</span>
+                        <span id="jscfjeSelf"></span>
+                    </div>
+                    <div class="listBox orderNum">
+                        <span class="titleSm">技师承担金额：</span>
+                        <span id="jspfjeSelf"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 旧车装卸事故反馈表 -->
+            <div class="applyBox feedbackFormOld" >
+                <!--标题栏-->
+                <div class="titleBar">
+                    <div class="title">
+                        <i class="public-icon public-iconApplyInfo"></i>
+                        <span>反馈表</span>
+                    </div>
+                </div>
+
+                <!--内容-->
+                <div class="applyContent">
+                    <div class="listBox orderNum">
+                        <span class="titleSm">总体损失金额：</span>
+                        <span id="ztssjeOld"></span>
+                    </div>
+                    <div class="listBox declarer">
+                        <span class="titleSm">公司损失金额：</span>
+                        <span id="gsssjeOld"></span>
+                    </div>
+                    <div class="listBox orderNum">
+                        <span class="titleSm">KPI扣分：</span>
+                        <span id="kpiOld"></span>
+                    </div>
+                    <div class="listBox declarer">
+                        <span class="titleSm">技师处罚金额：</span>
+                        <span id="jscfjeOld"></span>
+                    </div>
+                    <div class="listBox orderNum">
+                        <span class="titleSm">技师承担金额：</span>
+                        <span id="jscdjeOld"></span>
+                    </div>
+                    <div class="listBox orderNum">
+                        <span class="titleSm">保险免赔金额：</span>
+                        <span id="bxmpjeOld"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 新车检查装卸事故反馈表 -->
+            <div class="applyBox feedbackFormNew" >
+                <!--标题栏-->
+                <div class="titleBar">
+                    <div class="title">
+                        <i class="public-icon public-iconApplyInfo"></i>
+                        <span>反馈表</span>
+                    </div>
+                </div>
+
+                <!--内容-->
+                <div class="applyContent">
+                    <div class="listBox orderNum">
+                        <span class="titleSm">总体损失金额：</span>
+                        <span id="ztssjeNew"></span>
+                    </div>
+                    <div class="listBox declarer">
+                        <span class="titleSm">公司损失金额：</span>
+                        <span id="gsssjeNew"></span>
+                    </div>
+                    <div class="listBox orderNum">
+                        <span class="titleSm">KPI扣分：</span>
+                        <span id="kpiNew"></span>
+                    </div>
+                    <div class="listBox declarer">
+                        <span class="titleSm">技师处罚金额：</span>
+                        <span id="jscfjeNew"></span>
+                    </div>
+                    <div class="listBox orderNum">
+                        <span class="titleSm">技师承担比例：</span>
+                        <span id="jscdblNew"></span>
+                    </div>
+                    <div class="listBox orderNum">
+                        <span class="titleSm">技师承担金额：</span>
+                        <span id="jspfjeNew"></span>
+                    </div>
+                    <div class="listBox orderNum">
+                        <span class="titleSm">保险免赔金额：</span>
+                        <span id="bxmpjeNew"></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../lc_js/less.min.js"></script>
+    <script type="text/javascript" src="../lc_js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../js/dingtalk.open.js"></script>
+    <script type="text/javascript" src="../js/public.js"></script>
+    <script type="text/javascript" src="../js/accidentdeclare.js"></script>
+</body>
+</html>

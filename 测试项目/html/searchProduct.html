@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>搜索</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+		<link rel="shortcut icon" href="http://www.airprocar.com/template/br_en/images/favicon-20180203032756661.ico" />
+		<link rel="stylesheet" type="text/css" href="../css/index2.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="../css/layer.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="../css/layer.ext.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" media="print" />
+		<link rel="stylesheet" href="../lc_plugin/swiperMobile/swiper.min.css">
+		<link type="text/css" rel="stylesheet" media="all" href="../css/css_d7a2f07359ded73ef75e0a9c759803ce.css" />
+		<link type="text/css" rel="stylesheet" media="all" href="../css/style2.css" />
+		<link type="text/css" rel="stylesheet" media="all" href="../css/layOutBox.css" />
+		
+
+	</head>
+
+	<!--<div class="mobi-headerwrapper hidden-md hidden-lg">
+		<div class="sticky-bg">
+
+			<div class="row">
+				<div class="col-xs-4 col-xs-offset-1">
+
+					<div class="mobi-logo">
+
+						<a href="/" title="Ningbo Borui Import&Export Co.,Ltd">
+							<img src="http://www.airprocar.com/template/br_en/images/logo.png?h=66&amp;la=en&amp;w=280" alt="Ningbo Borui Import&Export Co.,Ltd" width="280" height="66" /></a>
+
+					</div>
+				</div>
+
+				<div class="col-xs-7 mobi-top-nav">
+					<div class="mobi-nav-icon pull-right"></div>
+
+					<div id="mobi-SearchButtonContainer" class="pull-right">
+					</div>
+
+				</div>
+
+			</div>
+
+			<div id="mobi-topnavigation-container" class="row">
+				<div class="col-xs-12 overlay-icons-container">
+
+					<div class="col-xs-4 col-xs-offset-1">
+						<div class="mobi-logo">
+
+							<a href="/" title="Ningbo Borui Import&Export Co.,Ltd">
+								<img src="http://www.airprocar.com/template/br_en/images/logo.png?h=66&amp;la=en&amp;w=280" alt="Ningbo Borui Import&Export Co.,Ltd" width="280" height="66" /></a>
+
+						</div>
+					</div>
+					<div class="mobi-top-nav">
+
+						<div class="mobi-close pull-right"></div>
+						<div id="overlay-SearchButtonContainer">
+
+						</div>
+
+					</div>
+				</div>
+
+				<div id="overlay-searchbox" class="col-xs-10 overlay-search-container">
+
+					<div id="overlay-searchTextboxContainer" class="pull-left">
+						<script type="text/javascript">
+							//<![CDATA[
+							function FilterIP3SearchInput(event) {
+								var keyCode = ('which' in event) ? event.which : event.keyCode;
+								isNumericOrWithShift = (keyCode == 48 || keyCode == 57 || keyCode == 56 || keyCode == 188 || keyCode == 190) || (keyCode >= 96 && keyCode <= 105);
+								isSymbol = (keyCode == 219 || keyCode == 221 || keyCode == 220);
+								isWithoutShift = (keyCode == 191);
+								modifiers = (event.shiftKey);
+								if((isNumericOrWithShift && modifiers) || isSymbol || (!modifiers && isWithoutShift)) {
+									return false;
+								} else {
+									return true;
+								}
+							}
+							//]]>
+						</script><input name="body_0$main_0$innerwrapper_0$ctl00$ctl16$ctl00$ctl00$ctl34$ctl01$overlaysearchTextbox" type="text" value="Search" id="overlaysearchTextbox" onkeydown="return FilterIP3SearchInput(event);" onclick="if (this.value == &#39;Search&#39;){this.value=&#39;&#39;;}" onblur="if (this.value == &#39;&#39;){this.value=&#39;Search&#39;;}" />
+					</div>
+					<div id="overlay1-SearchButtonContainer">
+						<input type="submit" name="body_0$main_0$innerwrapper_0$ctl00$ctl16$ctl00$ctl00$ctl34$ctl02$ctl00" value="GO" onclick="return checkValidSearchString(&#39;overlaysearchTextbox&#39;,&#39;Search&#39;, &#39;Please enter valid search keyword&#39;);" id="SearchbuttonRP" />
+					</div>
+				</div>
+
+				<div class="mobi-navigation col-xs-12">
+					<ul id="mobi-bottom-section-Homepage-level1" style="padding:0px;">
+
+						<li id="mobi-bottom-nav-taste-level1" class="level1 haschildren first">
+							<a href="/"><span>Home</span></a>
+						</li>
+
+						<li id="mobi-bottom-nav-smell-level1" class="level1 haschildren">
+							<a href="/alone/alone.php?id=42"><span>About us</span></a>
+							<ul id="mobi-bottom-section-smell-level2" style="padding:0px;">
+								<li id="mobi-bottom-nav-fragrance-ingredients-level2" class="level2 first">
+									<a href="/alone/alone.php?id=42"><span>Company Profile</span></a>
+								</li>
+							</ul>
+
+						</li>
+
+						<li id="mobi-bottom-nav-company-level1" class="level1 haschildren">
+							<a href="/alone/alone.php?id=92"><span>Products</span></a>
+							<ul id="mobi-bottom-section-company-level2" style="padding:0px;">
+
+								<li id="mobi-bottom-nav-who-we-are-level2" class="level2 first">
+									<a href="/alone/alone.php?id=84"><span>Luxury Series</span></a>
+								</li>
+
+								<ul id="mobi-bottom-section-policy-center-level3">
+									<li id="mobi-bottom-nav-2017-gender-equity-report-level3" class="level3 first">
+										<a href=""><span></span></a>
+									</li>
+								</ul>
+						</li>
+						</ul>
+						</li>
+
+						<li id="mobi-bottom-nav-media-level1" class="level1 haschildren">
+							<a href="/alone/alone.php?id=45"><span>R&D</span></a>
+
+							<ul id="mobi-bottom-section-media-level2" style="padding:0px;">
+								<li id="mobi-bottom-nav-multimedia-gallery-level2" class="level2 first">
+									<a href="/alone/alone.php?id=45"><span>Technology</span></a>
+								</li>
+							</ul>
+						</li>
+
+						<li id="mobi-bottom-nav-careers-level1" class="level1 haschildren">
+							<a href="/alone/alone.php?id=78"><span>Distributors</span></a>
+
+							<ul id="mobi-bottom-section-careers-level2" style="padding:0px;">
+								<li id="mobi-bottom-nav-why-iff-level2" class="level2 first">
+									<a href="/alone/alone.php?id=78"><span>Distributors Map</span></a>
+								</li>
+
+							</ul>
+						</li>
+
+						<li id="mobi-bottom-nav-contact-us-level1" class="level1 last">
+							<a href="/alone/alone.php?id=43"><span>Contact us</span></a>
+						</li>
+					</ul>
+				</div>
+				<div class="mobi-social-icons-container">
+					<div class="inline-block">
+						<p>
+
+							<a href="https://www.facebook.com/Airprocar/" title="Facebook - link to website (opens in a new window)" target="_blank">
+								<i class="sprites-facebook"></i>
+							</a>
+							<a href="https://www.instagram.com/airpro.car/" title="Instagram - link to website (opens in a new window)" target="_blank">
+								<i class="sprites-instagram"></i>
+							</a>
+
+						</p>
+
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>-->
+	
+	<style>
+
+		a,
+		a:hover {
+			text-decoration: none;
+		}
+		
+		pre {
+			font-family: '微软雅黑'
+		}
+		
+		.box {
+			padding: 20px;
+			background-color: #fff;
+			margin: -5px 10px;
+			border-radius: 5px;
+		}
+		
+		.box a {
+			/*padding-right: 15px;*/
+		}
+		
+		#about_hide {
+			display: none
+		}
+		
+		.layer_text {
+			background-color: #fff;
+			padding: 20px;
+		}
+		
+		.layer_text p {
+			margin-bottom: 10px;
+			text-indent: 2em;
+			line-height: 23px;
+		}
+		
+		.button {
+			display: inline-block;
+			*display: inline;
+			*zoom: 1;
+			line-height: 30px;
+			padding: 0 20px;
+			background-color: #56B4DC;
+			color: #fff;
+			font-size: 14px;
+			border-radius: 3px;
+			cursor: pointer;
+			font-weight: normal;
+		}
+		
+		.imgs {
+			margin-top: 20px;
+		}
+		
+		.imgs img {
+			width: 300px;
+			padding: 0 10px 10px;
+			cursor: pointer;
+		}
+	</style>
+
+	<!--Content:Start-->
+
+	<body class="s1 productDetails not-front not-logged-in page-node node-type-corporate one-sidebar sidebar-left chrome chrome45 win desktop with-news page-facts-figures section-facts-figures node-full-view n-477 no-js header-fix1" style="overflow: hidden">
+
+		<div id="headerwrapper" class="hidden-xs hidden-sm" style="background: rgba(0, 0, 0, 0.6) none repeat scroll 0 0;">
+			<div class="sticky-bg">
+				<div class="container-fluid">
+					<div class="row">
+						<div id="header" class="col-md-10 col-xs-12 col-md-offset-1">
+
+							<div id="toplinks" class="pull-left full-width" style="height:33px;">
+								<div class="pull-right" style="height:33px;">
+									<div id="headerlinks" class="pull-left" style="height:33px;">
+
+										<ul id="section-Homepage-level1">
+											<li id="nav-careers-level1" class="level1 haschildren weibo">
+												<a href="/"><span><img src="../images/weibo.png" style="width:20px;"></span></a>
+												<div class="weiboImg"><img src="../images/weibo2.jpg" width="100" height="100" /></div>
+											</li>
+											<li id="nav-careers-level1" class="level1 haschildren weixin">
+												<a href="javascript:void(0);"><span><img src="../images/weixin.png" style="width:20px;margin-top:0.5px;"></span></a>
+												<div class="weixinImg"><img src="../images/weixin2.jpg" width="100" height="100" /></div>
+											</li>
+											<li id="nav-contact-us-level1" class="level1 last" style="display: none;">
+												<a href="http://shamood.com.cn"><span>微信后台登录</span></a>
+											</li>
+										</ul>
+									</div>
+
+									<div id="searchbox" class="pull-left">
+
+										<div id="searchTextboxContainer">
+											<div class="text-box pull-left full-width">
+
+												<script type="text/javascript">
+													//<![CDATA[
+													function FilterIP3SearchInput(event) {
+														var keyCode = ('which' in event) ? event.which : event.keyCode;
+														isNumericOrWithShift = (keyCode == 48 || keyCode == 57 || keyCode == 56 || keyCode == 188 || keyCode == 190) || (keyCode >= 96 && keyCode <= 105);
+														isSymbol = (keyCode == 219 || keyCode == 221 || keyCode == 220);
+														isWithoutShift = (keyCode == 191);
+														modifiers = (event.shiftKey);
+														if((isNumericOrWithShift && modifiers) || isSymbol || (!modifiers && isWithoutShift)) {
+															return false;
+														} else {
+															return true;
+														}
+													}
+													//]]>
+												</script>
+												
+												<input name="body_0$main_0$innerwrapper_0$ctl00$ctl16$ctl00$ctl00$ctl29$ctl01$searchTextbox" 
+													type="text" 
+													placeholder="搜索产品" 
+													id="searchTextbox" 
+													onkeydown="return FilterIP3SearchInput(event);" 
+													onclick="if (this.placeholder == &#39;搜索产品&#39;){this.placeholder=&#39;&#39;;}" 
+													onblur="if (this.placeholder == &#39;&#39;){this.placeholder=&#39;搜索产品&#39;;}" />
+											</div>
+										</div>
+										<div id="SearchButtonContainer">
+
+											<input type="submit" 
+												name="body_0$main_0$innerwrapper_0$ctl00$ctl16$ctl00$ctl00$ctl29$ctl02$ctl00" 
+												value="GO" 
+												onclick="return checkValidSearchString(&#39;searchTextbox&#39;,&#39;Search&#39;, &#39;请输入关键词&#39;);" 
+												id="searchButton" />
+										</div>
+
+									</div>
+								</div>
+							</div>
+
+							<div class="row" style="height:86px;">
+								<div id="logo" class="col-xs-4">
+									<a href="home.html" title="Ningbo Borui Import&Export Co.,Ltd">
+										<img src="../images/logo_new.png" alt="Ningbo Borui Import&Export Co.,Ltd" width="150" height="50" /></a>
+								</div>
+
+								<div id="mainmenu" style="padding-top:50px;font-family:Georgia , sans-serif;">
+									<div id="menu">
+										<div id="menu104304" class="menu">
+											<ul class="menu2">
+												<li id="hot" class="tm1 first cur">
+													<a href="home.html">首页</a>
+												</li>
+											</ul>
+											<span>400-996-3296</span>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="visibleContainer1">
+			<div id="bigContainer1" class="clear-block skrollable hidden-xs">
+				<div id="primaryContainer" class="primaryContainer clear-block" style="background:url(../upload/images/fresh.png);height:1000px;">
+					<div id="Slide_right" class="clear-block">
+						<div id="content" style="width:1100px;height:1000px;margin-left:-494px;">
+							<div class="header1">
+								<div id="page-title" class="clear-block">
+									<h1 class="h" style="font-family:  Georgia, sans-serif;margin-top:100px;">
+                                
+                            </h1>
+								</div>
+							</div>
+							<div id="text" class="clear-block">
+								<div id="text-inner" class="clear-block">
+									<div id="node-477" class="node node-corporate">
+
+										<div class="box">
+											<span style="font-size:18px;padding-bottom:20px;">
+    &nbsp;&nbsp;&nbsp;<a href="home.html">首页&nbsp;&nbsp;&gt;&nbsp;&nbsp;</a><a href="javascript:void(0);">搜索</a></span>
+											
+											<div class="productBox">
+												<div class="tips" style="margin: 20px 0 0 15px;"></div>
+											</div>
+											
+											<!--<div id="imgs" class="imgs">
+												<dl class="dl_sb">
+													<dt><img src="http://www.airprocar.com/upload/img/201803231406406001.jpg" border="0" alt="E-Breeze"></dt></dl>
+											</div>-->
+										</div>
+									</div>
+								</div>
+
+								<!--<script>
+									!function() {
+									    console.log(layer);
+										layer.use('../js/layer.ext.js', function() {
+											初始加载即调用，所以需放在ext回调里
+											layer.ext = function() {
+												layer.photosPage({
+													html: '<div class="node-text" style="height:400px;margin-top:20px;"><a style="font-size:20px;margin-top:40px;margin-left:15px;" href="">E-Breeze</a><p style="font-size:16px;margin-left:10px;margin-top:20px;"><p style="font-size:16px;margin-left:10px;margin-top:20px;font-weight:600;">As quite as whisper</p><p style="font-size:16px;margin-left:10px;margin-top:20px;">Airpro eBreeze is a truly innovative aromatherapy product, crafted well to perform for any kind of environment. Its creative design will not only add sophistication to your home but also will automatically spread elegant fragrances around your home.</p><p style="font-size:16px;margin-left:10px;margin-top:20px;">Essential oils have been carefully preserved in full natural tablets and kept inside eBreeze to work more efficiently than any other diffuser. Fragrances have been selected to create just the right mood for you. Use the calming fragrance every night you go to bed or a more energizing fragrance at the time you wish to wake up- go ahead and choose the appropriate for you scents.</p><p style="font-size:16px;font-weight: 400;background:url(../upload/images/yd.png) no-repeat;padding-left:15px;padding-top:30px;">eBreeze available in five exciting signature fragrances to make you feel special every time you are inside your house</p><p style="font-size:16px;font-weight: 400;background:url(../upload/images/yd.png) no-repeat;padding-left:15px;padding-top:30px;">Value Pack with 6 refills inside + USB cable</p></p><br><p style="font-size:16px;margin-left:90px;border:2px solid #00a1e0;width:170px;" ><a href="/alone/alone.php?id=43">&nbsp;&nbsp;&nbsp;&nbsp; Contact us for<br>&nbsp;&nbsp;more information</a></p><a style="font-size:16px;margin-left:10px;border-solid:2px solid #00a1e0;" href="/alone/alone.php?id=43">' + unescape("<p></p>") + '</a><p id="change"></p></div>',
+													title: 'product',
+													id: 100, 相册id，可选
+													parent: '#imgs'
+												});
+											};
+										});
+									}();
+								</script>-->
+
+								<div class="clear"></div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--<div id="mobi-content" class="full-width full-left  skrollable hidden-sm hidden-md hidden-lg" style="height:1000px;">
+			<div class="header1">
+				<div id="page-title" class="clear-block">
+					<h1 class="h" style="font-family:  Georgia, sans-serif;margin-top:100px;">
+                PRODUCTS
+            </h1>
+				</div>
+			</div>
+			<div id="text" class="clear-block">
+				<div id="text-inner" class="clear-block">
+					<div id="node-477" class="node node-corporate">
+
+						<div class="box">
+							<span style="font-size:18px;padding-bottom:20px;">
+    &nbsp;&nbsp;&nbsp;<a href="/index.php?lang=en">Home</a>> <a href="/alone/alone.php?id=83">Product</a></span>
+
+							<div id="imgs" class="imgs">
+								<dl class="dl_sb">
+									<dt><img src="http://www.airprocar.com/img/201803231406406001.jpg" border="0" alt="E-Breeze" /></dt></dl>
+
+								<div id="imgs" class="imgs">
+									<dl class="dl_sb">
+										<dt><img src="http://www.airprocar.com/img/201803231406403370.jpg" border="0" alt="E-Breeze" /></dt></dl>
+
+									<div id="imgs" class="imgs">
+										<dl class="dl_sb">
+											<dt><img src="http://www.airprocar.com/img/201803231406401394.jpg" border="0" alt="E-Breeze" /></dt></dl>
+
+										<div id="imgs" class="imgs">
+											<dl class="dl_sb">
+												<dt><img src="http://www.airprocar.com/img/20180323140640246.jpg" border="0" alt="E-Breeze" /></dt></dl>
+
+											<div id="imgs" class="imgs">
+												<dl class="dl_sb">
+													<dt><img src="http://www.airprocar.com/img/201803231406406155.jpg" border="0" alt="E-Breeze" /></dt></dl>
+
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<script>
+					;
+					! function() {
+						layer.use('extend/layer.ext.js', function() {
+							//初始加载即调用，所以需放在ext回调里
+							layer.ext = function() {
+								layer.photosPage({
+									html: '<div class="node-text" style="height:400px;margin-top:20px;"><a style="font-size:20px;margin-top:40px;margin-left:15px;" href="">E-Breeze</a><p style="font-size:16px;margin-left:10px;margin-top:20px;"><p style="font-size:16px;margin-left:10px;margin-top:20px;font-weight:600;">As quite as whisper</p><p style="font-size:16px;margin-left:10px;margin-top:20px;">Airpro eBreeze is a truly innovative aromatherapy product, crafted well to perform for any kind of environment. Its creative design will not only add sophistication to your home but also will automatically spread elegant fragrances around your home.</p><p style="font-size:16px;margin-left:10px;margin-top:20px;">Essential oils have been carefully preserved in full natural tablets and kept inside eBreeze to work more efficiently than any other diffuser. Fragrances have been selected to create just the right mood for you. Use the calming fragrance every night you go to bed or a more energizing fragrance at the time you wish to wake up- go ahead and choose the appropriate for you scents.</p><p style="font-size:16px;font-weight: 400;background:url(../images/yd.png) no-repeat;padding-left:15px;padding-top:30px;">eBreeze available in five exciting signature fragrances to make you feel special every time you are inside your house</p><p style="font-size:16px;font-weight: 400;background:url(../images/yd.png) no-repeat;padding-left:15px;padding-top:30px;">Value Pack with 6 refills inside + USB cable</p></p><br><p style="font-size:16px;margin-left:90px;border:2px solid #00a1e0;width:170px;" ><a href="/alone/alone.php?id=43">&nbsp;&nbsp;&nbsp;&nbsp; Contact us for<br>&nbsp;&nbsp;more information</a></p><a style="font-size:16px;margin-left:10px;border-solid:2px solid #00a1e0;" href="/alone/alone.php?id=43">' + unescape("<p></p>") + '</a><p id="change"></p></div>',
+									title: 'product',
+									id: 100, //相册id，可选
+									parent: '#imgs'
+								});
+							};
+						});
+					}();
+				</script>
+				<div class="clear"></div>
+
+			</div>
+		</div>-->
+		</div>
+		</div>
+		</div>
+
+		<!--Content:End-->
+
+		<!--产品详情弹出框 start-->
+		<div id="layOutBox">
+			<div class="content">
+				
+				<div class="swiperBox">
+					<div class="swiper-container">
+				        <div class="swiper-wrapper">
+				            <!--<div class="swiper-slide">slide1</div>-->
+				            
+				        </div>
+				        
+				    </div>
+				    <div class="swiper-button-prev"></div>
+		    		<div class="swiper-button-next"></div>
+				</div>
+				
+			    
+			    <div class="infoBox" style="padding: 30px 20px;width: 460px;">
+			    	<div class="title"></div>
+			    	<div class="infoText"></div>
+			    	<div class="contactBtn">
+			    		<a href="contactUs.html?id=216">联系我们</a>
+			    	</div>
+			    </div>
+			    <div class="exit">
+		    		<!--<img src="../images/xubox_ico0.png" width="30" height="30" />-->
+		    	</div>
+			</div>
+			
+		</div>
+		
+		
+		<!--产品详情弹出框 end-->
+		<div id="Footer" class="clear-block hidden-xs hidden-sm">
+			<div id="box4" class="clear-block">
+				<p id="Legal">
+				</p>
+				<p id="Credits">
+				</p>
+
+				<p id="Search1" style="margin-left:521px;">
+				</p>
+
+
+			</div>
+		</div>
+		<script type="text/javascript" src="../js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" language="javascript">
+			$j = jQuery.noConflict();
+			autoCompleteDomain = 'www.airprocar.com';
+		</script>
+		<!--<script type="text/javascript" language="javascript" src="http://www.airprocar.com/template/br_en/js/jquery-ui.min.js"></script>-->
+		<!--<script type="text/javascript" language="javascript" src="http://www.airprocar.com/template/br_en/js/ingredients-redirection-new.js"></script>-->
+		<script>
+			var tmpPageName = 'Homepage';
+		</script>
+
+		<script>
+			if(document.URL.indexOf("online-compendium/") > -1) {
+				if(document.URL.indexOf("stage") > -1 || document.URL.indexOf("about-the-compendium") > -1) {
+
+				} else {
+
+					window.location.href = "/#" + tmpPageName;
+				}
+			}
+		</script>
+		<!--<script type="text/javascript" src="http://www.airprocar.com/template/br_en/jsNSW_Index.js"></script>-->
+		<script src="../js/jquery-2.1.1.min.js"></script>
+		<!--<script type="text/javascript" src="http://www.airprocar.com/template/br_en/js/jquery.SuperSlide.2.1.1.js"></script>-->
+		<script src="../lc_plugin/layer/layer.js"></script>
+		<script type="text/javascript" src="../lc_js/jquery-3.1.1.min.js"></script>
+		<script src="../lc_plugin/swiperMobile/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/public.js"></script>
+		<script type="text/javascript" src="../js/main.js"></script>
+		<script type="text/javascript" src="../js/searchProduct.js"></script>
+		<!--<script type="text/javascript" src="http://www.airprocar.com/template/br_en/js/ResourceHandlermerge.js"></script>-->
+	</body>
+
+</html>

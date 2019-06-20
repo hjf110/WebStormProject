@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="renderer" content="ie-stand">
+    <meta charset="utf-8"/>
+    <title>快捷OA</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="./assets/css/bootstrap.css"/>
+    <link rel="stylesheet" href="./css/font-awesome.min.css">
+    <link rel="stylesheet" href="./assets/css/ace.css"/>
+    <link rel="stylesheet" href="./assets/css/ace-rtl.css"/>
+    <script src="./libs/jquery.min.js"></script>
+    <script src="./plugins/jqgrid/jquery.jqGrid.min.js"></script>
+    <script src="./libs/vue.min.js"></script>
+    <script src="./js/common/api.js"></script>
+    <script src="./js/common/common.js"></script>
+    <script src="./js/common/tool.js"></script>
+    <script src="./plugins/layer/layer.js"></script>
+    <script src="./js/control/layerDialog.js"></script>
+    <script src="./modules/expense/js/config.js"></script>
+    <script src="//g.alicdn.com/dingding/dinglogin/0.0.5/ddLogin.js"></script>
+
+
+</head>
+<body class="login-layout light-login" id="body" style="display: none">
+<div class="main-container" id="armorapp">
+    <div class="main-content">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <div class="login-container">
+                    <div class="center">
+                        <h1>
+                            <i class="ace-icon fa fa-leaf green"></i>
+                            <span class="red">快捷OA</span>
+                            <span class="white" id="id-text2">后台管理系统</span>
+                        </h1>
+                    </div>
+
+                    <div class="space-6"></div>
+
+                    <div class="position-relative">
+                        <div id="login-box" class="login-box visible widget-box no-border">
+                            <div class="widget-body">
+                                <div class="widget-main">
+                                    <h4 class="header blue lighter bigger">
+                                        <i class="ace-icon fa fa-coffee green"></i>
+                                        请填写登录信息
+                                    </h4>
+
+                                    <div class="space-6"></div>
+
+                                    <form>
+                                        <fieldset>
+                                            <div>
+                                                <label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="text" class="form-control" v-model="username"
+                                                                   placeholder="账号"/>
+															<i class="ace-icon fa fa-user"></i>
+														</span>
+                                                </label>
+
+                                                <label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="password" class="form-control"
+                                                                   v-model="password" placeholder="密码"/>
+															<i class="ace-icon fa fa-lock"></i>
+														</span>
+                                                </label>
+                                                <div class="input-group input-group-sx">
+														<span class="input-group-addon">
+															<i class="fa fa-picture-o" style="width:15px;"></i>
+														</span>
+                                                    <input type="text" class="form-control" style="width:165px;"
+                                                           v-model="captcha" @keyup.enter="login" placeholder="验证码">
+
+                                                    <span class="input-group-btn">
+															<img :src="src" @click="refreshCode" height="34"
+                                                                 style="width:95px;border: 1px solid #ccc;border-left: 1;cursor: pointer;"/>
+														</span>
+                                                </div>
+
+                                                <div v-if="error" class="alert alert-danger alert-dismissible">
+                                                    {{errorMsg}}
+                                                </div>
+                                                <br>
+                                            </div>
+                                            <div class="space"></div>
+
+
+                                            <div class="clearfix">
+                                                <label class="inline" style="display: none">
+                                                    <input type="checkbox" class="ace"/>
+                                                    <span class="lbl" style="display: none"> Remember Me</span>
+                                                </label>
+
+                                                <button type="button"
+                                                        class="width-35 pull-right btn btn-sm btn-primary qRCodeLogin"
+                                                        style="margin-left: 10px">
+                                                    <i class="ace-icon fa fa-qrcode"></i>
+                                                    <span class="bigger-110">扫码登录</span>
+                                                </button>
+
+                                                <button type="button"
+                                                        class="width-35 pull-right btn btn-sm btn-primary"
+                                                        @click="login">
+                                                    <i class="ace-icon fa fa-key"></i>
+                                                    <span class="bigger-110">登录</span>
+                                                </button>
+                                            </div>
+
+                                            <div class="space-4"></div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+
+
+                                <div class="toolbar clearfix" style="display: none">
+                                    <div style="float: right">
+                                        <a href="#" class="forgot-password-link">语言<i
+                                                class="ace-icon fa fa-arrow-right"></i>
+                                            <select id="locale" name="locale" style="padding:2px; width:80px;">
+                                                <option value="">---请选择---</option>
+                                                <option value="en_US">English</option>
+                                                <option value="zh_CN" selected="selected">中文</option>
+                                            </select>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div><!-- /.widget-body -->
+                        </div><!-- /.login-box -->
+
+                    </div><!-- /.position-relative -->
+
+                    <div class="center"><h4 class="blue" id="id-company-text" style="display: none">&copy;
+                        www.armor.cn</h4></div>
+
+                    <div class="navbar-fixed-top align-right" style="display: none">
+                        <br/>
+                        &nbsp;
+                        <a id="btn-login-dark" href="#">Dark</a>
+                        &nbsp;
+                        <span class="blue">/</span>
+                        &nbsp;
+                        <a id="btn-login-blur" href="#">Blur</a>
+                        &nbsp;
+                        <span class="blue">/</span>
+                        &nbsp;
+                        <a id="btn-login-light" href="#">Light</a>
+                        &nbsp; &nbsp; &nbsp;
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    //检查浏览器版本
+    var uaMatch = /msie ([\w.]+)/.exec(navigator.userAgent.toLowerCase()) || [];
+    var vie = parseFloat(uaMatch[1], 10);
+    if (vie && vie < 8) {
+        alert("您的浏览器版本太低！")
+    } else {
+        $("#body").show();
+    }
+</script>
+
+<script src="./js/login.js"></script>
+
+</body>
+</html>

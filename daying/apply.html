@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>晋升申请打印页面</title>
+    <meta charset="UTF-8">
+
+    <!--<meta name="renderer" content="ie-stand">-->
+    <!--<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">-->
+</head>
+<link rel="stylesheet" href="./css/old_dy_1.css" media="print">
+<link rel="stylesheet" href="./css/css2_1.css">
+
+<script src="./js/jquery-1.8.3.min.js"></script>
+<script src="./js/jquery.cookie.js"></script>
+<script src="./js/jquery.PrintArea.min.js"></script>
+<script src="./js/jquery.jqprint-0.3.js"></script>
+<body>
+<button type="button" id="bd">打印</button>
+<div id="dy">
+
+    <div class="image" id="a"></div>
+
+    <div class="text" id="text">
+        <div align="center"><h3>晋升申请</h3></div>
+        <table>
+            <!--表格头-->
+            <tr>
+                <td width="12.5%">姓名</td>
+                <td class="t-value" width="12.5%">华吉锋</td>
+                <td width="12.5%">性别</td>
+                <td class="t-value" width="12.5%">男</td>
+                <td width="12.5%">籍贯</td>
+                <td class="t-value" width="12.5%">浙江</td>
+                <td width="12.5%">出生年月</td>
+                <td class="t-value" width="12.5%">2019-05-06</td>
+            </tr>
+            <tr>
+                <td colspan="4">学历</td>
+                <td colspan="4" class="t-value">大学</td>
+            </tr>
+            <tr>
+                <td width="12.5%">入职时间</td>
+                <td  class="t-value"  width="12.5%">2019-05-06</td>
+                <td width="12.5%">在职年限</td>
+                <td  class="t-value"  width="12.5%">845天</td>
+                <td width="12.5%">现岗位</td>
+                <td  class="t-value"  width="12.5%">管理岗位</td>
+                <td width="12.5%">现级别</td>
+                <td  class="t-value"  width="">初级干事</td>
+            </tr>
+            <tr>
+                <td colspan="2">申请级别</td>
+                <td  class="t-value"  colspan="2">二级干事</td>
+                <td colspan="2">申请时间</td>
+                <td  class="t-value"  colspan="2">2019-05-06 12:45:55</td>
+            </tr>
+            <tr>
+                <td class="t-box t-hight" colspan="8">
+                    <div class="t-box-title">自我评价</div>
+                    <div class="t-box-body t-value">奥术大师大所大撒所大所大fssfdsfdsfdsfdfdsfdfffffffffffffffffffff</div>
+                    <div class="t-box-foot">
+                        <div>审批人:华吉锋</div>
+                        <div>审批时间:2019-05-06 12:45:55</div>
+                    </div>
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="8" ><div class="t-yijian"><img class="t-img" src="img/yes111.png"/>我已仔细阅读公司员工晋升流程须知,并自愿遵守</div> </td>
+            </tr>
+            <tr>
+                <td class="t-box" colspan="8">
+                    <div class="t-box-title">部门审批</div>
+                    <div class="t-box-body t-value">奥术大师大所大撒所大所大</div>
+                    <div class="t-box-foot">
+                        <div>审批人:华吉锋</div>
+                        <div>审批时间:2019-05-06 12:45:55</div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="t-box" colspan="8">
+                    <div class="t-box-title">指挥中心意见</div>
+                    <div class="t-box-body t-value">奥术大师大所大撒所大所大</div>
+                    <div class="t-box-foot">
+                        <div>审批人:华吉锋</div>
+                        <div>审批时间:2019-05-06 12:45:55</div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="t-box" colspan="8">
+                    <div class="t-box-title">财务部意见</div>
+                    <div class="t-box-body t-value">奥术大师大所大撒所大所大</div>
+                    <div class="t-box-foot">
+                        <div>审批人:华吉锋</div>
+                        <div>审批时间:2019-05-06 12:45:55</div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <table style="margin-top: 10px;">
+            <tr >
+                <td class="t-box" colspan="8">
+                    <div class="t-box-title">质监部意见</div>
+                    <div class="t-box-body t-value">奥术大师大所大撒所大所大</div>
+                    <div class="t-box-foot">
+                        <div>审批人:华吉锋</div>
+                        <div>审批时间:2019-05-06 12:45:55</div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="t-box" colspan="8">
+                    <div class="t-box-title">综合行政部意见</div>
+                    <div class="t-box-body t-value">奥术大师大所大撒所大所大</div>
+                    <div class="t-box-foot">
+                        <div>审批人:华吉锋</div>
+                        <div>审批时间:2019-05-06 12:45:55</div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="t-box" colspan="8">
+                    <div class="t-box-title">车管部意见</div>
+                    <div class="t-box-body t-value">奥术大师大所大撒所大所大</div>
+                    <div class="t-box-foot">
+                        <div>审批人:华吉锋</div>
+                        <div>审批时间:2019-05-06 12:45:55</div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="t-box" colspan="8">
+                    <div class="t-box-title">副总审批</div>
+                    <div class="t-box-body t-value">奥术大师大所大撒所大所大</div>
+                    <div class="t-box-foot">
+                        <div>审批人:华吉锋</div>
+                        <div>审批时间:2019-05-06 12:45:55</div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="t-box" colspan="8">
+                    <div class="t-box-title">总经理审批</div>
+                    <div class="t-box-body t-value">奥术大师大所大撒所大所大</div>
+                    <div class="t-box-foot">
+                        <div>审批人:华吉锋</div>
+                        <div>审批时间:2019-05-06 12:45:55</div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <!--        <div id="qz" class="zt"  >-->
+        <!--            <span class="jc s1">车管:<span id="cgxm"></span></span>-->
+        <!--            <span class="jc s2">领导签字:</span>-->
+        <!--        </div>-->
+    </div>
+    <!--<input id="ddd" type="button" value="打印">-->
+</div>
+</body>
+<script type="text/javascript" src="./js/apply.js"></script>
+</html>

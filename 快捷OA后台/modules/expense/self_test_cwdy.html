@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>自车交通事故(财务打印页面)</title>
+    <meta charset="UTF-8">
+
+    <!--<meta name="renderer" content="ie-stand">-->
+    <!--<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">-->
+</head>
+<link rel="stylesheet" href="./css/old_dy.css" media="print">
+<style>
+    table {
+        font-size: 18px;
+        width: 100%;
+        text-align: center;
+        border-right: 1px solid #000000;
+        border-bottom: 1px solid #000000
+    }
+
+    table td {
+        position: relative;
+        border-left: 1px solid #000000;
+        border-top: 1px solid #000000
+    }
+
+    /*// 没有打印时水印图片不显示*/
+    .image {
+        display: none;
+    }
+
+    @media print {
+        table {
+            position: relative;
+            font-size: 18px;
+            width: 100%;
+            text-align: center;
+            border-right: 1px solid #000000;
+            border-bottom: 1px solid #000000
+        }
+
+        table td {
+            border-left: 1px solid #000000;
+            border-top: 1px solid #000000
+        }
+
+        /*//使用相对定位将水印图片层级往下，显示成背景效果*/
+        .image {
+            position: relative;
+            top: 0px;
+            z-index: -100;
+            width: 200px;
+            display: inline;
+        }
+
+        /*//使用绝对定位将需要打印的内容的层级往上显示，并设置显示的位置*/
+        .text {
+            position: absolute;
+            top: 5%;
+            z-index: 100;
+            width: 98%;
+
+        }
+
+        #ddd {
+            display: none;
+        }
+  button{
+           display: none;
+        }
+ .zt{
+     font-size:15px;
+}
+    }
+
+</style>
+<script src="../../libs/jquery-1.8.3.min.js"></script>
+<script src="../../libs/jquery.cookie.js"></script>
+<script src="../../libs/jquery.PrintArea.min.js"></script>
+<script src="../../libs/jquery.jqprint-0.3.js"></script>
+<body>
+<button type="button" id="bd" >打印</button>
+<div id="dy">
+    <div align="center"><h3>自车交通事故</h3></div>
+    <div class="image" id="a"></div>
+    <div class="text" id="text">
+        <table>
+            <!--表格头-->
+            <tr>
+                <td colspan="6">财务支付</td>
+            </tr>
+            <tr class="zt">
+                <td colspan="2">支付</td>
+                <td colspan="2">卡号和银行</td>
+                <td colspan="2">办理人员</td>
+            </tr>
+            <tr class="zt">
+                <td>支付方式</td>
+                <td id="payType"></td>
+                <td>卡号</td>
+                <td id="bankCardId"></td>
+                <td>办理人员所属</td>
+                <td id="acceptingOfficer"></td>
+            </tr>
+            <tr class="zt">
+                <td>支付金额</td>
+                <td><span id="payment"></span>元</td>
+                <td rowspan="2">开户行</td>
+                <td rowspan="2" id="bankName"></td>
+                <td rowspan="2">办理人员姓名</td>
+                <td rowspan="2" id="insider"></td>
+            </tr>
+            <tr class="zt">
+                <td>收款金额</td>
+                <td><span id="amountCollected"></span>元</td>
+            </tr>
+            <tr class="zt">
+                <td colspan="4">备注</td>
+                <td colspan="2">处理人员</td>
+            </tr>
+            <tr class="zt">
+                <td style="position: relative;height: 50%" rowspan="4" colspan="4">
+                    <div id="financialRemarks"
+                         style="text-align: left;position: absolute;top: 0;left: 0;text-indent: 2em;width: 100%;height: 100%;word-wrap: break-word;font-size: 15px;">
+
+                    </div>
+                </td>
+                <td rowspan="2">财务姓名</td>
+                <td rowspan="2" id="cwxm"></td>
+            </tr>
+            <tr>
+            </tr>
+            <tr class="zt">
+                <td rowspan="2">领导签字</td>
+                <td rowspan="2" ></td>
+            </tr>
+            <tr>
+            </tr>
+        </table>
+    </div>
+    <!--<input id="ddd" type="button" value="打印">-->
+</div>
+</body>
+<script type="text/javascript" src="./js/old_car_accident_cwdy.js"></script>
+</html>

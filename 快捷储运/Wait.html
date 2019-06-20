@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>等待登录页面</title>
+
+</head>
+<script src="//g.alicdn.com/dingding/dinglogin/0.0.5/ddLogin.js"></script>
+<link rel="stylesheet" href="../js/layuiadmin/style/login.css" media="all">
+<style type="text/css">
+    .box {
+        text-align: center;
+    }
+
+    .DDLogin {
+        margin: 20% auto 0 auto;
+    }
+</style>
+<body>
+<div class="box">
+    <div class="DDLogin">
+        <img style="position: relative;bottom: 150px" src="image/wait2.gif"/>
+    </div>
+    <button id="as">aaa</button>
+</div>
+</body>
+<script type="text/javascript" src="./js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="./js/jquery.md5.js"></script>
+<script type="text/javascript" src="./js/jquery-geturlcode.js"></script>
+<script type="text/javascript" src="./js/jquery.cookie.js"></script>
+<script type="text/javascript" src="./js/common/localjs.js"></script>
+<script type="text/javascript">
+    // path参数为请求地址前缀
+    // 8位随机签名加密码：Qyw6tX4f
+    //MD5加密写法 document.write($.md5('1234'));
+    //获取url中参数的方法 GetQueryString("name")
+    //获取时间戳var timestamp = (new Date()).valueOf();
+    // cookie 存值使用方式 $.cookie('the_cookie', 'the_value', {path: '/'});
+    // cookie 取值使用方式 $.cookie('the_cookie'); // cookie存在 => 'the_value'
+    $(function () {
+        //console.log("1111111111111111111111111111111111111111");
+
+        var state = GetQueryString("state");//state,暂无用处
+        var timestamp = (new Date()).valueOf();// 时间戳----
+        var tmp_auth_code = GetQueryString("code");//用户临时授权码----
+        console.log("tmp_auth_code:" + tmp_auth_code);
+        //生成sign
+        var MD5String = "timestamp=" + timestamp + "&" + "tmp_auth_code=" + tmp_auth_code + pass;
+        var MD5 = $.md5(MD5String);
+        MD5 = MD5.toUpperCase();//字母转为大写
+        var sign = pass + MD5;// 加密参数----
+        loginIn(timestamp, sign, tmp_auth_code);
+    });
+    var jd = "no";//
+    var m1 = "no";//是否有接车权限
+    var m2 = "no";//是否有检车权限
+    var m3 = "no";//是否有能耗权限
+    var m4 = "no";//是否有交车权限
+
+    function loginIn(timestamp, sign, tmp_auth_code) {
+        //登陆接口
+        /*
+        * a）接口地址：/login/in
+        * b）访问方式：GET
+        * c) 需要的参数 : tmp_auth_code , timestamp
+        * */
+        $.ajax({
+            type: "GET",
+            url: path + "/login/in",
+            data: {
+                "timestamp": timestamp,
+                "sign": sign,
+                "tmp_auth_code": tmp_auth_code
+            },
+            dataType: "json",
+            success: function (data) {
+                var res = data.data;
+
+                console.log("成功----msg----" + res.msg);
+
+                if (res.msg=="success") {
+                    console.log("成功----token----" + res.data.token);
+                    var Token=encodeURIComponent(res.data.token);
+                    $.cookie("token", Token, {path: '/'});//往cookie中存入全局变量token
+                    console.log("成功----$.cookie('token')----" + $.cookie('token'));
+                    panduan(res.data.authority);
+                    window.location.href = "index.html";
+
+                }
+            },
+            error: function (XMLHttpResponse, textStatus, errorThrown) {
+                console.log("1 异步调用返回失败,XMLHttpResponse.readyState:" + XMLHttpResponse.readyState);
+                console.log("2 异步调用返回失败,XMLHttpResponse.status:" + XMLHttpResponse.status);
+                console.log("3 异步调用返回失败,textStatus:" + textStatus);
+                console.log("4 异步调用返回失败,errorThrown:" + errorThrown);
+
+            }
+        });
+    }
+
+
+    function panduan(res) {
+        if (res.length < 1) {
+            jd = "no";
+            console.log("没有权限" + jd);
+            $.cookie("jd", jd, {path: '/'});
+        } else {
+            jd = "yes";
+            $.cookie("jd", jd, {path: '/'});
+            $.each(res, function (idx, obj) {
+                if (obj.name == "接车") {
+                    m1 = "yes";
+                    console.log("有接车权限" + m1);
+                    $.cookie("m1", m1, {path: '/'});
+                } else if (obj.name == "检车") {
+                    m2 = "yes";
+                    console.log("有检车权限" + m2);
+                    $.cookie("m2", m2, {path: '/'});
+                } else if (obj.name == "能耗") {
+                    m3 = "yes";
+                    console.log("有能耗权限" + m3);
+                    $.cookie("m3", m3, {path: '/'});
+                } else if (obj.name == "交车") {
+                    m4 = "yes";
+                    console.log("有交车权限" + m4);
+                    $.cookie("m4", m4, {path: '/'});
+                }
+            });
+        }
+    }
+
+</script>
+
+
+</html>

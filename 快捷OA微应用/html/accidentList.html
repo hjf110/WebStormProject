@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet/less" type="text/css" href="../css/sj_index.less?v=0.1" />
+    <style>
+        .vipCenter .list .topChoiceBar .choice1{
+            width: 100%;
+        }
+    </style>
+    <title>快捷OA</title>
+</head>
+<body>
+<div class="vipCenter">
+    <!--报销列表-->
+    <div class="list">
+        <!--筛选栏-->
+        <div class="topChoiceBar" >
+            <div class="choice1">
+                <span>类型：</span>
+                <select id="select1">
+                    <option value="1" selected="selected">新车检查问题反馈</option>
+                    <option value="2">自车交通事故</option>
+                    <option value="3">旧车装卸事故</option>
+                    <option value="4">新车检查装卸事故</option>
+                    <!--<option value="5">新车检查事故</option>-->
+                </select>
+            </div>
+        </div>
+
+        <!--报销列表内容-->
+        <div class="listContent">
+            <div id="listItem" class="listItem" style="display: none">
+                <div class="partRight">
+                    <div class="money"></div>
+                    <div class="state" style="display: none">
+                        <i class="public-icon public-iconRed"></i>
+                        <span id="state"></span>
+                    </div>
+                </div>
+                <div class="partLeft">
+                    <div class="mainTitle">
+                        <span class="listType">单号</span>
+                        <span class="listName"></span>
+                    </div>
+                    <div class="subTitle">
+                        <i class="public-icon public-iconMan"></i>
+                        <span id="sj"></span> | <span id="bxdType"></span>
+                    </div>
+                    <div class="timeBox">
+                        <i class="public-icon public-iconTime"></i>
+                        <span class="time"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script type="text/javascript" src="../lc_js/less.min.js"></script>
+    <script type="text/javascript" src="../lc_js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../js/dingtalk.open.js"></script>
+    <script type="text/javascript" src="../js/public.js"></script>
+    <script type="text/javascript" src="../js/accidentList.js"></script>
+</body>
+</html>

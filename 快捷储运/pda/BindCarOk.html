@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>接车结果(接车)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+    <script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+    <script src="../js/layuiadmin/layui/layui.js"></script>
+    <script type="text/javascript" src="../layer_mobile/layer.js"></script>
+    <script type="text/javascript" src="../js/jquery.md5.js"></script>
+    <script type="text/javascript" src="../js/jquery-geturlcode.js"></script>
+    <script type="text/javascript" src="../js/jquery.cookie.js"></script>
+    <script src="../js/common/api.js"></script>
+    <script src="../js/common/localjs.js"></script>
+    <script type="text/javascript" src="../js/mui.min.js"></script>
+
+    <link rel="stylesheet" href="../js/layuiadmin/style/login.css" media="all">
+    <link rel="stylesheet" href="../css/css2.css">
+    <link rel="stylesheet" href="../layer_mobile/need/layer.css">
+
+
+</head>
+
+
+<body>
+<div class="head">
+    张三,上午好!
+</div>
+<div align="center" class="head-message">
+    接车结果
+</div>
+<div align="center" class="head-message" style="margin-top: 10px">
+<!--    请至<span id="park_name" style="font-weight: bolder;color: red;"></span>取车-->
+</div>
+
+    <div class="bc-box" align="center">
+        <div class="bc-but-ok" style="width: 220px;" >接车成功</div>
+<!--        <form style="display: none;" id="myForm" method="post" enctype="multipart/form-data">-->
+<!--            <input style="display: none" id="camera" type="file" name="vinnop" accept="image/*" capture="camera">-->
+<!--        </form>-->
+    </div>
+
+
+    <div style="display: none;" class="bc-msg" align="center">
+        <img class="bc-msg-img" src=""><span id="msg"></span>
+    </div>
+
+
+  <button class="ocr-submit-2" type="button" >返回首页</button>
+
+</body>
+
+<script type="text/javascript" >
+   // $(function () {
+   //     $(".bc-but").on("click",function () {
+   //         $(".bc-msg-img").attr("src","../image/yes2.png");
+   //         $("#msg").html("绑定成功");
+   //     })
+   // })
+
+
+   var a = 1;//绑定状态
+
+
+   $(function () {
+
+       var msg = GetQueryString("msg");
+
+       $(".bc-but-ok").html(msg);
+
+       //
+       // var res = GetQueryString("res");
+       //
+       // $(".bc-but").html(res);
+
+       //调起摄像头拍照
+       // $(".bc-but").on("click", function () {
+       //     // $("#camera").click();
+       // });
+
+
+       //点击确认按钮
+       $(".ocr-submit-2").on("click", function () {
+           if (a != 1) {
+               layer.open({
+                   content: '请绑定车位条形码'
+                   , skin: 'msg'
+                   , time: 2 //2秒后自动关闭
+               });
+           } else {
+               window.location.href = "index.html";
+           }
+       });
+
+
+       // $("#myForm").on("change", "input[type=file]", function () {
+       //     var filePath = $(this).val(); //读取图片路径
+       //     var fr = new FileReader(); //创建new FileReader()对象
+       //     var imgObj = this.files[0]; //获取图片
+       //     fr.readAsDataURL(imgObj); //将图片读取为DataURL
+       //     if (filePath.indexOf("jpg") != -1 || filePath.indexOf("JPG") != -1 || filePath.indexOf("PNG") != -1 || filePath.indexOf("png") != -1) {
+       //         var arr = filePath.split('\\');
+       //         var fileName = arr[arr.length - 1];
+       //         fr.onload = function () {
+       //             b64 = this.result;
+       //             //this.result  //图片base64 编码字符
+       //             //$("#pic").attr('src', this.result);
+       //             //success(text);
+       //             //console.log(b64);
+       //             // Shibie_TiaoXinMa(b64)
+       //             compress(b64,Shibie_TiaoXinMa);
+       //         };
+       //     } else {
+       //
+       //         return false
+       //     }
+       // });
+
+
+   })
+
+   /*识别条形码*/
+   function Shibie_TiaoXinMa(imgObj) {
+       var storage_number = $.cookie("storage_number");
+       var timestamp = (new Date()).valueOf();// 时间戳----
+       //生成sign
+       var MD5String = "storage_number=" + storage_number + "&timestamp=" + timestamp + pass;
+       var MD5 = $.md5(MD5String);
+       MD5 = MD5.toUpperCase();//字母转为大写
+       var sign = pass + MD5;// 加密参数----
+       var token = sessionStorage.getItem('token');
+       console.log("token-----" + token);
+
+
+       //方法示例
+       // 获取页面已有的一个form表单
+       //var form = document.getElementById("myForm");
+       // 用表单来初始化
+       var formData = new FormData();
+       //formData.append("vinnop",convertBase64UrlToBlob(b64));
+       formData.append("park_barcode", imgObj);
+       formData.append("storage_number", storage_number);
+       formData.append("timestamp", timestamp);
+       formData.append("sign", sign);
+       $.ajax({
+           type: "POST",
+           url: Api.PDA_pdi.Bind_Park,
+           data: formData,
+           cache: false,    //上传文件不需缓存
+           processData: false, //需设置为false。因为data值是FormData对象，不需要对数据做处理
+           contentType: false, //需设置为false。因为是FormData对象，且已经声明了属性enctype="multipart/form-data"
+           dataType: 'json',
+           beforeSend: function (request) {
+               request.setRequestHeader("KJCY-TOKEN", token);
+           },
+           success: function (data) {
+
+               console.log(data);
+               //alert(1);
+               // alert(data.msg);
+               if (data.msg == "success") {
+                   a = 1;//状态,绑定成功
+                   showMsg("../image/yes2.png", "綁定成功");
+
+                   //loading带文字
+                   layer.open({
+                       type: 2
+                       ,content: '解绑成功,请稍后'
+                   });
+                   setTimeout(function () {
+                       window.location.href = "CheckUntyingPDI2.html";
+                   }, 2000);
+
+               } else {
+                   showMsg("../image/no.png", data.msg);
+               }
+           },
+           error: function (XMLHttpResponse, textStatus, errorThrown) {
+               console.log("1 异步调用返回失败,XMLHttpResponse.readyState:" + XMLHttpResponse.readyState);
+               console.log("2 异步调用返回失败,XMLHttpResponse.status:" + XMLHttpResponse.status);
+               console.log("3 异步调用返回失败,textStatus:" + textStatus);
+               console.log("4 异步调用返回失败,errorThrown:" + errorThrown);
+
+           }
+       })
+   }
+
+   function showMsg(image, msg) {
+       $(".bc-msg-img").attr("src", image);
+       $("#msg").html(msg);
+       $(".bc-msg").show();
+   }
+
+
+
+
+
+</script>
+</html>

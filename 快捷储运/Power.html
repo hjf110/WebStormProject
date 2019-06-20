@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>能耗</title>
+</head>
+<link rel="stylesheet" href="css/css.css">
+<link href="./js/timejs/css/mobiscroll_002.css" rel="stylesheet" type="text/css">
+<link href="./js/timejs/css/mobiscroll.css" rel="stylesheet" type="text/css">
+<link href="./js/timejs/css/mobiscroll_003.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="../js/layuiadmin/style/login.css" media="all">
+
+<body>
+<a href="index.html">
+    <div class="back">
+        <img class="back-img" src="image/back.png"><span
+            class="back-text">返回</span>
+    </div>
+</a>
+<div class="head">
+    <div class="head-img">
+        <img class="head-img-1" src="image/learning.png"/>
+    </div>
+    <div class="head-text">
+        <h2>宁波快捷汽车储运有限公司</h2>
+    </div>
+</div>
+<form id="fo">
+    <!--填写时间区域-->
+    <div class="per-time" align="center">
+        <div>时间:</div>
+        <div>
+            <input type="text" id="time" readonly class="input"
+                   placeholder="请填写日期"/>
+        </div>
+    </div>
+    <div class="per-main">
+        <!--填写电表读数区域-->
+        <div class="per-tab pt1">
+            <div class="pre-tab-head">电表读数</div>
+            <ul>
+                <li><span>电表总表</span><input id="electric" type="text" name="electric"></li>
+                <li><span>快捷储运</span><input id="electric_yun"  type="text"></li>
+                <li><span>快捷维修</span><input id="electric_xiu" type="text"></li>
+            </ul>
+        </div>
+        <!--填写水表读数区域-->
+        <div class="per-tab pt2">
+            <div class="pre-tab-head">水表读数</div>
+            <ul>
+                <li><span>水表总表</span><input id="water" type="text" name="water"></li>
+                <li><span>快捷储运</span><input id="water-yun" type="text"></li>
+                <li><span>快捷维修</span><input id="water_xiu" type="text"></li>
+            </ul>
+        </div>
+    </div>
+    <button id="tj" type="button" class="ocr-submit per-button">提交</button>
+</form>
+</div>
+</body>
+<script type="text/javascript" src="./js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="./js/swipe.js"></script>
+<script type="text/javascript" src="./js/layui/layui.js"></script>
+<script type="text/javascript" src="./js/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="./js/jquery.md5.js"></script>
+<script type="text/javascript" src="./js/jquery-geturlcode.js"></script>
+<script type="text/javascript" src="./js/jquery.cookie.js"></script>
+<script type="text/javascript" src="./js/common/localjs.js"></script>
+<script type="text/javascript" src="./js/jquery-getFormData.js"></script>
+<script type="text/javascript" src="./js/timejs/js/mobiscroll_002.js" type="text/javascript"></script>
+<script type="text/javascript" src="./js/timejs/js/mobiscroll_004.js" type="text/javascript"></script>
+<script type="text/javascript" src="./js/timejs/js/mobiscroll.js" type="text/javascript"></script>
+<script type="text/javascript" src="./js/timejs/js/mobiscroll_003.js" type="text/javascript"></script>
+<script type="text/javascript" src="./js/timejs/js/mobiscroll_005.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+    var fd
+
+    $(function () {
+
+        fd = getFormCode();
+
+
+        /*获取当前日期*/
+        var timenow = new Date();
+        var year = timenow.getFullYear();
+        var mouth = timenow.getMonth() + 1;
+        if (mouth < 10) {
+            mouth = "0" + mouth;
+        }
+        var date = timenow.getDate();
+        if (date < 10) {
+            date = "0" + date;
+        }
+        var nowtime = year + "-" + mouth + "-" + date;
+        $("#time").val(nowtime);
+
+        var currYear = (new Date()).getFullYear();
+        var opt = {};
+        opt.date = {
+            preset: 'date'
+        };
+        opt.datetime = {
+            preset: 'datetime'
+        };
+        opt.time = {
+            preset: 'time'
+        };
+        opt.default = {
+            theme: 'android-ics light', //皮肤样式
+            display: 'modal', //显示方式
+            mode: 'scroller', //日期选择模式
+            dateFormat: 'yyyy-mm-dd',
+            lang: 'zh',
+            showNow: true,
+            nowText: "今天",
+            startYear: currYear, //开始年份
+            endYear: currYear + 10 //结束年份
+        };
+
+        $("#time").mobiscroll($.extend(opt['date'], opt['default']));
+
+        $("#tj").on("click", function () {
+            var electric = $("#electric").val();
+            var water = $("#water").val();
+            if (electric == "" || electric == null) {
+                layer.open({
+                    content: '请填写电表读数',
+                    style: 'font-size:20px;color:red;background-color:#d5dee7;width:400px;letter-spacing:4px;',
+                    time: 2
+                });
+            } else if (water == "" || water == null) {
+                layer.open({
+                    content: '请填写水表读数',
+                    style: 'font-size:20px;color:red;background-color:#d5dee7;width:400px;letter-spacing:4px;',
+                    time: 2
+                });
+            } else {
+                GiveUpPower();//向后台提交电表和水表读数
+            }
+        })
+
+
+    });
+
+
+    /*能耗数据提交接口*/
+    function GiveUpPower() {
+        // var storage_number = $.cookie("storage_number");
+
+        var electric = $("#electric").val();
+        var water = $("#water").val();
+
+
+        var timestamp = (new Date()).valueOf();// 时间戳----
+
+        var MD5String;
+        //生成sign
+        MD5String = "electric=" + electric + "&timestamp=" + timestamp + "&water=" + water + pass;
+
+        var MD5 = $.md5(MD5String);
+        MD5 = MD5.toUpperCase();//字母转为大写
+        var sign = pass + MD5;// 加密参数----
+        var token = sessionStorage.getItem('token');
+
+        console.log("拼接的加密参数----" + MD5String);
+        console.log("MD5----" + MD5);
+        console.log("需要的参数------------");
+        // console.log("接车记录码--storage_number--" + storage_number);
+        console.log("时间戳-- timestamp--" + timestamp);
+        console.log("sign----" + sign);
+
+        var formData = new FormData($("#fo")[0]);
+        formData.append("timestamp", timestamp);
+        formData.append("sign", sign);
+
+        $.ajax({
+            type: "GET",
+            url: path + "/energy/submit",
+            data: {
+                "electric": electric,
+                "water": water,
+                "timestamp": timestamp,
+                "sign": sign
+            },
+            dataType: 'json',
+            beforeSend: function (request) {
+                request.setRequestHeader("KJCY-TOKEN", token);
+                request.setRequestHeader("FORM-TOKEN", fd);
+            },
+            success: function (res) {
+                console.log("msg信息------" + res.msg);
+
+                if (res.msg == "success") {
+                    window.location.href = "index.html";
+                }
+            },
+            error: function (XMLHttpResponse, textStatus, errorThrown) {
+                console.log("1 异步调用返回失败,XMLHttpResponse.readyState:" + XMLHttpResponse.readyState);
+                console.log("2 异步调用返回失败,XMLHttpResponse.status:" + XMLHttpResponse.status);
+                console.log("3 异步调用返回失败,textStatus:" + textStatus);
+                console.log("4 异步调用返回失败,errorThrown:" + errorThrown);
+
+            }
+        })
+    }
+
+
+</script>
+</html>

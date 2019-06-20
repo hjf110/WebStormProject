@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet/less" type="text/css" href="../css/ureadeclare.less?v=0.01" />
+    <link rel="stylesheet" href="../css/steps.css">
+    <script src="../js/steps.js"></script>
+    <title>尿素申报</title>
+</head>
+<body>
+    <div class="ureadeclare">
+        <!--banner报销单状态-->
+        <div class="reimbursementBox">
+            <div class="reimbursementType">尿素费报销单</div>
+            <div id="reimState" class="reimbursementState">正在加载数据</div>
+            <div class="reimbursementTip">改报销单正在加载数据，请稍后</div>
+            <div id="steps"></div>
+        </div>
+        <div class="mainContent">
+            <!--申报信息-->
+            <div class="applyBox">
+                <!--标题栏-->
+                <div class="titleBar">
+                    <div class="title">
+                        <i class="public-icon public-iconApplyInfo"></i>
+                        <span>申报信息</span>
+                    </div>
+                    <div class="time type1 type2 type3 type4 type5">
+                        <i class="public-icon public-iconTimeBlue"></i>
+                        <span>申报时间：<span class="detailedTime"></span></span>
+                    </div>
+                </div>
+
+                <!--内容-->
+                <div class="applyContent">
+                    <!-- <div class="listBox company" style="display: none;">
+                        <span class="titleSm">申报单位：</span>
+                        <span class="companyName">A公司</span>
+                    </div> -->
+                    <div class="listBox declarer">
+                        <span class="titleSm">申报人：</span>
+                        <span id="sjName" class="companyName"></span>
+                    </div>
+                    <div class="listBox location" style="overflow: hidden">
+                        <span class="titleSm positionBtn">当前位置：<i class="public-icon position type-3"></i></span>
+                        <span id="sjLocation" class="companyName" style="display: inline-block;max-width: 50%;white-space: normal;" ></span>
+                    </div>
+                    <div class="listBox carNum">
+                        <span class="titleSm">车牌号：</span>
+                        <input id="cph" class="type1Input" type="text" name="carNum" placeholder="请输入车牌号" />
+                    </div>
+                    <div class="listBox orderNum">
+                        <span class="titleSm">公里数：</span>
+                        <input id="ddh" class="type1Input" type="text" name="orderNum" placeholder="公里数/km"  onkeyup="sixNum(this)"/>
+                    </div>
+                    <div class="listBox orderNum">
+                        <span class="titleSm">申请购买数量：</span>
+                        <input id="nssl" class="type1Input" type="num" name="orderNum" placeholder="请输入申请购买数量" onkeyup="value=value.replace(/[^\d]/g,'')"/>
+                    </div>
+                    <div class="listBox orderNum">
+                        <span class="titleSm">存货数量：</span>
+                        <input id="chsl" class="type1Input" type="num" name="orderNum" placeholder="请输入存货数量" onkeyup="value=value.replace(/[^\d\.]/g,'')" />
+                    </div>
+                    <div class="listBox orderNum type0 allow">
+                        <span class="titleSm">允许购买数量：</span>
+                        <input id="yxgm" class="type2Input yxgm" type="num" name="orderNum" placeholder="请输入存货数量" onkeyup="value=value.replace(/[^\d]/g,'')" />
+                    </div>
+                    <div class="invoice type-1 type1 type2 type3 type6 type7">
+                        <span class="titleSm">拍摄公里数和尿素照片：</span>
+                        <!--<div class="uploadInvoiceBtn type-1 type-3"><span>上传发票照片</span></div>-->
+                        <div class="photoBox nsbox">
+                            <div id="nszp" class="add type-1 type-3 type7">
+                                <img src="../img/add.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="invoice type-1 type1 type2 type3 type6 type7">
+                        <span class="titleSm">发票照片：</span>
+                        <!--<div class="uploadInvoiceBtn type-1 type-3"><span>上传发票照片</span></div>-->
+                        <div class="photoBox fpbox">
+                            <div id="fpzp" class="add type-1 type-3 type7">
+                                <img src="../img/add.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="listBox moneyNum type1 type-1 type2 type3 type6 type7">
+                        <span class="titleSm">报销金额：</span>
+                        <input id="je" class="type1Input bxinput" type="text" name="moneyNum" placeholder="请输入金额（元）" onkeyup="value=value.replace(/[^\d]/g,'')" />
+                    </div>
+
+                    <div class="listBox mode bxfs type2 type5 type6 bxbgcolor">
+                        <span style="display: block" class="titleSm colorWarning">请选择报销方式：</span>
+                        <div class="modeB">
+                            <i class="public-icon public-iconRadioSelected"></i>
+                            <span class="modeBName">快递发票报销</span>
+                        </div>
+                        <div class="modeA">
+                            <i class="public-icon public-iconRadio"></i>
+                            <span class="modeAName">现场报销</span>
+                        </div>
+                    </div>
+                    <div class="listBox bxfs uploadPhoto type2 type5 type6 bxbgcolor" >
+                        <input id="kddh" type="text" name="courierNum" placeholder="点击输入快递单号" onfocus="this.placeholder=''" onblur="this.placeholder='请填写快递单号'" />
+                        <div class="uploadPhotoBtn type2"><span>上传快递单照片</span></div>
+                        <div class="photoBox type6">
+                            <!--<div class="add type2" style="display: none">-->
+                            <!--<img src="../img/add.png">-->
+                            <!--</div>-->
+                        </div>
+                    </div>
+
+                    <div class="btnGroup type2 type-3 type-2 type-1 type7">
+                        <div class="submitBtn">提交</div>
+                    </div>
+                </div>
+            </div>
+
+            <!--审批信息-->
+            <div class="spBox type-2 type-1 type0 type1 type2 type3 type6 type7" >
+                <!--标题栏-->
+                <div class="titleBar">
+                    <div class="title">
+                        <i class="public-icon public-iconExamine"></i>
+                        <span>审批信息</span>
+                    </div>
+                    <div class="time" style="display: none">
+                        <i class="public-icon public-iconTimeBlue"></i>
+                        <span>审批时间：<span class="detailedTime"></span></span>
+                    </div>
+                </div>
+
+                <!--内容-->
+                <div class="examineContent">
+                    <!--<textarea class="type0" id="noReasonSP" name="reason" placeholder="请填写不通过原因" onfocus="this.placeholder=''" onblur="this.placeholder='请填写不通过原因'"></textarea>-->
+                    <div class="btnGroup type0">
+                        <div class="passBtnSP">审批通过</div>
+                        <div class="noPassBtnSP">不通过</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--审核信息-->
+            <!--<div class="examineBox type-1 type1 type2 type3 type5 type6">-->
+
+                <!--&lt;!&ndash;标题栏&ndash;&gt;-->
+                <!--<div class="titleBar">-->
+                    <!--<div class="title">-->
+                        <!--<i class="public-icon public-iconExamine"></i>-->
+                        <!--<span>审核信息</span>-->
+                    <!--</div>-->
+                    <!--<div class="time" style="display: none">-->
+                        <!--<i class="public-icon public-iconTimeBlue"></i>-->
+                        <!--<span>审核时间：<span class="detailedTime">2018/10/16 13：20</span></span>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--&lt;!&ndash;内容&ndash;&gt;-->
+                <!--<div class="examineContent">-->
+                    <!--<div class="btnGroup type1">-->
+                        <!--<div class="passBtn">审核通过</div>-->
+                        <!--<div class="noPassBtn">不通过</div>-->
+                    <!--</div>-->
+                    <!--<textarea class="type1" id="noReason" name="reason" placeholder="请填写不通过原因" onfocus="this.placeholder=''" onblur="this.placeholder='请填写不通过原因'"></textarea>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--打款信息-->
+            <div class="payBox type3 type6">
+
+                <!--标题栏-->
+                <div class="titleBar">
+                    <div class="title">
+                        <i class="public-icon public-iconPay"></i>
+                        <span>打款信息</span>
+                    </div>
+                    <div class="time " style="display: none;">
+                        <i class="public-icon public-iconTimeBlue"></i>
+                        <span>确认时间：<span class="detailedTime"></span></span>
+                    </div>
+                </div>
+
+                <!--内容-->
+                <div class="payContent">
+                    <div class="listBox company" style="display: none">
+                        <span class="titleSm">财务单位：</span>
+                        <span class="companyName">A公司</span>
+                    </div>
+                    <div class="listBox declarer">
+                        <span class="titleSm">打款确认人：</span>
+                        <span id="dkqrr" class="companyName"></span>
+                    </div>
+                    <!--<div class="listBox orderNum">-->
+                    <!--<span class="titleSm">收款人：</span>-->
+                    <!--<input id="skr" type="text" name="orderNum" placeholder="请填写收款人" onfocus="this.placeholder=''" onblur="this.placeholder='XX司机'" />-->
+                    <!--</div>-->
+                    <div class="listBox orderNum">
+                        <span class="titleSm">支付方式：</span>
+                        <!--<input id="skfs" type="text" name="orderNum" placeholder="请填写收款方式" onfocus="this.placeholder=''" onblur="this.placeholder='银行卡'" />-->
+                        <select id="payType">
+                            <option value="钉钉">钉钉</option>
+                            <option value="微信">微信</option>
+                            <option value="支付宝" >支付宝</option>
+                            <option value="银行卡" selected="selected">银行卡</option>
+                        </select>
+                    </div>
+                    <div class="listBox orderNum">
+                        <span class="titleSm">支付账号：</span>
+                        <input id="skzh" type="text" style="background-color: white;width: 50%" name="orderNum" placeholder="请填写收款账户" />
+                    </div>
+                    <div class="listBox orderNum">
+                        <span class="titleSm">支付时间：</span>
+                        <input id="dksj" type="text" style="background-color: white;width: 50%" name="orderNum" placeholder="请填写打款日期" readonly />
+                    </div>
+                    <div class="btnGroup caiwu type3">
+                        <div class="confirm">确认支付</div>
+                    </div>
+
+                    <!--寄送发票-->
+                    <div class="cwPic uploadPhoto" style="display: none;margin-top: 10px">
+                        <span class="titleSm">已收发票照片：</span>
+                        <div class="photoBox">
+                            <div class="add" style="display: none">
+                                <img src="../img/add.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btnGroup caiwu2 type3">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../lc_js/less.min.js"></script>
+    <script type="text/javascript" src="../lc_js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../js/dingtalk.open.js"></script>
+    <script type="text/javascript" src="../js/public.js"></script>
+    <script type="text/javascript" src="../js/ureadeclare.js"></script>
+    <script>
+        //判断是否为6位，6位以上不能打字
+        function sixNum(_dom){
+            // var thisDom = _event.target;
+            var thisDom = _dom;
+            thisDom.value = thisDom.value.replace(/[^\d]/g,'');
+            if(thisDom.value.length>=6){
+                thisDom.value = thisDom.value.substring(0,6);
+            }
+        }
+    </script>
+</body>
+</html>

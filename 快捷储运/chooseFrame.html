@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>接车成功</title>
+
+
+</head>
+<link rel="stylesheet" href="css/css.css">
+<link rel="stylesheet" href="../js/layuiadmin/style/login.css" media="all">
+<body>
+<a href="checkCar.html">
+    <div class="back">
+        <img class="back-img" src="image/back.png"><span class="back-text">返回</span>
+    </div>
+</a>
+<button class="quit">放弃</button>
+<div class="head">
+    <div class="head-img">
+        <img class="head-img-1" src="image/learning.png"/>
+    </div>
+    <div class="head-text">
+        <h2>宁波快捷汽车储运有限公司</h2>
+    </div>
+    <div align="center" class="head-message">
+        请选择车架号
+    </div>
+</div>
+<form action="chooseProject.html">
+    <div class="cf-box">
+        <div class="cf-head">车架号</div>
+        <div class="cf-body">
+            <ul id="boxs">
+                <!--                <li>-->
+                <!--                    <span class="cf-li">12373764HCH37381</span>-->
+                <!--                    <input type="hidden" value="F0EB6530BAB6AC0A2A3D08A1E272449E">-->
+                <!--                    <input id="adviceRadio1" type="radio" name="frame" value="12373764HCH37383" hidden/>-->
+                <!--                    <label for="adviceRadio1" class="cf-radio"></label>-->
+                <!--                </li>-->
+                <!--                <li>-->
+                <!--                    <span class="cf-li">12373764HCH37382</span>-->
+                <!--                    <input type="hidden" value="F0EB6530BAB6AC0A2A3D08A1E272449E">-->
+                <!--                    <input id="adviceRadio2" type="radio" name="frame" value="12373764HCH37383" checked hidden/>-->
+                <!--                    <label for="adviceRadio2" class="cf-radio"></label>-->
+                <!--                </li>-->
+                <!--                <li>-->
+                <!--                    <span class="cf-li">12373764HCH37383</span>-->
+                <!--                    <input type="hidden" value="F0EB6530BAB6AC0A2A3D08A1E272449E">-->
+                <!--                    <input id="adviceRadio3" type="radio" name="frame" value="12373764HCH37383" hidden/>-->
+                <!--                    <label for="adviceRadio3" class="cf-radio"></label>-->
+                <!--                </li>-->
+                <!--                <li>-->
+                <!--                    <span class="cf-li">12373764HCH37383</span>-->
+                <!--                    <input type="hidden" value="F0EB6530BAB6AC0A2A3D08A1E272449E">-->
+                <!--                    <input id="adviceRadio4" type="radio" name="frame" value="12373764HCH37383" hidden/>-->
+                <!--                    <label for="adviceRadio4" class="cf-radio"></label>-->
+                <!--                </li>-->
+                <!--                <li>-->
+                <!--                    <span class="cf-li">12373764HCH37383</span>-->
+                <!--                    <input type="hidden" value="F0EB6530BAB6AC0A2A3D08A1E272449E">-->
+                <!--                    <input id="adviceRadio5" type="radio" name="frame" value="12373764HCH37383" hidden/>-->
+                <!--                    <label for="adviceRadio5" class="cf-radio"></label>-->
+                <!--                </li>-->
+                <!--                <li>-->
+                <!--                    <span class="cf-li">12373764HCH37383</span>-->
+                <!--                    <input type="hidden" value="F0EB6530BAB6AC0A2A3D08A1E272449E">-->
+                <!--                    <input id="adviceRadio6" type="radio" name="frame" value="12373764HCH37383" hidden/>-->
+                <!--                    <label for="adviceRadio6" class="cf-radio"></label>-->
+                <!--                </li>-->
+                <!--                <li>-->
+                <!--                    <span class="cf-li">12373764HCH37383</span>-->
+                <!--                    <input type="hidden" value="F0EB6530BAB6AC0A2A3D08A1E272449E">-->
+                <!--                    <input id="adviceRadio7" type="radio" name="frame" value="12373764HCH37383" hidden/>-->
+                <!--                    <label for="adviceRadio7" class="cf-radio"></label>-->
+                <!--                </li>-->
+            </ul>
+        </div>
+    </div>
+
+
+    <input class="ocr-submit-2" type="button" value="确定">
+</form>
+<div class="choose_state_min">
+    <div class="left_lan">
+        <img class="right_lan_image" src="./image/bb.png">
+    </div>
+    <div class="choose_state">
+        <!--    <div class="choose_state_title">接车状态选择</div>-->
+        <input class="button-choose" id="beg" type="button" value="待检测">
+        <input class="button-choose" id="ing" type="button" value="检测中">
+        <input class="button-choose" id="all" type="button" value="所有的">
+    </div>
+</div>
+<div class="right_lan">
+    <img class="right_lan_image" src="./image/a.png">
+</div>
+
+
+</body>
+<script type="text/javascript" src="./js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="./js/common/api.js"></script>
+<script type="text/javascript" src="./js/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="./js/jquery.md5.js"></script>
+<script type="text/javascript" src="./js/jquery-geturlcode.js"></script>
+<script type="text/javascript" src="./js/jquery.cookie.js"></script>
+<script type="text/javascript" src="./js/common/localjs.js"></script>
+<script type="text/javascript" src="./js/jquery-getFormData.js"></script>
+<script type="text/javascript">
+    var vinno = "";
+    var record_number = "";
+
+
+    function getnum(res) {
+        var that = $(res);
+        vinno = that.find(".cf-li").html();
+        record_number = that.find(".record_number").val();
+
+        $("li").each(function () {
+            $(this).css({"background": "#EEF5FB", "color": "#A4ABB4"});
+            $(this).find("img").attr("src", "");
+        });
+
+        that.css({"background": "#4876FF", "color": "#FBFBFB"});
+        that.find("img").attr("src", "./image/yes0.png");
+
+        console.log("车架号-----" + vinno);
+        console.log("接车记录码-----" + record_number);
+    }
+
+
+    $(function () {
+
+
+
+        $(".right_lan").on("click", function () {
+            $(".choose_state_min").animate({right: '0%'});
+            $(this).hide();
+        });
+        $(".left_lan").on("click", function () {
+            $(".choose_state_min").animate({right: '-17%'});
+            $(".right_lan").show();
+        });
+
+
+
+
+        $("#beg").on("click", function (res) {
+            getCarInfo(1);
+            $(".button-choose").each(function () {
+                $(this).css({"background": "linear-gradient(to bottom, #4eb5e5 0%,#389ed5 100%)","border-bottom":"5px solid #2b8bc6"});
+            });
+            $(this).css({"background": "lightpink","border-bottom":"5px solid lightcoral"});
+        });
+
+
+        $("#ing").on("click", function (res) {
+            getCarInfo(2);
+            $(".button-choose").each(function () {
+                $(this).css({"background": "linear-gradient(to bottom, #4eb5e5 0%,#389ed5 100%)","border-bottom":"5px solid #2b8bc6"});
+            });
+            $(this).css({"background": "lightpink","border-bottom":"5px solid lightcoral"});
+        });
+
+
+        $("#all").on("click", function (res) {
+            getCarInfo(3);
+            $(".button-choose").each(function () {
+                $(this).css({"background": "linear-gradient(to bottom, #4eb5e5 0%,#389ed5 100%)","border-bottom":"5px solid #2b8bc6"});
+            });
+            $(this).css({"background": "lightpink","border-bottom":"5px solid lightcoral"});
+        });
+
+        getCarFrame();//获取待检测的车辆的车架号
+
+
+        // $("#boxs").on("click", ".cf-li", function () {
+        //     //  alert(111);
+        //     $("label").each(function () {
+        //         $(this).removeClass("cf-back");
+        //     })
+        //     $(this).next().next().next().click();
+        //     $(this).next().next().next().addClass("cf-back");
+        //
+        //     vinno = $(this).html();
+        //     record_number = $(this).next().val();
+        //     console.log("车架号-----" + vinno);
+        //     console.log("接车记录码-----" + record_number);
+        // });
+
+
+        $(".quit").on("click", function () {
+            //alert(111);
+            location.href = "checkCar.html";
+        })
+
+        $(".ocr-submit-2").on("click", function () {
+
+
+            if (vinno == "" || vinno == null) {
+                layer.open({
+                    content: '请选择车架号',
+                    style: 'font-size:20px;color:red;background-color:#d5dee7;width:400px;letter-spacing:4px;',
+                    time: 2
+                });
+            } else {
+                $.cookie("vinno", vinno, {path: '/'});//在cookie中存入vinno    操作完成后需要删除释放缓存
+                $.cookie("record_number", record_number, {path: '/'});//在cookie中存入record_number  操作完成后需要删除释放缓存
+                window.location.href = "chooseProject.html";
+            }
+        })
+
+
+    });
+
+
+    /*获取待检车辆的车架号列表*/
+    function getCarFrame() {
+        // var storage_number = $.cookie("storage_number");
+        var timestamp = (new Date()).valueOf();// 时间戳----
+
+        var MD5String;
+        //生成sign
+        MD5String = "timestamp=" + timestamp + pass;
+
+        var MD5 = $.md5(MD5String);
+        MD5 = MD5.toUpperCase();//字母转为大写
+        var sign = pass + MD5;// 加密参数----
+        var token = sessionStorage.getItem('token');
+
+        console.log("拼接的加密参数----" + MD5String);
+        console.log("MD5----" + MD5);
+        console.log("需要的参数------------");
+        // console.log("接车记录码--storage_number--" + storage_number);
+        console.log("时间戳-- timestamp--" + timestamp);
+        console.log("sign----" + sign);
+
+        $.ajax({
+            type: "GET",
+            url: path + "/checkcar/getcarlist",
+            data: {
+                "timestamp": timestamp,
+                "sign": sign
+            },
+            dataType: 'json',
+            beforeSend: function (request) {
+                request.setRequestHeader("KJCY-TOKEN", token);
+                //request.setRequestHeader("FORM-TOKEN", fd);
+            },
+            success: function (res) {
+                console.log("msg信息------" + res.msg);
+
+                if (res.msg == "success") {
+                    $.each(res.data, function (idx, obj) {
+                        var cc = "";
+                        if (obj.step == 1) {
+                            cc = "cf-state-ing";
+                        } else {
+                            cc = "cf-state";
+                        }
+                        $("#boxs").append(
+                            '<li onclick="getnum(this)">' +
+                            '<span class="cf-li">' + obj.vinno + '</span>' +
+                            '<input class="record_number" type="hidden" value="' + obj.record_number + '">' +
+                            '<div class="' + cc + '"><span class="cf-state-text">' + obj.step_str + '</span></div>' +
+                            '<span class="cf-img"><img style="width: 20px;" src="" ></span>' +
+                            '</li>');
+                    });
+
+                }
+            },
+            error: function (XMLHttpResponse, textStatus, errorThrown) {
+                console.log("1 异步调用返回失败,XMLHttpResponse.readyState:" + XMLHttpResponse.readyState);
+                console.log("2 异步调用返回失败,XMLHttpResponse.status:" + XMLHttpResponse.status);
+                console.log("3 异步调用返回失败,textStatus:" + textStatus);
+                console.log("4 异步调用返回失败,errorThrown:" + errorThrown);
+
+            }
+        })
+    }
+
+    function getCarInfo(checkstate) {
+        ajaxSubmit({checkstate: checkstate}, Api.PAD_jianche.FindCar, "GET", function (res) {
+            if (res.msg == "success") {
+                $("#boxs").html("");
+                $.each(res.data, function (idx, obj) {
+                    var cc = "";
+                    if (obj.step == 1) {
+                        cc = "cf-state-ing";
+                    } else {
+                        cc = "cf-state";
+                    }
+                    $("#boxs").append(
+                        '<li onclick="getnum(this)">' +
+                        '<span class="cf-li">' + obj.vinno + '</span>' +
+                        '<input class="record_number" type="hidden" value="' + obj.record_number + '">' +
+                        '<div class="' + cc + '"><span class="cf-state-text">' + obj.step_str + '</span></div>' +
+                        '<span class="cf-img"><img style="width: 20px;" src="" ></span>' +
+                        '</li>');
+                })
+            }
+        })
+    }
+
+</script>
+</html>

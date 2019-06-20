@@ -1,0 +1,132 @@
+@import "public";
+
+.vipCenter {
+  background-color: #F4F4F4;
+  padding: 10px;
+  font-size: @fontSize-normal;
+  .topTabBar {
+    width: 100%;
+    background-color: @white;
+    margin: 0 auto;
+    .tab1,
+    .tab2 {
+      cursor: pointer;
+      display: inline-block;
+      width: 49%;
+      text-align: center;
+      height: 60px;
+      line-height: 60px;
+      span {
+        font-size: @fontSize-bigger;
+        vertical-align: middle;
+      }
+    }
+  }
+  .apply {
+    .bannerBox {
+      margin: 10px 0;
+      img {
+        width: 100%;
+      }
+    }
+    .applyContent {
+      .listItem {
+        background-color: @white;
+        padding: 20px;
+        margin-bottom: 10px;
+        .iconBox {
+          background-color: @mainBlue;
+          display: inline-block;
+          border-radius: 5px;
+          padding: 5px 15px;
+        }
+        span {
+          font-size: @fontSize-big;
+          margin-left: 10px;
+        }
+        *{
+          vertical-align: middle;
+        }
+      }
+
+      .listItem:active{
+        background-color: #F6F6F6;
+      }
+    }
+  }
+  .list {
+    .topChoiceBar {
+      width: 100%;
+      margin: 0 auto;
+      .choice2 {
+        display: inline-block;
+        width: 48%;
+        padding: 10px 0 15px;
+        span {
+          margin-left: 10px;
+        }
+        select {
+          color: #8E8E8E;
+          border: 0px #FFFFFF solid;
+          padding-bottom: 5px;
+          border-bottom: 1px #8E8E8E solid;
+          background-color: #F4F4F4;
+        }
+        option {
+          color: #8E8E8E;
+          border: 0px #FFFFFF solid;
+        }
+      }
+      .choice1 {
+        .choice2;
+      }
+    }
+    .listContent {
+      .listItem {
+        background-color: @white;
+        padding: 10px;
+        margin-bottom: 10px;
+        .partLeft {
+          margin-right: 60px;
+          .mainTitle {
+            .listType {
+              border-radius: 5px;
+              background-color: @mainBlue;
+              color: @white;
+              padding: 2px 5px;
+            }
+            .listName {
+
+            }
+          }
+          .subTitle {
+            margin: 10px 0;
+          }
+          .timeBox {
+
+          }
+        }
+        .partRight {
+          float: right;
+          width: 60px;
+        }
+      }
+    }
+  }
+
+}
+
+//选项卡选中样式
+.topTabBar_select {
+  color: @white;
+  background-color: @mainBlue;
+}
+
+.line {
+  width: 1px;
+  height: 30px;
+  position: relative;
+  top: 10px;
+  background-color: #E6E6E6;
+  display: inline-block;
+}

@@ -1,0 +1,118 @@
+
+.buttonBox{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.button1{
+    margin: 0 10px;
+    padding: 10px 40px;
+    background-color: #5eb95e;
+    color: #fff;
+    background-color: #5eb95e;
+    border: 0;
+    font-size: 14px;
+}
+
+.button1.submit{
+    background-color: #0e90d2;
+}
+.button1.btnBlue{
+    background-color: #0e90d2;
+}
+.button1:active{
+    opacity: 0.8;
+}
+
+.form textarea{
+    resize: vertical;
+}
+
+.layer-box{
+    width: 100%!important;
+}
+
+.layer-box2{
+    width: 100%!important;
+    height: 100%!important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: auto;
+}
+
+.ver-top {
+    vertical-align: top;
+}
+.form {
+    width: 100%;
+    min-width: 1200px;
+    padding: 0 10px;
+}
+.title-lg {
+    font-size: 22px;
+    text-align: center;
+    padding: 10px 0;
+}
+.title-md {
+    font-size: 18px;
+    border-left: 4px #337AB7 solid;
+    margin: 20px 0;
+    padding-left: 10px;
+}
+.title-sm {
+    font-size: 16px;
+    padding: 10px;
+}
+.title-left {
+    width: 200px;
+}
+.title-right {
+    width: 135px;
+}
+.contentBox {
+    padding: 20px 10px;
+}
+.form-control,
+.tdBox-1,
+.tdBox-2,
+.tdBox-3,
+.title-sm{
+    display: inline-block;
+}
+.trBox {
+    margin-bottom: 20px;
+}
+.width-3 {
+    width: 65%;
+}
+.width-2 {
+    width: 80%;
+}
+.width-1 {
+    width: 60%;
+}
+.tdBox-3 {
+    width: 30%;
+}
+.tdBox-2 {
+    width: 50%;
+}
+.tdBox-1 {
+    width: 100%;
+}
+.line {
+    height: 1px;
+    background-color: #eee;
+}
+
+.thisImgBox{
+    width: 150px;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.thisImgBox>img{
+    width: 100%;
+    height: auto;
+}

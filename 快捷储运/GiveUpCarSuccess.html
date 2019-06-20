@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>交车成功</title>
+</head>
+<link rel="stylesheet" href="css/css.css">
+<link rel="stylesheet" href="././js/layer_mobile/need/layer.css">
+<link rel="stylesheet" href="../js/layuiadmin/style/login.css" media="all">
+<body>
+<a href="GiveUpCarCamera.html">
+    <div class="back">
+        <img class="back-img" src="image/back.png"><span class="back-text">返回</span>
+    </div>
+</a>
+<div class="head">
+    <div class="head-img">
+        <img class="head-img-1" src="image/learning.png"/>
+    </div>
+    <div class="head-text">
+        <h2>宁波快捷汽车储运有限公司</h2>
+    </div>
+</div>
+<div class="s-message gcs-text" align="center">
+    请取回卡片
+</div>
+<input class="ocr-submit-1" type="button" value="确认">
+</body>
+<script type="text/javascript" src="./js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="./js/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="./js/jquery.md5.js"></script>
+<script type="text/javascript" src="./js/jquery-geturlcode.js"></script>
+<script type="text/javascript" src="./js/jquery.cookie.js"></script>
+<script type="text/javascript" src="./js/common/localjs.js"></script>
+<script type="text/javascript" src="./js/jquery-getFormData.js"></script>
+<script type="text/javascript">
+    $(function () {
+       $(".ocr-submit-1").on("click",function () {
+           WanCheng();
+       })
+    })
+
+
+    /*完成交车接口*/
+    function WanCheng() {
+        var storage_number = $.cookie("storage_number");
+        var timestamp = (new Date()).valueOf();// 时间戳----
+        //生成sign
+        var MD5String = "storage_number=" + storage_number + "&timestamp=" + timestamp + pass;
+        var MD5 = $.md5(MD5String);
+        MD5 = MD5.toUpperCase();//字母转为大写
+        var sign = pass + MD5;// 加密参数----
+        var token = $.cookie("token");
+        console.log("token-----" + token);
+
+        $.ajax({
+            type: "GET",
+            url: path + "/deliverycar/complete",
+            data: {
+                "storage_number":storage_number,
+                "timestamp":timestamp,
+                "sign":sign
+            },
+            dataType: 'json',
+            beforeSend: function (request) {
+                request.setRequestHeader("KJCY-TOKEN", token);
+            },
+            success: function (res) {
+                // alert(1);
+                // alert(data.msg);
+                if (res.msg == "success") {
+                     window.location.href="index.html";
+                }
+            },
+            error: function (XMLHttpResponse, textStatus, errorThrown) {
+                console.log("1 异步调用返回失败,XMLHttpResponse.readyState:" + XMLHttpResponse.readyState);
+                console.log("2 异步调用返回失败,XMLHttpResponse.status:" + XMLHttpResponse.status);
+                console.log("3 异步调用返回失败,textStatus:" + textStatus);
+                console.log("4 异步调用返回失败,errorThrown:" + errorThrown);
+
+            }
+        })
+
+
+    }
+
+
+</script>
+</html>

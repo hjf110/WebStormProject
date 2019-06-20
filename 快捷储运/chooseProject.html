@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>选择检测项目</title>
+
+
+</head>
+<link rel="stylesheet" href="../js/layuiadmin/style/login.css" media="all">
+<link rel="stylesheet" href="./layui/css/layui.css">
+<link rel="stylesheet" href="css/css.css">
+<link rel='stylesheet prefetch' href='css/photoswipe.min.css'>
+<link rel='stylesheet prefetch' href='css/default-skin.min.css'>
+<style>
+
+</style>
+
+<!--头部区域-->
+<div class="cp-head">
+    <button class="quit cp-quit">放弃</button>
+    <div class="cp-text">
+        <div class="cp-text-1"><span>检测区域</span>:<span id="qy"></span></div>
+        <div class="cp-text-2"><span class="cp-text-2-s1">车架号</span><span class="cp-text-2-s2"></span>
+        </div>
+    </div>
+</div>
+<!--左边tab栏-->
+<div class="cp-left">
+    <ul>
+        <li class="in active in1" align="center">
+            <div class="pm-navigation pm-navigation-1">
+                <div class="pm-y pm-sj-1 pm-button cp-in">
+                    <img class="pm-img cp-img" src="image/car.png">
+                </div>
+                <p id="p1" class="pm-text">新车外观检查</p>
+            </div>
+        </li>
+        <li class="in in2" align="center">
+            <div class="pm-navigation pm-navigation-1">
+                <div class="pm-y pm-sj-2 pm-button cp-in">
+                    <img class="pm-img cp-img" src="image/p2.png">
+                </div>
+                <p id="p2" class="pm-text">新车室内检查</p>
+            </div>
+        </li>
+        <li class="in in3" align="center">
+            <div class="pm-navigation pm-navigation-1">
+                <div class="pm-y pm-sj-3 pm-button cp-in">
+                    <img class="pm-img cp-img" src="image/p3.png">
+                </div>
+                <p id="p3" class="pm-text">随车工具检查</p>
+            </div>
+        </li>
+        <!--        <li class="in in4" align="center">-->
+        <!--            <div class="pm-navigation pm-navigation-1">-->
+        <!--                <div class="pm-y pm-sj-nopd pm-button cp-in">-->
+        <!--                    <img class="pm-img cp-img" src="image/p4.png">-->
+        <!--                </div>-->
+        <!--                <p id="p4" class="pm-text">随车资料</p>-->
+        <!--            </div>-->
+        <!--        </li>-->
+    </ul>
+</div>
+<div class="content">
+    <form class="layui-form">
+        <div class="tab selected">
+            <!--第一部分需要使用轮播图的一部分特效-->
+            <div id="pic">
+                <div id="img">
+                    <div class="pic-div">
+                        <ul id="u1-1">
+
+                            <!--                                                        <li class=" pm-cp-back pm-button tab-li">-->
+                            <!--                                                        <div class="tab-li-text">引擎盖</div>-->
+                            <!--                                                        <input type="checkbox" name="switch" lay-skin="switch">-->
+                            <!--                                                        </li>-->
+                            <!--                                                        <li class=" pm-cp-back pm-button tab-li">-->
+                            <!--                                                        <div class="tab-li-text">左右叶子板</div>-->
+                            <!--                                                        <input type="checkbox" name="switch" lay-skin="switch">-->
+                            <!--                                                        </li>-->
+                            <!--                                                        <li class=" pm-cp-back pm-button tab-li">-->
+                            <!--                                                        <div class="tab-li-text">车顶</div>-->
+                            <!--                                                        <input type="checkbox" name="switch" lay-skin="switch">-->
+                            <!--                                                        </li>-->
+                            <!--                                                        <li class=" pm-cp-back pm-button tab-li">-->
+                            <!--                                                        <div class="tab-li-text">车门</div>-->
+                            <!--                                                        <input type="checkbox" name="switch" lay-skin="switch">-->
+                            <!--                                                        </li>-->
+                            <!--                                                        <li class=" pm-cp-back pm-button tab-li">-->
+                            <!--                                                        <div class="tab-li-text">左右后轮版</div>-->
+                            <!--                                                        <input type="checkbox" name="switch" lay-skin="switch">-->
+                            <!--                                                        </li>-->
+                            <!--                                                        <li class=" pm-cp-back pm-button tab-li">-->
+                            <!--                                                        <div class="tab-li-text">后箱盖</div>-->
+                            <!--                                                        <input type="checkbox" name="switch" lay-skin="switch">-->
+                            <!--                                                        </li>-->
+                            <!--                                                        <li class=" pm-cp-back pm-button tab-li">-->
+                            <!--                                                        <div class="tab-li-text">后保险盖</div>-->
+                            <!--                                                        <input type="checkbox" name="switch" lay-skin="switch">-->
+                            <!--                                                        </li>-->
+                            <!--                                                        <li class=" pm-cp-back pm-button tab-li">-->
+                            <!--                                                        <div class="tab-li-text">前后挡风玻璃</div>-->
+                            <!--                                                        <input type="checkbox" name="switch" lay-skin="switch">-->
+                            <!--                                                        </li>-->
+                            <!--                                                        <li class=" pm-cp-back pm-button tab-li">-->
+                            <!--                                                        <div class="tab-li-text">车门玻璃</div>-->
+                            <!--                                                        <input type="checkbox" name="switch" lay-skin="switch">-->
+                            <!--                                                        </li>-->
+                            <!--                                                        <li class=" pm-cp-back pm-button tab-li">-->
+                            <!--                                                        <div class="tab-li-text">其他玻璃</div>-->
+                            <!--                                                        <input type="checkbox" name="switch" lay-skin="switch">-->
+                            <!--                                                        </li>-->
+                            <!--                                                        <li class=" pm-cp-back pm-button tab-li">-->
+                            <!--                                                        <div class="tab-li-text">车辆标志</div>-->
+                            <!--                                                        <input type="checkbox" name="switch" lay-skin="switch">-->
+                            <!--                                                        </li>-->
+                        </ul>
+                    </div>
+                    <div class="pic-div pic-div-2">
+                        <ul id="u1-2">
+                            <!--                            <li class=" pm-cp-back pm-button tab-li">-->
+                            <!--                                <div class="tab-li-text">电镀饰条</div>-->
+                            <!--                                <input type="checkbox" name="switch" lay-skin="switch">-->
+                            <!--                            </li>-->
+                            <!--                            <li class=" pm-cp-back pm-button tab-li">-->
+                            <!--                                <div class="tab-li-text">车门把手</div>-->
+                            <!--                                <input type="checkbox" name="switch" lay-skin="switch">-->
+                            <!--                            </li>-->
+                            <!--                            <li class=" pm-cp-back pm-button tab-li">-->
+                            <!--                                <div class="tab-li-text">外照后视镜</div>-->
+                            <!--                                <input type="checkbox" name="switch" lay-skin="switch">-->
+                            <!--                            </li>-->
+                            <!--                            <li class=" pm-cp-back pm-button tab-li">-->
+                            <!--                                <div class="tab-li-text">车辆雨刮器</div>-->
+                            <!--                                <input type="checkbox" name="switch" lay-skin="switch">-->
+                            <!--                            </li>-->
+                            <!--                            <li class=" pm-cp-back pm-button tab-li">-->
+                            <!--                                <div class="tab-li-text">轮胎、轮毂</div>-->
+                            <!--                                <input type="checkbox" name="switch" lay-skin="switch">-->
+                            <!--                            </li>-->
+                            <!--                            <li class=" pm-cp-back pm-button tab-li">-->
+                            <!--                                <div class="tab-li-text">车辆前后灯具</div>-->
+                            <!--                                <input type="checkbox" name="switch" lay-skin="switch">-->
+                            <!--                            </li>-->
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div>
+            <div id="circle">
+                <ul>
+                    <li class="active"></li>
+                    <li></li>
+
+
+                </ul>
+            </div>
+
+
+            <!--暂时放弃-->
+            <div class="bt-box">
+                <button type="button" class="b1-x">下一步</button>
+            </div>
+        </div>
+        <!--   新车室内检查--------------------------------------------------------------------------    -->
+        <div class="tab">
+            <ul id="u2">
+                <!--<li class=" pm-cp-back pm-button tab-li">-->
+                <!--<div class="tab-li-text">中控台</div>-->
+                <!--<input type="checkbox" name="switch" lay-skin="switch">-->
+                <!--</li>-->
+                <!--<li class=" pm-cp-back pm-button tab-li">-->
+                <!--<div class="tab-li-text">车门内饰和侧板</div>-->
+                <!--<input type="checkbox" name="switch" lay-skin="switch">-->
+                <!--</li>-->
+                <!--<li class=" pm-cp-back pm-button tab-li">-->
+                <!--<div class="tab-li-text" style="text-align: left">A/B柱上是否有明显的划痕</div>-->
+                <!--<input type="checkbox" name="switch" lay-skin="switch">-->
+                <!--</li>-->
+                <!--<li class=" pm-cp-back pm-button tab-li">-->
+                <!--<div class="tab-li-text" style="text-align: left">座椅是否完整无破损</div>-->
+                <!--<input type="checkbox" name="switch" lay-skin="switch">-->
+                <!--</li>-->
+            </ul>
+            <div class="bt-box">
+                <button type="button" class="b2-s">上一步</button>
+                <button type="button" class="b2-x">下一步</button>
+            </div>
+        </div>
+        <!--   随车工具检查--------------------------------------------------------------------------    -->
+        <div class="tab">
+            <ul id="u3">
+                <!--<li class=" pm-cp-back pm-button tab-li">-->
+                <!--<div class="tab-li-text">轮胎扳手</div>-->
+                <!--<input type="checkbox" name="switch" lay-skin="switch">-->
+                <!--</li>-->
+                <!--<li class=" pm-cp-back pm-button tab-li">-->
+                <!--<div class="tab-li-text">千斤顶</div>-->
+                <!--<input type="checkbox" name="switch" lay-skin="switch">-->
+                <!--</li>-->
+                <!--<li class=" pm-cp-back pm-button tab-li">-->
+                <!--<div class="tab-li-text">备胎</div>-->
+                <!--<input type="checkbox" name="switch" lay-skin="switch">-->
+                <!--</li>-->
+                <!--<li class=" pm-cp-back pm-button tab-li">-->
+                <!--<div class="tab-li-text">钢丝钩</div>-->
+                <!--<input type="checkbox" name="switch" lay-skin="switch">-->
+                <!--</li>-->
+                <!--<li class=" pm-cp-back pm-button tab-li">-->
+                <!--<div class="tab-li-text">防盗螺丝</div>-->
+                <!--<input type="checkbox" name="switch" lay-skin="switch">-->
+                <!--</li>-->
+                <!--<li class=" pm-cp-back pm-button tab-li">-->
+                <!--<div class="tab-li-text">拖车钩</div>-->
+                <!--<input type="checkbox" name="switch" lay-skin="switch">-->
+                <!--</li>-->
+                <!--<li class=" pm-cp-back pm-button tab-li">-->
+                <!--<div class="tab-li-text">三角警示牌</div>-->
+                <!--<input type="checkbox" name="switch" lay-skin="switch">-->
+                <!--</li>-->
+                <!--<li class=" pm-cp-back pm-button tab-li">-->
+                <!--<div class="tab-li-text">工具包</div>-->
+                <!--<input type="checkbox" name="switch" lay-skin="switch">-->
+                <!--</li>-->
+                <!--<li class=" pm-cp-back pm-button tab-li">-->
+                <!--<div class="tab-li-text">医疗工具包</div>-->
+                <!--<input type="checkbox" name="switch" lay-skin="switch">-->
+                <!--</li>-->
+                <!--<li class=" pm-cp-back pm-button tab-li">-->
+                <!--<div class="tab-li-text">反光背心</div>-->
+                <!--<input type="checkbox" name="switch" lay-skin="switch">-->
+                <!--</li>-->
+            </ul>
+            <!--            <div class="bt-box">-->
+            <!--                <button type="button" class="b3-s">上一步</button>-->
+            <!--                <button type="button" class="b3-x">下一步</button>-->
+            <!--            </div>-->
+            <div class="bt-box">
+                <button type="button" class="b4-s">上一步</button>
+                <button id="wc" type="button">合格</button>
+                <button id="no_wc" type="button">不合格</button>
+            </div>
+        </div>
+        <!--   随车资料检查-------------------------------------------------------------------------    -->
+        <div class="tab">
+            <ul id="u4">
+                <!--                <li class=" pm-cp-back pm-button tab-li">-->
+                <!--                <div class="tab-li-text">三包服务卡</div>-->
+                <!--                <input type="checkbox" name="switch" lay-skin="switch">-->
+                <!--                </li>-->
+                <!--                <li class=" pm-cp-back pm-button tab-li">-->
+                <!--                <div class="tab-li-text">车辆使用说明书</div>-->
+                <!--                <input type="checkbox" name="switch" lay-skin="switch">-->
+                <!--                </li>-->
+                <!--                <li class=" pm-cp-back pm-button tab-li">-->
+                <!--                <div class="tab-li-text">车辆合格证</div>-->
+                <!--                <input type="checkbox" name="switch" lay-skin="switch">-->
+                <!--                </li>-->
+                <!--                <li class=" pm-cp-back pm-button tab-li">-->
+                <!--                <div class="tab-li-text">购车发票</div>-->
+                <!--                <input type="checkbox" name="switch" lay-skin="switch">-->
+                <!--                </li>-->
+                <!--                <li class=" pm-cp-back pm-button tab-li">-->
+                <!--                <div class="tab-li-text">其他文件或附件</div>-->
+                <!--                <input type="checkbox" name="switch" lay-skin="switch">-->
+                <!--                <li class=" pm-cp-back pm-button tab-li">-->
+                <!--                    <div class="tab-li-text">车辆合格证</div>-->
+                <!--                    <input type="checkbox" name="switch" lay-skin="switch">-->
+                <!--                </li>-->
+                <!--                <li class=" pm-cp-back pm-button tab-li">-->
+                <!--                    <div class="tab-li-text">购车发票</div>-->
+                <!--                    <input type="checkbox" name="switch" lay-skin="switch">-->
+                <!--                </li>-->
+                <!--                <li class=" pm-cp-back pm-button tab-li">-->
+                <!--                    <div class="tab-li-text">其他文件或附件</div>-->
+                <!--                    <input type="checkbox" name="switch" lay-skin="switch">-->
+                <!--                </li>-->
+            </ul>
+            <!--            <div class="bt-box">-->
+            <!--                <button type="button" class="b4-s">上一步</button>-->
+            <!--                <button id="wc" type="button">合格</button>-->
+            <!--                <button id="no_wc" type="button">不合格</button>-->
+            <!--            </div>-->
+        </div>
+        <input style="display: none" id="camera" type="file" multiple="multiple" accept="image/*" capture="camera">
+    </form>
+
+</div>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+         It's a separate element, as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+        <div class="pswp__container">
+            <!-- don't modify these 3 pswp__item elements, data is added later on -->
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</body>
+<script type="text/javascript" src="./js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="./js/swipe.js"></script>
+<script type="text/javascript" src="./js/layui/layui.js"></script>
+<script type="text/javascript" src="./js/common/api.js"></script>
+<script type="text/javascript" src="./js/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="./js/jquery.md5.js"></script>
+<script type="text/javascript" src="./js/jquery-geturlcode.js"></script>
+<script type="text/javascript" src="./js/jquery.cookie.js"></script>
+<script type="text/javascript" src="./js/common/localjs.js"></script>
+<script src='js/photoswipe.min.js'></script>
+<script src='js/photoswipe-ui-default.min.js'></script>
+<script type="text/javascript" src="./js/jquery-getFormData.js"></script>
+<script type="text/javascript">
+
+    var imgjson = {};//总的图片json;
+
+    //照片浏览方法
+    var openPhotoSwipe = function (items) {
+        var pswpElement = document.querySelectorAll('.pswp')[0];
+        // build items array
+        // define options (if needed)
+        // var items2 = [
+        //     {
+        //         src: 'img/a1.jpg'
+        //     },
+        //     {
+        //         src: 'img/a2.jpg'
+        //     }
+        // ];
+        var options = {
+            // history & focus options are disabled on CodePen
+            history: false,
+            focus: false,
+            showAnimationDuration: 0,
+            hideAnimationDuration: 0
+
+        };
+        var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+        gallery.init();
+    };
+
+
+    //openPhotoSwipe();
+
+
+    var json = [];//创建一个空的json对象数组
+
+
+    var id_tag;
+    var name_tag;
+    var value_tag;
+
+
+    $(function () {
+
+
+        //layUI();
+
+        $("#qy").html($.cookie("qy"));  //赋值检测区域
+        $(".cp-text-2-s2").html(":" + $.cookie("vinno"));//赋值车架号
+
+        GetJianCheXiangMu();//加载检车项目
+
+        $("#wc").on("click", function () {
+            console.log(json);
+            var pass = 1;
+            BaoCunJianCheXiang(pass);
+        });
+        $("#no_wc").on("click", function () {
+            console.log(json);
+            var pass = 0;
+            BaoCunJianCheXiang(pass);
+        });
+
+    });
+
+
+    window.onload = function () {
+        var startPos = {};//开始位置
+        var endPos = {};//结束位置
+        var scrollDirection;//滚动方向
+        var timr;//定时器，后面控制速度会使用
+        var touch;//记录触碰节点
+        var index = 0;//记录滑动到第几张图片
+        var oImg = document.getElementById("img");
+        var oCircle = document.getElementById("circle");
+        var aCircle = oCircle.getElementsByTagName("li");
+        var ImgWidth;//图片宽度
+        var speed; //滑动速度
+        var target;//目标
+        function slide(index) {
+            for (var i = 0; i < aCircle.length; i++) {
+                aCircle[i].className = '';
+            }
+            aCircle[index].className = 'active';
+            ImgWidth = parseInt(oImg.offsetWidth / aCircle.length);
+            target = -ImgWidth * index;
+            // oImg.style.left = oImg.offsetLeft + ImgWidth +'px';
+            timer = setInterval(function () {
+                speed = speed > 0 ? Math.floor((target - oImg.offsetLeft) / 5) : Math.ceil((target - oImg.offsetLeft) / 5);
+                if (target == oImg.offsetLeft) {
+                    clearInterval(timer);
+                } else {
+                    oImg.style.left = oImg.offsetLeft + speed + 'px';
+                }
+            }, 30);
+        }
+
+        oImg.ontouchstart = function (event) {
+            touch = event.targetTouches[0];//取得第一个touch的坐标值
+            startPos = {x: touch.pageX, y: touch.pageY}
+            scrollDirection = 0;
+        }
+        oImg.ontouchmove = function (event) {
+            // 如果有多个地方滑动，我们就不发生这个事件
+            if (event.targetTouches.length > 1) {
+                return
+            }
+            touch = event.targetTouches[0];
+            endPos = {x: touch.pageX, y: touch.pageY}
+            // 判断出滑动方向，向右为1，向左为-1
+            scrollDirection = touch.pageX - startPos.x > 0 ? 1 : -1;
+        }
+        oImg.ontouchend = function () {
+            if (scrollDirection == 1) {
+                if (index >= 1 && index <= aCircle.length - 1) {
+                    index--;
+                    slide(index);
+                } else {
+                    return
+                }
+            } else if (scrollDirection == -1) {
+                if (index >= 0 && index <= aCircle.length - 2) {
+                    index++;
+                    slide(index);
+                } else {
+                    return
+                }
+            }
+        }
+    }
+
+
+    $(".quit").on("click", function () {
+        //alert(111);
+        location.href = "checkCar.html";
+    })
+    $(function () {
+        $(".in").click(function () {
+            //给li添加下横线
+            $(this).addClass('active').siblings('li').removeClass('active');
+            var index = $(this).index();
+            //显示对应的div
+            $('.tab').eq(index).addClass('selected').siblings('div').removeClass('selected');
+        });
+        /*点击下一步按钮事件*/
+        $(".b1-x").click(function () {
+            $(".in2").click();
+        })
+        $(".b2-x").click(function () {
+            $(".in3").click();
+        })
+        $(".b3-x").click(function () {
+            $(".in4").click();
+        })
+        /*点击上一步按钮事件*/
+        $(".b2-s").click(function () {
+            $(".in1").click();
+        })
+        $(".b3-s").click(function () {
+            $(".in2").click();
+        })
+        $(".b4-s").click(function () {
+            $(".in3").click();
+        })
+
+
+    });
+
+
+    /*获取检车项目接口*/
+    function GetJianCheXiangMu() {
+        // var storage_number = $.cookie("storage_number");
+        var timestamp = (new Date()).valueOf();// 时间戳----
+
+        var MD5String;
+        //生成sign
+        MD5String = "timestamp=" + timestamp + pass;
+
+        var MD5 = $.md5(MD5String);
+        MD5 = MD5.toUpperCase();//字母转为大写
+        var sign = pass + MD5;// 加密参数----
+        var token = sessionStorage.getItem('token');
+
+        console.log("拼接的加密参数----" + MD5String);
+        console.log("MD5----" + MD5);
+        console.log("需要的参数------------");
+        // console.log("接车记录码--storage_number--" + storage_number);
+        console.log("时间戳-- timestamp--" + timestamp);
+        console.log("sign----" + sign);
+
+
+        ajaxSubmit({rc_number: $.cookie("record_number")}, Api.PAD_jianche.Select_Xiangmu, "GET", function (res) {
+            if (res.msg == "success") {
+                console.log("所有数据----", res.data);
+                $.each(res.data, function (idx, obj) {
+                    console.log("项目数据----", obj);
+                    console.log("一级名称----" + idx);
+                    TianJiaYuanSu(idx, obj);
+                    check_upload();
+                });
+                layUI();
+                console.log(json);
+            }
+            ;
+        });
+
+
+        //     $.ajax({
+        //         type: "GET",
+        //         url: path + "/checkcar/getitem",
+        //         data: {
+        //             "timestamp": timestamp,
+        //             "sign": sign
+        //         },
+        //         dataType: 'json',
+        //         beforeSend: function (request) {
+        //             request.setRequestHeader("KJCY-TOKEN", token);
+        //             //request.setRequestHeader("FORM-TOKEN", fd);
+        //         },
+        //         success: function (res) {
+        //             console.log("msg信息------" + res.msg);
+        //
+        //             if (res.msg == "success") {
+        //                 $.each(res.data, function (idx, obj) {
+        //                     console.log("一级名称----" + idx);
+        //                     TianJiaYuanSu(idx, obj);
+        //                     check_upload();
+        //                 });
+        //                 layUI();
+        //                 console.log(json);
+        //             }
+        //         },
+        //         error: function (XMLHttpResponse, textStatus, errorThrown) {
+        //             console.log("1 异步调用返回失败,XMLHttpResponse.readyState:" + XMLHttpResponse.readyState);
+        //             console.log("2 异步调用返回失败,XMLHttpResponse.status:" + XMLHttpResponse.status);
+        //             console.log("3 异步调用返回失败,textStatus:" + textStatus);
+        //             console.log("4 异步调用返回失败,errorThrown:" + errorThrown);
+        //
+        //         }
+        //     })
+    }
+
+
+    function TianJiaYuanSu(name, obj) {//加载检测项目
+        var i = 0;
+        if (name == "新车外观检查") {
+            $.each(obj, function (idx, oc) {
+                i++;
+                var is = new Object();
+                is.tag_id = oc.id;
+                is.tag_name = oc.name;
+
+
+                console.log("新车外观检查++++单个检查项目的数据----------------------------------------", oc);
+
+
+                //如果有图片就赋值
+                var asd = oc.image;
+                if (oc.image != null || oc.image != "") {
+                    //  console.log("图片地址-----------", oc.image);
+                    var img = new Image();
+                    //console.log("图片地址-----------", asd);
+                    img.src = asd;
+                    //  console.log("图片地址-----------", asd);
+                    img.onload = function (argument) {
+                        console.log("图片的宽--------------------------------", this.width);
+                        console.log("图片的高--------------------------------", this.height);
+                        var w = this.width;
+                        var h = this.height;
+                        //this.result  //图片base64 编码字符
+                        // $("#pic").attr('src', this.result);
+                        var t_id = oc.id;
+                        console.log("获得的项目id为------------------------------:", t_id);
+
+                        var it = "item" + t_id + "";
+                        var newjson = [];
+                        var is = new Object();
+                        is.src = asd;
+                        is.w = w;
+                        is.h = h;
+                        newjson.push(is);
+                        imgjson[it] = newjson;
+                        var its = "#num_photo" + t_id + "";
+                        $(its).html(1);
+
+
+                        // $.each(json, function (idx, obj) {
+                        //     if (obj.tag_id == t_id) {
+                        //         id_tag = obj.tag_id;
+                        //         name_tag = obj.tag_name;
+                        //         value_tag = obj.value;
+                        //         console.log("项目id------------:", id_tag);
+                        //         console.log("项目名称---------------:", name_tag);
+                        //         console.log("值--------------:", value_tag);
+                        //         // var a = $('#tag_id' + obj.tag_id + '').html();
+                        //         if ($.isEmptyObject(imgjson) == true) {
+                        //             var it = "item" + id_tag + "";
+                        //             var newjson = [];
+                        //             var is = new Object();
+                        //             is.src = b64;
+                        //             is.w = w;
+                        //             is.h = h;
+                        //             newjson.push(is);
+                        //             imgjson[it] = newjson;
+                        //             var its = "#num_photo" + id_tag + "";
+                        //             $(its).html(1);
+                        //         } else {
+                        //             var it = "item" + id_tag + "";
+                        //             if ($.isEmptyObject(imgjson[it]) == true) {
+                        //                 var newjson = [];
+                        //                 var is = new Object();
+                        //                 is.src = b64;
+                        //                 is.w = w;
+                        //                 is.h = h;
+                        //                 newjson.push(is);
+                        //                 imgjson[it] = newjson;
+                        //                 var its = "#num_photo" + id_tag + "";
+                        //                 $(its).html(1);
+                        //
+                        //
+                        //             } else {
+                        //                 var is = new Object();
+                        //                 is.src = b64;
+                        //                 is.w = w;
+                        //                 is.h = h;
+                        //                 imgjson[it].push(is);
+                        //                 var its = "#num_photo" + id_tag + "";
+                        //                 $(its).html(imgjson[it].length);
+                        //
+                        //
+                        //             }
+                        //
+                        //         }
+                        //
+                        //         //
+                        //         //
+                        //         //
+                        //         // console.log("指定id的div--------------:", a);
+                        //         // if (a == null || a == "") {//判断是否为空
+                        //         //     console.log("------指定div不存在--------");
+                        //         //     $("#photo_show").append('<div id="tag_id' + obj.tag_id + '" class="layer-photos-demo">\n' +
+                        //         //         '<img class="img' + obj.tag_id + '"  layer-src="' + b64 + '" src="' + b64 + '" alt="111">\n' +
+                        //         //         '</div>');
+                        //         // } else {
+                        //         //     console.log("------指定div存在--------");
+                        //         //     $('#tag_id' + obj.tag_id + '').append('<img class="img' + obj.tag_id + '"  layer-src="' + b64 + '" src="' + b64 + '" alt="111">');
+                        //         //
+                        //         // }
+                        //
+                        //         //compress(b64, success);
+                        //     }
+                        // });
+
+                        console.log("图片imgsrc", imgjson);
+                        // compress(b64,success)
+                    }
+                }
+
+
+                console.log("二级名称----" + oc.name);
+                var checkClass = "check_" + oc.id + "";
+
+                if (i < 12) {
+                    $("#u1-1").append(
+                        '<li class=" pm-cp-back pm-button tab-li">' +
+                        '<div class="tab-li-text" ><span class="tag"  jian_tag_id="' + oc.id + '">' + oc.name + '</span></div>' +
+                        '<input class="' + checkClass + '"  type="checkbox" name="switch" lay-skin="switch" lay-filter="' + oc.name + '" > ' +
+                        '<button  onclick="show_photos(' + oc.id + ')" type="button" class="layui-btn layui-btn-sm " style="position: absolute;top: 0;left: 0;background: #E1E4EB;">\n' +
+                        '    <i class="layui-icon">&#xe64a;</i>\n' +
+                        '</button>' +
+                        '<div style="position: absolute;top: 0;left: 50px;">共<span style="color:red;" id="num_photo' + oc.id + '">0</span>张检测图片</div>' +
+                        '</li>');
+
+                } else {
+                    $("#u1-2").append(
+                        '<li class=" pm-cp-back pm-button tab-li">' +
+                        '<div class="tab-li-text" ><span class="tag"  jian_tag_id="' + oc.id + '">' + oc.name + '</span></div>' +
+                        '<input class="' + checkClass + '"  type="checkbox" name="switch" lay-skin="switch" lay-filter="' + oc.name + '" > ' +
+                        '<button  onclick="show_photos(' + oc.id + ')" type="button" class="layui-btn layui-btn-sm " style="position: absolute;top: 0;left: 0;background: #E1E4EB;">\n' +
+                        '    <i class="layui-icon">&#xe64a;</i>\n' +
+                        '</button>' +
+                        '<div style="position: absolute;top: 0;left: 50px;">共<span style="color:red;" id="num_photo' + oc.id + '">0</span>张检测图片</div>' +
+                        '</li>');
+                }
+
+                if (oc.pass != null && oc.pass != "" && oc.pass != 0) {
+                    console.log(checkClass);
+                    $("." + checkClass + "").click();
+                    is.value = 1;
+                } else {
+                    is.value = 0;
+                }
+                json.push(is);
+
+            });
+        } else if (name == "新车室内检查") {
+            $.each(obj, function (idx, oc) {
+                var is = new Object();
+                is.tag_id = oc.id;
+                is.tag_name = oc.name;
+
+                console.log("二级名称----" + oc.name);
+
+
+                //如果有图片就赋值
+                var asd = oc.image;
+                if (oc.image != null || oc.image != "") {
+                    //  console.log("图片地址-----------", oc.image);
+                    var img = new Image();
+                    //console.log("图片地址-----------", asd);
+                    img.src = asd;
+                    //  console.log("图片地址-----------", asd);
+                    img.onload = function (argument) {
+                        console.log("图片的宽--------------------------------", this.width);
+                        console.log("图片的高--------------------------------", this.height);
+                        var w = this.width;
+                        var h = this.height;
+                        //this.result  //图片base64 编码字符
+                        // $("#pic").attr('src', this.result);
+                        var t_id = oc.id;
+                        console.log("获得的项目id为------------------------------:", t_id);
+
+                        var it = "item" + t_id + "";
+                        var newjson = [];
+                        var is = new Object();
+                        is.src = asd;
+                        is.w = w;
+                        is.h = h;
+                        newjson.push(is);
+                        imgjson[it] = newjson;
+                        var its = "#num_photo" + t_id + "";
+                        $(its).html(1);
+
+
+                        // $.each(json, function (idx, obj) {
+                        //     if (obj.tag_id == t_id) {
+                        //         id_tag = obj.tag_id;
+                        //         name_tag = obj.tag_name;
+                        //         value_tag = obj.value;
+                        //         console.log("项目id------------:", id_tag);
+                        //         console.log("项目名称---------------:", name_tag);
+                        //         console.log("值--------------:", value_tag);
+                        //         // var a = $('#tag_id' + obj.tag_id + '').html();
+                        //         if ($.isEmptyObject(imgjson) == true) {
+                        //             var it = "item" + id_tag + "";
+                        //             var newjson = [];
+                        //             var is = new Object();
+                        //             is.src = b64;
+                        //             is.w = w;
+                        //             is.h = h;
+                        //             newjson.push(is);
+                        //             imgjson[it] = newjson;
+                        //             var its = "#num_photo" + id_tag + "";
+                        //             $(its).html(1);
+                        //         } else {
+                        //             var it = "item" + id_tag + "";
+                        //             if ($.isEmptyObject(imgjson[it]) == true) {
+                        //                 var newjson = [];
+                        //                 var is = new Object();
+                        //                 is.src = b64;
+                        //                 is.w = w;
+                        //                 is.h = h;
+                        //                 newjson.push(is);
+                        //                 imgjson[it] = newjson;
+                        //                 var its = "#num_photo" + id_tag + "";
+                        //                 $(its).html(1);
+                        //
+                        //
+                        //             } else {
+                        //                 var is = new Object();
+                        //                 is.src = b64;
+                        //                 is.w = w;
+                        //                 is.h = h;
+                        //                 imgjson[it].push(is);
+                        //                 var its = "#num_photo" + id_tag + "";
+                        //                 $(its).html(imgjson[it].length);
+                        //
+                        //
+                        //             }
+                        //
+                        //         }
+                        //
+                        //         //
+                        //         //
+                        //         //
+                        //         // console.log("指定id的div--------------:", a);
+                        //         // if (a == null || a == "") {//判断是否为空
+                        //         //     console.log("------指定div不存在--------");
+                        //         //     $("#photo_show").append('<div id="tag_id' + obj.tag_id + '" class="layer-photos-demo">\n' +
+                        //         //         '<img class="img' + obj.tag_id + '"  layer-src="' + b64 + '" src="' + b64 + '" alt="111">\n' +
+                        //         //         '</div>');
+                        //         // } else {
+                        //         //     console.log("------指定div存在--------");
+                        //         //     $('#tag_id' + obj.tag_id + '').append('<img class="img' + obj.tag_id + '"  layer-src="' + b64 + '" src="' + b64 + '" alt="111">');
+                        //         //
+                        //         // }
+                        //
+                        //         //compress(b64, success);
+                        //     }
+                        // });
+
+                        console.log("图片imgsrc", imgjson);
+                        // compress(b64,success)
+                    }
+                }
+
+                var checkClass = "check_" + oc.id + "";
+
+
+                $("#u2").append(
+                    '<li class=" pm-cp-back pm-button tab-li">' +
+                    '<div class="tab-li-text" ><span class="tag"  jian_tag_id="' + oc.id + '">' + oc.name + '</span></div>' +
+                    '<input class="' + checkClass + '"  type="checkbox" name="switch" lay-skin="switch" lay-filter="' + oc.name + '" > ' +
+                    '<button  onclick="show_photos(' + oc.id + ')" type="button" class="layui-btn layui-btn-sm " style="position: absolute;top: 0;left: 0;background: #E1E4EB;">\n' +
+                    '    <i class="layui-icon">&#xe64a;</i>\n' +
+                    '</button>' +
+                    '<div style="position: absolute;top: 0;left: 50px;">共<span style="color:red;" id="num_photo' + oc.id + '">0</span>张检测图片</div>' +
+                    '</li>');
+
+                if (oc.pass != null && oc.pass != "" && oc.pass != 0) {
+                    console.log(checkClass);
+                    $("." + checkClass + "").click();
+                    is.value = 1;
+                } else {
+                    is.value = 0;
+                }
+                json.push(is);
+
+            });
+        } else if (name == "随车工具检查") {
+            $.each(obj, function (idx, oc) {
+                var is = new Object();
+                is.tag_id = oc.id;
+                is.tag_name = oc.name;
+
+                console.log("二级名称----" + oc.name);
+
+
+                //如果有图片就赋值
+                var asd = oc.image;
+                if (oc.image != null || oc.image != "") {
+                    //  console.log("图片地址-----------", oc.image);
+                    var img = new Image();
+                    //console.log("图片地址-----------", asd);
+                    img.src = asd;
+                    //  console.log("图片地址-----------", asd);
+                    img.onload = function (argument) {
+                        console.log("图片的宽--------------------------------", this.width);
+                        console.log("图片的高--------------------------------", this.height);
+                        var w = this.width;
+                        var h = this.height;
+                        //this.result  //图片base64 编码字符
+                        // $("#pic").attr('src', this.result);
+                        var t_id = oc.id;
+                        console.log("获得的项目id为------------------------------:", t_id);
+
+                        var it = "item" + t_id + "";
+                        var newjson = [];
+                        var is = new Object();
+                        is.src = asd;
+                        is.w = w;
+                        is.h = h;
+                        newjson.push(is);
+                        imgjson[it] = newjson;
+                        var its = "#num_photo" + t_id + "";
+                        $(its).html(1);
+
+
+                        // $.each(json, function (idx, obj) {
+                        //     if (obj.tag_id == t_id) {
+                        //         id_tag = obj.tag_id;
+                        //         name_tag = obj.tag_name;
+                        //         value_tag = obj.value;
+                        //         console.log("项目id------------:", id_tag);
+                        //         console.log("项目名称---------------:", name_tag);
+                        //         console.log("值--------------:", value_tag);
+                        //         // var a = $('#tag_id' + obj.tag_id + '').html();
+                        //         if ($.isEmptyObject(imgjson) == true) {
+                        //             var it = "item" + id_tag + "";
+                        //             var newjson = [];
+                        //             var is = new Object();
+                        //             is.src = b64;
+                        //             is.w = w;
+                        //             is.h = h;
+                        //             newjson.push(is);
+                        //             imgjson[it] = newjson;
+                        //             var its = "#num_photo" + id_tag + "";
+                        //             $(its).html(1);
+                        //         } else {
+                        //             var it = "item" + id_tag + "";
+                        //             if ($.isEmptyObject(imgjson[it]) == true) {
+                        //                 var newjson = [];
+                        //                 var is = new Object();
+                        //                 is.src = b64;
+                        //                 is.w = w;
+                        //                 is.h = h;
+                        //                 newjson.push(is);
+                        //                 imgjson[it] = newjson;
+                        //                 var its = "#num_photo" + id_tag + "";
+                        //                 $(its).html(1);
+                        //
+                        //
+                        //             } else {
+                        //                 var is = new Object();
+                        //                 is.src = b64;
+                        //                 is.w = w;
+                        //                 is.h = h;
+                        //                 imgjson[it].push(is);
+                        //                 var its = "#num_photo" + id_tag + "";
+                        //                 $(its).html(imgjson[it].length);
+                        //
+                        //
+                        //             }
+                        //
+                        //         }
+                        //
+                        //         //
+                        //         //
+                        //         //
+                        //         // console.log("指定id的div--------------:", a);
+                        //         // if (a == null || a == "") {//判断是否为空
+                        //         //     console.log("------指定div不存在--------");
+                        //         //     $("#photo_show").append('<div id="tag_id' + obj.tag_id + '" class="layer-photos-demo">\n' +
+                        //         //         '<img class="img' + obj.tag_id + '"  layer-src="' + b64 + '" src="' + b64 + '" alt="111">\n' +
+                        //         //         '</div>');
+                        //         // } else {
+                        //         //     console.log("------指定div存在--------");
+                        //         //     $('#tag_id' + obj.tag_id + '').append('<img class="img' + obj.tag_id + '"  layer-src="' + b64 + '" src="' + b64 + '" alt="111">');
+                        //         //
+                        //         // }
+                        //
+                        //         //compress(b64, success);
+                        //     }
+                        // });
+
+                        console.log("图片imgsrc", imgjson);
+                        // compress(b64,success)
+                    }
+                }
+
+                var checkClass = "check_" + oc.id + "";
+                $("#u3").append(
+                    '<li class=" pm-cp-back pm-button tab-li">' +
+                    '<div class="tab-li-text" ><span class="tag"  jian_tag_id="' + oc.id + '">' + oc.name + '</span></div>' +
+                    '<input class="' + checkClass + '"  type="checkbox" name="switch" lay-skin="switch" lay-filter="' + oc.name + '" > ' +
+                    '<button  onclick="show_photos(' + oc.id + ')" type="button" class="layui-btn layui-btn-sm " style="position: absolute;top: 0;left: 0;background: #E1E4EB;">\n' +
+                    '    <i class="layui-icon">&#xe64a;</i>\n' +
+                    '</button>' +
+                    '<div style="position: absolute;top: 0;left: 50px;">共<span style="color:red;" id="num_photo' + oc.id + '">0</span>张检测图片</div>' +
+                    '</li>');
+
+                if (oc.pass != null && oc.pass != "" && oc.pass != 0) {
+                    console.log(checkClass);
+                    $("." + checkClass + "").click();
+                    is.value = 1;
+                } else {
+                    is.value = 0;
+                }
+                json.push(is);
+            });
+        } else if (name == "随车资料检查") {
+            $.each(obj, function (idx, oc) {
+                var is = new Object();
+                is.tag_id = oc.id;
+                is.tag_name = oc.name;
+
+
+                console.log("二级名称----" + oc.name);
+
+
+                //如果有图片就赋值
+                var asd = oc.image;
+                if (oc.image != null || oc.image != "") {
+                    //  console.log("图片地址-----------", oc.image);
+                    var img = new Image();
+                    //console.log("图片地址-----------", asd);
+                    img.src = asd;
+                    //  console.log("图片地址-----------", asd);
+                    img.onload = function (argument) {
+                        console.log("图片的宽--------------------------------", this.width);
+                        console.log("图片的高--------------------------------", this.height);
+                        var w = this.width;
+                        var h = this.height;
+                        //this.result  //图片base64 编码字符
+                        // $("#pic").attr('src', this.result);
+                        var t_id = oc.id;
+                        console.log("获得的项目id为------------------------------:", t_id);
+
+                        var it = "item" + t_id + "";
+                        var newjson = [];
+                        var is = new Object();
+                        is.src = asd;
+                        is.w = w;
+                        is.h = h;
+                        newjson.push(is);
+                        imgjson[it] = newjson;
+                        var its = "#num_photo" + t_id + "";
+                        $(its).html(1);
+
+
+                        // $.each(json, function (idx, obj) {
+                        //     if (obj.tag_id == t_id) {
+                        //         id_tag = obj.tag_id;
+                        //         name_tag = obj.tag_name;
+                        //         value_tag = obj.value;
+                        //         console.log("项目id------------:", id_tag);
+                        //         console.log("项目名称---------------:", name_tag);
+                        //         console.log("值--------------:", value_tag);
+                        //         // var a = $('#tag_id' + obj.tag_id + '').html();
+                        //         if ($.isEmptyObject(imgjson) == true) {
+                        //             var it = "item" + id_tag + "";
+                        //             var newjson = [];
+                        //             var is = new Object();
+                        //             is.src = b64;
+                        //             is.w = w;
+                        //             is.h = h;
+                        //             newjson.push(is);
+                        //             imgjson[it] = newjson;
+                        //             var its = "#num_photo" + id_tag + "";
+                        //             $(its).html(1);
+                        //         } else {
+                        //             var it = "item" + id_tag + "";
+                        //             if ($.isEmptyObject(imgjson[it]) == true) {
+                        //                 var newjson = [];
+                        //                 var is = new Object();
+                        //                 is.src = b64;
+                        //                 is.w = w;
+                        //                 is.h = h;
+                        //                 newjson.push(is);
+                        //                 imgjson[it] = newjson;
+                        //                 var its = "#num_photo" + id_tag + "";
+                        //                 $(its).html(1);
+                        //
+                        //
+                        //             } else {
+                        //                 var is = new Object();
+                        //                 is.src = b64;
+                        //                 is.w = w;
+                        //                 is.h = h;
+                        //                 imgjson[it].push(is);
+                        //                 var its = "#num_photo" + id_tag + "";
+                        //                 $(its).html(imgjson[it].length);
+                        //
+                        //
+                        //             }
+                        //
+                        //         }
+                        //
+                        //         //
+                        //         //
+                        //         //
+                        //         // console.log("指定id的div--------------:", a);
+                        //         // if (a == null || a == "") {//判断是否为空
+                        //         //     console.log("------指定div不存在--------");
+                        //         //     $("#photo_show").append('<div id="tag_id' + obj.tag_id + '" class="layer-photos-demo">\n' +
+                        //         //         '<img class="img' + obj.tag_id + '"  layer-src="' + b64 + '" src="' + b64 + '" alt="111">\n' +
+                        //         //         '</div>');
+                        //         // } else {
+                        //         //     console.log("------指定div存在--------");
+                        //         //     $('#tag_id' + obj.tag_id + '').append('<img class="img' + obj.tag_id + '"  layer-src="' + b64 + '" src="' + b64 + '" alt="111">');
+                        //         //
+                        //         // }
+                        //
+                        //         //compress(b64, success);
+                        //     }
+                        // });
+
+                        console.log("图片imgsrc", imgjson);
+                        // compress(b64,success)
+                    }
+                }
+
+                var checkClass = "check_" + oc.id + "";
+                $("#u4").append(
+                    '<li class=" pm-cp-back pm-button tab-li">' +
+                    '<div class="tab-li-text" ><span class="tag"  jian_tag_id="' + oc.id + '">' + oc.name + '</span></div>' +
+                    '<input class="' + checkClass + '"  type="checkbox" name="switch" lay-skin="switch" lay-filter="' + oc.name + '" > ' +
+                    '<button  onclick="show_photos(' + oc.id + ')" type="button" class="layui-btn layui-btn-sm " style="position: absolute;top: 0;left: 0;background: #E1E4EB;">\n' +
+                    '    <i class="layui-icon">&#xe64a;</i>\n' +
+                    '</button>' +
+                    '<div style="position: absolute;top: 0;left: 50px;">共<span style="color:red;" id="num_photo' + oc.id + '">0</span>张检测图片</div>' +
+                    '</li>');
+
+                if (oc.pass != null && oc.pass != "" && oc.pass != 0) {
+                    console.log(checkClass);
+                    $("." + checkClass + "").click();
+                    is.value = 1;
+                } else {
+                    is.value = 0;
+                }
+                json.push(is);
+            });
+        }
+        if (i < 12) {
+            $("#circle").hide();
+        }
+
+    }
+
+    function check_upload() {//点击拍照
+        $(".tag").off("click").on("click", function (e) {
+
+            var id = $(this).attr("jian_tag_id");
+
+            $("#camera").click();
+            $("#camera").attr("jian_tag_id", id);
+            // console.log(e);
+            // console.log(1111111111111111111111111);
+
+            // console.log("获得的项目id为:",id);
+            // $.each(json, function (idx, obj) {
+            //     if(obj.tag_id==id) {
+            //         obj.tag_id
+            //         obj.tag_name
+            //         obj.value
+            //         console.log("项目id:",obj.tag_id );
+            //         console.log("项目名称:",obj.tag_name );
+            //         console.log("值:",obj.value );
+            //
+            //     }
+            // });
+
+            e.stopPropagation();//阻止冒泡
+
+        });
+    };
+
+
+    $(".content").on("change", "input[type=file]", function () {
+        var that = $(this);
+//       $(this).prev().css("opacity", "1");
+        var filePath = $(this).val(); //读取图片路径
+        // alert(filePath);
+        var fr = new FileReader(); //创建new FileReader()对象
+        imgObj = this.files[0]; //获取图片
+        //alert(imgObj);
+        fr.readAsDataURL(imgObj); //将图片读取为DataURL
+        //var obj = $("#pic"); //
+
+        if (filePath.indexOf("jpg") != -1 || filePath.indexOf("JPG") != -1 || filePath.indexOf("PNG") != -1 || filePath.indexOf("png") != -1) {
+            var arr = filePath.split('\\');
+            var fileName = arr[arr.length - 1];
+
+            // $(this).parent().next().show();
+
+            fr.onload = function () {
+                //alert(obj);
+                var b64 = this.result;
+
+                var img = new Image();
+                img.src = b64;
+                img.onload = function (argument) {
+                    console.log("图片的宽-----------", this.width);
+                    console.log("图片的高-----------", this.height);
+                    var w = this.width;
+                    var h = this.height;
+                    //this.result  //图片base64 编码字符
+                    // $("#pic").attr('src', this.result);
+                    var t_id = that.attr("jian_tag_id");
+                    console.log("获得的项目id为-----------:", t_id);
+                    $.each(json, function (idx, obj) {
+                        if (obj.tag_id == t_id) {
+                            id_tag = obj.tag_id;
+                            name_tag = obj.tag_name;
+                            value_tag = obj.value;
+                            console.log("项目id------------:", id_tag);
+                            console.log("项目名称---------------:", name_tag);
+                            console.log("值--------------:", value_tag);
+                            // var a = $('#tag_id' + obj.tag_id + '').html();
+                            if ($.isEmptyObject(imgjson) == true) {
+                                var it = "item" + id_tag + "";
+                                var newjson = [];
+                                var is = new Object();
+                                is.src = b64;
+                                is.w = w;
+                                is.h = h;
+                                newjson.push(is);
+                                imgjson[it] = newjson;
+                                var its = "#num_photo" + id_tag + "";
+                                $(its).html(1);
+                            } else {
+                                var it = "item" + id_tag + "";
+                                if ($.isEmptyObject(imgjson[it]) == true) {
+                                    var newjson = [];
+                                    var is = new Object();
+                                    is.src = b64;
+                                    is.w = w;
+                                    is.h = h;
+                                    newjson.push(is);
+                                    imgjson[it] = newjson;
+                                    var its = "#num_photo" + id_tag + "";
+                                    $(its).html(1);
+
+
+                                } else {
+                                    var is = new Object();
+                                    is.src = b64;
+                                    is.w = w;
+                                    is.h = h;
+                                    imgjson[it].push(is);
+                                    var its = "#num_photo" + id_tag + "";
+                                    $(its).html(imgjson[it].length);
+
+
+                                }
+
+                            }
+
+                            //
+                            //
+                            //
+                            // console.log("指定id的div--------------:", a);
+                            // if (a == null || a == "") {//判断是否为空
+                            //     console.log("------指定div不存在--------");
+                            //     $("#photo_show").append('<div id="tag_id' + obj.tag_id + '" class="layer-photos-demo">\n' +
+                            //         '<img class="img' + obj.tag_id + '"  layer-src="' + b64 + '" src="' + b64 + '" alt="111">\n' +
+                            //         '</div>');
+                            // } else {
+                            //     console.log("------指定div存在--------");
+                            //     $('#tag_id' + obj.tag_id + '').append('<img class="img' + obj.tag_id + '"  layer-src="' + b64 + '" src="' + b64 + '" alt="111">');
+                            //
+                            // }
+
+                            compress(b64, success);
+                        }
+                    });
+
+                    console.log("图片imgsrc", imgjson);
+                    // compress(b64,success);
+
+
+                }
+            };
+        } else {
+            // $(this).parent().next().show();
+            //$(this).parent().next().children("i").html("您未上传文件，或者您上传文件类型有误！").css("color", "red");
+            //$(this).parent().next().html("您未上传文件，或者您上传文件类型有误！").css("color","red");
+            return false
+        }
+    });
+
+
+    /*扫描成功后执行的函数*/
+    function success(date) {
+        var timestamp = (new Date()).valueOf();// 时间戳----
+        //生成sign
+        var MD5String = "timestamp=" + timestamp + pass;
+        var MD5 = $.md5(MD5String);
+        MD5 = MD5.toUpperCase();//字母转为大写
+        var sign = pass + MD5;// 加密参数----
+        var token = sessionStorage.getItem('token');
+        console.log("token-----" + token);
+
+
+//        $("#timestamp").val(timestamp);
+//        $("#sign").val(sign);
+        //方法示例
+        // 获取页面已有的一个form表单
+        // var form = document.getElementById("myForm");
+        // 用表单来初始化
+        var formData = new FormData();
+        //formData.append("vinnop",convertBase64UrlToBlob(b64));
+
+        formData.append("photo", date, "file_" + Date.parse(new Date()) + ".jpg");
+        formData.append("tag_id", id_tag);
+        formData.append("rc_number", $.cookie("record_number"));
+        formData.append("value", value_tag);
+
+        console.log("rc_number", $.cookie("record_number"));
+        console.log("tag_id", id_tag);
+        console.log("value", value_tag);
+        console.log("photo", date);
+
+
+        $.ajax({
+            type: "POST",
+            url: Api.PAD_jianche.Check_Photo,
+            data: formData,
+            cache: false,    //上传文件不需缓存
+            processData: false, //需设置为false。因为data值是FormData对象，不需要对数据做处理
+            contentType: false, //需设置为false。因为是FormData对象，且已经声明了属性enctype="multipart/form-data"
+            dataType: 'json',
+            beforeSend: function (request) {
+                request.setRequestHeader("KJCY-TOKEN", token);
+            },
+            success: function (data) {
+                console.log("返回的消息:", data);
+                //alert(1);
+                //alert(data.msg);
+                console.log("提交结果返回的信息为:", data);
+                if (data.msg == "success") {
+
+                }
+            },
+            error: function (XMLHttpResponse, textStatus, errorThrown) {
+                console.log("1 异步调用返回失败,XMLHttpResponse.readyState:" + XMLHttpResponse.readyState);
+                console.log("2 异步调用返回失败,XMLHttpResponse.status:" + XMLHttpResponse.status);
+                console.log("3 异步调用返回失败,textStatus:" + textStatus);
+                console.log("4 异步调用返回失败,errorThrown:" + errorThrown);
+
+            }
+        });
+
+    }
+
+
+    /*保存检车项*/
+    function BaoCunJianCheXiang(passnum) {
+        // var storage_number = $.cookie("storage_number");
+        var timestamp = (new Date()).valueOf();// 时间戳----
+
+        var MD5String;
+        //生成sign
+        MD5String = "timestamp=" + timestamp + pass;
+
+        var MD5 = $.md5(MD5String);
+        MD5 = MD5.toUpperCase();//字母转为大写
+        var sign = pass + MD5;// 加密参数----
+        var token = sessionStorage.getItem('token');
+
+        console.log("拼接的加密参数----" + MD5String);
+        console.log("MD5----" + MD5);
+        console.log("需要的参数------------");
+        // console.log("接车记录码--storage_number--" + storage_number);
+        console.log("时间戳-- timestamp--" + timestamp);
+        console.log("sign----" + sign);
+
+
+        var jsonObj = {
+            "rc_number": $.cookie("record_number"),
+            "pass": passnum
+        };
+
+        var formData = new FormData();
+        //formData.append("vinnop",convertBase64UrlToBlob(b64));
+        formData.append("rc_number", $.cookie("record_number"));
+        formData.append("pass", passnum);
+        // formData.append("sign", sign);
+        $.ajax({
+            type: "POST",
+            url: Api.PAD_jianche.Submit,
+            // contentType: "application/json;charset=utf-8",
+            data: formData,
+            dataType: 'json',
+            processData: false, //需设置为false。因为data值是FormData对象，不需要对数据做处理
+            contentType: false, //需设置为false。因为是FormData对象，且已经声明了属性enctype="multipart/form-data"
+            beforeSend: function (request) {
+                request.setRequestHeader("KJCY-TOKEN", token);
+                //request.setRequestHeader("FORM-TOKEN", fd);
+            },
+            success: function (res) {
+                console.log("msg信息------" + res.msg);
+
+                if (res.msg == "success") {
+                    console.log("data信息------" + res.data);//作用暂定
+                    /*释放缓存cookie*/
+                    $.cookie("qy", null, {path: '/'});
+                    $.cookie("vinno", null, {path: '/'});
+                    $.cookie("record_number", null, {path: '/'});
+                    /*跳转到首页*/
+
+                    if (res.msg == "success") {
+
+                        layer.load(0, { shade: [0.1,'black']} );
+
+
+                        // layer.open({
+                        //     type: 3
+                        //     , content: '检测结果已提交,请等待返回首页'
+                        // });
+                        setTimeout(function () {
+                            window.location.href = "index.html";
+                        }, 2000);
+                    }
+
+
+
+
+                }
+            },
+            error: function (XMLHttpResponse, textStatus, errorThrown) {
+                console.log("1 异步调用返回失败,XMLHttpResponse.readyState:" + XMLHttpResponse.readyState);
+                console.log("2 异步调用返回失败,XMLHttpResponse.status:" + XMLHttpResponse.status);
+                console.log("3 异步调用返回失败,textStatus:" + textStatus);
+                console.log("4 异步调用返回失败,errorThrown:" + errorThrown);
+
+            }
+        });
+    };
+
+
+</script>
+
+<script>
+    /*layui */
+    function layUI() {
+        layui.use('form', function () {
+            var form = layui.form;
+            form.render();
+            //前保险杠
+            $.each(json, function (idx, obj) {
+                form.on('switch(' + obj.tag_name + ')', function (data) {
+                    // console.log(data.elem); //得到checkbox原始DOM对象
+                    // console.log(data.elem.checked); //开关是否开启，true或者false
+                    if (data.elem.checked == true) {
+                        obj.value = 1;
+                        console.log(obj.tag_name + ":" + obj.value);
+                    } else if (data.elem.checked == false) {
+                        obj.value = 0;
+                        console.log(obj.tag_name + ":" + obj.value);
+                    }
+                    console.log("车辆项目json数组:", json);
+                    // console.log(data.value); //开关value值，也可以通过data.elem.value得到
+                    // console.log(data.othis); //得到美化后的DOM对象
+                });
+            });
+        });
+    }
+
+    function show_photos(ids) {
+
+        layui.use('layer', function () {
+
+            var layer = layui.layer;
+            var it = "item" + ids + "";
+            console.log("图片容器id为", ids);
+            var ddd = '#tag_id' + ids + '';
+            var ttt = '.img' + ids + '';
+            console.log("图片容器id值为", ddd);
+            if ($.isEmptyObject(imgjson[it])) {
+                layer.msg("该检测项目暂无图片");
+            } else {
+                openPhotoSwipe(imgjson[it]);
+            }
+
+
+        });
+
+    }
+
+    // function layimg() {
+    //     console.log(123);
+    // }
+</script>
+</html>

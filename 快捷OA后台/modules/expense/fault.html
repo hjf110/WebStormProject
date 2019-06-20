@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>过桥</title>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="ie-stand">
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../plugins/jqgrid/ui.jqgrid-bootstrap.css">
+    <link rel="stylesheet" href="../../plugins/ztree/css/metroStyle/metroStyle.css">
+    <link rel="stylesheet" href="../../css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../..//css/main.css">
+    <link rel="stylesheet" href="../../plugins/treegrid/jquery.treegrid.css">
+    <link rel="stylesheet" href="../../css/common.css">
+
+
+    <script src="../../libs/jquery-3.3.1.js"></script>
+    <script src="../../plugins/layer/layer.js"></script>
+    <script src="../../libs/bootstrap.min.js"></script>
+    <script src="../../libs/vue.min.js"></script>
+    <script src="../../libs/bootstrap-table.min.js"></script>
+    <script src="../../plugins/treegrid/jquery.treegrid.min.js"></script>
+    <script src="../../plugins/treegrid/jquery.treegrid.bootstrap3.js"></script>
+    <script src="../../plugins/treegrid/jquery.treegrid.extension.js"></script>
+    <script src="../../plugins/treegrid/tree.table.js"></script>
+    <script src="../../plugins/jqgrid/grid.locale-cn.js"></script>
+    <script src="../../plugins/jqgrid/jquery.jqGrid.min.js"></script>
+    <script src="../../plugins/ztree/jquery.ztree.all.min.js"></script>
+
+    <script src="../../plugins/treeview/bootstrap-treeview.js"></script>
+    <script src="../../js/common/api.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/tool.js"></script>
+    <script src="../../js/common/extend.js"></script>
+</head>
+<body style="height: 100%">
+<div id="armorapp">
+    <div v-show="showList">
+        <div class="grid-btn">
+            <div class="form-group col-sm-2">
+                <input type="text" class="form-control" v-model="q.query" @keyup.enter="query" placeholder="名称">
+            </div>
+            <a class="btn btn-default" @click="query">查询</a>
+            <div class="btn-group" role="group" aria-label="...">
+
+                <a class="btn btn-primary btn-sm reviewAdopt" v-show="bridgeCheck"><i class="fa fa-plus"></i>&nbsp;审核通过</a>
+                <a class="btn btn-primary btn-sm reviewNotAdopt" v-show="bridgeCheck"><i class="fa fa-times"></i>&nbsp;审核不通过</a>
+
+                <a class="btn btn-primary btn-sm makeMoney" v-show="bridgeFinance"><i class="fa fa-plus"></i>&nbsp;确认打款</a>
+                <a class="btn btn-primary btn-sm complete" v-show="bridgeFinance"><i class="fa fa-plus"></i>&nbsp;确认完成</a>
+                <a class="btn btn-primary btn-sm" v-show="bridgeFinance"><i class="fa fa-comment"></i>&nbsp;通知</a>
+
+            </div>
+        </div>
+        <div id="list"></div>
+    </div>
+
+
+    <div class="form-group" style="display: none;margin: 10px" id="reason" >
+        <textarea class="form-control" rows="10" id="reasonInfo"></textarea>
+    </div>
+
+
+    <div id="bridge" style="display: none ;margin: 10px;">
+        <div class="table-responsive">
+            <table border="0" cellspacing="0" cellpadding="0" class="table">
+                <tr class=" label-primary">
+                    <th scope="col" width="50%" colspan="2"><span style="color:white">基本信息</span></th>
+                </tr>
+                <tr class="active">
+                    <td>报销人</td>
+                    <td>{{baseInfo.driverName}}</td>
+                </tr>
+                <tr class="success">
+                    <td>订单号</td>
+                    <td>{{baseInfo.orderNum}}</td>
+                </tr>
+                <tr class="active">
+                    <td>车牌号</td>
+                    <td>{{baseInfo.plateNumber}}</td>
+                </tr>
+                <tr class="success">
+                    <td>报销金额</td>
+                    <td>{{baseInfo.money}}</td>
+                </tr>
+
+            </table>
+        </div>
+
+        <div class="table-responsive" v-show="reviewHistory.length>0">
+            <table border="0" cellspacing="0" cellpadding="0" class="table">
+                <tr class=" label-primary">
+                    <th scope="col" width="50%" colspan="2"><span style="color:white">审核历史</span></th>
+                </tr>
+                <tr class="active" v-for="(one,index) in reviewHistory">
+                    <td>审核人：{{one.name}}</td>
+                    <td>修改意见：{{one.expenseInfo}}</td>
+                    <!--<td>审核时间：{{one.add_time}}</td>-->
+                </tr>
+            </table>
+        </div>
+
+        <div class="table-responsive" v-show="baseInfo.invoiceMark!=''&&baseInfo.invoiceMark!=null">
+            <table border="0" cellspacing="0" cellpadding="0" class="table">
+                <tr class=" label-primary">
+                    <th scope="col" width="50%" colspan="2"><span style="color:white">发票照片</span></th>
+                </tr>
+                <tr class="active">
+                    <td>
+                        <img v-for="(one,index) in invoiceMarkArray" style="width: 100px;margin-left: 10px" :src="one">
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="table-responsive" v-show="baseInfo.courierMark!=''&&baseInfo.courierMark!=null">
+            <table border="0" cellspacing="0" cellpadding="0" class="table">
+                <tr class=" label-primary">
+                    <th scope="col" width="50%"><span style="color:white">快递照片</span></th>
+                </tr>
+                <tr class="active">
+                    <td>
+                        <img v-for="(one,index) in courierMarkArray" style="width: 100px;margin-left: 10px" :src="one">
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+    </div>
+</div>
+
+
+</body>
+<script src="../../js/control/bootstrapTableTemplate.js"></script>
+<script src="../../js/control/layerDialog.js"></script>
+<script src="./js/config.js"></script>
+<script src="./js/bridge.js"></script>
+
+</html>
