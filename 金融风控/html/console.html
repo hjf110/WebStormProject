@@ -5,7 +5,8 @@
     <title>layuiAdmin 控制台主页一</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link rel="stylesheet" href="../css/xadmin.css">
 
 </head>
@@ -18,59 +19,122 @@
                 <fieldset class="layui-elem-field layui-field-title">
                     <legend>今日概况</legend>
                 </fieldset>
-                <div class="layui-col-md4">
-                    <div class="layui-card">
-                        <div class="layui-card-header">今日概况</div>
-                        <div class="layui-card-body">
-                            <div class="layui-carousel layadmin-carousel layadmin-dataview layadmin-backlog">
-                                <div carousel-item>
-                                    <ul class="layui-row layui-col-space10">
-                                        <li class="layui-col-xs6">
-                                            <a lay-href="app/content/comment.html" class="layadmin-backlog-body">
-                                                <h3>今日注册量</h3>
-                                                <p><cite style="color:#42B8F1">66</cite></p>
-                                            </a>
-                                        </li>
-                                        <li class="layui-col-xs6">
-                                            <a lay-href="app/forum/list.html" class="layadmin-backlog-body">
-                                                <h3>今日放款量</h3>
-                                                <p><cite style="color:#E800E8;">12</cite></p>
-                                            </a>
-                                        </li>
-                                        <li class="layui-col-xs6">
-                                            <a lay-href="template/goodslist.html" class="layadmin-backlog-body">
-                                                <h3>今日借款金额</h3>
-                                                <p><cite style="color:#00DB00;">99</cite></p>
-                                            </a>
-                                        </li>
-                                        <li class="layui-col-xs6 ">
-                                            <a href="javascript:;" onclick="layer.tips('不跳转', this, {tips: 3});"
-                                               class="layadmin-backlog-body">
-                                                <h3>今日实付金额</h3>
-                                                <p><cite style="color:#EAC100;">20</cite></p>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                <div class="layui-col-sm6 layui-col-md3">
+                    <div style="background:#D2E9FF;" class="layui-card">
+                        <div style="color: #8E8E8E;border-bottom:1px solid #D2E9FF;" class="layui-card-header">
+                            今日注册量
+                            <!--                            <span style="color:#42B8F1" class="layui-badge layui-bg-blue layuiadmin-badge">注册</span>-->
+                        </div>
+                        <div class="layui-card-body layuiadmin-card-list">
+                            <p style="color: #009688;" class="layuiadmin-big-font">9,999,666</p>
+                            <!--                            <p>-->
+                            <!--                                总计访问量-->
+                            <!--                                <span class="layuiadmin-span-color">88万 <i class="layui-inline layui-icon layui-icon-flag"></i></span>-->
+                            <!--                            </p>-->
                         </div>
                     </div>
                 </div>
-                <div class="layui-col-md8">
-                    <div class="layui-card">
-                        <div class="layui-card-header">数据概览</div>
-                        <div class="layui-card-body">
-                            <div class="layui-carousel layadmin-carousel layadmin-dataview" data-anim="fade" lay-filter="LAY-index-dataview">
-                                <div carousel-item id="LAY-index-dataview">
-                                    <div><i class="layui-icon layui-icon-loading1 layadmin-loading"></i></div>
-                                    <div></div>
-                                    <div></div>
-                                </div>
-                            </div>
+                <div class="layui-col-sm6 layui-col-md3">
+                    <div style="background:#FFD0FF " class="layui-card">
+                        <div style="color:#8E8E8E;border-bottom:1px solid #FFD0FF;" class="layui-card-header">
+                            今日放款量
+                            <!--                            <span style="color:#ffffff;" class="layui-badge layui-bg-cyan layuiadmin-badge">放款</span>-->
+                        </div>
+                        <div class="layui-card-body layuiadmin-card-list">
+                            <p style="color:#009688;" class="layuiadmin-big-font">33,555</p>
+                            <!--                            <p>-->
+                            <!--                                新下载-->
+                            <!--                                <span class="layuiadmin-span-color">10% <i class="layui-inline layui-icon layui-icon-face-smile-b"></i></span>-->
+                            <!--                            </p>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md3">
+                    <div style="background:#CEFFCE " class="layui-card">
+                        <div style="color:#8E8E8E;border-bottom:1px solid #CEFFCE;" class="layui-card-header">
+                            今日借款金额
+                            <!--                            <span style="color:#00DB00;" class="layui-badge layui-bg-green layuiadmin-badge">借款</span>-->
+                        </div>
+                        <div class="layui-card-body layuiadmin-card-list">
 
+                            <p style="color:#009688;" class="layuiadmin-big-font">999,666</p>
+                            <!--                            <p>-->
+                            <!--                                总收入-->
+                            <!--                                <span class="layuiadmin-span-color">*** <i class="layui-inline layui-icon layui-icon-dollar"></i></span>-->
+                            <!--                            </p>-->
                         </div>
                     </div>
                 </div>
+                <div class="layui-col-sm6 layui-col-md3">
+                    <div style="background:#FFF4C1 " class="layui-card">
+                        <div style="color:#8E8E8E;border-bottom:1px solid #FFF4C1;" class="layui-card-header">
+                            今日实付金额
+                            <!--                            <span style="color:#EAC100;" class="layui-badge layui-bg-orange layuiadmin-badge">实付</span>-->
+                        </div>
+                        <div class="layui-card-body layuiadmin-card-list">
+
+                            <p style="color:#009688;" class="layuiadmin-big-font">66,666</p>
+                            <!--                            <p>-->
+                            <!--                                最近一个月-->
+                            <!--                                <span class="layuiadmin-span-color">15% <i class="layui-inline layui-icon layui-icon-user"></i></span>-->
+                            <!--                            </p>-->
+                        </div>
+                    </div>
+                </div>
+
+                <!--                <div class="layui-col-md4">-->
+                <!--                    <div class="layui-card">-->
+                <!--                        <div class="layui-card-header">今日概况</div>-->
+                <!--                        <div class="layui-card-body">-->
+                <!--                            <div class="layui-carousel layadmin-carousel layadmin-dataview layadmin-backlog">-->
+                <!--                                <div carousel-item>-->
+                <!--                                    <ul class="layui-row layui-col-space10">-->
+                <!--                                        <li class="layui-col-xs6">-->
+                <!--                                            <a lay-href="app/content/comment.html" class="layadmin-backlog-body">-->
+                <!--                                                <h3>今日注册量</h3>-->
+                <!--                                                <p><cite style="color:#42B8F1">66</cite></p>-->
+                <!--                                            </a>-->
+                <!--                                        </li>-->
+                <!--                                        <li class="layui-col-xs6">-->
+                <!--                                            <a lay-href="app/forum/list.html" class="layadmin-backlog-body">-->
+                <!--                                                <h3>今日放款量</h3>-->
+                <!--                                                <p><cite style="color:#E800E8;">12</cite></p>-->
+                <!--                                            </a>-->
+                <!--                                        </li>-->
+                <!--                                        <li class="layui-col-xs6">-->
+                <!--                                            <a lay-href="template/goodslist.html" class="layadmin-backlog-body">-->
+                <!--                                                <h3>今日借款金额</h3>-->
+                <!--                                                <p><cite style="color:#00DB00;">99</cite></p>-->
+                <!--                                            </a>-->
+                <!--                                        </li>-->
+                <!--                                        <li class="layui-col-xs6 ">-->
+                <!--                                            <a href="javascript:;" onclick="layer.tips('不跳转', this, {tips: 3});"-->
+                <!--                                               class="layadmin-backlog-body">-->
+                <!--                                                <h3>今日实付金额</h3>-->
+                <!--                                                <p><cite style="color:#EAC100;">20</cite></p>-->
+                <!--                                            </a>-->
+                <!--                                        </li>-->
+                <!--                                    </ul>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--                <div class="layui-col-md8">-->
+                <!--                    <div class="layui-card">-->
+                <!--                        <div class="layui-card-header">数据概览</div>-->
+                <!--                        <div class="layui-card-body">-->
+                <!--                            <div class="layui-carousel layadmin-carousel layadmin-dataview" data-anim="fade" lay-filter="LAY-index-dataview">-->
+                <!--                                <div carousel-item id="LAY-index-dataview">-->
+                <!--                                    <div><i class="layui-icon layui-icon-loading1 layadmin-loading"></i></div>-->
+                <!--                                    <div></div>-->
+                <!--                                    <div></div>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
                 <fieldset class="layui-elem-field layui-field-title">
                     <legend>订单数据</legend>
                 </fieldset>
@@ -78,41 +142,42 @@
                     <div class="layui-card">
                         <div class="layui-card-header">今日借款申请</div>
                         <div class="layui-card-body">
-                            <div class="layui-carousel layadmin-carousel layadmin-backlog">
+                            <div class="layui-carousel layadmin-carousel layadmin-backlog layadmin-dataview">
                                 <div carousel-item>
                                     <ul class="layui-row layui-col-space10">
-                                        <li class="layui-col-xs4">
+                                        <li class="layui-col-xs6">
                                             <a lay-href="app/content/comment.html" class="layadmin-backlog-body">
                                                 <h3>借款申请量</h3>
                                                 <p><cite>66</cite></p>
                                             </a>
                                         </li>
-                                        <li class="layui-col-xs4">
-                                            <a lay-href="template/goodslist.html" class="layadmin-backlog-body">
-                                                <h3>新客申请量</h3>
-                                                <p><cite>99</cite></p>
-                                            </a>
-                                        </li>
-                                        <li class="layui-col-xs4">
-                                            <a lay-href="app/content/comment.html" class="layadmin-backlog-body">
-                                                <h3>复借申请量</h3>
-                                                <p><cite>66</cite></p>
-                                            </a>
-                                        </li>
-                                        <li class="layui-col-xs4">
+                                        <li class="layui-col-xs6">
                                             <a lay-href="app/forum/list.html" class="layadmin-backlog-body">
                                                 <h3>借款申请金额</h3>
                                                 <p><cite>12</cite></p>
                                             </a>
                                         </li>
-                                        <li class="layui-col-xs4">
+                                        <li class="layui-col-xs6">
+                                            <a lay-href="template/goodslist.html" class="layadmin-backlog-body">
+                                                <h3>新客申请量</h3>
+                                                <p><cite>99</cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs6">
                                             <a href="javascript:;" onclick="layer.tips('不跳转', this, {tips: 3});"
                                                class="layadmin-backlog-body">
                                                 <h3>新客申请金额</h3>
                                                 <p><cite>20</cite></p>
                                             </a>
                                         </li>
-                                        <li class="layui-col-xs4">
+                                        <li class="layui-col-xs6">
+                                            <a lay-href="app/content/comment.html" class="layadmin-backlog-body">
+                                                <h3>复借申请量</h3>
+                                                <p><cite>66</cite></p>
+                                            </a>
+                                        </li>
+
+                                        <li class="layui-col-xs6">
                                             <a lay-href="app/forum/list.html" class="layadmin-backlog-body">
                                                 <h3>复借申请金额</h3>
                                                 <p><cite>12</cite></p>
@@ -128,41 +193,43 @@
                     <div class="layui-card">
                         <div class="layui-card-header">今日通过订单</div>
                         <div class="layui-card-body">
-                            <div class="layui-carousel layadmin-carousel layadmin-backlog">
+                            <div class="layui-carousel layadmin-carousel layadmin-backlog layadmin-dataview">
                                 <div carousel-item>
                                     <ul class="layui-row layui-col-space10">
-                                        <li class="layui-col-xs4">
+                                        <li class="layui-col-xs6">
                                             <a lay-href="app/content/comment.html" class="layadmin-backlog-body">
                                                 <h3>通过订单量</h3>
                                                 <p><cite>66</cite></p>
                                             </a>
                                         </li>
-                                        <li class="layui-col-xs4">
-                                            <a lay-href="template/goodslist.html" class="layadmin-backlog-body">
-                                                <h3>新客通过量</h3>
-                                                <p><cite>99</cite></p>
-                                            </a>
-                                        </li>
-                                        <li class="layui-col-xs4">
-                                            <a lay-href="app/content/comment.html" class="layadmin-backlog-body">
-                                                <h3>复借通过量</h3>
-                                                <p><cite>66</cite></p>
-                                            </a>
-                                        </li>
-                                        <li class="layui-col-xs4">
+                                        <li class="layui-col-xs6">
                                             <a lay-href="app/forum/list.html" class="layadmin-backlog-body">
                                                 <h3>通过订单金额</h3>
                                                 <p><cite>12</cite></p>
                                             </a>
                                         </li>
-                                        <li class="layui-col-xs4">
+                                        <li class="layui-col-xs6">
+                                            <a lay-href="template/goodslist.html" class="layadmin-backlog-body">
+                                                <h3>新客通过量</h3>
+                                                <p><cite>99</cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs6">
                                             <a href="javascript:;" onclick="layer.tips('不跳转', this, {tips: 3});"
                                                class="layadmin-backlog-body">
                                                 <h3>新客订单金额</h3>
                                                 <p><cite>20</cite></p>
                                             </a>
                                         </li>
-                                        <li class="layui-col-xs4">
+                                        <li class="layui-col-xs6">
+                                            <a lay-href="app/content/comment.html" class="layadmin-backlog-body">
+                                                <h3>复借通过量</h3>
+                                                <p><cite>66</cite></p>
+                                            </a>
+                                        </li>
+
+
+                                        <li class="layui-col-xs6">
                                             <a lay-href="app/forum/list.html" class="layadmin-backlog-body">
                                                 <h3>复借订单金额</h3>
                                                 <p><cite>12</cite></p>
@@ -178,41 +245,43 @@
                     <div class="layui-card">
                         <div class="layui-card-header">今日放款订单</div>
                         <div class="layui-card-body">
-                            <div class="layui-carousel layadmin-carousel layadmin-backlog">
+                            <div class="layui-carousel layadmin-carousel layadmin-backlog layadmin-dataview">
                                 <div carousel-item>
                                     <ul class="layui-row layui-col-space10">
-                                        <li class="layui-col-xs4">
+                                        <li class="layui-col-xs6">
                                             <a lay-href="app/content/comment.html" class="layadmin-backlog-body">
                                                 <h3>放款订单量</h3>
                                                 <p><cite>66</cite></p>
                                             </a>
                                         </li>
-                                        <li class="layui-col-xs4">
-                                            <a lay-href="template/goodslist.html" class="layadmin-backlog-body">
-                                                <h3>新客放款量</h3>
-                                                <p><cite>99</cite></p>
-                                            </a>
-                                        </li>
-                                        <li class="layui-col-xs4">
-                                            <a lay-href="app/content/comment.html" class="layadmin-backlog-body">
-                                                <h3>复借放款量</h3>
-                                                <p><cite>66</cite></p>
-                                            </a>
-                                        </li>
-                                        <li class="layui-col-xs4">
+                                        <li class="layui-col-xs6">
                                             <a lay-href="app/forum/list.html" class="layadmin-backlog-body">
                                                 <h3>放款金额</h3>
                                                 <p><cite>12</cite></p>
                                             </a>
                                         </li>
-                                        <li class="layui-col-xs4">
+                                        <li class="layui-col-xs6">
+                                            <a lay-href="template/goodslist.html" class="layadmin-backlog-body">
+                                                <h3>新客放款量</h3>
+                                                <p><cite>99</cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs6">
                                             <a href="javascript:;" onclick="layer.tips('不跳转', this, {tips: 3});"
                                                class="layadmin-backlog-body">
                                                 <h3>新客放款金额</h3>
                                                 <p><cite>20</cite></p>
                                             </a>
                                         </li>
-                                        <li class="layui-col-xs4">
+                                        <li class="layui-col-xs6">
+                                            <a lay-href="app/content/comment.html" class="layadmin-backlog-body">
+                                                <h3>复借放款量</h3>
+                                                <p><cite>66</cite></p>
+                                            </a>
+                                        </li>
+
+
+                                        <li class="layui-col-xs6">
                                             <a lay-href="app/forum/list.html" class="layadmin-backlog-body">
                                                 <h3>复借放款金额</h3>
                                                 <p><cite>12</cite></p>
@@ -224,18 +293,107 @@
                         </div>
                     </div>
                 </div>
+                <fieldset class="layui-elem-field layui-field-title">
+                    <legend>转化率</legend>
+                </fieldset>
+                <div class="layui-col-sm6 layui-col-md2 hua-col-md2">
+                    <div style="background:#D2E9FF;" class="layui-card">
+                        <div style="color: #8E8E8E;border-bottom:1px solid #D2E9FF;" class="layui-card-header">
+                            复借率
+                            <!--                            <span style="color:#42B8F1" class="layui-badge layui-bg-blue layuiadmin-badge">注册</span>-->
+                        </div>
+                        <div class="layui-card-body layuiadmin-card-list">
+                            <p style="color: #009688;" class="layuiadmin-big-font">96%</p>
+                            <!--                            <p>-->
+                            <!--                                总计访问量-->
+                            <!--                                <span class="layuiadmin-span-color">88万 <i class="layui-inline layui-icon layui-icon-flag"></i></span>-->
+                            <!--                            </p>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md2 hua-col-md2">
+                    <div style="background:#FFD0FF " class="layui-card">
+                        <div style="color:#8E8E8E;border-bottom:1px solid #FFD0FF;" class="layui-card-header">
+                            通过率
+                            <!--                            <span style="color:#ffffff;" class="layui-badge layui-bg-cyan layuiadmin-badge">放款</span>-->
+                        </div>
+                        <div class="layui-card-body layuiadmin-card-list">
+                            <p style="color:#009688;" class="layuiadmin-big-font">33%</p>
+                            <!--                            <p>-->
+                            <!--                                新下载-->
+                            <!--                                <span class="layuiadmin-span-color">10% <i class="layui-inline layui-icon layui-icon-face-smile-b"></i></span>-->
+                            <!--                            </p>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md2 hua-col-md2">
+                    <div style="background:#CEFFCE " class="layui-card">
+                        <div style="color:#8E8E8E;border-bottom:1px solid #CEFFCE;" class="layui-card-header">
+                            新客通过率
+                            <!--                            <span style="color:#00DB00;" class="layui-badge layui-bg-green layuiadmin-badge">借款</span>-->
+                        </div>
+                        <div class="layui-card-body layuiadmin-card-list">
 
-                <div class="layui-col-md4">
+                            <p style="color:#009688;" class="layuiadmin-big-font">99%</p>
+                            <!--                            <p>-->
+                            <!--                                总收入-->
+                            <!--                                <span class="layuiadmin-span-color">*** <i class="layui-inline layui-icon layui-icon-dollar"></i></span>-->
+                            <!--                            </p>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md2 hua-col-md2">
+                    <div style="background:#FFF4C1 " class="layui-card">
+                        <div style="color:#8E8E8E;border-bottom:1px solid #FFF4C1;" class="layui-card-header">
+                            复借通过率
+                            <!--                            <span style="color:#EAC100;" class="layui-badge layui-bg-orange layuiadmin-badge">实付</span>-->
+                        </div>
+                        <div class="layui-card-body layuiadmin-card-list">
+
+                            <p style="color:#009688;" class="layuiadmin-big-font">66%</p>
+                            <!--                            <p>-->
+                            <!--                                最近一个月-->
+                            <!--                                <span class="layuiadmin-span-color">15% <i class="layui-inline layui-icon layui-icon-user"></i></span>-->
+                            <!--                            </p>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm6 layui-col-md2 hua-col-md2">
+                    <div style="background:#FFF4C1 " class="layui-card">
+                        <div style="color:#8E8E8E;border-bottom:1px solid #FFF4C1;" class="layui-card-header">
+                            放款率
+                            <!--                            <span style="color:#EAC100;" class="layui-badge layui-bg-orange layuiadmin-badge">实付</span>-->
+                        </div>
+                        <div class="layui-card-body layuiadmin-card-list">
+
+                            <p style="color:#009688;" class="layuiadmin-big-font">66%</p>
+                            <!--                            <p>-->
+                            <!--                                最近一个月-->
+                            <!--                                <span class="layuiadmin-span-color">15% <i class="layui-inline layui-icon layui-icon-user"></i></span>-->
+                            <!--                            </p>-->
+                        </div>
+                    </div>
+                </div>
+                <fieldset class="layui-elem-field layui-field-title">
+                    <legend>贷后订单数据</legend>
+                </fieldset>
+                <div class="layui-col-md2">
                     <div class="layui-card">
-                        <div class="layui-card-header">转化率</div>
+                        <div class="layui-card-header">当日到期订单</div>
                         <div class="layui-card-body">
                             <div class="layui-carousel layadmin-carousel layadmin-backlog">
                                 <div carousel-item>
                                     <ul class="layui-row layui-col-space10">
-                                        <li class="layui-col-xs6">
+                                        <li class="layui-col-xs12">
                                             <a lay-href="app/content/comment.html" class="layadmin-backlog-body">
-                                                <h3>复借率</h3>
-                                                <p><cite>66%</cite></p>
+                                                <h3>当日到期订单量</h3>
+                                                <p><cite>66</cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs12">
+                                            <a lay-href="template/goodslist.html" class="layadmin-backlog-body">
+                                                <h3>当日到期金额</h3>
+                                                <p><cite>99</cite></p>
                                             </a>
                                         </li>
                                     </ul>
@@ -244,29 +402,23 @@
                         </div>
                     </div>
                 </div>
-                <div class="layui-col-md4">
+                <div class="layui-col-md2">
                     <div class="layui-card">
-                        <div class="layui-card-header">转化率</div>
+                        <div class="layui-card-header">全部还款订单</div>
                         <div class="layui-card-body">
                             <div class="layui-carousel layadmin-carousel layadmin-backlog">
                                 <div carousel-item>
                                     <ul class="layui-row layui-col-space10">
-                                        <li class="layui-col-xs6">
+                                        <li class="layui-col-xs12">
                                             <a lay-href="app/content/comment.html" class="layadmin-backlog-body">
-                                                <h3>通过率</h3>
-                                                <p><cite>66%</cite></p>
+                                                <h3>全部还款订单量</h3>
+                                                <p><cite>66</cite></p>
                                             </a>
                                         </li>
-                                        <li class="layui-col-xs6">
-                                            <a lay-href="app/content/comment.html" class="layadmin-backlog-body">
-                                                <h3>新客通过率</h3>
-                                                <p><cite>66%</cite></p>
-                                            </a>
-                                        </li>
-                                        <li class="layui-col-xs6">
-                                            <a lay-href="app/content/comment.html" class="layadmin-backlog-body">
-                                                <h3>复借通过率</h3>
-                                                <p><cite>66%</cite></p>
+                                        <li class="layui-col-xs12">
+                                            <a lay-href="template/goodslist.html" class="layadmin-backlog-body">
+                                                <h3>全部还款金额</h3>
+                                                <p><cite>99</cite></p>
                                             </a>
                                         </li>
                                     </ul>
@@ -275,6 +427,108 @@
                         </div>
                     </div>
                 </div>
+                <div class="layui-col-md2">
+                    <div class="layui-card">
+                        <div class="layui-card-header">展期订单</div>
+                        <div class="layui-card-body">
+                            <div class="layui-carousel layadmin-carousel layadmin-backlog">
+                                <div carousel-item>
+                                    <ul class="layui-row layui-col-space10">
+                                        <li class="layui-col-xs12">
+                                            <a lay-href="app/content/comment.html" class="layadmin-backlog-body">
+                                                <h3>展期订单量</h3>
+                                                <p><cite>66</cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs12">
+                                            <a lay-href="template/goodslist.html" class="layadmin-backlog-body">
+                                                <h3>展期金额</h3>
+                                                <p><cite>99</cite></p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="layui-card">
+                        <div class="layui-card-header">部分还款订单</div>
+                        <div class="layui-card-body">
+                            <div class="layui-carousel layadmin-carousel layadmin-backlog">
+                                <div carousel-item>
+                                    <ul class="layui-row layui-col-space10">
+                                        <li class="layui-col-xs12">
+                                            <a lay-href="app/content/comment.html" class="layadmin-backlog-body">
+                                                <h3>部分还款订单量</h3>
+                                                <p><cite>66</cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs12">
+                                            <a lay-href="template/goodslist.html" class="layadmin-backlog-body">
+                                                <h3>部分还款金额</h3>
+                                                <p><cite>99</cite></p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="layui-card">
+                        <div class="layui-card-header">未到期订单</div>
+                        <div class="layui-card-body">
+                            <div class="layui-carousel layadmin-carousel layadmin-backlog">
+                                <div carousel-item>
+                                    <ul class="layui-row layui-col-space10">
+                                        <li class="layui-col-xs12">
+                                            <a lay-href="app/content/comment.html" class="layadmin-backlog-body">
+                                                <h3>未到期订单量</h3>
+                                                <p><cite>66</cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs12">
+                                            <a lay-href="template/goodslist.html" class="layadmin-backlog-body">
+                                                <h3>总计应还金额</h3>
+                                                <p><cite>99</cite></p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md2">
+                    <div class="layui-card">
+                        <div class="layui-card-header">逾期订单</div>
+                        <div class="layui-card-body">
+                            <div class="layui-carousel layadmin-carousel layadmin-backlog">
+                                <div carousel-item>
+                                    <ul class="layui-row layui-col-space10">
+                                        <li class="layui-col-xs12">
+                                            <a lay-href="app/content/comment.html" class="layadmin-backlog-body">
+                                                <h3>逾期订单量</h3>
+                                                <p><cite>66</cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs12">
+                                            <a lay-href="template/goodslist.html" class="layadmin-backlog-body">
+                                                <h3>逾期未还金额</h3>
+                                                <p><cite>10000000000</cite></p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
 

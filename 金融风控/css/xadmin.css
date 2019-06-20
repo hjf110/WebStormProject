@@ -68,6 +68,9 @@ body {
 .layadmin-backlog-body p cite{
     font-weight: bold;
 }
+.hua-col-md2 {
+    width: 20%;
+}
 .login .message {
     margin: 10px 0 0 0;
     padding: 18px 10px 18px 60px;
@@ -324,7 +327,11 @@ xblock {
     height: 55px;
     float: left;
 }
-
+.container .right_open {
+    /*display: inline-block;*/
+    height: 55px;
+    float: right;
+}
 .container .left_open i {
     display: block;
     background: rgba(255, 255, 255, 0.1) 0 0 no-repeat;

@@ -25,7 +25,21 @@
         <div class="left_open layui-nav-item">
             <i title="展开左侧栏" class="iconfont ccc">&#xe870;</i>
         </div>
+
         <ul class="layui-nav left fast-add" lay-filter="">
+
+        </ul>
+        <div style="font-size: 20px;position: relative;left: 20px;font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;" class="left_open  layui-nav-item ">
+            欢迎您登录管理后台
+        </div>
+        <ul class="layui-nav layui-layout-right right" lay-filter="" >
+            <li class="layui-nav-item"  lay-unselect>
+                 <a href="javascript:;" ><i class="layui-icon" style="position: relative;right: 10px;">&#xe770;</i>华吉锋</a>
+                <dl class="layui-nav-child"> <!-- 二级菜单 -->
+                    <dd><a onclick="x_admin_show('个人信息','http://www.baidu.com')">修改密码</a></dd>
+                    <dd><a onclick="x_admin_show('切换帐号','http://www.baidu.com')">退出系统</a></dd>
+                </dl>
+            </li>
             <li id="refresh"  class="layui-nav-item" lay-unselect>
                 <a  href="javascript:;"> <i class="layui-icon  resf">&#xe669;</i></a>
             </li>
@@ -35,26 +49,6 @@
                     <dd><a onclick="closetab(1)">关闭当前标签</a></dd>
                     <dd><a onclick="closetab(2)">关闭其他标签</a></dd>
                     <dd><a onclick="closetab(3)">关闭全部标签</a></dd>
-                </dl>
-            </li>
-<!--            <li class="layui-nav-item">-->
-<!--                <a href="javascript:;">+新增</a>-->
-<!--                <dl class="layui-nav-child"> &lt;!&ndash; 二级菜单 &ndash;&gt;-->
-<!--                    <dd><a onclick="x_admin_show('资讯','http://www.baidu.com')"><i class="iconfont">&#xe6a2;</i>资讯</a>-->
-<!--                    </dd>-->
-<!--                    <dd><a onclick="x_admin_show('图片','http://www.baidu.com')"><i class="iconfont">&#xe6a8;</i>图片</a>-->
-<!--                    </dd>-->
-<!--                    <dd><a onclick="x_admin_show('用户','http://www.baidu.com')"><i class="iconfont">&#xe6b8;</i>用户</a>-->
-<!--                    </dd>-->
-<!--                </dl>-->
-<!--            </li>-->
-        </ul>
-        <ul class="layui-nav layui-layout-right right" lay-filter="" >
-            <li class="layui-nav-item"  lay-unselect>
-                 <a href="javascript:;" ><i class="layui-icon" style="position: relative;right: 10px;">&#xe770;</i>华吉锋</a>
-                <dl class="layui-nav-child"> <!-- 二级菜单 -->
-                    <dd><a onclick="x_admin_show('个人信息','http://www.baidu.com')">修改密码</a></dd>
-                    <dd><a onclick="x_admin_show('切换帐号','http://www.baidu.com')">退出系统</a></dd>
                 </dl>
             </li>
             <li  class="layui-nav-item"  hua-show="yes" >
@@ -83,15 +77,18 @@
                         <li><a _href="html/unicode.html"><i class="iconfont"></i><cite>订单统计</cite></a></li>
                         <li><a _href="html/form1.html"><i class="iconfont"></i><cite>渠道统计</cite></a></li>
                         <li><a _href="html/form2.html"><i class="iconfont"></i><cite>还款统计</cite></a></li>
-                        <li><a _href="html/buttons.html"><i class="iconfont"></i><cite>催发统计</cite></a></li>
+                        <li><a _href="html/buttons.html"><i class="iconfont"></i><cite>催收公司统计</cite></a></li>
                         <li><a _href="html/nav.html"><i class="iconfont"></i><cite>财务统计</cite></a></li>
                     </ul>
                 </li>
 
 
                 <li>
-                    <a href="javascript:;"><i class="iconfont">&#xe6f6;</i><cite>用户管理</cite><i
-                            class="iconfont nav_right">&#xe6a7;</i></a>
+                    <a href="javascript:;">
+                        <i class="iconfont">&#xe6e4;</i>
+                        <cite>用户管理</cite>
+                        <i class="iconfont nav_right">&#xe6a7;</i>
+                    </a>
                     <ul class="sub-menu">
                         <li><a _href="html/upload.html"><i class="iconfont"></i><cite>用户列表</cite></a></li>
                         <li><a _href="html/page.html"><i class="iconfont"></i><cite>待审核用户</cite></a></li>
