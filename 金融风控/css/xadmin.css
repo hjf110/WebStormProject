@@ -30,6 +30,17 @@ body {
     min-height: 100%;
 }
 
+.button-style{
+    position: relative;
+    bottom: 2px;
+}
+.long-input{
+    width: 200px;
+}
+.hua-careful{
+    letter-spacing: 5px;
+    color: #FF9797;
+}
 .login-bg {
     background: #eeeeee 0 0 no-repeat;
     background-size: cover;

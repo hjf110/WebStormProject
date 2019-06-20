@@ -1,5 +1,5 @@
-document.write("<script language=javascript src='../fonts/font1/iconfont.js'></script>");
-document.write("<script language=javascript src='../fonts/font1/iconfont.js'></script>");
+
+
 
 var tab_id = 1;
 var tabIdArr = [];
