@@ -10,7 +10,12 @@
     padding: 0px;
     font-family: "microsoft yahei", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-
+.hide{
+    display: none;
+}
+.layui-table-box,.layui-table-cell{
+    text-align: center;
+}
 a {
     text-decoration: none;
 }
@@ -40,6 +45,13 @@ body {
 .hua-careful{
     letter-spacing: 5px;
     color: #FF9797;
+}
+.layui-laypage-limits{
+    position: relative;
+    bottom: 2px;
+}
+.hua-input-line-margin{
+    margin-top: 10px;
 }
 .login-bg {
     background: #eeeeee 0 0 no-repeat;

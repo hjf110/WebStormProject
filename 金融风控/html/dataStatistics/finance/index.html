@@ -2,12 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>订单统计</title>
+    <title>催收公司统计</title>
     <link rel="stylesheet" href="../../../tools/layuiadmin/layui/css/layui.css">
     <link rel="stylesheet" href="../../../tools/layuiadmin/style/admin.css">
     <link rel="stylesheet" href="../../../css/xadmin.css">
-
-
 
 </head>
 <body>
@@ -15,18 +13,27 @@
     <div class="layui-row layui-col-space15">
         <div class="layui-col-md12">
             <div class="layui-card">
-                <div id="app1" class="layui-card-body ">
-                    <form class="layui-form layui-col-space5">
-                        <div class="layui-input-inline layui-show-xs-block long-input" >
-                            <input class="layui-input" placeholder="请选择查询的时间范围"  autocomplete="off" name="start" id="all">
+                <div class="layui-card-body ">
+                    <form class="layui-form layui-col-space5" lay-filter="component-form-element">
+                        <div id="app1" class="layui-input-inline layui-show-xs-block long-input">
+                            <input class="layui-input" placeholder="请选择查询的时间范围" autocomplete="off" name="start"
+                                   id="all">
                         </div>
                         <div class="layui-input-inline layui-show-xs-block">
                             <button class="layui-btn" type="button" lay-filter="sreach" data-type="timeselect">
                                 <i class="layui-icon">&#xe615;</i>查询
                             </button>
                         </div>
+<!--                        <div class="layui-input-inline layui-show-xs-block">-->
+<!--                            <button id="out" class="layui-btn" type="button" data-type="">-->
+<!--                                <i class="layui-icon">&#xe615;</i>导出-->
+<!--                            </button>-->
+<!--                        </div>-->
                     </form>
                 </div>
+                <!--                <div class="layui-card-header ">-->
+                <!--                    <span class="hua-careful">还款明细[注:(新)首次到期借款客户相关数据]</span>-->
+                <!--                </div>-->
                 <div class="layui-card-body">
                     <table id="table_all" lay-filter="table_all"></table>
                 </div>
@@ -38,5 +45,5 @@
 <script src="../../../js/jquery-1.12.4.js"></script>
 <script src="../../../js/vue-2-6-10.js"></script>
 <script src="../../../tools/layuiadmin/layui/layui.js"></script>
-<script src="../../../js/dataStatistics/order/index.js"></script>
+<script src="../../../js/dataStatistics/finance/index.js"></script>
 </html>

@@ -5,59 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f8d41cdd-4e9d-4bc3-9240-f44aa5255865" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/金融风控/html/dataStatistics/channel/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/金融风控/html/dataStatistics/channel/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/金融风控/html/dataStatistics/order/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/金融风控/html/dataStatistics/repayment/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/金融风控/html/dataStatistics/repayment/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/金融风控/js/dataStatistics/channel/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/金融风控/js/dataStatistics/order/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/金融风控/js/dataStatistics/repayment/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/金融风控/js/jquery-1.12.4.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/金融风控/js/vue-2-6-10.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/金融风控/json/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/金融风控/html/dataStatistics/collectionCompany/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/金融风控/html/dataStatistics/finance/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/金融风控/html/loanManage/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/金融风控/html/loanManage/part.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/金融风控/html/productManage/productAdd.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/金融风控/html/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/金融风控/html/userManage/blackList/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/金融风控/html/userManage/refusalOfOrders/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/金融风控/html/userManage/toBeAudited/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/金融风控/html/userManage/userList/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/金融风控/js/dataStatistics/collectionCompany/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/金融风控/js/dataStatistics/finance/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/金融风控/js/loanManage/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/金融风控/js/userManage/blackList/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/金融风控/js/userManage/refusalOfOrders/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/金融风控/js/userManage/toBeAudited/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/金融风控/js/userManage/userList/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/快捷OA后台/libs/bootstrap-table.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/快捷OA后台/libs/bootstrap-table.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/快捷OA后台/plugins/layer/mobile/layer.js" beforeDir="false" afterPath="$PROJECT_DIR$/快捷OA后台/plugins/layer/mobile/layer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/快捷OA微应用/js/dingtalk.open.js" beforeDir="false" afterPath="$PROJECT_DIR$/快捷OA微应用/js/dingtalk.open.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/快捷OA微应用/lc_frame/Layui/lay/modules/mobile.js" beforeDir="false" afterPath="$PROJECT_DIR$/快捷OA微应用/lc_frame/Layui/lay/modules/mobile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/快捷OA微应用/lc_frame/Layui/lay/modules/table.js" beforeDir="false" afterPath="$PROJECT_DIR$/快捷OA微应用/lc_frame/Layui/lay/modules/table.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/快捷OA微应用/lc_frame/Layui/layui.all.js" beforeDir="false" afterPath="$PROJECT_DIR$/快捷OA微应用/lc_frame/Layui/layui.all.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/快捷OA微应用/lc_plugin/layer/mobile/layer.js" beforeDir="false" afterPath="$PROJECT_DIR$/快捷OA微应用/lc_plugin/layer/mobile/layer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/快捷OA微应用/lc_plugin/layerMobile/layer.js" beforeDir="false" afterPath="$PROJECT_DIR$/快捷OA微应用/lc_plugin/layerMobile/layer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/快捷OA微应用/test/dingding.js" beforeDir="false" afterPath="$PROJECT_DIR$/快捷OA微应用/test/dingding.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/快捷储运/js/layer_mobile/layer.js" beforeDir="false" afterPath="$PROJECT_DIR$/快捷储运/js/layer_mobile/layer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/快捷储运/js/layui/lay/modules/mobile.js" beforeDir="false" afterPath="$PROJECT_DIR$/快捷储运/js/layui/lay/modules/mobile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/快捷储运/js/layui/lay/modules/table.js" beforeDir="false" afterPath="$PROJECT_DIR$/快捷储运/js/layui/lay/modules/table.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/快捷储运/js/layui/layui.all.js" beforeDir="false" afterPath="$PROJECT_DIR$/快捷储运/js/layui/layui.all.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/快捷储运/js/layuiadmin/layui/lay/modules/layim.js" beforeDir="false" afterPath="$PROJECT_DIR$/快捷储运/js/layuiadmin/layui/lay/modules/layim.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/快捷储运/js/layuiadmin/layui/lay/modules/mobile.js" beforeDir="false" afterPath="$PROJECT_DIR$/快捷储运/js/layuiadmin/layui/lay/modules/mobile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/快捷储运/js/layuiadmin/layui/lay/modules/table.js" beforeDir="false" afterPath="$PROJECT_DIR$/快捷储运/js/layuiadmin/layui/lay/modules/table.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/快捷储运/js/layuiadmin/layui/layui.all.js" beforeDir="false" afterPath="$PROJECT_DIR$/快捷储运/js/layuiadmin/layui/layui.all.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/快捷储运/layer_mobile/layer.js" beforeDir="false" afterPath="$PROJECT_DIR$/快捷储运/layer_mobile/layer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/快捷储运/layui/lay/modules/mobile.js" beforeDir="false" afterPath="$PROJECT_DIR$/快捷储运/layui/lay/modules/mobile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/快捷储运/layui/lay/modules/table.js" beforeDir="false" afterPath="$PROJECT_DIR$/快捷储运/layui/lay/modules/table.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/快捷储运/layui/layui.all.js" beforeDir="false" afterPath="$PROJECT_DIR$/快捷储运/layui/layui.all.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/快捷储运/layuiadmin/layui/lay/modules/layim.js" beforeDir="false" afterPath="$PROJECT_DIR$/快捷储运/layuiadmin/layui/lay/modules/layim.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/快捷储运/layuiadmin/layui/lay/modules/mobile.js" beforeDir="false" afterPath="$PROJECT_DIR$/快捷储运/layuiadmin/layui/lay/modules/mobile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/快捷储运/layuiadmin/layui/lay/modules/table.js" beforeDir="false" afterPath="$PROJECT_DIR$/快捷储运/layuiadmin/layui/lay/modules/table.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/快捷储运/layuiadmin/layui/layui.all.js" beforeDir="false" afterPath="$PROJECT_DIR$/快捷储运/layuiadmin/layui/layui.all.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/测试项目/lc_frame/Layui/lay/modules/mobile.js" beforeDir="false" afterPath="$PROJECT_DIR$/测试项目/lc_frame/Layui/lay/modules/mobile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/测试项目/lc_frame/Layui/lay/modules/table.js" beforeDir="false" afterPath="$PROJECT_DIR$/测试项目/lc_frame/Layui/lay/modules/table.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/测试项目/lc_frame/Layui/layui.all.js" beforeDir="false" afterPath="$PROJECT_DIR$/测试项目/lc_frame/Layui/layui.all.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/测试项目/lc_plugin/layer/mobile/layer.js" beforeDir="false" afterPath="$PROJECT_DIR$/测试项目/lc_plugin/layer/mobile/layer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/测试项目/lc_plugin/layerMobile/layer.js" beforeDir="false" afterPath="$PROJECT_DIR$/测试项目/lc_plugin/layerMobile/layer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/金融风控/css/xadmin.css" beforeDir="false" afterPath="$PROJECT_DIR$/金融风控/css/xadmin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/金融风控/html/dataStatistics/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/金融风控/html/dataStatistics/order/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/金融风控/html/dataStatistics/order/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/金融风控/html/dataStatistics/order/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/金融风控/html/dataStatistics/repayment/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/金融风控/html/dataStatistics/repayment/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/金融风控/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/金融风控/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/金融风控/js/xadmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/金融风控/js/xadmin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/金融风控/lib/layui/lay/modules/mobile.js" beforeDir="false" afterPath="$PROJECT_DIR$/金融风控/lib/layui/lay/modules/mobile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/金融风控/lib/layui/lay/modules/table.js" beforeDir="false" afterPath="$PROJECT_DIR$/金融风控/lib/layui/lay/modules/table.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/金融风控/lib/layui/layui.all.js" beforeDir="false" afterPath="$PROJECT_DIR$/金融风控/lib/layui/layui.all.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/金融风控/tools/layuiadmin/layui/css/layui.css" beforeDir="false" afterPath="$PROJECT_DIR$/金融风控/tools/layuiadmin/layui/css/layui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/金融风控/tools/layuiadmin/layui/lay/modules/mobile.js" beforeDir="false" afterPath="$PROJECT_DIR$/金融风控/tools/layuiadmin/layui/lay/modules/mobile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/金融风控/tools/layuiadmin/layui/lay/modules/table.js" beforeDir="false" afterPath="$PROJECT_DIR$/金融风控/tools/layuiadmin/layui/lay/modules/table.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/金融风控/tools/layuiadmin/layui/layui.all.js" beforeDir="false" afterPath="$PROJECT_DIR$/金融风控/tools/layuiadmin/layui/layui.all.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/金融风控/js/dataStatistics/channel/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/金融风控/js/dataStatistics/channel/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/金融风控/js/dataStatistics/order/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/金融风控/js/dataStatistics/order/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/金融风控/js/dataStatistics/repayment/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/金融风控/js/dataStatistics/repayment/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -69,65 +41,69 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.33684212">
-      <split-first>
-        <leaf>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/金融风控/css/xadmin.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="381">
-                  <caret line="39" column="12" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="12" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/金融风控/html/dataStatistics/repayment/index.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="425">
-                  <caret line="35" column="45" lean-forward="true" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/金融风控/index.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="159">
-                  <caret line="78" column="78" selection-start-line="78" selection-start-column="78" selection-end-line="78" selection-end-column="78" />
-                  <folding>
-                    <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#i#0;n#a#0;n#li#0;n#ul#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/金融风控/html/dataStatistics/repayment/tsconfig.json">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="95">
-                  <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/金融风控/js/dataStatistics/repayment/index.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="452">
-                  <caret line="188" column="17" lean-forward="true" selection-start-line="188" selection-start-column="17" selection-end-line="188" selection-end-column="17" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/金融风控/css/xadmin.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="290">
+              <caret line="61" column="1" selection-start-line="61" selection-start-column="1" selection-end-line="61" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/金融风控/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1412">
+              <caret line="110" lean-forward="true" selection-start-line="110" selection-end-line="110" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#a#0;n#li#0;n#ul#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/金融风控/html/loanManage/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="674">
+              <caret line="138" column="63" selection-start-line="138" selection-start-column="54" selection-end-line="138" selection-end-column="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/金融风控/html/tsconfig.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1872">
+              <caret line="194" column="13" lean-forward="true" selection-start-line="194" selection-start-column="13" selection-end-line="194" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/金融风控/html/loanManage/part.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="21" selection-end-column="12" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/金融风控/html/productManage/productAdd.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="688">
+              <caret line="208" column="13" selection-start-line="208" selection-start-column="13" selection-end-line="208" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -179,21 +155,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/快捷储运/back/login_ys.html" />
-        <option value="$PROJECT_DIR$/快捷储运/back/transport_car_manage_add.html" />
-        <option value="$PROJECT_DIR$/快捷储运/a_Pad_login.html" />
-        <option value="$PROJECT_DIR$/快捷储运/css/daying.css" />
-        <option value="$PROJECT_DIR$/快捷储运/back/PAD_Car_look.html" />
-        <option value="$PROJECT_DIR$/快捷储运/back/get_Car_in_add.html" />
-        <option value="$PROJECT_DIR$/快捷储运/back/PAD_Car_info_list.html" />
-        <option value="$PROJECT_DIR$/快捷储运/back/transport_car_manage.html" />
-        <option value="$PROJECT_DIR$/快捷储运/back/transport_car_manage_Mot.html" />
-        <option value="$PROJECT_DIR$/快捷储运/pda/BindCarOk.html" />
-        <option value="$PROJECT_DIR$/快捷储运/pda/index.html" />
-        <option value="$PROJECT_DIR$/快捷储运/pda/GetCar.html" />
-        <option value="$PROJECT_DIR$/快捷储运/js/common/api.js" />
-        <option value="$PROJECT_DIR$/快捷储运/pda/Ok_PDI_list.html" />
-        <option value="$PROJECT_DIR$/快捷储运/pda/PDICar.html" />
         <option value="$PROJECT_DIR$/快捷储运/pda/UntyingCar_list.html" />
         <option value="$PROJECT_DIR$/快捷储运/pda/index_Rw.html" />
         <option value="$PROJECT_DIR$/快捷储运/pda/PDI_index.html" />
@@ -220,22 +181,37 @@
         <option value="$PROJECT_DIR$/金融风控/js/xadmin.js" />
         <option value="$PROJECT_DIR$/金融风控/tools/layuiadmin/layui/css/layui.css" />
         <option value="$PROJECT_DIR$/金融风控/json/tsconfig.json" />
-        <option value="$PROJECT_DIR$/金融风控/js/dataStatistics/order/index.js" />
-        <option value="$PROJECT_DIR$/金融风控/html/dataStatistics/order/index.html" />
         <option value="$PROJECT_DIR$/金融风控/html/dataStatistics/channel/index.html" />
-        <option value="$PROJECT_DIR$/金融风控/index.html" />
         <option value="$PROJECT_DIR$/金融风控/js/vue-2-6-10.js" />
-        <option value="$PROJECT_DIR$/金融风控/css/xadmin.css" />
-        <option value="$PROJECT_DIR$/金融风控/html/dataStatistics/repayment/index.html" />
-        <option value="$PROJECT_DIR$/金融风控/js/dataStatistics/channel/index.js" />
-        <option value="$PROJECT_DIR$/金融风控/js/dataStatistics/repayment/index.js" />
         <option value="$PROJECT_DIR$/金融风控/html/dataStatistics/repayment/tsconfig.json" />
+        <option value="$PROJECT_DIR$/金融风控/js/dataStatistics/repayment/index.js" />
+        <option value="$PROJECT_DIR$/金融风控/js/dataStatistics/order/index.js" />
+        <option value="$PROJECT_DIR$/金融风控/js/dataStatistics/channel/index.js" />
+        <option value="$PROJECT_DIR$/金融风控/html/dataStatistics/order/index.html" />
+        <option value="$PROJECT_DIR$/金融风控/html/dataStatistics/repayment/index.html" />
+        <option value="$PROJECT_DIR$/金融风控/html/dataStatistics/collectionCompany/index.html" />
+        <option value="$PROJECT_DIR$/金融风控/html/dataStatistics/finance/index.html" />
+        <option value="$PROJECT_DIR$/金融风控/js/dataStatistics/collectionCompany/index.js" />
+        <option value="$PROJECT_DIR$/金融风控/js/dataStatistics/finance/index.js" />
+        <option value="$PROJECT_DIR$/金融风控/css/xadmin.css" />
+        <option value="$PROJECT_DIR$/金融风控/html/userManage/userList/index.html" />
+        <option value="$PROJECT_DIR$/金融风控/js/userManage/userList/index.js" />
+        <option value="$PROJECT_DIR$/金融风控/js/userManage/toBeAudited/index.js" />
+        <option value="$PROJECT_DIR$/金融风控/html/userManage/toBeAudited/index.html" />
+        <option value="$PROJECT_DIR$/金融风控/html/userManage/refusalOfOrders/index.html" />
+        <option value="$PROJECT_DIR$/金融风控/html/userManage/blackList/index.html" />
+        <option value="$PROJECT_DIR$/金融风控/html/tsconfig.json" />
+        <option value="$PROJECT_DIR$/金融风控/html/loanManage/index.html" />
+        <option value="$PROJECT_DIR$/金融风控/js/loanManage/index.js" />
+        <option value="$PROJECT_DIR$/金融风控/html/loanManage/part.html" />
+        <option value="$PROJECT_DIR$/金融风控/index.html" />
+        <option value="$PROJECT_DIR$/金融风控/html/productManage/productAdd.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="-390" />
+    <option name="y" value="59" />
     <option name="width" value="1364" />
     <option name="height" value="756" />
   </component>
@@ -270,28 +246,7 @@
               <item name="WebStormProject" type="462c0819:PsiDirectoryNode" />
               <item name="金融风控" type="462c0819:PsiDirectoryNode" />
               <item name="html" type="462c0819:PsiDirectoryNode" />
-              <item name="dataStatistics" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WebStormProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebStormProject" type="462c0819:PsiDirectoryNode" />
-              <item name="金融风控" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WebStormProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebStormProject" type="462c0819:PsiDirectoryNode" />
-              <item name="金融风控" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="dataStatistics" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WebStormProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebStormProject" type="462c0819:PsiDirectoryNode" />
-              <item name="金融风控" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="dataStatistics" type="462c0819:PsiDirectoryNode" />
-              <item name="repayment" type="462c0819:PsiDirectoryNode" />
+              <item name="productManage" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -306,21 +261,21 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/金融风控/js/dataStatistics/repayment" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/金融风控/html/productManage" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\WebStormProject\金融风控\html\dataStatistics\order" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\WebStormProject\金融风控\js\dataStatistics\repayment" />
-      <recent name="D:\WebStormProject\金融风控\html\dataStatistics\repayment" />
-      <recent name="D:\WebStormProject\金融风控\js\dataStatistics\channel" />
-      <recent name="D:\WebStormProject\金融风控\html\dataStatistics\channel" />
+      <recent name="D:\WebStormProject\金融风控\html\productManage" />
+      <recent name="D:\WebStormProject\金融风控\html\loanManage" />
+      <recent name="D:\WebStormProject\金融风控\js\loanManage" />
+      <recent name="D:\WebStormProject\金融风控\js\userManage\blackList" />
+      <recent name="D:\WebStormProject\金融风控\html\userManage\blackList" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\WebStormProject\金融风控\html\dataStatistics\order" />
     </key>
   </component>
@@ -415,7 +370,8 @@
       <workItem from="1560821338329" duration="24517000" />
       <workItem from="1560907933427" duration="20866000" />
       <workItem from="1560994669950" duration="3762000" />
-      <workItem from="1560999049087" duration="22886000" />
+      <workItem from="1560999049087" duration="23292000" />
+      <workItem from="1561081253760" duration="22321000" />
     </task>
     <task id="LOCAL-00001" summary="无聊">
       <created>1561008261232</created>
@@ -424,11 +380,18 @@
       <option name="project" value="LOCAL" />
       <updated>1561008261232</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="新增了一些页面">
+      <created>1561025363573</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1561025363573</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="599778000" />
+    <option name="totallyTimeSpent" value="622505000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -477,83 +440,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="无聊" />
-    <option name="LAST_COMMIT_MESSAGE" value="无聊" />
+    <MESSAGE value="新增了一些页面" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增了一些页面" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/快捷OA微应用/html/dd_index.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/快捷OA微应用/html/hotelbx.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/快捷OA微应用/html/index.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/快捷OA微应用/html/jczxsg_index.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/快捷OA微应用/html/sh_index.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/快捷OA微应用/html/sj_index.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/快捷OA微应用/html/sp_index.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/快捷OA微应用/html/tj_index.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/快捷OA微应用/html/ureadeclare.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/快捷OA微应用/html/xcjcwtfk_index.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/快捷OA微应用/html/xcjczxsg_index.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/快捷OA微应用/html/zcjtsg_index.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/快捷OA微应用/new/index.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/快捷OA微应用/new/jczxsg_index.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/快捷OA微应用/html/pontage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="45" column="38" lean-forward="true" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/快捷储运/pda/a_Pda_login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2884" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/快捷储运/pda/BindCar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="179" column="49" lean-forward="true" selection-start-line="179" selection-start-column="49" selection-end-line="179" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/金融风控/js/jquery.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="111" selection-start-line="3" selection-start-column="111" selection-end-line="3" selection-end-column="111" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/金融风控/fonts/font1/demo.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/快捷储运/back/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
@@ -627,29 +517,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/金融风控/html/welcome.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="27" column="66" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="66" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#cite#0;n#p#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#cite#0;n#p#0;n#a#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#cite#0;n#p#0;n#a#0;n#li#2;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#cite#0;n#p#0;n#a#0;n#li#3;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/金融风控/fonts/font1/demo_index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="51" column="26" selection-start-line="51" selection-start-column="26" selection-end-line="51" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/html/welcome.html" />
     <entry file="file://$PROJECT_DIR$/金融风控/lib/layui/css/layui.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="258">
@@ -662,9 +530,231 @@
         <state relative-caret-position="-177945" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/js/jquery-1.12.4.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/js/xcity.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/tools/layuiadmin/layui/css/layui.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="176" column="1" selection-start-line="176" selection-start-column="1" selection-end-line="176" selection-end-column="1" />
+          <folding>
+            <element signature="e#79526#79665#2" expanded="true" />
+            <element signature="e#81570#81709#2" expanded="true" />
+            <element signature="e#82419#82558#2" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/tools/layuiadmin/layui/layui.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/json/tsconfig.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/js/vue-2-6-10.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="9054" column="55" selection-start-line="9054" selection-start-column="55" selection-end-line="9054" selection-end-column="55" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/html/dataStatistics/repayment/tsconfig.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/js/dataStatistics/order/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="128" column="25" selection-start-line="128" selection-start-column="25" selection-end-line="128" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/html/dataStatistics/order/tsconfig.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/js/dataStatistics/repayment/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-77">
+          <caret line="55" column="35" lean-forward="true" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/js/dataStatistics/channel/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="138" column="13" lean-forward="true" selection-start-line="138" selection-start-column="13" selection-end-line="138" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/html/dataStatistics/order/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="20" column="98" selection-start-line="20" selection-start-column="98" selection-end-line="20" selection-end-column="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/html/dataStatistics/channel/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="739">
+          <caret line="43" column="53" selection-start-line="43" selection-start-column="53" selection-end-line="43" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/js/dataStatistics/collectionCompany/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/html/dataStatistics/repayment/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="739">
+          <caret line="46" column="49" selection-start-line="46" selection-start-column="49" selection-end-line="46" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/快捷储运/back/customer_unit_library.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6574">
+          <caret line="80" column="16" lean-forward="true" selection-start-line="80" selection-start-column="16" selection-end-line="80" selection-end-column="16" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/快捷储运/back/customer_unit_library_add.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/js/xadmin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="36" column="80" lean-forward="true" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/html/dataStatistics/collectionCompany/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="517">
+          <caret line="50" column="44" lean-forward="true" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/html/dataStatistics/finance/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="16" column="98" selection-start-line="16" selection-start-column="98" selection-end-line="16" selection-end-column="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/js/dataStatistics/collectionCompany/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4">
+          <caret line="137" column="21" selection-start-line="137" selection-start-column="21" selection-end-line="137" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/js/dataStatistics/finance/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="74" column="24" selection-start-line="74" selection-start-column="24" selection-end-line="74" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/fonts/font1/demo_index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="59" column="10" lean-forward="true" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/js/userManage/userList/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2425">
+          <caret line="89" column="26" lean-forward="true" selection-start-line="89" selection-start-column="26" selection-end-line="89" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/html/userManage/userList/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="45" column="13" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/js/userManage/refusalOfOrders/index.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/js/userManage/blackList/index.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/js/userManage/toBeAudited/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="602">
+          <caret line="185" column="28" selection-start-line="185" selection-start-column="28" selection-end-line="185" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/html/userManage/toBeAudited/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="732">
+          <caret line="144" column="54" selection-start-line="144" selection-start-column="54" selection-end-line="144" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/html/userManage/refusalOfOrders/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="71" lean-forward="true" selection-start-line="14" selection-start-column="71" selection-end-line="14" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/html/userManage/blackList/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="19" column="85" selection-start-line="19" selection-start-column="85" selection-end-line="19" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/css/xadmin.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="61" column="1" selection-start-line="61" selection-start-column="1" selection-end-line="61" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/html/loanManage/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="674">
+          <caret line="138" column="63" selection-start-line="138" selection-start-column="54" selection-end-line="138" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/金融风控/js/loanManage/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="19" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/金融风控/html/console.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1772">
+        <state relative-caret-position="858">
           <caret line="264" column="62" selection-start-line="264" selection-start-column="62" selection-end-line="264" selection-end-column="62" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -698,104 +788,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/金融风控/js/jquery-1.12.4.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/金融风控/js/xcity.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/金融风控/js/xadmin.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/金融风控/tools/layuiadmin/layui/css/layui.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="176" column="1" selection-start-line="176" selection-start-column="1" selection-end-line="176" selection-end-column="1" />
-          <folding>
-            <element signature="e#79526#79665#2" expanded="true" />
-            <element signature="e#81570#81709#2" expanded="true" />
-            <element signature="e#82419#82558#2" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/金融风控/tools/layuiadmin/layui/layui.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/金融风控/html/dataStatistics/order/tsconfig.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/金融风控/json/tsconfig.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/金融风控/js/dataStatistics/order/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="910">
-          <caret line="304" column="50" lean-forward="true" selection-start-line="303" selection-start-column="15" selection-end-line="304" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/快捷储运/back/customer_unit_library.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="890">
-          <caret line="120" lean-forward="true" selection-start-line="120" selection-end-line="555" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/金融风控/html/dataStatistics/order/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="39" column="49" selection-start-line="39" selection-start-column="49" selection-end-line="39" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/金融风控/js/vue-2-6-10.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="9054" column="55" selection-start-line="9054" selection-start-column="55" selection-end-line="9054" selection-end-column="55" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/金融风控/html/dataStatistics/channel/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="23" column="117" selection-start-line="23" selection-start-column="117" selection-end-line="23" selection-end-column="117" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/金融风控/css/xadmin.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="39" column="12" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/金融风控/js/dataStatistics/channel/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="41" column="9" lean-forward="true" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
-          <folding>
-            <element signature="e#1627#4442#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/金融风控/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="78" column="78" selection-start-line="78" selection-start-column="78" selection-end-line="78" selection-end-column="78" />
+        <state relative-caret-position="1412">
+          <caret line="110" lean-forward="true" selection-start-line="110" selection-end-line="110" />
           <folding>
             <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#i#0;n#a#0;n#li#0;n#ul#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -803,24 +799,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/金融风控/html/dataStatistics/repayment/index.html">
+    <entry file="file://$PROJECT_DIR$/金融风控/html/tsconfig.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="35" column="45" lean-forward="true" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
+        <state relative-caret-position="1872">
+          <caret line="194" column="13" lean-forward="true" selection-start-line="194" selection-start-column="13" selection-end-line="194" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/金融风控/js/dataStatistics/repayment/index.js">
+    <entry file="file://$PROJECT_DIR$/金融风控/html/loanManage/part.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="188" column="17" lean-forward="true" selection-start-line="188" selection-start-column="17" selection-end-line="188" selection-end-column="17" />
+        <state relative-caret-position="216">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="21" selection-end-column="12" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/金融风控/html/dataStatistics/repayment/tsconfig.json">
+    <entry file="file://$PROJECT_DIR$/金融风控/html/productManage/productAdd.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+        <state relative-caret-position="688">
+          <caret line="208" column="13" selection-start-line="208" selection-start-column="13" selection-end-line="208" selection-end-column="13" />
         </state>
       </provider>
     </entry>

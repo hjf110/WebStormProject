@@ -53,7 +53,7 @@ layui.use(['table', 'laydate'], function () {
     table.render({
         elem: '#table_all',
         id: 'table_all',
-        url: "tsconfig.json",
+        url: "../../tsconfig.json",
         // parseData: function (res) {
         //     console.log(res);
         //     return {

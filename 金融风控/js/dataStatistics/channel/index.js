@@ -60,7 +60,7 @@ layui.use(['table', 'laydate'], function () {
     table.render({
         elem: '#table_all',
         id: 'table_all',
-        url: "tsconfig.json",
+        url: "../../tsconfig.json",
         // parseData: function (res) {
         //     console.log(res);
         //     return {
@@ -80,65 +80,65 @@ layui.use(['table', 'laydate'], function () {
                 //fixed : 'left'
             }
             , {
-                field: 'id',
+                field: 'a',
                 title: '序号',
                 //style : 'height:60px;width:60px;line-height:60px!important;',
                 //fixed : 'left',
                 sort: true
             }
             , {
-                field: 'full_name',
+                field: 'b',
                 title: '渠道'
                 //style : 'height:60px;width:60px;line-height:60px!important;',
                 // templet: '<div><img src="${pageContext.request.contextPath}{{d.image}}"></div>'
             }
             , {
-                field: 'contacts',
+                field: 'c',
                 title: '注册量'
                 // ,edit: 'text'
             }
             , {
-                field: 'phone',
+                field: 'd',
                 title: '申请量'
                 //,templet : '<div>{{d.ps1Name}}>{{d.ps2Name}}</div>',
             }
             , {
-                field: 'create_time_str',
+                field: 'e',
                 title: '通过量',
                 sort: true
             }
             , {
-                field: 'create_time_str',
+                field: 'f',
                 title: '放款量',
                 sort: true
             }
             , {
-                field: 'create_time_str',
+                field: 'g',
                 title: '坏账量',
                 sort: true
             }
             , {
-                field: 'create_time_str',
+                field: 'h',
                 title: '申请率',
                 sort: true
             }
             , {
-                field: 'create_time_str',
+                field: 'i',
                 title: '通过率',
                 sort: true
             }
             , {
-                field: 'create_time_str',
+                field: 'j',
                 title: '放款率',
                 sort: true
             }
             , {
-                field: 'create_time_str',
+                field: 'k',
                 title: '累计逾期率',
                 sort: true
             }
             , {
-                field: 'create_time_str',
+                field: 'l',
                 title: '累计坏账率',
                 sort: true
             }

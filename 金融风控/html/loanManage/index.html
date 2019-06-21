@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>催收公司统计</title>
+    <link rel="stylesheet" href="../../tools/layuiadmin/layui/css/layui.css">
+    <link rel="stylesheet" href="../../tools/layuiadmin/style/admin.css">
+    <link rel="stylesheet" href="../../css/xadmin.css">
+
+</head>
+<body>
+
+<!--列工具条-->
+<div id="toolbar" class="hide">
+    <button class="layui-btn layui-btn-xs"  type="button">还款</button>
+    <button class="layui-btn layui-btn-xs  layui-btn-danger"  type="button">展期</button>
+    <button class="layui-btn layui-btn-xs layui-btn-warm"  type="button">豁免</button>
+    <button class="layui-btn layui-btn-xs  layui-btn-primary"  type="button" lay-event="part">部分还款</button>
+</div>
+<div id="zt" class="hide">
+    {{# if(d.t ==0){ }}
+    <button class="layui-btn layui-btn-xs  " type="button">已还</button>
+    {{# } else if(d.t ==1) { }}
+    <button class="layui-btn layui-btn-xs  layui-btn-danger" type="button">未还</button>
+    {{# }else{ }}
+    <button class="layui-btn layui-btn-xs  layui-btn-normal" type="button">部分</button>
+    {{# } }}
+</div>
+<div id="sfyq" class="hide">
+    {{# if(d.u ==1){ }}
+    <button class="layui-btn layui-btn-xs  layui-btn-normal" type="button">未逾期</button>
+    {{# } else { }}
+    <button class="layui-btn layui-btn-xs  layui-btn-danger" type="button">逾期</button>
+    {{# } }}
+</div>
+<div id="sfzq" class="hide">
+    {{# if(d.v ==1){ }}
+    <button class="layui-btn layui-btn-xs  layui-btn-normal" type="button">展期</button>
+    {{# } else { }}
+    <button class="layui-btn layui-btn-xs  layui-btn-danger" type="button">未展期</button>
+    {{# } }}
+</div>
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <form class="layui-form layui-col-space5" lay-filter="component-form-element">
+                    <div class="layui-card-body ">
+                        <div id="app2" class="layui-input-inline layui-show-xs-block ">
+                            <div class="layui-input-inline layui-show-xs-block long-input hua-input-line-margin">
+                                <input class="layui-input" placeholder="请输入要查询的姓名" autocomplete="off" v-model="name">
+                            </div>
+                            <div class="layui-input-inline layui-show-xs-block long-input hua-input-line-margin">
+                                <input class="layui-input" placeholder="请输入要查询的手机号" autocomplete="off" v-model="phone">
+                            </div>
+                            <div class="layui-input-inline layui-show-xs-block long-input hua-input-line-margin">
+                                <input class="layui-input" placeholder="请输入要查询的身份证号" autocomplete="off"
+                                       v-model="cardId">
+                            </div>
+                            <div class="layui-input-inline layui-show-xs-block long-input hua-input-line-margin">
+                                <input class="layui-input" placeholder="输入查询借款次数(总)" autocomplete="off"  v-model="loanNum" >
+                            </div>
+                            <div class="layui-input-inline layui-show-xs-block long-input hua-input-line-margin">
+                                <input class="layui-input" placeholder="输入查询借款次数(不含展期)" autocomplete="off"  v-model="loanNumNoZhan" >
+                            </div>
+                            <div class="layui-input-inline layui-show-xs-block long-input hua-input-line-margin">
+                                <input class="layui-input" placeholder="输入查询展期借款次数" autocomplete="off"  v-model="loanNumZhan" >
+                            </div>
+                        </div>
+                        <div class="layui-input-inline layui-show-xs-block long-input hua-input-line-margin ">
+                            <select name="city" lay-verify="required">
+                                <option value="">请选择还款状态</option>
+                                <option value="">全部</option>
+                                <option value="">已还</option>
+                                <option value="0">未还</option>
+                                <option value="1">部分还</option>
+                            </select>
+                        </div>
+                        <div class="layui-input-inline layui-show-xs-block long-input hua-input-line-margin ">
+                            <select name="city" lay-verify="required">
+                                <option value="">请选择展期状态</option>
+                                <option value="0">全部</option>
+                                <option value="1">展期</option>
+                                <option value="2">未展期</option>
+                            </select>
+                        </div>
+                        <div class="layui-input-inline layui-show-xs-block long-input hua-input-line-margin ">
+                            <select name="city" lay-verify="required">
+                                <option value="">请选择逾期状态</option>
+                                <option value="">全部</option>
+                                <option value="0">逾期</option>
+                                <option value="1">未逾期</option>
+                            </select>
+                        </div>
+                        <div class="layui-input-inline layui-show-xs-block long-input hua-input-line-margin ">
+                            <select name="city" lay-verify="required">
+                                <option value="">请选择渠道</option>
+                                <option value="">渠道1</option>
+                                <option value="0">渠道2</option>
+                                <option value="1">渠道3</option>
+                            </select>
+                        </div>
+                        <div id="app1" class="layui-input-inline layui-show-xs-block">
+                            <div class="layui-input-inline layui-show-xs-block long-input hua-input-line-margin">
+                                <input class="layui-input" placeholder="按应还时间范围查询" autocomplete="off" name="start"
+                                       id="all">
+                            </div>
+                            <div class="layui-input-inline layui-show-xs-block long-input hua-input-line-margin">
+                                <input class="layui-input" placeholder="按实还时间范围查询" autocomplete="off" name="start"
+                                       id="all2">
+                            </div>
+                        </div>
+                        <div class="layui-input-inline layui-show-xs-block hua-input-line-margin ">
+                            <button class="layui-btn" type="button" lay-filter="sreach" data-type="timeselect">
+                                <i class="layui-icon">&#xe615;</i>查询
+                            </button>
+                        </div>
+                        <div class="layui-input-inline layui-show-xs-block hua-input-line-margin">
+                            <input class="layui-btn layui-btn-primary" lay-filter="sreach" type="reset" value="重置"/>
+                        </div>
+
+                    </div>
+
+
+
+                    <!--                        <div class="layui-input-inline layui-show-xs-block">-->
+                    <!--                            <button id="out" class="layui-btn" type="button" data-type="">-->
+                    <!--                                <i class="layui-icon">&#xe615;</i>导出-->
+                    <!--                            </button>-->
+                    <!--                        </div>-->
+
+
+                    <!--                <div class="layui-card-header ">-->
+                    <!--                    <span class="hua-careful">还款明细[注:(新)首次到期借款客户相关数据]</span>-->
+                    <!--                </div>-->
+                </form>
+                <div class="layui-card-body">
+                    <table id="table_all" lay-filter="table_all"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../js/jquery-1.12.4.js"></script>
+<script src="../../js/vue-2-6-10.js"></script>
+<script src="../../tools/layuiadmin/layui/layui.js"></script>
+<script src="../../js/loanManage/index.js"></script>
+</html>

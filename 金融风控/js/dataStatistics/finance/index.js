@@ -1,27 +1,22 @@
 var table;
 
 
-
-
-
-layui.use(['table', 'laydate'], function () {
+layui.use(['table', 'laydate', 'form','jquery'], function () {
     table = layui.table;
     var form = layui.form,
-        laydate = layui.laydate;
+        laydate = layui.laydate,
+            $ = layui.jquery;
 
-
+    form.render(null,'component-form-element');
     var app1 = new Vue({
         el: "#app1",
         data: {
-            start: "",
-            end: ""
+            start: "",//开始日期
+            end: "",//结束日期
+            channel: ""//搜索的渠道
         },
-        methods: {
-
-        }
+        methods: {}
     });
-
-
 
 
     //日期选择后的糊掉
@@ -37,6 +32,7 @@ layui.use(['table', 'laydate'], function () {
 
             console.log(app1.start);
             console.log(app1.end);
+            console.log(app1.channel);
         }
     });
 
@@ -75,60 +71,89 @@ layui.use(['table', 'laydate'], function () {
         cols: [[
             {
                 type: 'checkbox',
-                //fixed : 'left'
+                fixed: 'left',
+                width:80
             }
             , {
                 field: 'a',
                 title: '序号',
+                width: 80,
                 //style : 'height:60px;width:60px;line-height:60px!important;',
-                //fixed : 'left',
+                fixed: 'left',
                 sort: true
             }
             , {
                 field: 'b',
-                title: '日期'
+                title: '日期',
+                width: 80
                 //style : 'height:60px;width:60px;line-height:60px!important;',
                 // templet: '<div><img src="${pageContext.request.contextPath}{{d.image}}"></div>'
             }
             , {
                 field: 'c',
-                title: '注册量'
+                title: '放款金额(总)',
+                width: 110
                 // ,edit: 'text'
             }
             , {
                 field: 'd',
-                title: '申请量'
+                title: '实际放款金额(总)',
+                width: 150
                 //,templet : '<div>{{d.ps1Name}}>{{d.ps2Name}}</div>',
             }
             , {
                 field: 'e',
-                title: '通过量',
-                sort: true
+                title: '手续费(总)',
+                width: 100
+                // sort: true
             }
             , {
                 field: 'f',
-                title: '通过率',
-                sort: true
+                title: '首期放款单数',
+                width: 150
+                // sort: true
             }
             , {
                 field: 'g',
-                title: '放款量',
-                sort: true
+                title: '首期放款金额',
+                width: 150
+                // sort: true
             }
             , {
                 field: 'h',
-                title: '放款成功率',
-                sort: true
+                title: '首期放款本金',
+                width: 150
+                // sort: true
             }
             , {
-                field: 'i',
-                title: '借款金额',
-                sort: true
+                field: 'h',
+                title: '首期放款手续费',
+                width: 150
+                // sort: true
             }
             , {
-                field: 'j',
-                title: '实际放款金额',
-                sort: true
+                field: 'h',
+                title: '展期单数',
+                width: 120
+                // sort: true
+            }
+            , {
+                field: 'h',
+                title: '展期金额',
+                width: 120
+                // sort: true
+            }
+            , {
+                field: 'h',
+                title: '展期本金',
+                width: 120
+                // sort: true
+            }
+            , {
+                field: 'h',
+                title: '展期费',
+                width: 120
+                // sort: true
             }
             // , {
             //     title: '操作',
@@ -139,10 +164,20 @@ layui.use(['table', 'laydate'], function () {
             // }
         ]],
         page: true,
-        limit: 20,
-        limits: [20, 40, 60, 80, 100],
-        toolbar: ''
+        limit: 3,
+        limits: [6, 40, 60, 80, 100],
+        toolbar: true
     });
+
+    setTimeout(function () {
+
+        // $("#out").on("click",function () {
+        //     console.log(12321321);
+           var dd= $(".layui-table-tool-self").children(":first").next();
+        // });
+
+        layer.tips('这是导出按钮', dd, {tips: [3, '#42B8F1'], tipsMore: true});
+    },1000);
 
 
     //监听头工具事件

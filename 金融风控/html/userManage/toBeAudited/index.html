@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>催收公司统计</title>
+    <link rel="stylesheet" href="../../../tools/layuiadmin/layui/css/layui.css">
+    <link rel="stylesheet" href="../../../tools/layuiadmin/style/admin.css">
+    <link rel="stylesheet" href="../../../css/xadmin.css">
+
+</head>
+<body>
+
+<!--列工具条-->
+<div id="toolbar" class="hide">
+    <button class="layui-btn layui-btn-xs"  type="button">查看资料</button>
+    <button class="layui-btn layui-btn-xs  layui-btn-danger"  type="button">加入黑名单</button>
+    <button class="layui-btn layui-btn-xs layui-btn-warm"  type="button">放款</button>
+    <button class="layui-btn layui-btn-xs  layui-btn-primary"  type="button">拒绝</button>
+</div>
+<div id="sm" class="hide">
+    {{#  if(d.r ==1){ }}
+    <button class="layui-btn layui-btn-xs  layui-btn-normal"  type="button">以认证</button>
+    {{#  } else { }}
+    <button class="layui-btn layui-btn-xs  layui-btn-danger"  type="button">未认证</button>
+    {{#  } }}
+</div>
+<div id="yhk" class="hide">
+    {{#  if(d.s ==1){ }}
+    <button class="layui-btn layui-btn-xs  layui-btn-normal"  type="button">以认证</button>
+    {{#  } else { }}
+    <button class="layui-btn layui-btn-xs  layui-btn-danger"  type="button">未认证</button>
+    {{#  } }}
+</div>
+<div id="yys" class="hide">
+    {{#  if(d.t ==1){ }}
+    <button class="layui-btn layui-btn-xs  layui-btn-normal"  type="button">以认证</button>
+    {{#  } else { }}
+    <button class="layui-btn layui-btn-xs  layui-btn-danger"  type="button">未认证</button>
+    {{#  } }}
+</div>
+<div id="grxx" class="hide">
+    {{#  if(d.v ==1){ }}
+    <button class="layui-btn layui-btn-xs  layui-btn-normal"  type="button">已申请</button>
+    {{#  } else { }}
+    <button class="layui-btn layui-btn-xs  layui-btn-danger"  type="button">未申请</button>
+    {{#  } }}
+</div>
+<div id="sfsq" class="hide">
+    {{#  if(d.u ==1){ }}
+    <button class="layui-btn layui-btn-xs  layui-btn-normal"  type="button">以认证</button>
+    {{#  } else { }}
+    <button class="layui-btn layui-btn-xs  layui-btn-danger"  type="button">未认证</button>
+    {{#  } }}
+</div>
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <form class="layui-form layui-col-space5" lay-filter="component-form-element">
+                    <div class="layui-card-body ">
+                        <div id="app2" class="layui-input-inline layui-show-xs-block ">
+                            <div class="layui-input-inline layui-show-xs-block long-input hua-input-line-margin">
+                                <input class="layui-input" placeholder="请输入要查询的姓名" autocomplete="off" v-model="name">
+                            </div>
+                            <div class="layui-input-inline layui-show-xs-block long-input hua-input-line-margin">
+                                <input class="layui-input" placeholder="请输入要查询的手机号" autocomplete="off" v-model="phone">
+                            </div>
+                            <div class="layui-input-inline layui-show-xs-block long-input hua-input-line-margin">
+                                <input class="layui-input" placeholder="请输入要查询的身份证号" autocomplete="off"
+                                       v-model="cardId">
+                            </div>
+                        </div>
+
+                        <div class="layui-input-inline layui-show-xs-block long-input hua-input-line-margin ">
+                            <select name="city" lay-verify="required">
+                                <option value="">请选择注册的客户端</option>
+                                <option value="">全部</option>
+                                <option value="0">ios</option>
+                                <option value="1">Android</option>
+                            </select>
+                        </div>
+                        <div class="layui-input-inline layui-show-xs-block long-input hua-input-line-margin ">
+                            <select name="city" lay-verify="required">
+                                <option value="">请选择是否申请</option>
+                                <option value="0">全部</option>
+                                <option value="1">是</option>
+                                <option value="2">否</option>
+                            </select>
+                        </div>
+                        <div class="layui-input-inline layui-show-xs-block long-input hua-input-line-margin ">
+                            <select name="city" lay-verify="required">
+                                <option value="">请选择查询的渠道</option>
+                                <option value="">渠道1</option>
+                                <option value="0">渠道2</option>
+                                <option value="1">渠道3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-card-body ">
+                        <div id="app1" class="layui-input-inline layui-show-xs-block long-input hua-input-line-margin">
+                            <input class="layui-input" placeholder="请选择查询的时间范围" autocomplete="off" name="start"  id="all">
+                        </div>
+                        <div class="layui-input-inline layui-show-xs-block ">
+                            <div class="layui-input-inline layui-show-xs-block long-input hua-input-line-margin">
+                                <input class="layui-input" placeholder="输入查询分值最小区间" autocomplete="off" name="start">
+                            </div>
+                            <div class="layui-input-inline layui-show-xs-block hua-input-line-margin ">
+                                至
+                            </div>
+                            <div class="layui-input-inline layui-show-xs-block long-input hua-input-line-margin">
+                                <input class="layui-input" placeholder="输入查询分值最大区间" autocomplete="off" name="start" >
+                            </div>
+                        </div>
+                        <div class="layui-input-inline layui-show-xs-block hua-input-line-margin ">
+                            <button class="layui-btn" type="button" lay-filter="sreach" data-type="timeselect">
+                                <i class="layui-icon">&#xe615;</i>查询
+                            </button>
+                        </div>
+                        <div class="layui-input-inline layui-show-xs-block hua-input-line-margin">
+                            <input class="layui-btn layui-btn-primary"  lay-filter="sreach" type="reset" value="重置"/>
+                        </div>
+                        <!--                        <div class="layui-input-inline layui-show-xs-block">-->
+                        <!--                            <button id="out" class="layui-btn" type="button" data-type="">-->
+                        <!--                                <i class="layui-icon">&#xe615;</i>导出-->
+                        <!--                            </button>-->
+                        <!--                        </div>-->
+
+                    </div>
+                    <!--                <div class="layui-card-header ">-->
+                    <!--                    <span class="hua-careful">还款明细[注:(新)首次到期借款客户相关数据]</span>-->
+                    <!--                </div>-->
+                </form>
+                <div class="layui-card-body">
+                    <table id="table_all" lay-filter="table_all"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../../js/jquery-1.12.4.js"></script>
+<script src="../../../js/vue-2-6-10.js"></script>
+<script src="../../../tools/layuiadmin/layui/layui.js"></script>
+<script src="../../../js/userManage/toBeAudited/index.js"></script>
+</html>

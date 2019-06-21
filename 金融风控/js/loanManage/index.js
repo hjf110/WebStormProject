@@ -1,28 +1,35 @@
 var table;
 
 
-
-
-
-layui.use(['table', 'laydate'], function () {
+layui.use(['table', 'laydate', 'form','jquery'], function () {
     table = layui.table;
     var form = layui.form,
-        laydate = layui.laydate;
+        laydate = layui.laydate,
+            $ = layui.jquery;
 
-
+    // form.render(null,'component-form-element');
     var app1 = new Vue({
         el: "#app1",
         data: {
-            start: "",
-            end: ""
+            start: "",//应还时间开始日期
+            end: "",//应还时间结束日期
+            start2:"",//实还时间开始日期
+            end2: ""//实还时间结束日期
         },
-        methods: {
-
-        }
+        methods: {}
     });
-
-
-
+    var app2 = new Vue({
+        el: "#app2",
+        data: {
+            name: "",//搜索的姓名
+            phone: "",//搜索的手机号
+            cardId: "",//搜索的身份证号
+            loanNum:"",//借款次数
+            loanNumNoZhan:"",//借款次数不含展期
+            loanNumZhan:""//展期借款次数
+        },
+        methods: {}
+    });
 
     //日期选择后的糊掉
     laydate.render({
@@ -37,6 +44,27 @@ layui.use(['table', 'laydate'], function () {
 
             console.log(app1.start);
             console.log(app1.end);
+            console.log(app1.start2);
+            console.log(app1.end2);
+            // console.log(app1.channel);/
+        }
+    });
+
+    laydate.render({
+        elem: '#all2',
+        range: "至"
+        , done: function (value, date, endDate) {
+            console.log(value); //得到日期生成的值，如：2017-08-18
+            console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+            console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+            app1.start2 = date.year + "-" + date.month + "-" + date.date;
+            app1.end2 = endDate.year + "-" + endDate.month + "-" + endDate.date;
+
+            console.log(app1.start2);
+            console.log(app1.end2);
+            console.log(app1.start);
+            console.log(app1.end);
+            // console.log(app1.channel);
         }
     });
 
@@ -58,7 +86,7 @@ layui.use(['table', 'laydate'], function () {
     table.render({
         elem: '#table_all',
         id: 'table_all',
-        url: "../../tsconfig.json",
+        url: "../tsconfig.json",
         // parseData: function (res) {
         //     console.log(res);
         //     return {
@@ -75,74 +103,151 @@ layui.use(['table', 'laydate'], function () {
         cols: [[
             {
                 type: 'checkbox',
-                //fixed : 'left'
+                fixed: 'left'
             }
             , {
                 field: 'a',
                 title: '序号',
+                width: 80,
                 //style : 'height:60px;width:60px;line-height:60px!important;',
-                //fixed : 'left',
+                fixed: 'left',
                 sort: true
             }
             , {
                 field: 'b',
-                title: '日期'
+                title: '用户名',
+                width: 80,
+                fixed: 'left',
                 //style : 'height:60px;width:60px;line-height:60px!important;',
                 // templet: '<div><img src="${pageContext.request.contextPath}{{d.image}}"></div>'
             }
             , {
                 field: 'c',
-                title: '注册量'
+                title: '手机号',
+                width: 80,
                 // ,edit: 'text'
             }
             , {
                 field: 'd',
-                title: '申请量'
+                title: '身份证号',
+                width: 120
                 //,templet : '<div>{{d.ps1Name}}>{{d.ps2Name}}</div>',
             }
             , {
                 field: 'e',
-                title: '通过量',
-                sort: true
+                title: '应还日期',
+                width: 100
+                // sort: true
             }
             , {
                 field: 'f',
-                title: '通过率',
-                sort: true
+                title: '应还本金',
+                width: 100
+                // sort: true
             }
             , {
                 field: 'g',
-                title: '放款量',
-                sort: true
+                title: '应还罚息',
+                width: 100
+                // sort: true
             }
             , {
                 field: 'h',
-                title: '放款成功率',
-                sort: true
+                title: '滞纳金',
+                width: 110
+                // sort: true
             }
             , {
                 field: 'i',
-                title: '借款金额',
-                sort: true
+                title: '实还金额',
+                width: 110
+                // sort: true
             }
             , {
                 field: 'j',
-                title: '实际放款金额',
-                sort: true
+                title: '实还日期',
+                width: 150
+                // sort: true
             }
-            // , {
-            //     title: '操作',
-            //     fixed: 'right',
-            //     //width : 300,
-            //     align: 'center',
-            //     toolbar: '#barDemo'
-            // }
+            , {
+                field: 'r',
+                title: '渠道',
+                width: 120,
+                // templet:'#sm',
+                // fixed: 'right',
+            }
+            , {
+                field: 's',
+                title: '订单号',
+                width: 120,
+                // templet:'#yhk',
+                // fixed: 'right',
+            }
+            , {
+                field: 's',
+                title: '借款次数(总)',
+                width: 120,
+                // templet:'#yhk',
+                // fixed: 'right',
+            }
+            , {
+                field: 's',
+                title: '展期次数(总)',
+                width: 120,
+                // templet:'#yhk',
+                // fixed: 'right',
+            }
+            , {
+                field: 's',
+                title: '(不含展期)借款次数',
+                width: 180,
+                // templet:'#yhk',
+                // fixed: 'right',
+            }
+            , {
+                field: 't',
+                title: '状态',
+                width: 120,
+                templet:'#zt',
+                fixed: 'right',
+            }
+            , {
+                field: 'u',
+                title: '是否逾期',
+                width: 120,
+                templet:'#sfyq',
+                fixed: 'right',
+            }
+            , {
+                field: 'v',
+                title: '是否展期',
+                width: 120,
+                templet:'#sfzq',
+                fixed: 'right',
+            }
+            , {
+                title: '操作',
+                fixed: 'right',
+                width : 250,
+                align: 'center',
+                toolbar: '#toolbar'
+            }
         ]],
         page: true,
-        limit: 20,
-        limits: [20, 40, 60, 80, 100],
-        toolbar: ''
+        limit: 3,
+        limits: [6, 40, 60, 80, 100],
+        toolbar: true
     });
+
+    setTimeout(function () {
+
+        // $("#out").on("click",function () {
+        //     console.log(12321321);
+           var dd= $(".layui-table-tool-self").children(":first").next();
+        // });
+
+        layer.tips('这是导出按钮', dd, {tips: [3, '#42B8F1'], tipsMore: true});
+    },1000);
 
 
     //监听头工具事件
@@ -214,7 +319,7 @@ layui.use(['table', 'laydate'], function () {
 
 
     //监听工具条
-    table.on('tool(transport_unit_library)', function (obj) {
+    table.on('tool(table_all)', function (obj) {
         var data = obj.data;
         if (obj.event === 'detail') {
             //layer.msg('ID：' + data.id + ' 的查看操作');
@@ -277,6 +382,23 @@ layui.use(['table', 'laydate'], function () {
                 }
             });
             layer.full(as);
+        } else if (obj.event === 'part') {
+            //layer.alert('编辑行：<br>' + JSON.stringify(data));
+            var as = layer.open({
+                id: "ModifityKH",
+                type: 2,
+                title: "部分还款",
+                maxmin: true,
+                shadeClose: false,
+                shade: 0.8,
+                area: ['500px', '600px'],
+                //content : path+'/voteback/add.html',
+                content: 'part.html?id=' + data.id, //iframe的url
+                success: function (layero, index) {
+                    //传入参数，并赋值给iframe的元素
+                }
+            });
+           // layer.full(as);
         }
     });
 
@@ -300,19 +422,17 @@ layui.use(['table', 'laydate'], function () {
                 });
             },
             timeselect: function () {
-                console.log(2222)
-                var time = $('#time');
-                var demoReload = $('#demoReload');
-                console.log(time.val());
-                table.reload('table_all', {
-                    page: {
-                        curr: 1 //重新从第 1 页开始
-                    },
-                    where: {
-                        name: demoReload.val(),
-                        dateStr: time.val()
-                    }
-                });
+                console.log(JSON.stringify(app2._data));
+
+                // table.reload('table_all', {
+                //     page: {
+                //         curr: 1 //重新从第 1 页开始
+                //     },
+                //     where: {
+                //         name: demoReload.val(),
+                //         dateStr: time.val()
+                //     }
+                // });
             },
             shuaxing: function () {
                 //var demoReload = $('#demoReload');
